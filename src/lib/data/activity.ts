@@ -1,0 +1,67 @@
+import { ActivityItem } from "@/types";
+
+export const DEMO_ACTIVITY: ActivityItem[] = [
+  {
+    id: "act-001",
+    type: "deadline_alert",
+    title: "Deadline approaching — Work Permit Appeal",
+    description: "Appeal deadline for case FFM-2025-WP-7731 is in 6 days (10 April 2026).",
+    timestamp: "2026-04-04T08:15:00Z",
+    documentId: "doc-004",
+  },
+  {
+    id: "act-002",
+    type: "upload",
+    title: "Document uploaded",
+    description: "Request for Additional Documentation (BER-2025-FRU-1194) processed and categorized.",
+    timestamp: "2026-03-28T14:22:00Z",
+    documentId: "doc-002",
+  },
+  {
+    id: "act-003",
+    type: "action_completed",
+    title: "Action marked complete",
+    description: "Biometric photographs obtained for Residence Permit Renewal.",
+    timestamp: "2026-03-26T11:00:00Z",
+    documentId: "doc-001",
+  },
+  {
+    id: "act-004",
+    type: "review",
+    title: "Document reviewed",
+    description: "Asylum Interview Appointment Notice — key dates and actions extracted.",
+    timestamp: "2026-03-20T16:45:00Z",
+    documentId: "doc-003",
+  },
+  {
+    id: "act-005",
+    type: "guidance_viewed",
+    title: "Guidance module accessed",
+    description: "Viewed: Understanding Appeal Deadlines",
+    timestamp: "2026-03-18T09:30:00Z",
+  },
+  {
+    id: "act-006",
+    type: "upload",
+    title: "Document uploaded",
+    description: "Appeal Deadline Notice — Work Permit Refusal (FFM-2025-WP-7731) processed.",
+    timestamp: "2026-03-10T10:05:00Z",
+    documentId: "doc-004",
+  },
+  {
+    id: "act-007",
+    type: "action_completed",
+    title: "Action marked complete",
+    description: "Statement of reasons (Begründung) requested for appeal case FFM-2025-WP-7731.",
+    timestamp: "2026-03-12T13:20:00Z",
+    documentId: "doc-004",
+  },
+  {
+    id: "act-008",
+    type: "upload",
+    title: "Document uploaded",
+    description: "Municipal Registration Certificate (Meldebescheinigung) uploaded and confirmed.",
+    timestamp: "2026-01-15T09:00:00Z",
+    documentId: "doc-006",
+  },
+];
