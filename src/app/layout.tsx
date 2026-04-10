@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Certa — Structured guidance for immigration procedures",
+  title: "DOX — The system, translated.",
   description:
-    "Upload official documents, identify key dates, and receive structured procedural guidance. Certa provides informational document guidance, not legal advice.",
+    "Upload your immigration documents. Understand what they mean, what's being asked of you, and what to do next.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body className="min-h-full antialiased" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" }}>
+      <body className="min-h-full antialiased">
         {children}
       </body>
     </html>

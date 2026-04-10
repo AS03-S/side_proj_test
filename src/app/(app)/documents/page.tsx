@@ -50,7 +50,7 @@ export default function DocumentsPage() {
           <div className="relative flex-1">
             <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400" />
             <Input
-              placeholder="Search documents…"
+              placeholder="Find a document…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-8"
@@ -76,8 +76,27 @@ export default function DocumentsPage() {
 
         {/* Document list */}
         <div className="space-y-2">
-          {filtered.length === 0 ? (
-            <div className="py-16 text-center text-sm text-neutral-400">No documents match your search.</div>
+          {filtered.length === 0 && search === "" && selectedCategory === "All" ? (
+            <div className="py-20 text-center">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: "rgba(87,228,215,0.15)" }}>
+                <FileText className="h-7 w-7" style={{ color: "#020086" }} strokeWidth={1.5} />
+              </div>
+              <p className="text-base font-semibold" style={{ color: "#020086" }}>No documents yet.</p>
+              <p className="mt-1 text-sm" style={{ color: "rgba(2,0,134,0.5)" }}>Upload your first document to get started.</p>
+              <div className="mt-5">
+                <button
+                  className="inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium text-white transition-colors"
+                  style={{ background: "#020086" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "#010060"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "#020086"; }}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                  Upload a document
+                </button>
+              </div>
+            </div>
+          ) : filtered.length === 0 ? (
+            <div className="py-16 text-center text-sm" style={{ color: "rgba(2,0,134,0.4)" }}>No documents match your search.</div>
           ) : (
             filtered.map((doc) => (
               <Link key={doc.id} href={`/documents/${doc.id}`}>
@@ -148,8 +167,8 @@ export default function DocumentsPage() {
         </div>
 
         <Separator className="my-6" />
-        <p className="text-[11px] text-neutral-400">
-          Certa provides structured information and document guidance only. Always verify extracted dates against your original documents.
+        <p className="text-[11px]" style={{ color: "rgba(2,0,134,0.4)" }}>
+          DOX provides structured information and document guidance only. Always verify extracted dates against your original documents.
         </p>
       </main>
     </>

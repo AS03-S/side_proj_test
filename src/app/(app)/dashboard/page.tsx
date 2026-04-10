@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { TopBar } from "@/components/layout/TopBar";
 import { DEMO_DOCUMENTS } from "@/lib/data/documents";
 import { GUIDANCE_MODULES } from "@/lib/data/guidance";
@@ -6,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { UploadModal } from "@/components/documents/UploadModal";
 import Link from "next/link";
 import {
   FileText,
@@ -45,6 +49,8 @@ function relativeTime(ts: string): string {
 }
 
 export default function DashboardPage() {
+  const [uploadOpen, setUploadOpen] = useState(false);
+
   const urgentDocs = DEMO_DOCUMENTS.filter((d) => d.status === "action_required");
   const upcomingDeadlines = DEMO_DOCUMENTS
     .filter((d) => d.extractedDeadline)
@@ -64,8 +70,28 @@ export default function DashboardPage() {
 
   return (
     <>
-      <TopBar title="Dashboard" subtitle="Overview of your immigration process" />
+      <TopBar title="Home" subtitle="Your immigration process overview" />
+      <UploadModal open={uploadOpen} onClose={() => setUploadOpen(false)} />
       <main className="flex-1 space-y-6 p-6">
+
+        {/* Upload card */}
+        <button
+          onClick={() => setUploadOpen(true)}
+          className="w-full rounded-lg border-2 border-dashed py-6 px-5 text-left transition-colors group"
+          style={{ borderColor: "rgba(2,0,134,0.25)", background: "white" }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#57e4d7"; e.currentTarget.style.background = "rgba(87,228,215,0.04)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(2,0,134,0.25)"; e.currentTarget.style.background = "white"; }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "rgba(87,228,215,0.15)" }}>
+              <Upload className="h-5 w-5" style={{ color: "#020086" }} strokeWidth={1.75} />
+            </div>
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "#020086" }}>Upload a new document</p>
+              <p className="text-xs mt-0.5" style={{ color: "rgba(2,0,134,0.5)" }}>PDF or image — we&apos;ll read it and tell you what to do next</p>
+            </div>
+          </div>
+        </button>
 
         {/* Summary stats */}
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -235,11 +261,11 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
 
-            {/* Guidance modules */}
+            {/* What to do next */}
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle>Guidance modules</CardTitle>
+                  <CardTitle>What to do next</CardTitle>
                   <Link href="/guidance">
                     <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
                       All <ChevronRight className="h-3 w-3" />
@@ -266,10 +292,10 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
 
-            {/* Recent activity */}
+            {/* Your history */}
             <Card>
               <CardHeader>
-                <CardTitle>Recent activity</CardTitle>
+                <CardTitle>Your history</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {DEMO_ACTIVITY.slice(0, 5).map((item) => {
@@ -292,8 +318,8 @@ export default function DashboardPage() {
         </div>
 
         <Separator />
-        <p className="text-[11px] text-neutral-400">
-          Certa provides structured information and document guidance only. It does not provide legal advice or legal representation.
+        <p className="text-[11px]" style={{ color: "rgba(2,0,134,0.4)" }}>
+          DOX provides structured information and document guidance only. It does not provide legal advice or legal representation.
         </p>
       </main>
     </>

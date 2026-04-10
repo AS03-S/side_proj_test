@@ -55,7 +55,7 @@ export default function GuidancePage() {
 
   return (
     <>
-      <TopBar title="Guidance" subtitle="Structured procedural guidance modules" />
+      <TopBar title="What to do next" subtitle="Structured procedural guidance" />
       <main className="flex-1 p-6 space-y-8">
 
         {/* Category filter */}
@@ -222,11 +222,13 @@ export default function GuidancePage() {
           </section>
         )}
 
-        <Separator />
-        <p className="text-[11px] text-neutral-400">
-          Guidance content is informational only. Administrative requirements vary by municipality and individual circumstance.
-          Always verify procedural requirements with the relevant authority.
-        </p>
+        {/* Disclaimer */}
+        <div className="flex items-start gap-3 rounded-r-lg border-l-[3px] border-[#57e4d7] px-4 py-3" style={{ background: "rgba(87,228,215,0.1)" }}>
+          <p className="text-xs leading-relaxed" style={{ color: "#020086" }}>
+            <strong className="font-semibold">Informational guidance only.</strong>{" "}
+            DOX provides structured document guidance and procedural information only. This is not legal advice. For legal questions, consult a qualified immigration lawyer. Administrative requirements vary by municipality and individual circumstance — always verify with the relevant authority.
+          </p>
+        </div>
       </main>
     </>
   );

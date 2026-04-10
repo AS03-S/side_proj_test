@@ -76,13 +76,13 @@ export default function DocumentDetailPage() {
         </Link>
 
         {/* Disclaimer banner */}
-        <div className="mb-5 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
-          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" strokeWidth={1.75} />
-          <p className="text-xs leading-relaxed text-amber-800">
+        <div className="mb-5 flex items-start gap-3 rounded-r-lg border-l-[3px] border-[#57e4d7] px-4 py-3" style={{ background: "rgba(87,228,215,0.1)" }}>
+          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "#020086" }} strokeWidth={1.75} />
+          <p className="text-xs leading-relaxed" style={{ color: "#020086" }}>
             <strong className="font-semibold">Informational guidance only.</strong>{" "}
-            Certa provides structured document explanation and procedural guidance. It does not provide legal advice
-            or legal representation. Always verify extracted information against your original document.
-            For legal matters, consult a qualified immigration attorney.
+            DOX provides structured document guidance and procedural information only. This is not legal advice.
+            Always verify extracted information against your original document.
+            For legal questions, consult a qualified immigration lawyer.
           </p>
         </div>
 
@@ -293,10 +293,10 @@ export default function DocumentDetailPage() {
             </Card>
 
             {/* Storage note */}
-            <div className="flex items-start gap-2.5 rounded-lg border border-neutral-200 bg-neutral-50 p-3">
-              <Lock className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" strokeWidth={1.75} />
-              <p className="text-[10px] leading-relaxed text-neutral-500">
-                This document is encrypted at rest using AES-256. Only you have access to your documents.
+            <div className="flex items-start gap-2.5 rounded-r-lg border-l-[3px] border-[#57e4d7] p-3" style={{ background: "rgba(87,228,215,0.08)" }}>
+              <Lock className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "#020086" }} strokeWidth={1.75} />
+              <p className="text-[10px] leading-relaxed" style={{ color: "#020086" }}>
+                Original document not stored. DOX stores only the extracted summary, encrypted and accessible only by you.
               </p>
             </div>
           </div>

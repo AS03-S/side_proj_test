@@ -71,18 +71,19 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent>
               <p className="mb-3 text-xs text-neutral-500">
-                Certa interface language. Document extraction and guidance will be provided in this language where available.
+                DOX interface language. Document guidance will be provided in this language where available.
               </p>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {LANGUAGES.map((lang) => (
                   <button
                     key={lang}
                     onClick={() => setLanguage(lang)}
-                    className={`rounded border px-3 py-2 text-xs font-medium transition-colors ${
+                    className="rounded border px-3 py-2 text-xs font-medium transition-colors"
+                    style={
                       language === lang
-                        ? "border-neutral-900 bg-neutral-900 text-white"
-                        : "border-neutral-200 text-neutral-600 hover:bg-neutral-50"
-                    }`}
+                        ? { borderColor: "#020086", backgroundColor: "#020086", color: "white" }
+                        : { borderColor: "rgba(2,0,134,0.2)", color: "rgba(2,0,134,0.7)" }
+                    }
                   >
                     {lang}
                   </button>
@@ -114,9 +115,8 @@ export default function SettingsPage() {
                   </div>
                   <button
                     onClick={() => setNotifications((prev) => ({ ...prev, [id]: !prev[id] }))}
-                    className={`relative mt-0.5 h-5 w-9 rounded-full shrink-0 transition-colors ${
-                      notifications[id] ? "bg-neutral-900" : "bg-neutral-200"
-                    }`}
+                    className="relative mt-0.5 h-5 w-9 rounded-full shrink-0 transition-colors"
+                    style={{ backgroundColor: notifications[id] ? "#57e4d7" : "rgba(2,0,134,0.15)" }}
                   >
                     <span
                       className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform ${
@@ -142,14 +142,13 @@ export default function SettingsPage() {
                 <div>
                   <p className="text-xs font-medium text-neutral-900">Anonymous product improvement data</p>
                   <p className="mt-0.5 text-[10px] leading-relaxed text-neutral-500">
-                    Share anonymised, non-identifiable usage data to help improve Certa. No document content or personal data is included.
+                    Share anonymised, non-identifiable usage data to help improve DOX. No document content or personal data is included.
                   </p>
                 </div>
                 <button
                   onClick={() => setShareData(!shareData)}
-                  className={`relative mt-0.5 h-5 w-9 rounded-full shrink-0 transition-colors ${
-                    shareData ? "bg-neutral-900" : "bg-neutral-200"
-                  }`}
+                  className="relative mt-0.5 h-5 w-9 rounded-full shrink-0 transition-colors"
+                  style={{ backgroundColor: shareData ? "#57e4d7" : "rgba(2,0,134,0.15)" }}
                 >
                   <span
                     className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform ${
@@ -183,17 +182,16 @@ export default function SettingsPage() {
               </div>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-                <p className="text-xs leading-relaxed text-amber-900">
-                  <strong>Certa provides structured information and document guidance only.</strong>{" "}
+              <div className="rounded-r-lg border-l-[3px] border-[#57e4d7] p-4" style={{ background: "rgba(87,228,215,0.1)" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "#020086" }}>
+                  <strong>DOX provides structured information and document guidance only.</strong>{" "}
                   It does not provide legal advice, legal representation, legal eligibility assessments, or
-                  official immigration determinations. Information provided through Certa is informational
+                  official immigration determinations. Information provided through DOX is informational
                   in nature and should not be relied upon as legal advice.
                 </p>
-                <p className="mt-2 text-xs leading-relaxed text-amber-900">
+                <p className="mt-2 text-xs leading-relaxed" style={{ color: "#020086" }}>
                   For matters requiring legal advice, you should consult a qualified immigration attorney
-                  or accredited legal representative. Extracted document data should always be verified
-                  against your original documents.
+                  or accredited legal representative. Always verify extracted information against your original documents.
                 </p>
               </div>
               <div className="flex gap-3">
@@ -215,7 +213,7 @@ export default function SettingsPage() {
             <CardContent className="space-y-3">
               <p className="text-xs text-neutral-500">
                 You can delete your account and all associated data at any time. This action is irreversible.
-                All documents and guidance records will be permanently deleted.
+                All extracted summaries and guidance records will be permanently deleted.
               </p>
               <Button variant="destructive" size="sm">
                 <Trash2 className="h-3.5 w-3.5" />

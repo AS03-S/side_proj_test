@@ -1,10 +1,10 @@
-# Certa — Structured guidance for immigration procedures
+# DOX — The system, translated.
 
-> Certa provides structured information and document guidance, not legal advice.
+> DOX provides structured information and document guidance, not legal advice.
 
 ## Overview
 
-Certa is a serious, institutional-grade web application that helps users upload immigration-related documents, understand their contents, extract key dates and required actions, and receive structured procedural next-step guidance.
+DOX is a serious, institutional-grade web application that helps users upload immigration-related documents, understand their contents, extract key dates and required actions, and receive structured procedural next-step guidance. Original files are never stored — only the extracted structured summary is retained.
 
 ## Setup
 
@@ -31,7 +31,7 @@ npm run start
 
 ## Demo access
 
-All authentication is mocked. Use any email and password to sign in on `/login`. You will be logged in as demo user `A. Meier`.
+All authentication is mocked. Use any email and password to sign in on `/login`. You will be logged in as demo user `A. Meier`. Demo note: original file storage is intentionally suppressed by design (GDPR-safe architecture).
 
 Pre-seeded demo documents:
 - Residence Permit Renewal Notice (BAMF)
@@ -124,4 +124,4 @@ src/
 
 ---
 
-*Certa provides structured information and document guidance only. It does not provide legal advice, legal representation, or immigration eligibility assessments.*
+*DOX provides structured information and document guidance only. It does not provide legal advice, legal representation, or immigration eligibility assessments.*
