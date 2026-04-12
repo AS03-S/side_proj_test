@@ -24,6 +24,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 import { categoryLabel, formatDate, statusLabel } from "@/lib/utils";
+import { PageFooter } from "@/components/layout/PageFooter";
 import { useState } from "react";
 import type { DocumentStatus } from "@/types";
 
@@ -307,6 +308,7 @@ export default function DocumentDetailPage() {
           </div>
         </div>
       </main>
+      <PageFooter />
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TopBar } from "@/components/layout/TopBar";
+import { PageFooter } from "@/components/layout/PageFooter";
 import { GUIDANCE_MODULES, LOCAL_SYSTEM_CARDS } from "@/lib/data/guidance";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -230,6 +231,7 @@ export default function GuidancePage() {
           </p>
         </div>
       </main>
+      <PageFooter />
     </>
   );
 }

@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { FileText, ChevronRight, Search, Filter, Upload } from "lucide-react";
 import { categoryLabel, formatDateShort, statusLabel } from "@/lib/utils";
+import { PageFooter } from "@/components/layout/PageFooter";
 import type { DocumentStatus } from "@/types";
 
 const STATUS_BADGE: Record<DocumentStatus, "urgent" | "high" | "success" | "muted" | "default"> = {
@@ -167,11 +168,8 @@ export default function DocumentsPage() {
           )}
         </div>
 
-        <Separator className="my-6" />
-        <p className="text-[11px] text-neutral-400">
-          migraDOCS provides document organisation and information only. Always verify extracted dates against your original documents.
-        </p>
       </main>
+      <PageFooter />
     </>
   );
 }

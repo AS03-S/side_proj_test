@@ -1,13 +1,16 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Settings, LogOut, User } from "lucide-react";
+import { FlaskConical, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
 import { logout } from "@/lib/auth";
 import { OverviewTab } from "@/components/dashboard/OverviewTab";
 import { ProcessesTab } from "@/components/dashboard/ProcessesTab";
 import { DocumentsTab } from "@/components/dashboard/DocumentsTab";
+import { TimelinesTab } from "@/components/dashboard/TimelinesTab";
+import { ChecklistsTab } from "@/components/dashboard/ChecklistsTab";
+import { DemoModePanel } from "@/components/dashboard/DemoModePanel";
 
 type DashboardTab =
   | "overview"
@@ -32,6 +35,7 @@ function DashboardShell() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeTab = (searchParams.get("tab") as DashboardTab) ?? "overview";
+  const [demoOpen, setDemoOpen] = useState(false);
 
   const setTab = (tab: DashboardTab) => {
     router.push(`/dashboard?tab=${tab}`);
@@ -52,6 +56,16 @@ function DashboardShell() {
           <h1 className="text-sm font-semibold text-neutral-950">Dashboard</h1>
 
           <div className="flex items-center gap-1">
+            {/* Demo mode toggle */}
+            <button
+              onClick={() => setDemoOpen(true)}
+              title="Open demo walkthrough"
+              className="flex items-center gap-1.5 rounded border border-neutral-200 bg-neutral-50 px-2.5 py-1.5 text-[11px] font-medium text-neutral-600 transition-colors hover:border-navy hover:bg-navy-light hover:text-navy"
+            >
+              <FlaskConical className="h-3.5 w-3.5" strokeWidth={1.75} />
+              Demo
+            </button>
+
             <Link href="/settings">
               <button
                 className="rounded p-2 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
@@ -107,9 +121,19 @@ function DashboardShell() {
           <DocumentsTab />
         )}
 
+        {activeTab === "timelines" && (
+          <TimelinesTab />
+        )}
+
+        {activeTab === "checklists" && (
+          <ChecklistsTab />
+        )}
+
         {activeTab !== "overview" &&
           activeTab !== "processes" &&
-          activeTab !== "documents" && (
+          activeTab !== "documents" &&
+          activeTab !== "timelines" &&
+          activeTab !== "checklists" && (
           <div className="flex h-64 items-center justify-center rounded-lg border border-dashed border-neutral-200 bg-neutral-50">
             <p className="text-sm text-neutral-400 capitalize">
               {activeTab} — content coming soon
@@ -124,6 +148,9 @@ function DashboardShell() {
           migraDOCS is an information and organisation tool. It does not provide legal advice and does not replace a qualified immigration lawyer.
         </p>
       </footer>
+
+      {/* ── Demo mode panel ── */}
+      {demoOpen && <DemoModePanel onClose={() => setDemoOpen(false)} />}
     </div>
   );
 }
