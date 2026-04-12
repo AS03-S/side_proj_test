@@ -13,10 +13,7 @@ const NAV_ITEMS = [
 
 function MigraDOCSLogo() {
   return (
-    <span
-      className="logo-wordmark select-none"
-      style={{ fontSize: "1.55rem", color: "#0d1b2e", lineHeight: 1 }}
-    >
+    <span className="logo-wordmark select-none text-[1.25rem] text-navy leading-none tracking-[-0.04em]">
       migraDOCS
     </span>
   );
