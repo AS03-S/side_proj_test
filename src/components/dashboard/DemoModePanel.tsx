@@ -35,27 +35,110 @@ function daysFromNow(d: string) {
 const DEMO_DOC = DEMO_DOCUMENTS[0];
 const DEMO_PROC = DEMO_PROCESSES[0];
 
+const IS_REAL_DEMO = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+
+interface LiveAnalysis {
+  title: string;
+  issuingAuthority: string;
+  whatThisIs: string;
+  whatItRequires: string[];
+  deadlines: Array<{ label: string; date: string }>;
+  consequences: string;
+  nextSteps: string[];
+  authorityExplainer: { name: string; role: string; contact?: string };
+  whatItIsNotTelling: string;
+  needsReferral: boolean;
+  referralCard?: { who: string; what: string; why: string };
+  summary: string;
+  confidence: "high" | "medium" | "low";
+  confidenceScore: number;
+}
+
 // ── Simulated upload stage ─────────────────────────────────────────────────
 
-function UploadStage({ onDone }: { onDone: () => void }) {
+function UploadStage({
+  onDone,
+  onAnalysis,
+}: {
+  onDone: () => void;
+  onAnalysis?: (result: LiveAnalysis) => void;
+}) {
   const [pct, setPct] = useState(0);
+  const [label, setLabel] = useState("Uploading file…");
 
   useEffect(() => {
-    const steps = [
-      { delay: 200, value: 20, label: "" },
-      { delay: 600, value: 55, label: "" },
-      { delay: 1000, value: 80, label: "" },
-      { delay: 1400, value: 100, label: "" },
-    ];
-    const timers = steps.map(({ delay, value }) =>
-      setTimeout(() => setPct(value), delay)
-    );
-    const done = setTimeout(onDone, 1800);
-    return () => {
-      timers.forEach(clearTimeout);
-      clearTimeout(done);
-    };
-  }, [onDone]);
+    if (!IS_REAL_DEMO) {
+      // Simulated path
+      const steps = [
+        { delay: 200, value: 20 },
+        { delay: 600, value: 55 },
+        { delay: 1000, value: 80 },
+        { delay: 1400, value: 100 },
+      ];
+      const timers = steps.map(({ delay, value }) =>
+        setTimeout(() => setPct(value), delay)
+      );
+      const done = setTimeout(onDone, 1800);
+      return () => {
+        timers.forEach(clearTimeout);
+        clearTimeout(done);
+      };
+    }
+
+    // Real API path: fetch demo PDF → call process-document
+    let cancelled = false;
+
+    async function runRealDemo() {
+      try {
+        setPct(15);
+        setLabel("Fetching sample document…");
+
+        const pdfRes = await fetch("/demo/sample-document.pdf");
+        if (!pdfRes.ok) throw new Error("Could not load sample document");
+        const blob = await pdfRes.blob();
+        const file = new File([blob], "sample-document.pdf", { type: "application/pdf" });
+
+        if (cancelled) return;
+        setPct(35);
+        setLabel("Sending to analysis service…");
+
+        const form = new FormData();
+        form.append("file", file);
+
+        const apiRes = await fetch("/api/process-document", {
+          method: "POST",
+          body: form,
+        });
+
+        if (cancelled) return;
+        setPct(80);
+        setLabel("Generating structured summary…");
+
+        if (apiRes.ok) {
+          const data = await apiRes.json();
+          if (!cancelled && data.analysis) {
+            onAnalysis?.(data.analysis as LiveAnalysis);
+          }
+        }
+
+        if (!cancelled) {
+          setPct(100);
+          setLabel("Document analysed");
+          setTimeout(onDone, 400);
+        }
+      } catch {
+        if (!cancelled) {
+          // Fall through to simulated complete so demo still works
+          setPct(100);
+          setLabel("Analysis complete (demo data)");
+          setTimeout(onDone, 400);
+        }
+      }
+    }
+
+    runRealDemo();
+    return () => { cancelled = true; };
+  }, [onDone, onAnalysis]);
 
   return (
     <div className="flex flex-col items-center gap-4 py-10">
@@ -68,15 +151,7 @@ function UploadStage({ onDone }: { onDone: () => void }) {
         <p className="text-sm font-semibold text-neutral-900">
           {pct < 100 ? "Processing test document…" : "Document analysed"}
         </p>
-        <p className="mt-0.5 text-xs text-neutral-500">
-          {pct < 40
-            ? "Uploading file…"
-            : pct < 70
-            ? "Extracting text and key dates…"
-            : pct < 100
-            ? "Generating structured summary…"
-            : "All outputs ready below"}
-        </p>
+        <p className="mt-0.5 text-xs text-neutral-500">{label}</p>
       </div>
       <div className="h-2 w-full max-w-xs overflow-hidden rounded-full bg-neutral-100">
         <div
@@ -86,7 +161,7 @@ function UploadStage({ onDone }: { onDone: () => void }) {
       </div>
       <div className="flex items-center gap-2 rounded border border-neutral-200 bg-neutral-50 px-3 py-2">
         <FileText className="h-4 w-4 text-neutral-400" strokeWidth={1.5} />
-        <span className="text-xs text-neutral-700">sample-residence-permit-notice.pdf</span>
+        <span className="text-xs text-neutral-700">sample-document.pdf</span>
       </div>
     </div>
   );
@@ -94,8 +169,19 @@ function UploadStage({ onDone }: { onDone: () => void }) {
 
 // ── Mini document summary ──────────────────────────────────────────────────
 
-function MiniDocumentSummary() {
-  const doc = DEMO_DOC;
+function MiniDocumentSummary({ liveAnalysis }: { liveAnalysis?: LiveAnalysis | null }) {
+  // Prefer live API result when available; fall back to static demo data
+  const doc = liveAnalysis
+    ? {
+        whatThisIs: liveAnalysis.whatThisIs,
+        deadlines: liveAnalysis.deadlines,
+        consequences: liveAnalysis.consequences,
+        nextSteps: liveAnalysis.nextSteps,
+        authorityExplainer: liveAnalysis.authorityExplainer,
+        whatItIsNotTelling: liveAnalysis.whatItIsNotTelling,
+        referralCard: liveAnalysis.referralCard,
+      }
+    : DEMO_DOC;
   return (
     <div className="space-y-4">
       {/* Inline disclaimer */}
@@ -443,6 +529,7 @@ type DemoStage = "upload" | "outputs";
 export function DemoModePanel({ onClose }: { onClose: () => void }) {
   const [stage, setStage] = useState<DemoStage>("upload");
   const [section, setSection] = useState<OutputSection>("summary");
+  const [liveAnalysis, setLiveAnalysis] = useState<LiveAnalysis | null>(null);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0d1b2e]/50 backdrop-blur-sm p-4">
@@ -477,7 +564,10 @@ export function DemoModePanel({ onClose }: { onClose: () => void }) {
         <div className="flex-1 overflow-y-auto">
           {stage === "upload" ? (
             <div className="px-6 py-2">
-              <UploadStage onDone={() => setStage("outputs")} />
+              <UploadStage
+                onDone={() => setStage("outputs")}
+                onAnalysis={(result) => setLiveAnalysis(result)}
+              />
               <div className="mb-4 flex items-start gap-2.5 rounded-r-lg border-l-[3px] border-navy-light bg-navy-light/40 px-3 py-2.5">
                 <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-navy" strokeWidth={1.75} />
                 <p className="text-[11px] leading-relaxed text-neutral-700">
@@ -492,14 +582,16 @@ export function DemoModePanel({ onClose }: { onClose: () => void }) {
                 <CheckCircle className="h-4 w-4 shrink-0 text-success" strokeWidth={1.75} />
                 <div>
                   <p className="text-xs font-semibold text-neutral-900">
-                    {DEMO_DOC.title}
+                    {liveAnalysis?.title ?? DEMO_DOC.title}
                   </p>
                   <p className="text-[11px] text-neutral-500">
-                    {DEMO_DOC.issuingAuthority} · Confidence: {DEMO_DOC.confidenceScore}%
+                    {liveAnalysis?.issuingAuthority ?? DEMO_DOC.issuingAuthority}
+                    {" · "}
+                    {liveAnalysis ? liveAnalysis.confidence : `${DEMO_DOC.confidenceScore}%`} confidence
                   </p>
                 </div>
                 <Badge variant="success" className="ml-auto shrink-0">
-                  {DEMO_DOC.confidenceScore}% confidence
+                  {liveAnalysis ? liveAnalysis.confidence : `${DEMO_DOC.confidenceScore}%`}
                 </Badge>
               </div>
 
@@ -511,7 +603,7 @@ export function DemoModePanel({ onClose }: { onClose: () => void }) {
               </div>
 
               {/* Section content */}
-              {section === "summary" && <MiniDocumentSummary />}
+              {section === "summary" && <MiniDocumentSummary liveAnalysis={liveAnalysis} />}
               {section === "timeline" && (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
