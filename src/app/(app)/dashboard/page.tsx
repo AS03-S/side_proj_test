@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Settings, LogOut, User } from "lucide-react";
 import Link from "next/link";
 import { logout } from "@/lib/auth";
+import { OverviewTab } from "@/components/dashboard/OverviewTab";
+import { ProcessesTab } from "@/components/dashboard/ProcessesTab";
+import { DocumentsTab } from "@/components/dashboard/DocumentsTab";
 
 type DashboardTab =
   | "overview"
@@ -90,13 +93,29 @@ function DashboardShell() {
         </nav>
       </header>
 
-      {/* ── Tab content placeholder ── */}
+      {/* ── Tab content ── */}
       <main className="flex-1 p-6">
-        <div className="flex h-64 items-center justify-center rounded-lg border border-dashed border-neutral-200 bg-neutral-50">
-          <p className="text-sm text-neutral-400 capitalize">
-            {activeTab} — content coming soon
-          </p>
-        </div>
+        {activeTab === "overview" && (
+          <OverviewTab onSwitchToProcesses={() => setTab("processes")} />
+        )}
+
+        {activeTab === "processes" && (
+          <ProcessesTab />
+        )}
+
+        {activeTab === "documents" && (
+          <DocumentsTab />
+        )}
+
+        {activeTab !== "overview" &&
+          activeTab !== "processes" &&
+          activeTab !== "documents" && (
+          <div className="flex h-64 items-center justify-center rounded-lg border border-dashed border-neutral-200 bg-neutral-50">
+            <p className="text-sm text-neutral-400 capitalize">
+              {activeTab} — content coming soon
+            </p>
+          </div>
+        )}
       </main>
 
       {/* ── Persistent footer disclaimer ── */}

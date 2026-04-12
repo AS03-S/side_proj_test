@@ -78,12 +78,12 @@ export default function SettingsPage() {
                   <button
                     key={lang}
                     onClick={() => setLanguage(lang)}
-                    className="rounded border px-3 py-2 text-xs font-medium transition-colors"
-                    className={
+                    className={[
+                      "rounded border px-3 py-2 text-xs font-medium transition-colors",
                       language === lang
                         ? "border-navy bg-navy text-white"
-                        : "border-neutral-200 text-neutral-600 hover:border-neutral-300"
-                    }
+                        : "border-neutral-200 text-neutral-600 hover:border-neutral-300",
+                    ].join(" ")}
                   >
                     {lang}
                   </button>
