@@ -35,8 +35,8 @@ const STATUS_BADGE: Record<DocumentStatus, "urgent" | "high" | "success" | "mute
   expired: "muted",
 };
 
-function daysUntilSync(dateString: string): number {
-  const now = new Date("2026-04-04");
+function daysUntil(dateString: string): number {
+  const now = new Date("2026-04-12");
   return Math.ceil((new Date(dateString).getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
@@ -60,8 +60,8 @@ export default function DocumentDetailPage() {
   );
 
   const confidenceColor =
-    doc.confidence === "high" ? "text-emerald-600" :
-    doc.confidence === "medium" ? "text-amber-600" : "text-red-500";
+    doc.confidence === "high" ? "text-success" :
+    doc.confidence === "medium" ? "text-warning" : "text-danger";
 
   return (
     <>
@@ -76,11 +76,11 @@ export default function DocumentDetailPage() {
         </Link>
 
         {/* Disclaimer banner */}
-        <div className="mb-5 flex items-start gap-3 rounded-r-lg border-l-[3px] border-[#57e4d7] px-4 py-3" style={{ background: "rgba(87,228,215,0.1)" }}>
-          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "#020086" }} strokeWidth={1.75} />
-          <p className="text-xs leading-relaxed" style={{ color: "#020086" }}>
-            <strong className="font-semibold">Informational guidance only.</strong>{" "}
-            DOX provides structured document guidance and procedural information only. This is not legal advice.
+        <div className="mb-5 flex items-start gap-3 rounded-r-lg border-l-[3px] border-navy-light bg-navy-light/40 px-4 py-3">
+          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
+          <p className="text-xs leading-relaxed text-neutral-700">
+            <strong className="font-semibold text-neutral-950">Informational guidance only.</strong>{" "}
+            migraDOCS provides structured document guidance and procedural information only. This is not legal advice.
             Always verify extracted information against your original document.
             For legal questions, consult a qualified immigration lawyer.
           </p>
@@ -97,9 +97,9 @@ export default function DocumentDetailPage() {
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50">
                     <FileText className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h1 className="text-base font-semibold text-neutral-900">{doc.title}</h1>
+                      <h1 className="text-base font-semibold text-neutral-950">{doc.title}</h1>
                       <Badge variant={STATUS_BADGE[doc.status]}>{statusLabel(doc.status)}</Badge>
                     </div>
                     <p className="mt-1 text-sm text-neutral-500">{doc.issuingAuthority}</p>
@@ -120,18 +120,18 @@ export default function DocumentDetailPage() {
                   {doc.extractedDeadline && (
                     <div className="flex items-start gap-2">
                       <AlertTriangle className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${
-                        daysUntilSync(doc.extractedDeadline) <= 14 ? "text-red-400" : "text-amber-400"
+                        daysUntil(doc.extractedDeadline) <= 14 ? "text-danger" : "text-warning"
                       }`} strokeWidth={1.75} />
                       <div>
                         <p className="text-[10px] uppercase tracking-wide text-neutral-400">Deadline</p>
                         <p className={`mt-0.5 text-xs font-medium ${
-                          daysUntilSync(doc.extractedDeadline) <= 14 ? "text-red-600" : "text-neutral-700"
+                          daysUntil(doc.extractedDeadline) <= 14 ? "text-danger" : "text-neutral-700"
                         }`}>
                           {formatDate(doc.extractedDeadline)}
                         </p>
-                        {daysUntilSync(doc.extractedDeadline) > 0 && (
+                        {daysUntil(doc.extractedDeadline) > 0 && (
                           <p className="text-[10px] text-neutral-400">
-                            {daysUntilSync(doc.extractedDeadline)} days remaining
+                            {daysUntil(doc.extractedDeadline)} days remaining
                           </p>
                         )}
                       </div>
@@ -148,7 +148,7 @@ export default function DocumentDetailPage() {
                     <Building2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-400" strokeWidth={1.75} />
                     <div>
                       <p className="text-[10px] uppercase tracking-wide text-neutral-400">File type</p>
-                      <p className="mt-0.5 text-xs font-medium text-neutral-700 uppercase">
+                      <p className="mt-0.5 text-xs font-medium uppercase text-neutral-700">
                         {doc.fileType} {doc.pageCount && `· ${doc.pageCount}p`}
                       </p>
                     </div>
@@ -214,16 +214,21 @@ export default function DocumentDetailPage() {
                     }`}
                   >
                     {action.completed ? (
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" strokeWidth={1.75} />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" strokeWidth={1.75} />
                     ) : (
                       <Circle className="mt-0.5 h-4 w-4 shrink-0 text-neutral-300" strokeWidth={1.75} />
                     )}
-                    <div className="flex-1 min-w-0">
-                      <p className={`text-xs font-medium leading-snug ${action.completed ? "line-through text-neutral-400" : "text-neutral-900"}`}>
+                    <div className="min-w-0 flex-1">
+                      <p className={`text-xs font-medium leading-snug ${action.completed ? "line-through text-neutral-400" : "text-neutral-950"}`}>
                         {action.description}
                       </p>
                       {action.dueDate && !action.completed && (
                         <p className="mt-0.5 text-[10px] text-neutral-400">Due: {formatDate(action.dueDate)}</p>
+                      )}
+                      {action.isLegalAction && !action.completed && (
+                        <p className="mt-0.5 text-[10px] text-info">
+                          This step may require qualified legal support.
+                        </p>
                       )}
                     </div>
                     {!action.completed && (
@@ -246,7 +251,7 @@ export default function DocumentDetailPage() {
                 <CardTitle>Extraction confidence</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex items-end justify-between mb-2">
+                <div className="mb-2 flex items-end justify-between">
                   <span className={`text-2xl font-semibold ${confidenceColor}`}>{doc.confidenceScore}%</span>
                   <span className={`text-xs font-medium capitalize ${confidenceColor}`}>{doc.confidence}</span>
                 </div>
@@ -279,7 +284,7 @@ export default function DocumentDetailPage() {
                       className="flex cursor-pointer items-start gap-2.5"
                     >
                       {item.completed ? (
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" strokeWidth={1.75} />
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" strokeWidth={1.75} />
                       ) : (
                         <Circle className="mt-0.5 h-4 w-4 shrink-0 text-neutral-200" strokeWidth={1.75} />
                       )}
@@ -293,10 +298,10 @@ export default function DocumentDetailPage() {
             </Card>
 
             {/* Storage note */}
-            <div className="flex items-start gap-2.5 rounded-r-lg border-l-[3px] border-[#57e4d7] p-3" style={{ background: "rgba(87,228,215,0.08)" }}>
-              <Lock className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "#020086" }} strokeWidth={1.75} />
-              <p className="text-[10px] leading-relaxed" style={{ color: "#020086" }}>
-                Original document not stored. DOX stores only the extracted summary, encrypted and accessible only by you.
+            <div className="flex items-start gap-2.5 rounded-r-lg border-l-[3px] border-navy-light bg-navy-light/40 p-3">
+              <Lock className="mt-0.5 h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
+              <p className="text-[10px] leading-relaxed text-neutral-600">
+                Original document not stored. migraDOCS stores only the extracted summary, encrypted and accessible only by you.
               </p>
             </div>
           </div>

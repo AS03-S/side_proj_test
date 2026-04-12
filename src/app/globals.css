@@ -1,26 +1,49 @@
 @import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/beautifully-delicious-script');
 
 @theme {
-  /* Override neutral scale to DOX blue palette */
-  --color-neutral-50: #f4f4fb;
-  --color-neutral-100: #eaeaf7;
-  --color-neutral-200: #d8d8ed;
-  --color-neutral-300: #c0c0e0;
-  --color-neutral-400: #a0a0cc;
-  --color-neutral-500: #8080c3;
-  --color-neutral-600: #5050aa;
-  --color-neutral-700: #020086;
-  --color-neutral-800: #020086;
-  --color-neutral-900: #020086;
-  --color-neutral-950: #010060;
+  /* Neutral scale — clean grays per migraDOCS spec */
+  --color-neutral-50: #F7F7F8;
+  --color-neutral-100: #F0F0F1;
+  --color-neutral-200: #E4E4E7;
+  --color-neutral-300: #D4D4D8;
+  --color-neutral-400: #A1A1AA;
+  --color-neutral-500: #71717A;
+  --color-neutral-600: #52525B;
+  --color-neutral-700: #3F3F46;
+  --color-neutral-800: #27272A;
+  --color-neutral-900: #18181B;
+  --color-neutral-950: #09090B;
+
+  /* Brand navy scale — deep navy #0d1b2e replaces all pure black */
+  --color-navy: #0d1b2e;
+  --color-navy-mid: #1a2d4a;
+  --color-navy-light: #e8edf5;
+
+  /* Semantic colours */
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+  --color-info: #2563EB;
 }
 
 :root {
-  --dox-blue: #020086;
-  --dox-teal: #57e4d7;
-  --dox-white: #ffffff;
-  --dox-border: rgba(2, 0, 134, 0.15);
-  --dox-muted: rgba(2, 0, 134, 0.5);
+  --md-navy: #0d1b2e;
+  --md-navy-mid: #1a2d4a;
+  --md-navy-light: #e8edf5;
+  --md-white: #FFFFFF;
+  --md-bg-secondary: #F7F7F8;
+  --md-text-primary: #09090B;
+  --md-text-secondary: #71717A;
+  --md-text-tertiary: #A1A1AA;
+  --md-border: #E4E4E7;
+  --md-border-strong: #D4D4D8;
+  --md-success: #16A34A;
+  --md-warning: #D97706;
+  --md-danger: #DC2626;
+  --md-info: #2563EB;
+  --md-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --font-logo: 'Beautifully Delicious Script', 'Dancing Script', cursive;
 }
 
 @layer base {
@@ -29,13 +52,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    background-color: var(--dox-white);
-    color: var(--dox-blue);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #FFFFFF;
+    color: var(--md-text-primary);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
   }
-  h1, h2, h3 {
-    font-family: Georgia, 'Times New Roman', serif;
-    color: var(--dox-blue);
+  /* No serif fonts anywhere — explicitly override all headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    color: var(--md-text-primary);
+    font-weight: 600;
   }
 }
 
+/* Logo wordmark — the only element that uses the script font */
+.logo-wordmark {
+  font-family: var(--font-logo);
+}

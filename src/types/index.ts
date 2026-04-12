@@ -19,12 +19,24 @@ export interface RequiredAction {
   description: string;
   dueDate?: string;
   completed: boolean;
+  isLegalAction?: boolean;
 }
 
 export interface ChecklistItem {
   id: string;
   label: string;
   completed: boolean;
+  dueDate?: string;
+  isLegalAction?: boolean;
+  documentId?: string;
+  stepId?: string;
+}
+
+export interface DocumentVersion {
+  id: string;
+  uploadedAt: string;
+  superseded: boolean;
+  summary?: string;
 }
 
 export interface Document {
@@ -33,6 +45,7 @@ export interface Document {
   issuingAuthority: string;
   dateReceived: string;
   extractedDeadline?: string;
+  expiryDate?: string;
   category: DocumentCategory;
   status: DocumentStatus;
   confidence: ConfidenceLevel;
@@ -44,6 +57,17 @@ export interface Document {
   pageCount?: number;
   referenceNumber?: string;
   tags: string[];
+  versions?: DocumentVersion[];
+  processIds?: string[];
+  // Extended structured summary fields
+  whatThisIs?: string;
+  whatItRequires?: string[];
+  deadlines?: Array<{ label: string; date: string }>;
+  consequences?: string;
+  nextSteps?: string[];
+  authorityExplainer?: { name: string; role: string; contact?: string };
+  whatItIsNotTelling?: string;
+  referralCard?: { who: string; what: string; why: string };
 }
 
 export interface GuidanceModule {
@@ -95,4 +119,53 @@ export interface User {
   email: string;
   language: string;
   country: string;
+}
+
+// Process types
+export type ProcessStatus = "active" | "on_hold" | "completed" | "abandoned";
+export type ProcessStepStatus = "not_started" | "in_progress" | "completed" | "blocked";
+
+export interface ProcessStep {
+  id: string;
+  order: number;
+  title: string;
+  description: string;
+  status: ProcessStepStatus;
+  deadline?: string;
+  requiredDocuments?: string[];
+  notes?: string;
+  checklistItems?: ChecklistItem[];
+}
+
+export interface Process {
+  id: string;
+  name: string;
+  country: string;
+  currentStageIndex: number;
+  status: ProcessStatus;
+  steps: ProcessStep[];
+  nextAction: string;
+  nextDeadline?: string;
+  startedAt: string;
+  documentIds: string[];
+  notes?: string;
+}
+
+// Document analysis result from Claude
+export interface DocumentAnalysis {
+  title: string;
+  issuingAuthority: string;
+  category: DocumentCategory;
+  whatThisIs: string;
+  whatItRequires: string[];
+  deadlines: Array<{ label: string; date: string }>;
+  consequences: string;
+  nextSteps: string[];
+  authorityExplainer: { name: string; role: string; contact?: string };
+  whatItIsNotTelling: string;
+  referralCard?: { who: string; what: string; why: string };
+  summary: string;
+  confidence: ConfidenceLevel;
+  confidenceScore: number;
+  tags: string[];
 }

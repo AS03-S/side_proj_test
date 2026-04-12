@@ -2,41 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  FileText,
-  BookOpen,
-  Settings,
-  LogOut,
-} from "lucide-react";
+import { Settings, LogOut, LayoutDashboard } from "lucide-react";
 import { logout } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Home", icon: LayoutDashboard },
-  { href: "/documents", label: "My Documents", icon: FileText },
-  { href: "/guidance", label: "What to do next", icon: BookOpen },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
-function DoxLogo() {
+function MigraDOCSLogo() {
   return (
-    <svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" className="h-7 w-auto">
-      <defs>
-        <linearGradient id="doxGrad-sidebar" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#020086" />
-          <stop offset="100%" stopColor="#57e4d7" />
-        </linearGradient>
-      </defs>
-      <text
-        x="0" y="40"
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="48"
-        fontWeight="700"
-        fill="url(#doxGrad-sidebar)"
-        letterSpacing="-1"
-      >DOX</text>
-    </svg>
+    <span
+      className="logo-wordmark select-none"
+      style={{ fontSize: "1.55rem", color: "#0d1b2e", lineHeight: 1 }}
+    >
+      migraDOCS
+    </span>
   );
 }
 
@@ -53,8 +35,8 @@ export function Sidebar() {
     <aside className="fixed inset-y-0 left-0 z-40 flex w-56 flex-col border-r border-neutral-200 bg-white">
       {/* Logo */}
       <div className="flex h-14 items-center border-b border-neutral-200 px-5">
-        <Link href="/dashboard">
-          <DoxLogo />
+        <Link href="/dashboard" className="flex items-center">
+          <MigraDOCSLogo />
         </Link>
       </div>
 
@@ -66,21 +48,11 @@ export function Sidebar() {
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-2.5 py-2 pr-3 pl-2 text-sm transition-colors rounded"
-              style={
+              className={`flex items-center gap-2.5 rounded py-2 pr-3 pl-2 text-sm transition-colors ${
                 active
-                  ? {
-                      borderLeft: "3px solid #57e4d7",
-                      backgroundColor: "rgba(2,0,134,0.05)",
-                      color: "#020086",
-                      fontWeight: 600,
-                      paddingLeft: "9px",
-                    }
-                  : {
-                      color: "rgba(2,0,134,0.6)",
-                      borderLeft: "3px solid transparent",
-                    }
-              }
+                  ? "bg-navy-light text-navy font-semibold border-l-[3px] border-navy"
+                  : "text-neutral-500 border-l-[3px] border-transparent hover:bg-neutral-50 hover:text-neutral-900"
+              }`}
             >
               <Icon className="h-4 w-4 shrink-0" strokeWidth={1.75} />
               {label}
@@ -93,16 +65,13 @@ export function Sidebar() {
       <div className="border-t border-neutral-200 px-3 py-3">
         <button
           onClick={handleLogout}
-          className="flex w-full items-center gap-2.5 rounded px-3 py-2 text-sm transition-colors"
-          style={{ color: "rgba(2,0,134,0.5)" }}
-          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "rgba(2,0,134,0.05)"; e.currentTarget.style.color = "#020086"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.color = "rgba(2,0,134,0.5)"; }}
+          className="flex w-full items-center gap-2.5 rounded px-3 py-2 text-sm text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
         >
           <LogOut className="h-4 w-4 shrink-0" strokeWidth={1.75} />
           Sign out
         </button>
-        <p className="mt-3 px-3 text-[10px] leading-relaxed" style={{ color: "rgba(2,0,134,0.4)" }}>
-          DOX provides informational guidance only, not legal advice.
+        <p className="mt-3 px-3 text-[10px] leading-relaxed text-neutral-400">
+          migraDOCS provides information and organisation only. Not legal advice.
         </p>
       </div>
     </aside>

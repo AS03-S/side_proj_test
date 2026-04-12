@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { FileText, ChevronRight, Search, Filter } from "lucide-react";
+import { FileText, ChevronRight, Search, Filter, Upload } from "lucide-react";
 import { categoryLabel, formatDateShort, statusLabel } from "@/lib/utils";
 import type { DocumentStatus } from "@/types";
 
@@ -22,8 +22,8 @@ const STATUS_BADGE: Record<DocumentStatus, "urgent" | "high" | "success" | "mute
 
 const CATEGORIES = ["All", "Residence Permit", "Request for Documentation", "Appointment Notice", "Appeal Notice", "Other"];
 
-function daysUntilSync(dateString: string): number {
-  const now = new Date("2026-04-04");
+function daysUntil(dateString: string): number {
+  const now = new Date("2026-04-12");
   return Math.ceil((new Date(dateString).getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
@@ -64,7 +64,7 @@ export default function DocumentsPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`shrink-0 rounded border px-2.5 py-1 text-xs font-medium transition-colors ${
                   selectedCategory === cat
-                    ? "border-neutral-900 bg-neutral-900 text-white"
+                    ? "border-navy bg-navy text-white"
                     : "border-neutral-200 bg-white text-neutral-600 hover:border-neutral-300 hover:bg-neutral-50"
                 }`}
               >
@@ -78,97 +78,98 @@ export default function DocumentsPage() {
         <div className="space-y-2">
           {filtered.length === 0 && search === "" && selectedCategory === "All" ? (
             <div className="py-20 text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: "rgba(87,228,215,0.15)" }}>
-                <FileText className="h-7 w-7" style={{ color: "#020086" }} strokeWidth={1.5} />
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-navy-light">
+                <FileText className="h-7 w-7 text-navy" strokeWidth={1.5} />
               </div>
-              <p className="text-base font-semibold" style={{ color: "#020086" }}>No documents yet.</p>
-              <p className="mt-1 text-sm" style={{ color: "rgba(2,0,134,0.5)" }}>Upload your first document to get started.</p>
+              <p className="text-base font-semibold text-neutral-950">No documents yet.</p>
+              <p className="mt-1 text-sm text-neutral-500">Upload your first document to get started.</p>
               <div className="mt-5">
-                <button
-                  className="inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium text-white transition-colors"
-                  style={{ background: "#020086" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = "#010060"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "#020086"; }}
-                >
-                  <ChevronRight className="h-4 w-4" />
+                <button className="inline-flex items-center gap-2 rounded bg-navy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-navy-mid">
+                  <Upload className="h-4 w-4" />
                   Upload a document
                 </button>
               </div>
             </div>
           ) : filtered.length === 0 ? (
-            <div className="py-16 text-center text-sm" style={{ color: "rgba(2,0,134,0.4)" }}>No documents match your search.</div>
+            <div className="py-16 text-center text-sm text-neutral-400">No documents match your search.</div>
           ) : (
-            filtered.map((doc) => (
-              <Link key={doc.id} href={`/documents/${doc.id}`}>
-                <Card className="transition-shadow hover:shadow-md">
-                  <CardContent className="p-0">
-                    <div className="flex items-center gap-4 p-4">
-                      {/* Icon */}
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded border border-neutral-200 bg-neutral-50">
-                        <FileText className="h-5 w-5 text-neutral-400" strokeWidth={1.5} />
+            filtered.map((doc) => {
+              const expiringSoon = doc.extractedDeadline && daysUntil(doc.extractedDeadline) <= 60 && daysUntil(doc.extractedDeadline) > 0;
+              return (
+                <Link key={doc.id} href={`/documents/${doc.id}`}>
+                  <Card className="transition-shadow hover:shadow-md">
+                    <CardContent className="p-0">
+                      <div className="flex items-center gap-4 p-4">
+                        {/* Icon */}
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded border border-neutral-200 bg-neutral-50">
+                          <FileText className="h-5 w-5 text-neutral-400" strokeWidth={1.5} />
+                        </div>
+
+                        {/* Title + meta */}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="truncate text-sm font-semibold text-neutral-950">{doc.title}</p>
+                            <Badge variant={STATUS_BADGE[doc.status]}>{statusLabel(doc.status)}</Badge>
+                            {expiringSoon && (
+                              <Badge variant="urgent">Expiring soon</Badge>
+                            )}
+                          </div>
+                          <p className="mt-0.5 truncate text-xs text-neutral-500">{doc.issuingAuthority}</p>
+                          <div className="mt-1.5 flex flex-wrap items-center gap-3">
+                            <span className="text-[10px] text-neutral-400">
+                              Received {formatDateShort(doc.dateReceived)}
+                            </span>
+                            {doc.extractedDeadline && (
+                              <>
+                                <span className="text-[10px] text-neutral-300">·</span>
+                                <span className={`text-[10px] font-medium ${
+                                  daysUntil(doc.extractedDeadline) <= 14 ? "text-danger" : expiringSoon ? "text-warning" : "text-neutral-500"
+                                }`}>
+                                  Deadline: {formatDateShort(doc.extractedDeadline)}
+                                  {daysUntil(doc.extractedDeadline) <= 60 &&
+                                    ` (${daysUntil(doc.extractedDeadline)}d)`}
+                                </span>
+                              </>
+                            )}
+                            <span className="text-[10px] text-neutral-300">·</span>
+                            <span className="text-[10px] text-neutral-400">{categoryLabel(doc.category)}</span>
+                          </div>
+                        </div>
+
+                        {/* Right */}
+                        <div className="flex shrink-0 items-center gap-3">
+                          <div className="hidden text-right sm:block">
+                            <p className="text-[10px] text-neutral-400">Confidence</p>
+                            <p className="text-xs font-medium text-neutral-700">{doc.confidenceScore}%</p>
+                          </div>
+                          <ChevronRight className="h-4 w-4 text-neutral-300" />
+                        </div>
                       </div>
 
-                      {/* Title + meta */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <p className="text-sm font-semibold text-neutral-900 truncate">{doc.title}</p>
-                          <Badge variant={STATUS_BADGE[doc.status]}>{statusLabel(doc.status)}</Badge>
-                        </div>
-                        <p className="mt-0.5 text-xs text-neutral-500 truncate">{doc.issuingAuthority}</p>
-                        <div className="mt-1.5 flex flex-wrap items-center gap-3">
-                          <span className="text-[10px] text-neutral-400">
-                            Received {formatDateShort(doc.dateReceived)}
-                          </span>
-                          {doc.extractedDeadline && (
-                            <>
-                              <span className="text-[10px] text-neutral-300">·</span>
-                              <span className={`text-[10px] font-medium ${
-                                daysUntilSync(doc.extractedDeadline) <= 14 ? "text-red-500" : "text-neutral-500"
-                              }`}>
-                                Deadline: {formatDateShort(doc.extractedDeadline)}
-                                {daysUntilSync(doc.extractedDeadline) <= 30 &&
-                                  ` (${daysUntilSync(doc.extractedDeadline)}d)`}
-                              </span>
-                            </>
-                          )}
-                          <span className="text-[10px] text-neutral-300">·</span>
-                          <span className="text-[10px] text-neutral-400">{categoryLabel(doc.category)}</span>
-                        </div>
-                      </div>
-
-                      {/* Right */}
-                      <div className="flex items-center gap-3 shrink-0">
-                        <div className="hidden sm:block text-right">
-                          <p className="text-[10px] text-neutral-400">Confidence</p>
-                          <p className="text-xs font-medium text-neutral-700">{doc.confidenceScore}%</p>
-                        </div>
-                        <ChevronRight className="h-4 w-4 text-neutral-300" />
-                      </div>
-                    </div>
-
-                    {/* Pending actions strip */}
-                    {doc.requiredActions.filter((a) => !a.completed).length > 0 && (
-                      <>
-                        <Separator />
-                        <div className="flex items-center gap-2 bg-neutral-50 px-4 py-2">
-                          <div className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                          <p className="text-[10px] text-neutral-600">
-                            {doc.requiredActions.filter((a) => !a.completed).length} pending action
-                            {doc.requiredActions.filter((a) => !a.completed).length !== 1 ? "s" : ""}
-                          </p>
-                        </div>
-                      </>
-                    )}
-                  </CardContent>
-                </Card>
-              </Link>
-            ))
+                      {/* Pending actions strip */}
+                      {doc.requiredActions.filter((a) => !a.completed).length > 0 && (
+                        <>
+                          <Separator />
+                          <div className="flex items-center gap-2 bg-neutral-50 px-4 py-2">
+                            <div className="h-1.5 w-1.5 rounded-full bg-warning" />
+                            <p className="text-[10px] text-neutral-600">
+                              {doc.requiredActions.filter((a) => !a.completed).length} pending action
+                              {doc.requiredActions.filter((a) => !a.completed).length !== 1 ? "s" : ""}
+                            </p>
+                          </div>
+                        </>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })
           )}
         </div>
 
         <Separator className="my-6" />
-        <p className="text-[11px]" style={{ color: "rgba(2,0,134,0.4)" }}>
-          DOX provides structured information and document guidance only. Always verify extracted dates against your original documents.
+        <p className="text-[11px] text-neutral-400">
+          migraDOCS provides document organisation and information only. Always verify extracted dates against your original documents.
         </p>
       </main>
     </>

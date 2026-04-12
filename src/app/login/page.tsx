@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Shield, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { login } from "@/lib/auth";
@@ -11,7 +11,7 @@ import { login } from "@/lib/auth";
 export default function LoginPage() {
   const router = useRouter();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
-  const [email, setEmail] = useState("demo@certa.app");
+  const [email, setEmail] = useState("demo@migradocs.app");
   const [password, setPassword] = useState("password");
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,6 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    // Mock auth — always succeeds
     await new Promise((r) => setTimeout(r, 800));
     try {
       login(email, password);
@@ -37,22 +36,26 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <Shield className="h-5 w-5 text-neutral-900" strokeWidth={2} />
-            <span className="text-base font-semibold tracking-tight text-neutral-900">Certa</span>
+          <Link href="/" className="inline-flex flex-col items-center gap-1">
+            <span
+              className="logo-wordmark"
+              style={{ fontSize: "2rem", color: "#0d1b2e", lineHeight: 1 }}
+            >
+              migraDOCS
+            </span>
           </Link>
-          <p className="mt-1 text-xs text-neutral-500">Structured guidance for immigration procedures</p>
+          <p className="mt-2 text-xs text-neutral-500">Immigration document intelligence</p>
         </div>
 
         {/* Card */}
-        <div className="rounded-lg border border-neutral-200 bg-white p-6 shadow-sm">
+        <div className="rounded-lg border border-neutral-200 bg-white p-6" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
           {/* Tab toggle */}
           <div className="mb-6 flex rounded border border-neutral-200 p-0.5">
             <button
               onClick={() => setMode("signin")}
               className={`flex-1 rounded py-1.5 text-xs font-medium transition-colors ${
                 mode === "signin"
-                  ? "bg-neutral-900 text-white"
+                  ? "bg-navy text-white"
                   : "text-neutral-500 hover:text-neutral-700"
               }`}
             >
@@ -62,7 +65,7 @@ export default function LoginPage() {
               onClick={() => setMode("signup")}
               className={`flex-1 rounded py-1.5 text-xs font-medium transition-colors ${
                 mode === "signup"
-                  ? "bg-neutral-900 text-white"
+                  ? "bg-navy text-white"
                   : "text-neutral-500 hover:text-neutral-700"
               }`}
             >
@@ -108,7 +111,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {error && <p className="text-xs text-red-600">{error}</p>}
+            {error && <p className="text-xs text-danger">{error}</p>}
 
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? (
@@ -141,8 +144,8 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-6 text-center text-[10px] leading-relaxed text-neutral-400">
-          Certa provides structured information and document guidance, not legal advice.
-          By signing in, you agree to our Terms and Privacy Policy.
+          migraDOCS provides document organisation and information only. This is not legal advice.
+          By signing in you agree to our Terms and Privacy Policy.
         </p>
       </div>
     </div>

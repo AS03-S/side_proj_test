@@ -1,10 +1,10 @@
-# DOX — The system, translated.
+# migraDOCS — The system, translated.
 
-> DOX provides structured information and document guidance, not legal advice.
+> migraDOCS provides structured information and document guidance, not legal advice.
 
 ## Overview
 
-DOX is a serious, institutional-grade web application that helps users upload immigration-related documents, understand their contents, extract key dates and required actions, and receive structured procedural next-step guidance. Original files are never stored — only the extracted structured summary is retained.
+migraDOCS is a serious, institutional-grade web application that helps users upload immigration-related documents, understand their contents, extract key dates and required actions, and receive structured procedural next-step guidance. Original files are never stored — only the extracted structured summary is retained.
 Note: Still under construction.
 
 ## Setup
@@ -125,4 +125,4 @@ src/
 
 ---
 
-*DOX provides structured information and document guidance only. It does not provide legal advice, legal representation, or immigration eligibility assessments.*
+*migraDOCS provides structured information and document guidance only. It does not provide legal advice, legal representation, or immigration eligibility assessments.*
