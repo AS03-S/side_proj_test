@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FlaskConical, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { OverviewTab } from "@/components/dashboard/OverviewTab";
 import { ProcessesTab } from "@/components/dashboard/ProcessesTab";
 import { DocumentsTab } from "@/components/dashboard/DocumentsTab";
@@ -36,6 +36,10 @@ function DashboardShell() {
   const searchParams = useSearchParams();
   const activeTab = (searchParams.get("tab") as DashboardTab) ?? "overview";
   const [demoOpen, setDemoOpen] = useState(false);
+
+  const { data: session } = useSession();
+  // Extract first name from the session user's full name
+  const firstName = session?.user?.name?.split(" ")[0] ?? "there";
 
   const setTab = (tab: DashboardTab) => {
     router.push(`/dashboard?tab=${tab}`);
@@ -109,11 +113,15 @@ function DashboardShell() {
       {/* ── Tab content ── */}
       <main className="flex-1 p-6">
         {activeTab === "overview" && (
-          <OverviewTab onSwitchToProcesses={() => setTab("processes")} />
+          <OverviewTab
+            firstName={firstName}
+            onSwitchToProcesses={() => setTab("processes")}
+            onSwitchToTimelines={() => setTab("timelines")}
+          />
         )}
 
         {activeTab === "processes" && (
-          <ProcessesTab />
+          <ProcessesTab onSwitchToOverview={() => setTab("overview")} />
         )}
 
         {activeTab === "documents" && (

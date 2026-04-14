@@ -56,13 +56,17 @@ function DeleteButton({
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error ?? "Deletion failed. Please try again.");
+        // Drive-specific failure: file and record are still safe
+        const msg = data.code === "DRIVE_ERROR"
+          ? "We couldn't reach Google Drive right now. Your file and record are still safe — please try again in a moment."
+          : (data.error ?? "Deletion failed. Please try again.");
+        setError(msg);
         setDeleting(false);
         return;
       }
       onDeleted(doc.id);
     } catch {
-      setError("Could not reach the server. Please try again.");
+      setError("Could not reach the server. Your file is still safe — please try again.");
       setDeleting(false);
     }
   };
@@ -85,20 +89,20 @@ function DeleteButton({
 
   return (
     <div
-      className="flex flex-col gap-1"
+      className="flex flex-col gap-2"
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
       }}
     >
-      <p className="text-[11px] font-medium text-danger">
-        Delete from Google Drive permanently?
+      <p className="text-[11px] font-medium text-neutral-800">
+        This will permanently delete this file from your Google Drive. Are you sure?
       </p>
       {error && (
-        <p className="flex items-center gap-1 text-[11px] text-danger">
-          <AlertTriangle className="h-3 w-3" />
-          {error}
-        </p>
+        <div className="flex items-start gap-1.5 rounded border border-warning/30 bg-warning/5 px-2.5 py-2">
+          <AlertTriangle className="mt-0.5 h-3 w-3 shrink-0 text-warning" />
+          <p className="text-[11px] leading-snug text-neutral-700">{error}</p>
+        </div>
       )}
       <div className="flex gap-2">
         <Button
@@ -110,7 +114,7 @@ function DeleteButton({
           {deleting ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
           ) : (
-            "Yes, delete"
+            "Delete"
           )}
         </Button>
         <Button
