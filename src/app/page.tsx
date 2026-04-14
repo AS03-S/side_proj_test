@@ -162,12 +162,7 @@ export default function LandingPage() {
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Link href="/login">
             <Button size="lg">
-              Get started free <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
-          <Link href="/login">
-            <Button size="lg" variant="outline">
-              View demo
+              Sign in with Google <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>
@@ -258,11 +253,11 @@ export default function LandingPage() {
       <section className="mx-auto max-w-xl px-6 py-16 text-center">
         <h2 className="mb-3 text-2xl font-bold text-neutral-950">Ready to get started?</h2>
         <p className="mb-6 text-sm text-neutral-500">
-          Upload your first document and understand exactly what it is telling you — and what you need to do next.
+          Sign in with Google. Your documents go straight into your own Google Drive — migraDOCS never stores the originals.
         </p>
         <Link href="/login">
           <Button size="lg">
-            Start for free <ChevronRight className="h-4 w-4" />
+            Sign in with Google <ChevronRight className="h-4 w-4" />
           </Button>
         </Link>
       </section>

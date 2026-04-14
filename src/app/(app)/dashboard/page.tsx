@@ -4,7 +4,7 @@ import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FlaskConical, LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
-import { logout } from "@/lib/auth";
+import { signOut } from "next-auth/react";
 import { OverviewTab } from "@/components/dashboard/OverviewTab";
 import { ProcessesTab } from "@/components/dashboard/ProcessesTab";
 import { DocumentsTab } from "@/components/dashboard/DocumentsTab";
@@ -42,8 +42,7 @@ function DashboardShell() {
   };
 
   const handleLogout = () => {
-    logout();
-    router.push("/login");
+    signOut({ callbackUrl: "/login" });
   };
 
   return (

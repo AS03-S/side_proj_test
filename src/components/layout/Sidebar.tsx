@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Settings, LogOut, LayoutDashboard } from "lucide-react";
-import { logout } from "@/lib/auth";
-import { useRouter } from "next/navigation";
+import { Settings, LogOut, LayoutDashboard, Files } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/documents", label: "My Documents", icon: Files },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
 
@@ -21,12 +21,6 @@ function MigraDOCSLogo() {
 
 export function Sidebar() {
   const pathname = usePathname();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    logout();
-    router.push("/login");
-  };
 
   return (
     <aside className="fixed inset-y-0 left-0 z-40 flex w-56 flex-col border-r border-neutral-200 bg-white">
@@ -61,7 +55,7 @@ export function Sidebar() {
       {/* Footer */}
       <div className="border-t border-neutral-200 px-3 py-3">
         <button
-          onClick={handleLogout}
+          onClick={() => signOut({ callbackUrl: "/login" })}
           className="flex w-full items-center gap-2.5 rounded px-3 py-2 text-sm text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
         >
           <LogOut className="h-4 w-4 shrink-0" strokeWidth={1.75} />
