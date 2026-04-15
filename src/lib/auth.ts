@@ -7,24 +7,26 @@ const DEMO_USER: User = {
   name: "A. Meier",
   email: "a.meier@example.com",
   language: "English",
-  country: "Germany",
+  country: "Sweden",
 };
+
+const STORAGE_KEY = "migradocs_user";
 
 export function getUser(): User | null {
   if (typeof window === "undefined") return null;
-  const stored = localStorage.getItem("certa_user");
+  const stored = localStorage.getItem(STORAGE_KEY);
   if (stored) return JSON.parse(stored);
   return null;
 }
 
 export function login(email: string, _password: string): User {
   const user = { ...DEMO_USER, email };
-  localStorage.setItem("certa_user", JSON.stringify(user));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
   return user;
 }
 
 export function logout(): void {
-  localStorage.removeItem("certa_user");
+  localStorage.removeItem(STORAGE_KEY);
 }
 
 export function isAuthenticated(): boolean {

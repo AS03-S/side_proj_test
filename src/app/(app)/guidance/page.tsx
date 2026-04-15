@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TopBar } from "@/components/layout/TopBar";
+import { PageFooter } from "@/components/layout/PageFooter";
 import { GUIDANCE_MODULES, LOCAL_SYSTEM_CARDS } from "@/lib/data/guidance";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -223,13 +224,14 @@ export default function GuidancePage() {
         )}
 
         {/* Disclaimer */}
-        <div className="flex items-start gap-3 rounded-r-lg border-l-[3px] border-[#57e4d7] px-4 py-3" style={{ background: "rgba(87,228,215,0.1)" }}>
-          <p className="text-xs leading-relaxed" style={{ color: "#020086" }}>
-            <strong className="font-semibold">Informational guidance only.</strong>{" "}
-            DOX provides structured document guidance and procedural information only. This is not legal advice. For legal questions, consult a qualified immigration lawyer. Administrative requirements vary by municipality and individual circumstance — always verify with the relevant authority.
+        <div className="flex items-start gap-3 rounded-r-lg border-l-[3px] border-navy-light bg-navy-light/40 px-4 py-3">
+          <p className="text-xs leading-relaxed text-neutral-700">
+            <strong className="font-semibold text-neutral-950">Informational guidance only.</strong>{" "}
+            migraDOCS provides structured document guidance and procedural information only. This is not legal advice. For legal questions, consult a qualified immigration lawyer. Administrative requirements vary by municipality and individual circumstance — always verify with the relevant authority.
           </p>
         </div>
       </main>
+      <PageFooter />
     </>
   );
 }

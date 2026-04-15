@@ -6,13 +6,59 @@ export const DEMO_DOCUMENTS: Document[] = [
     title: "Residence Permit Renewal Notice",
     issuingAuthority: "Federal Office for Migration and Refugees (BAMF)",
     dateReceived: "2026-03-15",
-    extractedDeadline: "2026-06-30",
+    extractedDeadline: "2026-05-05",
+    expiryDate: "2026-06-30",
     category: "residence_permit",
     status: "action_required",
     confidence: "high",
     confidenceScore: 94,
+    processIds: ["proc-001"],
+    versions: [
+      {
+        id: "v-001-prev",
+        uploadedAt: "2025-07-01",
+        superseded: true,
+        summary: "Previous residence permit (Aufenthaltserlaubnis), valid until 30 June 2025. Superseded by current renewal notice.",
+      },
+    ],
     summary:
       "Your current residence permit (Aufenthaltserlaubnis) expires on 30 June 2026. You are required to submit a renewal application no later than 8 weeks before the expiry date. The issuing authority has flagged that your current employment contract must accompany the renewal application. Failure to submit before the deadline may result in a gap in your legal residence status.",
+    whatThisIs:
+      "This is an official renewal notice from the Federal Office for Migration and Refugees (BAMF) informing you that your current residence permit expires on 30 June 2026. It sets out the deadline by which you must submit a renewal application and the documents you need to provide.",
+    whatItRequires: [
+      "Completed application form (Antrag auf Verlängerung der Aufenthaltserlaubnis)",
+      "Valid passport with at least 6 months of remaining validity",
+      "Current employment contract and last 3 payslips",
+      "Proof of registered address (Meldebescheinigung)",
+      "Biometric photographs (35mm × 45mm, white background)",
+      "Health insurance certificate",
+      "Payment of processing fee (€100)",
+    ],
+    deadlines: [
+      { label: "Application submission deadline", date: "2026-05-05" },
+      { label: "Permit expiry date", date: "2026-06-30" },
+    ],
+    consequences:
+      "If you do not submit a renewal application by 5 May 2026, there may be a gap in your legal residence status after 30 June 2026. This can affect your right to work, travel, and access services. This notice does not guarantee that a renewal will be approved — it only tells you to apply.",
+    nextSteps: [
+      "Book an appointment at your local Ausländerbehörde as soon as possible (wait times can be several weeks)",
+      "Gather all required documents listed above",
+      "Complete the application form (available from the Ausländerbehörde or bamf.de)",
+      "Attend your appointment with all original documents and copies",
+      "Pay the processing fee and keep your receipt as proof of application",
+    ],
+    authorityExplainer: {
+      name: "Bundesamt für Migration und Flüchtlinge (BAMF)",
+      role: "Germany's federal authority for asylum and migration matters. Renewal applications are processed by local Ausländerbehörde offices, not BAMF directly.",
+      contact: "bamf.de — find your local Ausländerbehörde at bamf.de/auslaenderbehoerde",
+    },
+    whatItIsNotTelling:
+      "This notice does not tell you whether your renewal will be approved. It does not address what happens if your employment or income situation has changed. It does not explain the process if any required documents are unavailable. The outcome depends on your individual circumstances.",
+    referralCard: {
+      who: "A qualified immigration lawyer (Fachanwalt für Ausländerrecht) or an accredited migration advice centre (Migrationsberatung)",
+      what: "Legal advice on renewal eligibility, help preparing your application, and representation if the office raises concerns",
+      why: "Renewal refusals have serious consequences. If your circumstances have changed since your last permit was issued, professional advice helps you understand your options before you apply.",
+    },
     requiredActions: [
       {
         id: "ra-001-1",
@@ -64,12 +110,46 @@ export const DEMO_DOCUMENTS: Document[] = [
     issuingAuthority: "State Immigration Office — Berlin",
     dateReceived: "2026-03-28",
     extractedDeadline: "2026-04-28",
+    expiryDate: "2026-04-28",
     category: "request_documentation",
     status: "action_required",
     confidence: "high",
     confidenceScore: 91,
+    processIds: ["proc-002"],
     summary:
       "The State Immigration Office has issued a formal request for supplementary documentation related to your pending family reunification application (Case Ref: BER-2025-FRU-1194). You are required to provide certified translations of two documents: a marriage certificate and proof of shared residence for the past 12 months. Documents must be submitted within 30 days of this notice.",
+    whatThisIs:
+      "This is a formal request from the Berlin State Immigration Office asking you to provide two additional documents for your pending family reunification application (Case Ref: BER-2025-FRU-1194). You have 30 days from the date of this notice to respond.",
+    whatItRequires: [
+      "Certified German translation of your marriage certificate",
+      "Certified German translation of your joint tenancy agreement (covering the past 12 months)",
+      "All documents submitted to the State Immigration Office by 28 April 2026",
+      "Reference case number BER-2025-FRU-1194 on all correspondence",
+    ],
+    deadlines: [
+      { label: "Document submission deadline", date: "2026-04-28" },
+    ],
+    consequences:
+      "Failure to provide the requested documents by 28 April 2026 may result in your family reunification application being suspended or refused without further review. This is a formal legal request — there is no automatic extension.",
+    nextSteps: [
+      "Find a certified translator experienced with immigration documents (check migrationsrecht.net or a local translation bureau)",
+      "Commission certified translations of both documents as soon as possible",
+      "Review translations carefully against the originals before submitting",
+      "Submit documents by registered post or in person, referencing BER-2025-FRU-1194",
+      "Retain a copy of all submitted documents and your proof of submission",
+    ],
+    authorityExplainer: {
+      name: "Landesamt für Einwanderung (LEA) — Berlin",
+      role: "The Berlin state authority responsible for processing immigration applications including family reunification. This office reviews applications and requests additional evidence when needed.",
+      contact: "lea.berlin.de",
+    },
+    whatItIsNotTelling:
+      "This request does not tell you the current status of your main application, or whether providing these documents will be sufficient for approval. It does not explain what standards the translations must meet, or what happens if translations are deemed inadequate.",
+    referralCard: {
+      who: "An immigration lawyer specialising in family reunification cases, or a certified translator with immigration document experience",
+      what: "Guidance on translation requirements, checking that documents meet official standards, and legal advice on the reunification process",
+      why: "The specific certification requirements for translations are not always obvious and vary by authority. Submitting non-compliant translations could cause further delays.",
+    },
     requiredActions: [
       {
         id: "ra-002-1",
@@ -180,6 +260,7 @@ export const DEMO_DOCUMENTS: Document[] = [
         description: "Consult qualified legal representation regarding grounds for appeal",
         dueDate: "2026-04-05",
         completed: false,
+        isLegalAction: true,
       },
       {
         id: "ra-004-3",
@@ -207,6 +288,7 @@ export const DEMO_DOCUMENTS: Document[] = [
     issuingAuthority: "Techniker Krankenkasse (TK)",
     dateReceived: "2026-02-28",
     extractedDeadline: undefined,
+    expiryDate: "2026-05-28",
     category: "other",
     status: "reviewed",
     confidence: "high",
@@ -249,6 +331,7 @@ export const DEMO_DOCUMENTS: Document[] = [
     status: "completed",
     confidence: "high",
     confidenceScore: 99,
+    processIds: ["proc-001"],
     summary:
       "Official confirmation of your registered primary address in Munich, issued by the Einwohnermeldeamt. This certificate (Meldebescheinigung) is valid for administrative purposes and is required for multiple downstream processes including bank account opening, social security registration, and official correspondence. Current registration is valid indefinitely unless address changes.",
     requiredActions: [

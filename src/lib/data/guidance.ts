@@ -123,7 +123,7 @@ export const GUIDANCE_MODULES: GuidanceModule[] = [
         description:
           "Draft a written Widerspruch clearly referencing the case number, the decision being contested, and the grounds for appeal.",
         notes:
-          "Certa provides informational guidance only. For drafting legal arguments, consult a qualified immigration advisor.",
+          "migraDOCS provides informational guidance only. For drafting legal arguments, consult a qualified immigration advisor.",
       },
       {
         id: "gm-003-s4",

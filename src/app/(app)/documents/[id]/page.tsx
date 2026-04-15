@@ -1,71 +1,60 @@
-"use client";
-
-import { notFound, useParams } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/authOptions";
+import { supabase } from "@/lib/db";
+import { drivePreviewUrl } from "@/lib/drive";
 import { TopBar } from "@/components/layout/TopBar";
-import { DEMO_DOCUMENTS } from "@/lib/data/documents";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Separator } from "@/components/ui/separator";
+import { PageFooter } from "@/components/layout/PageFooter";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  FileText,
-  ChevronLeft,
-  AlertTriangle,
-  CheckCircle2,
-  Circle,
-  Info,
-  Lock,
-  CalendarClock,
-  Building2,
-  Hash,
-  Tag,
-  ShieldAlert,
-} from "lucide-react";
-import { categoryLabel, formatDate, statusLabel } from "@/lib/utils";
-import { useState } from "react";
-import type { DocumentStatus } from "@/types";
+import { ChevronLeft, ExternalLink, FileText, Image as ImageIcon, ShieldAlert } from "lucide-react";
+import type { DocumentRow } from "@/lib/db";
 
-const STATUS_BADGE: Record<DocumentStatus, "urgent" | "high" | "success" | "muted" | "default"> = {
-  action_required: "urgent",
-  pending_review: "high",
-  reviewed: "default",
-  completed: "success",
-  expired: "muted",
-};
-
-function daysUntilSync(dateString: string): number {
-  const now = new Date("2026-04-04");
-  return Math.ceil((new Date(dateString).getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
-export default function DocumentDetailPage() {
-  const params = useParams();
-  const doc = DEMO_DOCUMENTS.find((d) => d.id === params.id);
-  if (!doc) return notFound();
-
-  const [checklist, setChecklist] = useState(doc.preparationChecklist);
-  const [actions, setActions] = useState(doc.requiredActions);
-
-  const toggleCheck = (id: string) => {
-    setChecklist((prev) => prev.map((item) => item.id === id ? { ...item, completed: !item.completed } : item));
+function fileTypeLabel(mimeType: string) {
+  const map: Record<string, string> = {
+    "application/pdf": "PDF",
+    "image/jpeg": "JPEG Image",
+    "image/png": "PNG Image",
+    "image/webp": "WebP Image",
   };
-  const toggleAction = (id: string) => {
-    setActions((prev) => prev.map((a) => a.id === id ? { ...a, completed: !a.completed } : a));
-  };
+  return map[mimeType] ?? mimeType.split("/")[1]?.toUpperCase() ?? mimeType;
+}
 
-  const checklistProgress = Math.round(
-    (checklist.filter((c) => c.completed).length / checklist.length) * 100
-  );
+export default async function DocumentDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
-  const confidenceColor =
-    doc.confidence === "high" ? "text-emerald-600" :
-    doc.confidence === "medium" ? "text-amber-600" : "text-red-500";
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) redirect("/login");
+
+  // Fetch document — enforce ownership
+  const { data: doc, error } = await supabase
+    .from("documents")
+    .select("*")
+    .eq("id", id)
+    .eq("user_id", session.user.id)
+    .single();
+
+  if (error || !doc) notFound();
+
+  const document = doc as DocumentRow;
+  const previewUrl = drivePreviewUrl(document.drive_file_id);
+  const driveViewUrl = `https://drive.google.com/file/d/${encodeURIComponent(document.drive_file_id)}/view`;
 
   return (
     <>
-      <TopBar title="Document Detail" />
+      <TopBar title="Document" />
       <main className="flex-1 p-6">
         {/* Back */}
         <Link href="/documents">
@@ -75,233 +64,57 @@ export default function DocumentDetailPage() {
           </Button>
         </Link>
 
-        {/* Disclaimer banner */}
-        <div className="mb-5 flex items-start gap-3 rounded-r-lg border-l-[3px] border-[#57e4d7] px-4 py-3" style={{ background: "rgba(87,228,215,0.1)" }}>
-          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "#020086" }} strokeWidth={1.75} />
-          <p className="text-xs leading-relaxed" style={{ color: "#020086" }}>
-            <strong className="font-semibold">Informational guidance only.</strong>{" "}
-            DOX provides structured document guidance and procedural information only. This is not legal advice.
-            Always verify extracted information against your original document.
-            For legal questions, consult a qualified immigration lawyer.
+        {/* Disclaimer */}
+        <div className="mb-5 flex items-start gap-3 rounded-r-lg border-l-[3px] border-navy-light bg-navy-light/40 px-4 py-3">
+          <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-navy" strokeWidth={1.75} />
+          <p className="text-xs leading-relaxed text-neutral-700">
+            <strong className="font-semibold text-neutral-950">Your file, your Drive.</strong>{" "}
+            This document is stored in your Google Drive. migraDOCS displays a preview — it does not store the file or its contents.
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Main column */}
-          <div className="space-y-5 lg:col-span-2">
-
-            {/* Document header */}
-            <Card>
-              <CardContent className="p-5">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50">
-                    <FileText className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h1 className="text-base font-semibold text-neutral-900">{doc.title}</h1>
-                      <Badge variant={STATUS_BADGE[doc.status]}>{statusLabel(doc.status)}</Badge>
-                    </div>
-                    <p className="mt-1 text-sm text-neutral-500">{doc.issuingAuthority}</p>
-                  </div>
-                </div>
-
-                <Separator className="my-4" />
-
-                {/* Metadata grid */}
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                  <div className="flex items-start gap-2">
-                    <CalendarClock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-400" strokeWidth={1.75} />
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wide text-neutral-400">Received</p>
-                      <p className="mt-0.5 text-xs font-medium text-neutral-700">{formatDate(doc.dateReceived)}</p>
-                    </div>
-                  </div>
-                  {doc.extractedDeadline && (
-                    <div className="flex items-start gap-2">
-                      <AlertTriangle className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${
-                        daysUntilSync(doc.extractedDeadline) <= 14 ? "text-red-400" : "text-amber-400"
-                      }`} strokeWidth={1.75} />
-                      <div>
-                        <p className="text-[10px] uppercase tracking-wide text-neutral-400">Deadline</p>
-                        <p className={`mt-0.5 text-xs font-medium ${
-                          daysUntilSync(doc.extractedDeadline) <= 14 ? "text-red-600" : "text-neutral-700"
-                        }`}>
-                          {formatDate(doc.extractedDeadline)}
-                        </p>
-                        {daysUntilSync(doc.extractedDeadline) > 0 && (
-                          <p className="text-[10px] text-neutral-400">
-                            {daysUntilSync(doc.extractedDeadline)} days remaining
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex items-start gap-2">
-                    <Tag className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-400" strokeWidth={1.75} />
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wide text-neutral-400">Category</p>
-                      <p className="mt-0.5 text-xs font-medium text-neutral-700">{categoryLabel(doc.category)}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Building2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-400" strokeWidth={1.75} />
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wide text-neutral-400">File type</p>
-                      <p className="mt-0.5 text-xs font-medium text-neutral-700 uppercase">
-                        {doc.fileType} {doc.pageCount && `· ${doc.pageCount}p`}
-                      </p>
-                    </div>
-                  </div>
-                  {doc.referenceNumber && (
-                    <div className="flex items-start gap-2">
-                      <Hash className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-400" strokeWidth={1.75} />
-                      <div>
-                        <p className="text-[10px] uppercase tracking-wide text-neutral-400">Reference</p>
-                        <p className="mt-0.5 text-xs font-medium text-neutral-700">{doc.referenceNumber}</p>
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex items-start gap-2">
-                    <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-400" strokeWidth={1.75} />
-                    <div>
-                      <p className="text-[10px] uppercase tracking-wide text-neutral-400">Confidence</p>
-                      <p className={`mt-0.5 text-xs font-medium capitalize ${confidenceColor}`}>
-                        {doc.confidence} — {doc.confidenceScore}%
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Summary */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Structured summary</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-relaxed text-neutral-600">{doc.summary}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {doc.tags.map((tag) => (
-                    <span key={tag} className="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 text-[10px] text-neutral-500">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Required actions */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>Required actions</CardTitle>
-                  <span className="text-[10px] text-neutral-400">
-                    {actions.filter((a) => a.completed).length}/{actions.length} completed
-                  </span>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {actions.map((action) => (
-                  <div
-                    key={action.id}
-                    onClick={() => toggleAction(action.id)}
-                    className={`flex cursor-pointer items-start gap-3 rounded border px-3 py-2.5 transition-colors ${
-                      action.completed
-                        ? "border-neutral-100 bg-neutral-50"
-                        : "border-neutral-200 hover:border-neutral-300"
-                    }`}
-                  >
-                    {action.completed ? (
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" strokeWidth={1.75} />
-                    ) : (
-                      <Circle className="mt-0.5 h-4 w-4 shrink-0 text-neutral-300" strokeWidth={1.75} />
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <p className={`text-xs font-medium leading-snug ${action.completed ? "line-through text-neutral-400" : "text-neutral-900"}`}>
-                        {action.description}
-                      </p>
-                      {action.dueDate && !action.completed && (
-                        <p className="mt-0.5 text-[10px] text-neutral-400">Due: {formatDate(action.dueDate)}</p>
-                      )}
-                    </div>
-                    {!action.completed && (
-                      <Badge variant={action.priority === "urgent" ? "urgent" : action.priority === "high" ? "high" : "default"}>
-                        {action.priority}
-                      </Badge>
-                    )}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+        {/* Metadata header */}
+        <div className="mb-5 flex items-start gap-4 rounded-lg border border-neutral-200 bg-white p-5" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50">
+            {document.file_type.startsWith("image/") ? (
+              <ImageIcon className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+            ) : (
+              <FileText className="h-6 w-6 text-neutral-400" strokeWidth={1.5} />
+            )}
           </div>
-
-          {/* Right column */}
-          <div className="space-y-5">
-
-            {/* Confidence indicator */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Extraction confidence</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-end justify-between mb-2">
-                  <span className={`text-2xl font-semibold ${confidenceColor}`}>{doc.confidenceScore}%</span>
-                  <span className={`text-xs font-medium capitalize ${confidenceColor}`}>{doc.confidence}</span>
-                </div>
-                <Progress value={doc.confidenceScore} className="h-2" />
-                <p className="mt-3 text-[10px] leading-relaxed text-neutral-400">
-                  {doc.confidence === "high"
-                    ? "Extraction confidence is high. Key dates and categories are likely accurate."
-                    : doc.confidence === "medium"
-                    ? "Extraction confidence is moderate. Verify key dates against the original document."
-                    : "Extraction confidence is low. Carefully verify all extracted information."}
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Preparation checklist */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>Preparation checklist</CardTitle>
-                  <span className="text-[10px] text-neutral-400">{checklistProgress}%</span>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Progress value={checklistProgress} className="mb-4" />
-                <ul className="space-y-2">
-                  {checklist.map((item) => (
-                    <li
-                      key={item.id}
-                      onClick={() => toggleCheck(item.id)}
-                      className="flex cursor-pointer items-start gap-2.5"
-                    >
-                      {item.completed ? (
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" strokeWidth={1.75} />
-                      ) : (
-                        <Circle className="mt-0.5 h-4 w-4 shrink-0 text-neutral-200" strokeWidth={1.75} />
-                      )}
-                      <span className={`text-xs leading-snug ${item.completed ? "line-through text-neutral-400" : "text-neutral-700"}`}>
-                        {item.label}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Storage note */}
-            <div className="flex items-start gap-2.5 rounded-r-lg border-l-[3px] border-[#57e4d7] p-3" style={{ background: "rgba(87,228,215,0.08)" }}>
-              <Lock className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "#020086" }} strokeWidth={1.75} />
-              <p className="text-[10px] leading-relaxed" style={{ color: "#020086" }}>
-                Original document not stored. DOX stores only the extracted summary, encrypted and accessible only by you.
-              </p>
+          <div className="min-w-0 flex-1">
+            <h1 className="truncate text-base font-semibold text-neutral-950">{document.file_name}</h1>
+            <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-neutral-500">
+              <span>Uploaded {formatDate(document.uploaded_at)}</span>
+              <span>{fileTypeLabel(document.file_type)}</span>
+              <span className="text-emerald-600">In Google Drive</span>
             </div>
           </div>
+          <a
+            href={driveViewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex shrink-0 items-center gap-1.5 rounded border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-900"
+          >
+            <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
+            Open in Drive
+          </a>
+        </div>
+
+        {/* Google Drive preview iframe */}
+        <div className="overflow-hidden rounded-lg border border-neutral-200 bg-white" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+          <div className="flex items-center justify-between border-b border-neutral-100 px-4 py-2.5">
+            <p className="text-xs font-medium text-neutral-500">Preview — served by Google Drive</p>
+          </div>
+          <iframe
+            src={previewUrl}
+            className="h-[70vh] w-full"
+            allow="autoplay"
+            title={document.file_name}
+          />
         </div>
       </main>
+      <PageFooter />
     </>
   );
 }
