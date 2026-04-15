@@ -335,7 +335,7 @@ function AddProcessModal({
               <textarea
                 className="w-full resize-none rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3.5 text-base text-neutral-900 placeholder:text-neutral-400 focus:border-navy focus:bg-white focus:outline-none focus:ring-2 focus:ring-navy/10 transition-colors"
                 rows={5}
-                placeholder="e.g. "I've been offered a job in Stockholm and need to move from outside the EU." or "I want my partner to join me in Sweden.""
+                placeholder={`e.g. "I've been offered a job in Stockholm and need to move from outside the EU." or "I want my partner to join me in Sweden."`}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 autoFocus
