@@ -32,7 +32,7 @@ function formatToday(): string {
 
 const ARC_W       = 170;                        // SVG width
 const ARC_CX      = ARC_W / 2;                  // 85
-const ARC_PAD_TOP = 16;                         // space above endpoints
+const ARC_PAD_TOP = 24;                         // space above endpoints (keeps round caps inside SVG bounds)
 const ARC_R       = 68;                         // radius
 const ARC_SW      = 10;                         // stroke width
 const ARC_LEN     = Math.PI * ARC_R;            // half-circumference ≈ 213.6
@@ -295,10 +295,10 @@ export function OverviewTab({
         </div>
       ) : (
         <div>
-          <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
+          <p className="mb-6 text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
             Your active processes
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-4">
             {activeProcesses.map((proc) => (
               <CircleProgress
                 key={proc.id}
