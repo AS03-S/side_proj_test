@@ -24,7 +24,7 @@ import { formatDateShort } from "@/lib/utils";
 import type { CandidateProcess, FullPlan } from "@/lib/process-agent/schemas";
 import type { ProcessRowWithSteps, ProcessStepRow, ProcessChecklistItemRow } from "@/lib/db";
 import type { Process } from "@/types";
-import { getSuggestedProcesses } from "@/lib/process-suggestions";
+import { getSuggestedProcesses, type ProcessSuggestion } from "@/lib/process-suggestions";
 
 // Convert a UI Process (from demo fixtures) into ProcessRowWithSteps so
 // ProcessesTab can render it without type mismatches.
@@ -363,21 +363,31 @@ function screenToStep(screen: FlowScreen): number {
 function AddProcessModal({
   onClose,
   onCreated,
-  initialQuery,
+  initialSuggestion,
 }: {
   onClose: () => void;
   onCreated: (p: ProcessRowWithSteps) => void;
-  initialQuery?: string;
+  /** When set, skips identify entirely and goes straight to plan generation */
+  initialSuggestion?: ProcessSuggestion;
 }) {
   const [screen, setScreen] = useState<FlowScreen>({ type: "describe" });
-  const [description, setDescription] = useState(initialQuery ?? "");
+  const [description, setDescription] = useState(initialSuggestion?.title ?? "");
   const [clarifyHistory, setClarifyHistory] = useState<{ question: string; answer: string }[]>([]);
   const [clarifyInput, setClarifyInput] = useState("");
 
-  // Auto-submit when opened from a suggestion card
+  // When opened from a suggestion card, skip identify and go straight to plan
   useEffect(() => {
-    if (initialQuery) {
-      identify(initialQuery);
+    if (initialSuggestion) {
+      const candidate: CandidateProcess = {
+        id: initialSuggestion.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        name: initialSuggestion.title,
+        description: initialSuggestion.reason,
+        country: initialSuggestion.country,
+        destination_country: initialSuggestion.country,
+        authority_name: initialSuggestion.authority,
+        confidence: 1.0,
+      };
+      buildPlan(candidate, initialSuggestion.title, []);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -733,7 +743,7 @@ function AddProcessModal({
 
 export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () => void }) {
   const [showModal, setShowModal] = useState(false);
-  const [modalInitialQuery, setModalInitialQuery] = useState<string | undefined>();
+  const [modalSuggestion, setModalSuggestion] = useState<ProcessSuggestion | undefined>();
   const [processes, setProcesses] = useState<ProcessRowWithSteps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -848,7 +858,7 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
                 size="sm"
                 className="shrink-0 text-xs"
                 onClick={() => {
-                  setModalInitialQuery(sug.title);
+                  setModalSuggestion(sug);
                   setShowModal(true);
                 }}
               >
@@ -869,9 +879,9 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
 
       {showModal && (
         <AddProcessModal
-          onClose={() => { setShowModal(false); setModalInitialQuery(undefined); }}
+          onClose={() => { setShowModal(false); setModalSuggestion(undefined); }}
           onCreated={handleCreated}
-          initialQuery={modalInitialQuery}
+          initialSuggestion={modalSuggestion}
         />
       )}
 
