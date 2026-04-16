@@ -110,17 +110,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unexpected response from analysis service.", code: "UNEXPECTED_RESPONSE" }, { status: 502 });
     }
 
-    // Strip accidental markdown fences
-    const cleaned = block.text
-      .replace(/^```(?:json)?\s*/i, "")
-      .replace(/\s*```$/i, "")
-      .trim();
+    // Extract the JSON object from the response, tolerating preamble text or
+    // markdown fences that Claude occasionally adds despite instructions.
+    const jsonMatch = block.text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      console.error("[process-document] No JSON object found in response:", block.text.slice(0, 300));
+      return NextResponse.json({ error: "Failed to parse document analysis.", code: "PARSE_ERROR" }, { status: 502 });
+    }
 
     let raw: Record<string, unknown>;
     try {
-      raw = JSON.parse(cleaned);
+      raw = JSON.parse(jsonMatch[0]);
     } catch {
-      console.error("[process-document] JSON parse failed:", cleaned.slice(0, 200));
+      console.error("[process-document] JSON parse failed:", jsonMatch[0].slice(0, 200));
       return NextResponse.json({ error: "Failed to parse document analysis.", code: "PARSE_ERROR" }, { status: 502 });
     }
 

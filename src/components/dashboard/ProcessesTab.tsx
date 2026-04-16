@@ -23,7 +23,59 @@ import { Badge } from "@/components/ui/badge";
 import { formatDateShort } from "@/lib/utils";
 import type { CandidateProcess, FullPlan } from "@/lib/process-agent/schemas";
 import type { ProcessRowWithSteps, ProcessStepRow, ProcessChecklistItemRow } from "@/lib/db";
+import type { Process } from "@/types";
 import { getSuggestedProcesses } from "@/lib/process-suggestions";
+
+// Convert a UI Process (from demo fixtures) into ProcessRowWithSteps so
+// ProcessesTab can render it without type mismatches.
+function demoProcessToRow(p: Process): ProcessRowWithSteps {
+  const now = new Date().toISOString();
+  return {
+    id: p.id,
+    user_id: "demo",
+    title: p.name,
+    slug: null,
+    status: p.status as ProcessRowWithSteps["status"],
+    country: p.country,
+    jurisdiction: null,
+    destination_country: p.country,
+    authority_name: null,
+    source_type: "ai_generated",
+    summary: null,
+    rationale: null,
+    timeline_summary: null,
+    next_action: p.nextAction ?? null,
+    next_deadline: p.nextDeadline ?? null,
+    confidence_score: null,
+    uncertainty_notes: p.notes ?? null,
+    created_at: p.startedAt ?? now,
+    updated_at: p.startedAt ?? now,
+    steps: (p.steps ?? []).map((s) => ({
+      id: s.id,
+      process_id: p.id,
+      order_index: s.order - 1,
+      title: s.title,
+      description: s.description ?? null,
+      status: s.status as ProcessStepRow["status"],
+      estimated_duration: null,
+      target_date: s.deadline ?? null,
+      notes: s.notes ?? null,
+      created_at: p.startedAt ?? now,
+      updated_at: p.startedAt ?? now,
+      checklist_items: (s.checklistItems ?? []).map((ci) => ({
+        id: ci.id,
+        process_step_id: s.id,
+        label: ci.label,
+        completed: ci.completed,
+        item_type: "action" as ProcessChecklistItemRow["item_type"],
+        due_date: ci.dueDate ?? null,
+        notes: null,
+        created_at: p.startedAt ?? now,
+        updated_at: p.startedAt ?? now,
+      })),
+    })),
+  };
+}
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -83,8 +135,9 @@ function ProcessStepRow({
   step: ProcessStepRow & { checklist_items: ProcessChecklistItemRow[] };
 }) {
   const [open, setOpen] = useState(step.status === "in_progress");
-  const completedItems = step.checklist_items.filter((i) => i.completed).length;
-  const totalItems = step.checklist_items.length;
+  const checklistItems = step.checklist_items ?? [];
+  const completedItems = checklistItems.filter((i) => i.completed).length;
+  const totalItems = checklistItems.length;
 
   return (
     <div className={`rounded-lg border ${step.status === "in_progress" ? "border-navy/20 bg-navy-light/20" : "border-neutral-100 bg-white"}`}>
@@ -117,9 +170,9 @@ function ProcessStepRow({
           {step.description && (
             <p className="text-xs leading-relaxed text-neutral-600">{step.description}</p>
           )}
-          {step.checklist_items.length > 0 && (
+          {checklistItems.length > 0 && (
             <div className="space-y-2">
-              {step.checklist_items.map((item) => (
+              {checklistItems.map((item) => (
                 <ChecklistItem key={item.id} item={item} />
               ))}
             </div>
@@ -310,14 +363,24 @@ function screenToStep(screen: FlowScreen): number {
 function AddProcessModal({
   onClose,
   onCreated,
+  initialQuery,
 }: {
   onClose: () => void;
   onCreated: (p: ProcessRowWithSteps) => void;
+  initialQuery?: string;
 }) {
   const [screen, setScreen] = useState<FlowScreen>({ type: "describe" });
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(initialQuery ?? "");
   const [clarifyHistory, setClarifyHistory] = useState<{ question: string; answer: string }[]>([]);
   const [clarifyInput, setClarifyInput] = useState("");
+
+  // Auto-submit when opened from a suggestion card
+  useEffect(() => {
+    if (initialQuery) {
+      identify(initialQuery);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ── Identify ──────────────────────────────────────────────────────────────
 
@@ -670,6 +733,7 @@ function AddProcessModal({
 
 export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () => void }) {
   const [showModal, setShowModal] = useState(false);
+  const [modalInitialQuery, setModalInitialQuery] = useState<string | undefined>();
   const [processes, setProcesses] = useState<ProcessRowWithSteps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -681,7 +745,13 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
       const res = await fetch("/api/processes");
       if (!res.ok) throw new Error("Failed to load");
       const data = await res.json();
-      setProcesses(data.processes ?? []);
+      if (data.isDemo) {
+        // Demo processes arrive as Process[] (UI type). Convert to ProcessRowWithSteps
+        // so ProcessCard renders correctly without crashing on missing DB fields.
+        setProcesses((data.processes ?? []).map(demoProcessToRow));
+      } else {
+        setProcesses(data.processes ?? []);
+      }
     } catch {
       setError("Could not load your processes.");
     } finally {
@@ -777,7 +847,10 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
                 variant="secondary"
                 size="sm"
                 className="shrink-0 text-xs"
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                  setModalInitialQuery(sug.title);
+                  setShowModal(true);
+                }}
               >
                 <Plus className="h-3 w-3" />
                 Add
@@ -796,8 +869,9 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
 
       {showModal && (
         <AddProcessModal
-          onClose={() => setShowModal(false)}
+          onClose={() => { setShowModal(false); setModalInitialQuery(undefined); }}
           onCreated={handleCreated}
+          initialQuery={modalInitialQuery}
         />
       )}
 
