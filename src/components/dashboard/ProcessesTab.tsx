@@ -370,25 +370,31 @@ function AddProcessModal({
   /** When set, skips identify entirely and goes straight to plan generation */
   initialSuggestion?: ProcessSuggestion;
 }) {
-  const [screen, setScreen] = useState<FlowScreen>({ type: "describe" });
+  // If opened from a suggestion card, start in loading state immediately so
+  // the describe screen never flashes. buildPlan is called in the effect below.
+  const [screen, setScreen] = useState<FlowScreen>(() =>
+    initialSuggestion
+      ? { type: "loading", label: "Building your process plan…" }
+      : { type: "describe" }
+  );
   const [description, setDescription] = useState(initialSuggestion?.title ?? "");
   const [clarifyHistory, setClarifyHistory] = useState<{ question: string; answer: string }[]>([]);
   const [clarifyInput, setClarifyInput] = useState("");
 
-  // When opened from a suggestion card, skip identify and go straight to plan
+  // When opened from a suggestion card, skip identify and go straight to plan.
+  // buildPlan only calls setScreen + fetch so it is safe to reference here.
   useEffect(() => {
-    if (initialSuggestion) {
-      const candidate: CandidateProcess = {
-        id: initialSuggestion.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-        name: initialSuggestion.title,
-        description: initialSuggestion.reason,
-        country: initialSuggestion.country,
-        destination_country: initialSuggestion.country,
-        authority_name: initialSuggestion.authority,
-        confidence: 1.0,
-      };
-      buildPlan(candidate, initialSuggestion.title, []);
-    }
+    if (!initialSuggestion) return;
+    const candidate: CandidateProcess = {
+      id: initialSuggestion.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      name: initialSuggestion.title,
+      description: initialSuggestion.reason,
+      country: initialSuggestion.country,
+      destination_country: initialSuggestion.country,
+      authority_name: initialSuggestion.authority,
+      confidence: 1.0,
+    };
+    buildPlan(candidate, initialSuggestion.title, []);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
