@@ -16,6 +16,7 @@ import {
   MapPin,
   Plus,
   ShieldAlert,
+  Trash2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,6 +26,7 @@ import type { CandidateProcess, FullPlan } from "@/lib/process-agent/schemas";
 import type { ProcessRowWithSteps, ProcessStepRow, ProcessChecklistItemRow } from "@/lib/db";
 import type { Process } from "@/types";
 import { getSuggestedProcesses, type ProcessSuggestion } from "@/lib/process-suggestions";
+import { useProcessesContext } from "@/contexts/ProcessesContext";
 
 // Convert a UI Process (from demo fixtures) into ProcessRowWithSteps so
 // ProcessesTab can render it without type mismatches.
@@ -108,11 +110,20 @@ const stepStatusIcon = (status: string) => {
   return <Circle className="h-4 w-4 text-neutral-300" strokeWidth={1.75} />;
 };
 
-// ── Checklist item (read-only — toggling is done in the Checklists tab) ────
+// ── Checklist item ─────────────────────────────────────────────────────────
 
-function ChecklistItem({ item }: { item: ProcessChecklistItemRow }) {
+function ChecklistItem({
+  item,
+  onToggle,
+}: {
+  item: ProcessChecklistItemRow;
+  onToggle: () => void;
+}) {
   return (
-    <div className="flex items-start gap-2.5">
+    <button
+      onClick={onToggle}
+      className="flex w-full items-start gap-2.5 text-left hover:opacity-75 transition-opacity"
+    >
       {item.completed
         ? <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" strokeWidth={1.75} />
         : <Circle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neutral-200" strokeWidth={1.75} />
@@ -123,7 +134,7 @@ function ChecklistItem({ item }: { item: ProcessChecklistItemRow }) {
           <span className="ml-1 text-neutral-400">— {item.notes}</span>
         )}
       </span>
-    </div>
+    </button>
   );
 }
 
@@ -131,8 +142,10 @@ function ChecklistItem({ item }: { item: ProcessChecklistItemRow }) {
 
 function ProcessStepRow({
   step,
+  onToggleItem,
 }: {
   step: ProcessStepRow & { checklist_items: ProcessChecklistItemRow[] };
+  onToggleItem: (itemId: string, currentCompleted: boolean) => void;
 }) {
   const [open, setOpen] = useState(step.status === "in_progress");
   const checklistItems = step.checklist_items ?? [];
@@ -173,7 +186,11 @@ function ProcessStepRow({
           {checklistItems.length > 0 && (
             <div className="space-y-2">
               {checklistItems.map((item) => (
-                <ChecklistItem key={item.id} item={item} />
+                <ChecklistItem
+                  key={item.id}
+                  item={item}
+                  onToggle={() => onToggleItem(item.id, item.completed)}
+                />
               ))}
             </div>
           )}
@@ -185,8 +202,20 @@ function ProcessStepRow({
 
 // ── Process card ───────────────────────────────────────────────────────────
 
-function ProcessCard({ process }: { process: ProcessRowWithSteps }) {
+function ProcessCard({
+  process,
+  onDelete,
+  onMarkComplete,
+  onChecklistToggle,
+}: {
+  process: ProcessRowWithSteps;
+  onDelete: () => Promise<void>;
+  onMarkComplete: () => void;
+  onChecklistToggle: (stepId: string, itemId: string, currentCompleted: boolean) => void;
+}) {
   const [expanded, setExpanded] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const steps = process.steps ?? [];
   const totalSteps = steps.length;
@@ -290,14 +319,64 @@ function ProcessCard({ process }: { process: ProcessRowWithSteps }) {
           <p className="mt-1 text-[11px] text-neutral-400">{process.timeline_summary}</p>
         )}
 
-        {/* Expand / collapse steps */}
-        <button
-          onClick={() => setExpanded((e) => !e)}
-          className="mt-3 flex items-center gap-1 text-[11px] text-neutral-400 hover:text-navy transition-colors"
-        >
-          {expanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
-          {expanded ? "Hide steps" : `Show ${totalSteps} steps`}
-        </button>
+        {/* Expand / collapse + action buttons */}
+        <div className="mt-3 flex items-center justify-between">
+          <button
+            onClick={() => setExpanded((e) => !e)}
+            className="flex items-center gap-1 text-[11px] text-neutral-400 hover:text-navy transition-colors"
+          >
+            {expanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+            {expanded ? "Hide steps" : `Show ${totalSteps} steps`}
+          </button>
+
+          <div className="flex items-center gap-0.5">
+            {process.status !== "completed" && (
+              <button
+                onClick={onMarkComplete}
+                title="Mark process as completed"
+                className="flex items-center gap-1 rounded px-2 py-1 text-[11px] text-neutral-400 hover:bg-success/10 hover:text-success transition-colors"
+              >
+                <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Complete
+              </button>
+            )}
+            <button
+              onClick={() => setShowDeleteConfirm((v) => !v)}
+              title="Delete process"
+              className="flex items-center gap-1 rounded px-2 py-1 text-[11px] text-neutral-400 hover:bg-danger/10 hover:text-danger transition-colors"
+            >
+              <Trash2 className="h-3.5 w-3.5" strokeWidth={1.75} />
+              Delete
+            </button>
+          </div>
+        </div>
+
+        {/* Delete confirmation */}
+        {showDeleteConfirm && (
+          <div className="mt-2 rounded-lg border border-danger/30 bg-danger/5 px-3 py-2.5">
+            <p className="text-xs font-medium text-neutral-900">Delete this process permanently?</p>
+            <p className="mt-0.5 text-[11px] text-neutral-500">All steps and checklist items will be removed. This cannot be undone.</p>
+            <div className="mt-2 flex gap-2">
+              <button
+                disabled={deleting}
+                onClick={async () => {
+                  setDeleting(true);
+                  try { await onDelete(); } catch { setDeleting(false); }
+                }}
+                className="flex items-center gap-1 rounded border border-danger/40 bg-danger/10 px-2.5 py-1 text-xs font-medium text-danger hover:bg-danger/20 disabled:opacity-50 transition-colors"
+              >
+                {deleting && <Loader2 className="h-3 w-3 animate-spin" />}
+                Delete
+              </button>
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                className="rounded border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-600 hover:bg-neutral-50 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
 
         {expanded && (
           <div className="mt-3 space-y-2">
@@ -305,6 +384,9 @@ function ProcessCard({ process }: { process: ProcessRowWithSteps }) {
               <ProcessStepRow
                 key={step.id}
                 step={step}
+                onToggleItem={(itemId, currentCompleted) =>
+                  onChecklistToggle(step.id, itemId, currentCompleted)
+                }
               />
             ))}
 
@@ -753,6 +835,9 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
   const [processes, setProcesses] = useState<ProcessRowWithSteps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDemo, setIsDemo] = useState(false);
+
+  const { refresh: refreshCtx } = useProcessesContext();
 
   const fetchProcesses = useCallback(async () => {
     setLoading(true);
@@ -762,10 +847,10 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
       if (!res.ok) throw new Error("Failed to load");
       const data = await res.json();
       if (data.isDemo) {
-        // Demo processes arrive as Process[] (UI type). Convert to ProcessRowWithSteps
-        // so ProcessCard renders correctly without crashing on missing DB fields.
+        setIsDemo(true);
         setProcesses((data.processes ?? []).map(demoProcessToRow));
       } else {
+        setIsDemo(false);
         setProcesses(data.processes ?? []);
       }
     } catch {
@@ -777,20 +862,123 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
 
   useEffect(() => { fetchProcesses(); }, [fetchProcesses]);
 
+  // ── Checklist item toggle ─────────────────────────────────────────────────
+  const handleChecklistToggle = useCallback(async (
+    processId: string,
+    stepId: string,
+    itemId: string,
+    currentCompleted: boolean,
+  ) => {
+    const newCompleted = !currentCompleted;
+
+    // Snapshot current process/step for comparison
+    const proc = processes.find((p) => p.id === processId);
+    const step = proc?.steps.find((s) => s.id === stepId);
+    if (!proc || !step) return;
+
+    // Compute new item list
+    const updatedItems = (step.checklist_items ?? []).map((ci) =>
+      ci.id === itemId ? { ...ci, completed: newCompleted } : ci
+    );
+    const allItemsDone = updatedItems.length > 0 && updatedItems.every((ci) => ci.completed);
+    const anyItemDone = updatedItems.some((ci) => ci.completed);
+    const newStepStatus: ProcessStepRow["status"] =
+      updatedItems.length === 0 ? step.status
+      : allItemsDone ? "completed"
+      : anyItemDone ? "in_progress"
+      : "not_started";
+
+    // Compute new steps list
+    const updatedSteps = proc.steps.map((s) =>
+      s.id !== stepId ? s : { ...s, checklist_items: updatedItems, status: newStepStatus }
+    );
+    const allStepsDone = updatedSteps.length > 0 && updatedSteps.every((s) => s.status === "completed");
+    const newProcStatus: ProcessRowWithSteps["status"] =
+      allStepsDone ? "completed"
+      : proc.status === "completed" ? "active"
+      : proc.status;
+
+    // Optimistic update
+    setProcesses((prev) => prev.map((p) =>
+      p.id !== processId ? p : { ...p, status: newProcStatus, steps: updatedSteps }
+    ));
+
+    if (isDemo) { refreshCtx(); return; }
+
+    try {
+      await fetch(`/api/processes/${processId}/checklist/${itemId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ completed: newCompleted }),
+      });
+      if (newStepStatus !== step.status) {
+        await fetch(`/api/processes/${processId}/steps/${stepId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStepStatus }),
+        });
+      }
+      if (newProcStatus !== proc.status) {
+        await fetch(`/api/processes/${processId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newProcStatus }),
+        });
+      }
+    } catch (err) {
+      console.error("[handleChecklistToggle]", err);
+    } finally {
+      refreshCtx();
+    }
+  }, [processes, isDemo, refreshCtx]);
+
+  // ── Delete process ────────────────────────────────────────────────────────
+  const handleDeleteProcess = useCallback(async (processId: string) => {
+    if (!isDemo) {
+      const res = await fetch(`/api/processes/${processId}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Delete failed");
+    }
+    setProcesses((prev) => prev.filter((p) => p.id !== processId));
+    refreshCtx();
+  }, [isDemo, refreshCtx]);
+
+  // ── Mark process as completed ─────────────────────────────────────────────
+  const handleMarkComplete = useCallback(async (processId: string) => {
+    setProcesses((prev) => prev.map((p) =>
+      p.id !== processId ? p : { ...p, status: "completed" }
+    ));
+    if (!isDemo) {
+      try {
+        await fetch(`/api/processes/${processId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: "completed" }),
+        });
+      } catch (err) {
+        console.error("[handleMarkComplete]", err);
+      }
+    }
+    refreshCtx();
+  }, [isDemo, refreshCtx]);
+
   const handleCreated = useCallback(async (p: ProcessRowWithSteps) => {
     setProcesses((prev) => [p, ...prev]);
     setShowModal(false);
-    // Re-fetch from server in the background to get authoritative data
     try {
       const res = await fetch("/api/processes");
       if (res.ok) {
         const data = await res.json();
-        setProcesses(data.processes ?? []);
+        if (data.isDemo) {
+          setProcesses((data.processes ?? []).map(demoProcessToRow));
+        } else {
+          setProcesses(data.processes ?? []);
+        }
       }
     } catch {
       // Optimistic update is already in place — not critical
     }
-  }, []);
+    refreshCtx();
+  }, [refreshCtx]);
 
   const activeCount = processes.filter((p) => p.status === "active").length;
 
@@ -838,7 +1026,15 @@ export function ProcessesTab({ onSwitchToOverview }: { onSwitchToOverview?: () =
       {!loading && processes.length > 0 && (
         <div className="space-y-3">
           {processes.map((proc) => (
-            <ProcessCard key={proc.id} process={proc} />
+            <ProcessCard
+              key={proc.id}
+              process={proc}
+              onDelete={() => handleDeleteProcess(proc.id)}
+              onMarkComplete={() => handleMarkComplete(proc.id)}
+              onChecklistToggle={(stepId, itemId, currentCompleted) =>
+                handleChecklistToggle(proc.id, stepId, itemId, currentCompleted)
+              }
+            />
           ))}
         </div>
       )}

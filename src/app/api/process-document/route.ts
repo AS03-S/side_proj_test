@@ -37,6 +37,34 @@ Return ONLY valid JSON — no markdown fences, no preamble, no trailing text. Us
 
 If needs_referral is false, omit the referral_card field entirely.`;
 
+/**
+ * Extract the first complete JSON object from a string by counting braces.
+ * Handles nested objects and ignores brace characters inside strings.
+ * More reliable than a greedy regex when Claude adds text after the JSON.
+ */
+function extractFirstJSON(text: string): string | null {
+  const start = text.indexOf("{");
+  if (start === -1) return null;
+
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+    if (escape) { escape = false; continue; }
+    if (ch === "\\" && inString) { escape = true; continue; }
+    if (ch === '"') { inString = !inString; continue; }
+    if (inString) continue;
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) return text.slice(start, i + 1);
+    }
+  }
+  return null; // unclosed object
+}
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
@@ -110,19 +138,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unexpected response from analysis service.", code: "UNEXPECTED_RESPONSE" }, { status: 502 });
     }
 
-    // Extract the JSON object from the response, tolerating preamble text or
-    // markdown fences that Claude occasionally adds despite instructions.
-    const jsonMatch = block.text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
+    // Extract the JSON object using bracket counting — more robust than a greedy
+    // regex which breaks when Claude adds trailing text containing braces.
+    const jsonStr = extractFirstJSON(block.text);
+    if (!jsonStr) {
       console.error("[process-document] No JSON object found in response:", block.text.slice(0, 300));
       return NextResponse.json({ error: "Failed to parse document analysis.", code: "PARSE_ERROR" }, { status: 502 });
     }
 
     let raw: Record<string, unknown>;
     try {
-      raw = JSON.parse(jsonMatch[0]);
+      raw = JSON.parse(jsonStr);
     } catch {
-      console.error("[process-document] JSON parse failed:", jsonMatch[0].slice(0, 200));
+      console.error("[process-document] JSON parse failed:", jsonStr.slice(0, 200));
       return NextResponse.json({ error: "Failed to parse document analysis.", code: "PARSE_ERROR" }, { status: 502 });
     }
 

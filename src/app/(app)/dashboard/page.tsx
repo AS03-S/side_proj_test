@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FlaskConical, LogOut, Settings, User } from "lucide-react";
+import { LogOut, Settings, User } from "lucide-react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { OverviewTab } from "@/components/dashboard/OverviewTab";
@@ -10,7 +10,6 @@ import { ProcessesTab } from "@/components/dashboard/ProcessesTab";
 import { DocumentsTab } from "@/components/dashboard/DocumentsTab";
 import { ChecklistsTab } from "@/components/dashboard/ChecklistsTab";
 import { AnalyseDocumentTab } from "@/components/dashboard/AnalyseDocumentTab";
-import { DemoModePanel } from "@/components/dashboard/DemoModePanel";
 import { ProcessesProvider } from "@/contexts/ProcessesContext";
 
 type DashboardTab =
@@ -36,8 +35,6 @@ function DashboardShell() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const activeTab = (searchParams.get("tab") as DashboardTab) ?? "overview";
-  const [demoOpen, setDemoOpen] = useState(false);
-
   const { data: session } = useSession();
   // Extract first name from the session user's full name
   const firstName = session?.user?.name?.split(" ")[0] ?? "there";
@@ -60,16 +57,6 @@ function DashboardShell() {
           <h1 className="text-sm font-semibold text-neutral-950">Dashboard</h1>
 
           <div className="flex items-center gap-1">
-            {/* Demo mode toggle */}
-            <button
-              onClick={() => setDemoOpen(true)}
-              title="Open demo walkthrough"
-              className="flex items-center gap-1.5 rounded border border-neutral-200 bg-neutral-50 px-2.5 py-1.5 text-[11px] font-medium text-neutral-600 transition-colors hover:border-navy hover:bg-navy-light hover:text-navy"
-            >
-              <FlaskConical className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Demo
-            </button>
-
             <Link href="/settings">
               <button
                 className="rounded p-2 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
@@ -158,7 +145,6 @@ function DashboardShell() {
       </footer>
 
       {/* ── Demo mode panel ── */}
-      {demoOpen && <DemoModePanel onClose={() => setDemoOpen(false)} />}
     </div>
   );
 }
