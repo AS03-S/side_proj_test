@@ -26,14 +26,15 @@ function formatToday(): string {
 
 // ── Circular arc progress ──────────────────────────────────────────────────
 //
-// Flat-bottom semicircle: the arc runs from the left point (9 o'clock)
-// clockwise through the top (12 o'clock) to the right point (3 o'clock).
-// In SVG coords (y-down) this path is sweep=0 (counterclockwise in SVG,
-// but visually left → up → right, i.e. clockwise as perceived by the user).
+// Bowl / U-shape: the arc centre sits near the TOP of the SVG so the arc
+// curves DOWNWARD — like a bowl filling with water.  Endpoints are at the
+// top-left and top-right; the arc bottom is at ARC_CY + ARC_R.
+// SVG sweep=1 (clockwise) goes from the left endpoint down through the
+// bottom and up to the right endpoint.
 
 const ARC_W = 140;          // SVG width
 const ARC_CX = ARC_W / 2;  // circle centre x
-const ARC_CY = 70;          // circle centre y  (bottom of the arc)
+const ARC_CY = 8;           // circle centre y  (near top → arc goes down)
 const ARC_R = 52;           // radius
 const ARC_SW = 9;           // stroke width
 const ARC_LEN = Math.PI * ARC_R; // half-circumference ≈ 163.4
@@ -62,20 +63,22 @@ function CircleProgress({
   const rightX = ARC_CX + ARC_R;
   const rightY = ARC_CY;
 
-  // Full background arc (sweep=0 = upper semicircle)
-  const bgPath = `M ${leftX} ${leftY} A ${ARC_R} ${ARC_R} 0 0 0 ${rightX} ${rightY}`;
+  // Bowl arc: sweep=1 (CW in SVG) goes from left endpoint DOWN through
+  // the bottom and back UP to the right endpoint.
+  const bgPath = `M ${leftX} ${leftY} A ${ARC_R} ${ARC_R} 0 0 1 ${rightX} ${rightY}`;
 
-  // Progress arc via stroke-dasharray
+  // Dash fills from the left endpoint clockwise (down then up).
   const dashOffset = ARC_LEN * (1 - progress / 100);
 
-  // Short name (first 1–2 words of the process name, strip parenthetical)
+  // Short name: first 1–2 words, strip parentheticals
   const shortName = process.name
-    .replace(/\s*\(.*?\)/g, "")  // strip parentheticals like (Uppehållstillstånd)
+    .replace(/\s*\(.*?\)/g, "")
     .split(/\s+/)
     .slice(0, 2)
     .join(" ");
 
-  const svgHeight = ARC_CY + ARC_SW / 2 + 4; // just enough for stroke
+  // SVG height = centre + radius + half-stroke + padding
+  const svgHeight = ARC_CY + ARC_R + ARC_SW / 2 + 4; // ≈ 69
 
   return (
     <button
@@ -97,7 +100,7 @@ function CircleProgress({
           strokeWidth={ARC_SW}
           strokeLinecap="round"
         />
-        {/* Navy progress arc */}
+        {/* Navy progress arc — fills from left endpoint downward */}
         {progress > 0 && (
           <path
             d={bgPath}
@@ -109,10 +112,10 @@ function CircleProgress({
             strokeDashoffset={dashOffset}
           />
         )}
-        {/* Short process name */}
+        {/* Short process name — upper interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_CY - ARC_R * 0.38}
+          y={ARC_CY + ARC_R * 0.30}
           textAnchor="middle"
           fontSize="11"
           fontWeight="500"
@@ -121,10 +124,10 @@ function CircleProgress({
         >
           {shortName}
         </text>
-        {/* Percentage */}
+        {/* Percentage — lower interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_CY - ARC_R * 0.05}
+          y={ARC_CY + ARC_R * 0.65}
           textAnchor="middle"
           fontSize="20"
           fontWeight="700"
