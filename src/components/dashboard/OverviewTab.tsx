@@ -26,18 +26,17 @@ function formatToday(): string {
 
 // ── Circular arc progress ──────────────────────────────────────────────────
 //
-// Bowl / U-shape: the arc centre sits near the TOP of the SVG so the arc
-// curves DOWNWARD — like a bowl filling with water.  Endpoints are at the
-// top-left and top-right; the arc bottom is at ARC_CY + ARC_R.
-// SVG sweep=1 (clockwise) goes from the left endpoint down through the
-// bottom and up to the right endpoint.
+// Bowl / U-shape.  Endpoints sit at y=ARC_PAD_TOP with generous padding
+// above so round stroke-caps are never clipped.  Arc curves DOWN (CW sweep).
+// Positive-only viewBox — no negative min-y tricks.
 
-const ARC_W = 160;          // SVG width
-const ARC_CX = ARC_W / 2;  // circle centre x  (80)
-const ARC_CY = 14;          // circle centre y  (near top → arc goes down)
-const ARC_R = 60;           // radius
-const ARC_SW = 9;           // stroke width
-const ARC_LEN = Math.PI * ARC_R; // half-circumference ≈ 188.5
+const ARC_W       = 170;                        // SVG width
+const ARC_CX      = ARC_W / 2;                  // 85
+const ARC_PAD_TOP = 16;                         // space above endpoints
+const ARC_R       = 68;                         // radius
+const ARC_SW      = 10;                         // stroke width
+const ARC_LEN     = Math.PI * ARC_R;            // half-circumference ≈ 213.6
+const ARC_H       = ARC_PAD_TOP + ARC_R + Math.ceil(ARC_SW / 2) + 10; // ≈ 99
 
 function CircleProgress({
   process,
@@ -58,29 +57,19 @@ function CircleProgress({
   const currentStep = process.steps.find((s) => s.status === "in_progress");
   const hint = (currentStep?.title ?? process.nextAction ?? "").slice(0, 38) || null;
 
-  const leftX = ARC_CX - ARC_R;
-  const leftY = ARC_CY;
-  const rightX = ARC_CX + ARC_R;
-  const rightY = ARC_CY;
+  // Endpoints at y = ARC_PAD_TOP; arc curves down (CW sweep=1).
+  const epX1 = ARC_CX - ARC_R;          // 17
+  const epX2 = ARC_CX + ARC_R;          // 153
+  const epY  = ARC_PAD_TOP;             // 16
 
-  // Bowl arc: sweep=1 (CW in SVG) goes from left endpoint DOWN through
-  // the bottom and back UP to the right endpoint.
-  const bgPath = `M ${leftX} ${leftY} A ${ARC_R} ${ARC_R} 0 0 1 ${rightX} ${rightY}`;
-
-  // Dash fills from the left endpoint clockwise (down then up).
+  const bgPath = `M ${epX1} ${epY} A ${ARC_R} ${ARC_R} 0 0 1 ${epX2} ${epY}`;
   const dashOffset = ARC_LEN * (1 - progress / 100);
 
-  // Short name: first 1–2 words, strip parentheticals
   const shortName = process.name
     .replace(/\s*\(.*?\)/g, "")
     .split(/\s+/)
     .slice(0, 2)
     .join(" ");
-
-  // SVG height = centre + radius + half-stroke + padding
-  // Add ARC_SW/2 top padding so round caps at the endpoints aren't clipped
-  const topPad = Math.ceil(ARC_SW / 2) + 2;
-  const svgHeight = topPad + ARC_CY + ARC_R + ARC_SW / 2 + 4;
 
   return (
     <button
@@ -90,8 +79,8 @@ function CircleProgress({
     >
       <svg
         width={ARC_W}
-        height={svgHeight}
-        viewBox={`0 -${topPad} ${ARC_W} ${svgHeight}`}
+        height={ARC_H}
+        viewBox={`0 0 ${ARC_W} ${ARC_H}`}
         aria-hidden="true"
       >
         {/* Grey background arc */}
@@ -117,7 +106,7 @@ function CircleProgress({
         {/* Short process name — upper interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_CY + ARC_R * 0.30}
+          y={ARC_PAD_TOP + ARC_R * 0.32}
           textAnchor="middle"
           fontSize="11"
           fontWeight="500"
@@ -129,7 +118,7 @@ function CircleProgress({
         {/* Percentage — lower interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_CY + ARC_R * 0.65}
+          y={ARC_PAD_TOP + ARC_R * 0.64}
           textAnchor="middle"
           fontSize="20"
           fontWeight="700"
@@ -140,7 +129,7 @@ function CircleProgress({
         </text>
       </svg>
       {hint && (
-        <p className="mt-0.5 max-w-[150px] truncate text-center text-[9px] leading-tight text-neutral-400">
+        <p className="mt-0.5 max-w-[162px] truncate text-center text-[9px] leading-tight text-neutral-400">
           {hint}
         </p>
       )}
