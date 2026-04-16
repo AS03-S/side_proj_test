@@ -139,6 +139,15 @@ Return ONLY valid JSON:
     .trim();
 
   const parsed = JSON.parse(cleaned);
+
+  // Claude sometimes returns string fields as arrays of bullets — coerce to string
+  const STRING_FIELDS = ["summary", "rationale", "uncertainty_notes", "timeline_summary", "next_action", "source_notes"] as const;
+  for (const field of STRING_FIELDS) {
+    if (Array.isArray(parsed[field])) {
+      parsed[field] = (parsed[field] as string[]).join("\n");
+    }
+  }
+
   const result = FullPlanSchema.safeParse(parsed);
 
   if (!result.success) {

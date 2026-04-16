@@ -32,12 +32,12 @@ function formatToday(): string {
 // SVG sweep=1 (clockwise) goes from the left endpoint down through the
 // bottom and up to the right endpoint.
 
-const ARC_W = 140;          // SVG width
-const ARC_CX = ARC_W / 2;  // circle centre x
-const ARC_CY = 8;           // circle centre y  (near top → arc goes down)
-const ARC_R = 52;           // radius
+const ARC_W = 160;          // SVG width
+const ARC_CX = ARC_W / 2;  // circle centre x  (80)
+const ARC_CY = 14;          // circle centre y  (near top → arc goes down)
+const ARC_R = 60;           // radius
 const ARC_SW = 9;           // stroke width
-const ARC_LEN = Math.PI * ARC_R; // half-circumference ≈ 163.4
+const ARC_LEN = Math.PI * ARC_R; // half-circumference ≈ 188.5
 
 function CircleProgress({
   process,
@@ -78,7 +78,9 @@ function CircleProgress({
     .join(" ");
 
   // SVG height = centre + radius + half-stroke + padding
-  const svgHeight = ARC_CY + ARC_R + ARC_SW / 2 + 4; // ≈ 69
+  // Add ARC_SW/2 top padding so round caps at the endpoints aren't clipped
+  const topPad = Math.ceil(ARC_SW / 2) + 2;
+  const svgHeight = topPad + ARC_CY + ARC_R + ARC_SW / 2 + 4;
 
   return (
     <button
@@ -89,7 +91,7 @@ function CircleProgress({
       <svg
         width={ARC_W}
         height={svgHeight}
-        viewBox={`0 0 ${ARC_W} ${svgHeight}`}
+        viewBox={`0 -${topPad} ${ARC_W} ${svgHeight}`}
         aria-hidden="true"
       >
         {/* Grey background arc */}
@@ -138,7 +140,7 @@ function CircleProgress({
         </text>
       </svg>
       {hint && (
-        <p className="mt-0.5 max-w-[130px] truncate text-center text-[9px] leading-tight text-neutral-400">
+        <p className="mt-0.5 max-w-[150px] truncate text-center text-[9px] leading-tight text-neutral-400">
           {hint}
         </p>
       )}
