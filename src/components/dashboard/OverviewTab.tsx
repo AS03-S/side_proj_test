@@ -81,6 +81,7 @@ function CircleProgress({
         width={ARC_W}
         height={ARC_H}
         viewBox={`0 0 ${ARC_W} ${ARC_H}`}
+        style={{ display: "block", width: ARC_W, height: ARC_H, overflow: "visible", flexShrink: 0 }}
         aria-hidden="true"
       >
         {/* Grey background arc */}
