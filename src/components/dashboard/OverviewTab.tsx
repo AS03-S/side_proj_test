@@ -32,11 +32,14 @@ function formatToday(): string {
 
 const ARC_W       = 170;                        // SVG width
 const ARC_CX      = ARC_W / 2;                  // 85
-const ARC_PAD_TOP = 24;                         // space above endpoints (keeps round caps inside SVG bounds)
-const ARC_R       = 68;                         // radius
-const ARC_SW      = 10;                         // stroke width
-const ARC_LEN     = Math.PI * ARC_R;            // half-circumference ≈ 213.6
-const ARC_H       = ARC_PAD_TOP + ARC_R + Math.ceil(ARC_SW / 2) + 10; // ≈ 99
+const ARC_PAD_TOP  = 36;                        // arc endpoints Y — pushed down so caps don't touch content above
+const ARC_R        = 68;                        // radius
+const ARC_SW       = 10;                        // stroke width
+const ARC_LEN      = Math.PI * ARC_R;           // half-circumference ≈ 213.6
+const ARC_H        = ARC_PAD_TOP + ARC_R + Math.ceil(ARC_SW / 2) + 10; // ≈ 119
+// Text positions are fixed independently of ARC_PAD_TOP so moving the arc doesn't shift labels
+const ARC_TEXT_Y1  = 24 + ARC_R * 0.32;        // process name  ≈ 46
+const ARC_TEXT_Y2  = 24 + ARC_R * 0.64;        // percentage    ≈ 68
 
 function CircleProgress({
   process,
@@ -107,7 +110,7 @@ function CircleProgress({
         {/* Short process name — upper interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_PAD_TOP + ARC_R * 0.32}
+          y={ARC_TEXT_Y1}
           textAnchor="middle"
           fontSize="11"
           fontWeight="500"
@@ -119,7 +122,7 @@ function CircleProgress({
         {/* Percentage — lower interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_PAD_TOP + ARC_R * 0.64}
+          y={ARC_TEXT_Y2}
           textAnchor="middle"
           fontSize="20"
           fontWeight="700"
