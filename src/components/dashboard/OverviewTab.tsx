@@ -32,12 +32,12 @@ function formatToday(): string {
 
 const ARC_W       = 170;                        // SVG width
 const ARC_CX      = ARC_W / 2;                  // 85
-const ARC_PAD_TOP  = 36;                        // arc endpoints Y — pushed down so caps don't touch content above
+const ARC_PAD_TOP  = 36;                        // arc endpoints Y
 const ARC_R        = 68;                        // radius
-const ARC_SW       = 10;                        // stroke width
+const ARC_SW       = 14;                        // stroke width — thicker
 const ARC_LEN      = Math.PI * ARC_R;           // half-circumference ≈ 213.6
-const ARC_H        = ARC_PAD_TOP + ARC_R + Math.ceil(ARC_SW / 2) + 10; // ≈ 119
-// Text positions are fixed independently of ARC_PAD_TOP so moving the arc doesn't shift labels
+const ARC_H        = ARC_PAD_TOP + ARC_R + Math.ceil(ARC_SW / 2) + 10; // ≈ 123
+// Text positions fixed so they don't shift when ARC_PAD_TOP changes
 const ARC_TEXT_Y1  = 24 + ARC_R * 0.32;        // process name  ≈ 46
 const ARC_TEXT_Y2  = 24 + ARC_R * 0.64;        // percentage    ≈ 68
 
@@ -87,20 +87,31 @@ function CircleProgress({
         style={{ display: "block", width: ARC_W, height: ARC_H, overflow: "visible", flexShrink: 0 }}
         aria-hidden="true"
       >
-        {/* Grey background arc */}
+        <defs>
+          {/* Gradient runs left→right across the arc so colour deepens as progress fills */}
+          <linearGradient
+            id={`arcg-${process.id}`}
+            x1={epX1} y1="0" x2={epX2} y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%"   stopColor="#93c5fd" />
+            <stop offset="100%" stopColor="#1d4ed8" />
+          </linearGradient>
+        </defs>
+        {/* Light-blue background arc */}
         <path
           d={bgPath}
           fill="none"
-          stroke="#e4e4e7"
+          stroke="#bfdbfe"
           strokeWidth={ARC_SW}
           strokeLinecap="round"
         />
-        {/* Navy progress arc — fills from left endpoint downward */}
+        {/* Progress arc — light→dark blue gradient */}
         {progress > 0 && (
           <path
             d={bgPath}
             fill="none"
-            stroke="#0d1b2e"
+            stroke={`url(#arcg-${process.id})`}
             strokeWidth={ARC_SW}
             strokeLinecap="round"
             strokeDasharray={ARC_LEN}
@@ -298,7 +309,7 @@ export function OverviewTab({
         </div>
       ) : (
         <div>
-          <p className="mb-6 text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
+          <p className="mb-12 text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
             Your active processes
           </p>
           <div className="flex flex-wrap gap-4">
