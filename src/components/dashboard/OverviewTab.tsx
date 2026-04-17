@@ -152,7 +152,7 @@ function CircleProgress({
             fill="#a1a1aa"
             fontFamily="Inter, system-ui, sans-serif"
           >
-            {hint.slice(0, 30)}
+            {hint.length > 24 ? hint.slice(0, 24) + "…" : hint}
           </text>
         )}
       </svg>
