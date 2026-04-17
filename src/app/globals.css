@@ -77,3 +77,18 @@
 .animate-slide-up {
   animation: slide-up 0.22s cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Nav CTA pulse — stops when .nav-pulse class is removed */
+@keyframes nav-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.72; }
+}
+
+.nav-pulse {
+  animation: nav-pulse 2.4s ease-in-out infinite;
+}

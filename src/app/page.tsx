@@ -1,283 +1,435 @@
-import Link from "next/link";
-import {
-  FileText,
-  CalendarClock,
-  ChevronRight,
-  CheckCircle,
-  Lock,
-  Eye,
-  ArrowRight,
-  MapPin,
-  ClipboardList,
-  AlertCircle,
-  BookOpen,
-  Shield,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+"use client";
 
-const HOW_IT_WORKS = [
+import { useEffect, useRef, useState } from "react";
+import { Lock } from "lucide-react";
+
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const DOC_CARDS = [
   {
-    step: "01",
-    title: "We read it",
-    description:
-      "Upload a PDF or image of any official immigration document — permit notices, appointment letters, refusal decisions, or administrative correspondence.",
+    type: "Permit Notice",
+    translation:
+      "Your work permit has been approved. You must collect it in person within 30 days.",
   },
   {
-    step: "02",
+    type: "Appointment Letter",
+    translation:
+      "You have been scheduled for a biometric appointment. Attendance is mandatory.",
+  },
+  {
+    type: "Appeal Decision",
+    translation:
+      "Your appeal is under review. A written decision will be issued within 60 days.",
+  },
+];
+
+const STEPS = [
+  {
+    n: "1",
+    title: "Upload your document",
+    desc: "Any official immigration letter or notice — permit, appointment, appeal decision.",
+  },
+  {
+    n: "2",
     title: "We explain it",
-    description:
-      "migraDOCS identifies the document type, issuing authority, key dates, and what is being asked of you — in plain language, not legal jargon.",
+    desc: "Plain language, no jargon, no guesswork.",
   },
   {
-    step: "03",
-    title: "We tell you what to do",
-    description:
-      "Receive a clear, prioritised list of required actions, upcoming deadlines, and step-by-step procedural guidance.",
-  },
-  {
-    step: "04",
-    title: "You stay on track",
-    description:
-      "Monitor your deadlines, mark tasks done, and keep a complete record of your administrative process in one place.",
+    n: "3",
+    title: "You know what to do",
+    desc: "Clear next steps and deadlines, in the right order.",
   },
 ];
 
-const CAPABILITIES = [
+const PERSONAS = [
   {
-    icon: FileText,
-    title: "Document understanding",
-    description:
-      "migraDOCS reads your document and extracts the document type, issuing authority, reference numbers, dates, and what is being asked of you.",
+    title: "Asylum seekers",
+    desc: "Understand every letter from the migration authority without needing a translator.",
   },
   {
-    icon: CalendarClock,
-    title: "Deadline visibility",
-    description:
-      "All deadlines surfaced in a single view. Alerts for approaching dates ensure no critical deadline is missed.",
+    title: "International students",
+    desc: "Never miss a permit renewal, appointment, or deadline in an unfamiliar system.",
   },
   {
-    icon: ClipboardList,
-    title: "What to do next",
-    description:
-      "Structured checklists and ordered action plans for common immigration procedures — permit renewals, appeals, interview preparation, and more.",
-  },
-  {
-    icon: MapPin,
-    title: "Process tracking",
-    description:
-      "Track your immigration processes step by step. Visual timelines show where you are, what is done, and what comes next.",
-  },
-  {
-    icon: BookOpen,
-    title: "Guidance library",
-    description:
-      "A structured library of procedural guidance covering documentation, appointments, deadlines, and administrative processes.",
-  },
-  {
-    icon: AlertCircle,
-    title: "Priority actions",
-    description:
-      "Required actions sorted by urgency. The most time-sensitive tasks are always shown first.",
+    title: "Workers & families",
+    desc: "Keep your whole household's immigration documents organised in one place.",
   },
 ];
 
-const TRUST_ITEMS = [
-  {
-    icon: Lock,
-    title: "Original files never stored",
-    description:
-      "migraDOCS reads your document and discards it immediately. Only the extracted summary is saved — encrypted and accessible only by you.",
-  },
-  {
-    icon: Eye,
-    title: "Private by design",
-    description:
-      "migraDOCS does not sell, share, or process your documents for any purpose beyond providing you with structured guidance. No advertising. No data brokerage.",
-  },
-  {
-    icon: Shield,
-    title: "User-controlled records",
-    description:
-      "You decide what is stored and for how long. Delete any document or your entire account at any time. Your data leaves with you.",
-  },
-];
+// ── Component ─────────────────────────────────────────────────────────────────
 
-const FAQS = [
-  {
-    q: "Is migraDOCS legal advice?",
-    a: "No. migraDOCS is an information and organisation tool. It does not provide legal advice, legal representation, or immigration consultancy. For legal questions, always consult a qualified immigration lawyer.",
-  },
-  {
-    q: "Which countries does migraDOCS support?",
-    a: "Version 1 focuses on Sweden, with guidance calibrated to Swedish immigration authorities and processes (Migrationsverket). Additional jurisdictions are planned.",
-  },
-  {
-    q: "Can migraDOCS guarantee my application will succeed?",
-    a: "No. migraDOCS cannot and does not predict or guarantee outcomes. It helps you understand documents, stay organised, and follow procedures — decisions remain with the relevant authorities.",
-  },
-  {
-    q: "How does migraDOCS handle my documents?",
-    a: "Uploaded files are processed to extract key information and immediately discarded. Only the structured summary is stored, encrypted, and accessible only to you.",
-  },
-  {
-    q: "What is the difference between migraDOCS and a lawyer?",
-    a: "migraDOCS organises documents and explains what they say. A lawyer advises on legal strategy, represents you in proceedings, and can act on your behalf. If your situation is complex or involves an appeal, you should seek qualified legal advice.",
-  },
-];
+export default function WaitlistPage() {
+  const [cardIndex, setCardIndex] = useState(0);
+  const [cardVisible, setCardVisible] = useState(true);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [navPulse, setNavPulse] = useState(true);
+  const [stepsVisible, setStepsVisible] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-export default function LandingPage() {
+  const waitlistRef = useRef<HTMLElement | null>(null);
+  const stepsRef = useRef<HTMLElement | null>(null);
+
+  // Cycle hero document card
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCardVisible(false);
+      setTimeout(() => {
+        setCardIndex((i) => (i + 1) % DOC_CARDS.length);
+        setCardVisible(true);
+      }, 500);
+    }, 3500);
+    return () => clearInterval(id);
+  }, []);
+
+  // Stop nav pulse when waitlist section enters viewport
+  useEffect(() => {
+    const el = waitlistRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setNavPulse(false); },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  // Fade-up steps when they scroll into view
+  useEffect(() => {
+    const el = stepsRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setStepsVisible(true); },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  function scrollToWaitlist() {
+    waitlistRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setMobileOpen(false);
+  }
+
+  function validateEmail(v: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setEmailError("");
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok || res.status === 409) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setEmailError((data as { error?: string }).error ?? "Something went wrong. Please try again.");
+      }
+    } catch {
+      setEmailError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  const card = DOC_CARDS[cardIndex];
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 border-b border-neutral-200 bg-white">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
-          <span className="logo-wordmark" style={{ fontSize: "1.5rem", color: "#0d1b2e" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#f8f8f6", color: "#0d1b2e" }}>
+
+      {/* ── Nav ───────────────────────────────────────────────────────────── */}
+      <nav
+        className="sticky top-0 z-50"
+        style={{ backgroundColor: "#f8f8f6", borderBottom: "1px solid #e4e4e7" }}
+      >
+        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+          <span
+            className="logo-wordmark select-none"
+            style={{ fontSize: "1.375rem", color: "#0d1b2e" }}
+          >
             migraDOCS
           </span>
-          <div className="hidden items-center gap-6 text-xs text-neutral-500 sm:flex">
-            <a href="#how-it-works" className="transition-colors hover:text-neutral-900">How it works</a>
-            <a href="#capabilities" className="transition-colors hover:text-neutral-900">Capabilities</a>
-            <a href="#privacy" className="transition-colors hover:text-neutral-900">Privacy</a>
-            <a href="#faq" className="transition-colors hover:text-neutral-900">FAQ</a>
-          </div>
-          <Link href="/login">
-            <Button size="sm">Sign in</Button>
-          </Link>
+
+          {/* Desktop CTA */}
+          <button
+            onClick={scrollToWaitlist}
+            className={`hidden sm:block text-sm font-semibold px-5 py-2 rounded-md transition-opacity${navPulse ? " nav-pulse" : ""}`}
+            style={{ backgroundColor: "#0d1b2e", color: "#f8f8f6" }}
+          >
+            Join the waitlist
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            className="sm:hidden flex flex-col gap-1.5 p-1"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            <span style={{ display: "block", width: 20, height: 2, backgroundColor: "#0d1b2e", borderRadius: 1 }} />
+            <span style={{ display: "block", width: 20, height: 2, backgroundColor: "#0d1b2e", borderRadius: 1 }} />
+            <span style={{ display: "block", width: 20, height: 2, backgroundColor: "#0d1b2e", borderRadius: 1 }} />
+          </button>
         </div>
+
+        {/* Mobile dropdown */}
+        {mobileOpen && (
+          <div
+            className="sm:hidden px-6 pb-4"
+            style={{ backgroundColor: "#f8f8f6", borderBottom: "1px solid #e4e4e7" }}
+          >
+            <button
+              onClick={scrollToWaitlist}
+              className="w-full text-sm font-semibold px-4 py-3 rounded-md"
+              style={{ backgroundColor: "#0d1b2e", color: "#f8f8f6" }}
+            >
+              Join the waitlist
+            </button>
+          </div>
+        )}
       </nav>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-        <div className="mb-4 inline-flex items-center rounded border border-neutral-200 bg-neutral-50 px-3 py-1">
-          <span className="text-xs text-neutral-500">Sweden — V1 · Powered by Claude AI</span>
-        </div>
-        <h1 className="text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl">
-          Your immigration documents,<br />
-          <span className="text-navy">finally explained.</span>
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section className="mx-auto max-w-4xl px-6 pt-24 pb-20 text-center">
+        <h1
+          className="font-bold tracking-tight leading-none mb-6"
+          style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", color: "#0d1b2e" }}
+        >
+          The immigration system,
+          <br />
+          translated.
         </h1>
-        <p className="mt-5 text-base text-neutral-500 leading-relaxed max-w-xl mx-auto">
-          Upload any immigration document. migraDOCS reads it, explains it in plain language, and tells you exactly what to do next — no jargon, no guesswork.
+        <p className="text-lg max-w-md mx-auto mb-10" style={{ color: "#71717a", lineHeight: 1.6 }}>
+          Upload your documents. Understand what they mean. Know what to do next.
         </p>
-        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <Link href="/login">
-            <Button size="lg">
-              Sign in with Google <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
+        <button
+          onClick={scrollToWaitlist}
+          className="text-sm font-semibold px-7 py-3 rounded-md"
+          style={{ backgroundColor: "#0d1b2e", color: "#f8f8f6" }}
+        >
+          Join the waitlist
+        </button>
+
+        {/* Animated document card */}
+        <div className="mt-16 mx-auto" style={{ maxWidth: 360 }}>
+          <div
+            className="rounded-xl p-6 text-left"
+            style={{
+              backgroundColor: "#ffffff",
+              border: "1px solid #e4e4e7",
+              opacity: cardVisible ? 1 : 0,
+              transition: "opacity 0.5s ease",
+            }}
+          >
+            {/* Document type badge */}
+            <span
+              className="text-xs font-semibold tracking-widest uppercase"
+              style={{ color: "#a1a1aa" }}
+            >
+              {card.type}
+            </span>
+
+            {/* Abstract redacted text lines */}
+            <div className="mt-4 mb-5 space-y-2">
+              {[100, 82, 94, 68, 88].map((w, i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: 7,
+                    width: `${w}%`,
+                    backgroundColor: "#e4e4e7",
+                    borderRadius: 4,
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Plain-language translation */}
+            <div style={{ borderTop: "1px solid #e4e4e7" }} className="pt-4">
+              <p className="text-xs font-semibold mb-2" style={{ color: "#a1a1aa" }}>
+                Plain language
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "#0d1b2e" }}>
+                {card.translation}
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="mt-4 text-[11px] text-neutral-400">
-          migraDOCS provides document organisation and information only. This is not legal advice.
-        </p>
       </section>
 
-      <Separator />
-
-      {/* How it works */}
-      <section id="how-it-works" className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="mb-10 text-center text-2xl font-bold text-neutral-950">How it works</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {HOW_IT_WORKS.map(({ step, title, description }) => (
-            <div key={step} className="rounded-lg border border-neutral-200 bg-white p-5" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-              <div className="mb-3 text-xs font-bold tracking-widest text-neutral-400">{step}</div>
-              <h3 className="mb-2 text-sm font-semibold text-neutral-950">{title}</h3>
-              <p className="text-xs leading-relaxed text-neutral-500">{description}</p>
+      {/* ── How it works ──────────────────────────────────────────────────── */}
+      <section
+        ref={(el) => { stepsRef.current = el; }}
+        className="mx-auto max-w-4xl px-6 py-20"
+      >
+        <h2
+          className="font-bold text-center mb-14"
+          style={{ fontSize: "1.75rem", color: "#0d1b2e" }}
+        >
+          How it works
+        </h2>
+        <div className="grid gap-5 sm:grid-cols-3">
+          {STEPS.map(({ n, title, desc }, i) => (
+            <div
+              key={n}
+              className="rounded-xl p-8"
+              style={{
+                backgroundColor: "#ffffff",
+                border: "1px solid #e4e4e7",
+                opacity: stepsVisible ? 1 : 0,
+                transform: stepsVisible ? "translateY(0)" : "translateY(20px)",
+                transition: `opacity 0.6s ease ${i * 120}ms, transform 0.6s ease ${i * 120}ms`,
+              }}
+            >
+              <div
+                className="font-bold leading-none mb-5"
+                style={{ fontSize: "3.5rem", color: "#e4e4e7" }}
+              >
+                {n}
+              </div>
+              <h3 className="text-base font-semibold mb-2" style={{ color: "#0d1b2e" }}>
+                {title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#71717a" }}>
+                {desc}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      <Separator />
-
-      {/* Capabilities */}
-      <section id="capabilities" className="bg-neutral-50 py-16">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="mb-10 text-center text-2xl font-bold text-neutral-950">Capabilities</h2>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {CAPABILITIES.map(({ icon: Icon, title, description }) => (
-              <div key={title} className="rounded-lg border border-neutral-200 bg-white p-5" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded border border-neutral-200 bg-neutral-50">
-                  <Icon className="h-4 w-4 text-navy" strokeWidth={1.75} />
-                </div>
-                <h3 className="mb-1.5 text-sm font-semibold text-neutral-950">{title}</h3>
-                <p className="text-xs leading-relaxed text-neutral-500">{description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Separator />
-
-      {/* Privacy */}
-      <section id="privacy" className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="mb-3 text-center text-2xl font-bold text-neutral-950">Built for privacy</h2>
-        <p className="mb-10 text-center text-sm text-neutral-500">
-          Your immigration documents are sensitive. We designed migraDOCS with that in mind.
-        </p>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {TRUST_ITEMS.map(({ icon: Icon, title, description }) => (
-            <div key={title} className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-white p-5" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-              <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded border border-neutral-200 bg-neutral-50">
-                <Icon className="h-3.5 w-3.5 text-navy" strokeWidth={1.75} />
-              </div>
-              <div>
-                <h3 className="mb-1 text-xs font-semibold text-neutral-950">{title}</h3>
-                <p className="text-xs leading-relaxed text-neutral-500">{description}</p>
-              </div>
+      {/* ── Who it's for ──────────────────────────────────────────────────── */}
+      <section className="mx-auto max-w-4xl px-6 py-16">
+        <h2
+          className="font-bold text-center mb-14"
+          style={{ fontSize: "1.75rem", color: "#0d1b2e" }}
+        >
+          Who it&apos;s for
+        </h2>
+        <div className="grid gap-5 sm:grid-cols-3">
+          {PERSONAS.map(({ title, desc }) => (
+            <div
+              key={title}
+              className="rounded-xl p-8"
+              style={{ backgroundColor: "#ffffff", border: "1px solid #e4e4e7" }}
+            >
+              <h3 className="text-base font-semibold mb-2" style={{ color: "#0d1b2e" }}>
+                {title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#71717a" }}>
+                {desc}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      <Separator />
-
-      {/* FAQ */}
-      <section id="faq" className="bg-neutral-50 py-16">
-        <div className="mx-auto max-w-2xl px-6">
-          <h2 className="mb-10 text-center text-2xl font-bold text-neutral-950">Frequently asked questions</h2>
-          <div className="space-y-4">
-            {FAQS.map(({ q, a }) => (
-              <div key={q} className="rounded-lg border border-neutral-200 bg-white p-5" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-                <h3 className="mb-2 text-sm font-semibold text-neutral-950">{q}</h3>
-                <p className="text-xs leading-relaxed text-neutral-500">{a}</p>
-              </div>
-            ))}
-          </div>
+      {/* ── Privacy strip ─────────────────────────────────────────────────── */}
+      <div
+        className="py-10"
+        style={{ borderTop: "1px solid #e4e4e7", borderBottom: "1px solid #e4e4e7" }}
+      >
+        <div className="flex items-center justify-center gap-2.5">
+          <Lock className="h-3.5 w-3.5 flex-shrink-0" style={{ color: "#a1a1aa" }} />
+          <span className="text-sm" style={{ color: "#a1a1aa" }}>
+            Your documents are never stored. Processed and discarded.
+          </span>
         </div>
-      </section>
+      </div>
 
-      <Separator />
-
-      {/* CTA */}
-      <section className="mx-auto max-w-xl px-6 py-16 text-center">
-        <h2 className="mb-3 text-2xl font-bold text-neutral-950">Ready to get started?</h2>
-        <p className="mb-6 text-sm text-neutral-500">
-          Sign in with Google. Your documents go straight into your own Google Drive — migraDOCS never stores the originals.
+      {/* ── Waitlist ──────────────────────────────────────────────────────── */}
+      <section
+        ref={(el) => { waitlistRef.current = el; }}
+        className="mx-auto max-w-xl px-6 py-28 text-center"
+      >
+        <h2
+          className="font-bold mb-4"
+          style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)", color: "#0d1b2e" }}
+        >
+          Be the first to know.
+        </h2>
+        <p className="text-base mb-12" style={{ color: "#71717a" }}>
+          We&apos;re launching in Sweden first. Leave your email and we&apos;ll reach out when
+          you&apos;re up.
         </p>
-        <Link href="/login">
-          <Button size="lg">
-            Sign in with Google <ChevronRight className="h-4 w-4" />
-          </Button>
-        </Link>
-      </section>
 
-      {/* Footer */}
-      <footer className="border-t border-neutral-200 bg-white py-8">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <span className="logo-wordmark text-neutral-400" style={{ fontSize: "1rem" }}>migraDOCS</span>
-            <p className="text-center text-[11px] leading-relaxed text-neutral-400 max-w-lg">
-              migraDOCS provides document organisation and information only. This is not legal advice.
-              For legal questions, consult a qualified immigration lawyer.
+        {submitted ? (
+          <div
+            className="rounded-xl px-8 py-8"
+            style={{ backgroundColor: "#ffffff", border: "1px solid #e4e4e7" }}
+          >
+            <p className="text-base font-semibold" style={{ color: "#0d1b2e" }}>
+              You&apos;re on the list.
+            </p>
+            <p className="text-sm mt-1.5" style={{ color: "#71717a" }}>
+              We&apos;ll be in touch.
             </p>
           </div>
-          <div className="mt-4 flex items-center justify-center gap-4">
-            <CheckCircle className="h-3.5 w-3.5 text-neutral-300" />
-            <span className="text-[10px] text-neutral-400">Sweden · V1</span>
-            <span className="text-[10px] text-neutral-300">·</span>
-            <span className="text-[10px] text-neutral-400">Powered by Claude AI</span>
-          </div>
+        ) : (
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailError("");
+                }}
+                placeholder="your@email.com"
+                className="flex-1 text-sm px-4 py-3 rounded-md outline-none"
+                style={{
+                  backgroundColor: "#ffffff",
+                  border: emailError ? "1px solid #dc2626" : "1px solid #d4d4d8",
+                  color: "#0d1b2e",
+                }}
+              />
+              <button
+                type="submit"
+                disabled={submitting}
+                className="text-sm font-semibold px-6 py-3 rounded-md whitespace-nowrap"
+                style={{
+                  backgroundColor: "#0d1b2e",
+                  color: "#f8f8f6",
+                  opacity: submitting ? 0.6 : 1,
+                  cursor: submitting ? "not-allowed" : "pointer",
+                  transition: "opacity 0.15s",
+                }}
+              >
+                {submitting ? "Joining…" : "Join the waitlist"}
+              </button>
+            </div>
+            {emailError && (
+              <p className="mt-3 text-xs text-left" style={{ color: "#dc2626" }}>
+                {emailError}
+              </p>
+            )}
+          </form>
+        )}
+      </section>
+
+      {/* ── Footer ────────────────────────────────────────────────────────── */}
+      <footer
+        className="py-8"
+        style={{ borderTop: "1px solid #e4e4e7" }}
+      >
+        <div className="mx-auto max-w-5xl px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span className="text-xs" style={{ color: "#a1a1aa" }}>
+            © 2026 migraDOCS
+          </span>
+          <span className="text-xs" style={{ color: "#a1a1aa" }}>
+            This is not legal advice
+          </span>
         </div>
       </footer>
     </div>
