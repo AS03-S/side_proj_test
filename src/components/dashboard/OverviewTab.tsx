@@ -142,12 +142,20 @@ function CircleProgress({
         >
           {progress}%
         </text>
+        {/* Hint — directly below percentage */}
+        {hint && (
+          <text
+            x={ARC_CX}
+            y={ARC_TEXT_Y2 + 15}
+            textAnchor="middle"
+            fontSize="9"
+            fill="#a1a1aa"
+            fontFamily="Inter, system-ui, sans-serif"
+          >
+            {hint.slice(0, 30)}
+          </text>
+        )}
       </svg>
-      {hint && (
-        <p className="mt-0.5 max-w-[162px] truncate text-center text-[9px] leading-tight text-neutral-400">
-          {hint}
-        </p>
-      )}
     </button>
   );
 }
