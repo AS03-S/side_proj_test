@@ -282,7 +282,7 @@ export function Nav({ lang, onCTA, pulse, variant = "A" }: NavProps) {
         style={{ display: "flex", height: 60, alignItems: "center", justifyContent: "space-between" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <Logo size={26} />
+          <Logo size={34} />
           {variant === "B" && (
             <span className="mono" style={{ fontSize: 10, color: "var(--mute-2)", letterSpacing: "0.14em", textTransform: "uppercase", borderLeft: "1px solid var(--line-strong)", paddingLeft: 12 }}>
               v0.1 · preview
