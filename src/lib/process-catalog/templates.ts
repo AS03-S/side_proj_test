@@ -2217,6 +2217,522 @@ const norwayQualificationRecognition: ProcessTemplate = {
   ],
 };
 
+// ── Denmark — SIRI / Styrelsen for International Rekruttering ──────────────
+
+const denmarkWorkPermit: ProcessTemplate = {
+  id: "dk_work_permit",
+  keywords: ["denmark work permit", "work denmark", "job denmark", "danish work visa", "opholdstilladelse arbejde", "positivliste denmark", "fast track denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI (Danish Agency for International Recruitment and Integration)",
+  title: "Work Permit — Denmark",
+  summary: "Non-EU/EEA nationals need a residence and work permit to work in Denmark. The Pay Limit Scheme (beløbsordningen) and Positive List are the most common routes for skilled workers.",
+  timeline_summary: "Pay Limit Scheme: 30 days processing. Positive List: up to 3 months. Apply before arriving.",
+  next_action: "Check whether your salary offer qualifies under the Pay Limit Scheme or if your profession is on the Positive List.",
+  official_sources: [{ title: "SIRI — Work in Denmark", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work" }],
+  steps: [
+    {
+      title: "Identify your permit scheme",
+      description: "Pay Limit Scheme: annual salary ≥ DKK 448,000 (2024). Positive List: certain occupations in shortage regardless of salary. Fast Track Scheme: for certified employers. Choose the most applicable scheme.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Salary checked against Pay Limit threshold (nyidanmark.dk)", item_type: "action" },
+        { label: "Occupation checked against Positive List", item_type: "action" },
+        { label: "Employer checked for Fast Track certification (if applicable)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online via nyidanmark.dk",
+      description: "Both you and your employer submit parts of the application online.",
+      estimated_duration: "1–2 days",
+      checklist_items: [
+        { label: "Online application submitted at nyidanmark.dk", item_type: "action" },
+        { label: "Employer section completed by employer", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 3,655)", item_type: "payment" },
+        { label: "Signed employment contract uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend Danish embassy for biometrics",
+      description: "After submitting online, attend the Danish embassy or VFS Global centre in your home country to submit biometrics.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy or VFS Global appointment booked", item_type: "appointment" },
+        { label: "Valid passport brought", item_type: "document" },
+        { label: "Biometrics (photo and fingerprints) submitted", item_type: "action" },
+      ],
+    },
+    {
+      title: "Receive approval and travel",
+      description: "On approval you receive a visa sticker to enter Denmark and then collect your residence card.",
+      estimated_duration: "30 days (Pay Limit) – 3 months",
+      checklist_items: [
+        { label: "Approval letter and entry visa received", item_type: "document" },
+        { label: "Travel to Denmark", item_type: "action" },
+        { label: "Residence card (opholdskort) collected at local citizen service centre", item_type: "action" },
+        { label: "CPR number applied for at borgerservice", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkStudentPermit: ProcessTemplate = {
+  id: "dk_student_permit",
+  keywords: ["denmark student permit", "study denmark", "danish university", "studietilladelse denmark", "university denmark", "higher education denmark", "student visa denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Student Residence Permit — Denmark",
+  summary: "Non-EU/EEA nationals accepted at a Danish university or higher education institution must apply for a student residence permit before arriving.",
+  timeline_summary: "Apply at least 3 months before your programme starts. Processing typically takes 1–2 months.",
+  next_action: "Secure your university admission letter before applying.",
+  official_sources: [{ title: "SIRI — Student permit", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Studies" }],
+  steps: [
+    {
+      title: "Get university admission",
+      description: "Apply to a Danish university and receive an official admission letter.",
+      estimated_duration: "1–4 months",
+      checklist_items: [
+        { label: "Danish institution identified", item_type: "action" },
+        { label: "Application submitted", item_type: "action" },
+        { label: "Admission letter (optagelsesbrev) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit student permit application at nyidanmark.dk.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted at nyidanmark.dk", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 2,160)", item_type: "payment" },
+        { label: "Admission letter uploaded", item_type: "document" },
+        { label: "Proof of sufficient funds uploaded (DKK 6,243/month recommended)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend embassy",
+      description: "Appear at the Danish embassy for biometrics.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport brought", item_type: "document" },
+        { label: "Biometrics submitted", item_type: "action" },
+      ],
+    },
+    {
+      title: "Arrive and register",
+      description: "After arrival, register at the municipal citizen service centre to get your CPR number.",
+      estimated_duration: "First 2 weeks",
+      checklist_items: [
+        { label: "Borgerservice (citizen service) visited", item_type: "action" },
+        { label: "CPR number received", item_type: "document" },
+        { label: "Enrolled at university and student card received", item_type: "action" },
+        { label: "Health insurance card (sygesikringsbevis) received", item_type: "document" },
+      ],
+    },
+  ],
+};
+
+const denmarkFamilyReunification: ProcessTemplate = {
+  id: "dk_family_reunification",
+  keywords: ["denmark family reunification", "spouse visa denmark", "family visa denmark", "ægtefællesammenføring", "join family denmark", "family permit denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Family Reunification — Denmark",
+  summary: "Spouses and minor children of Danish residents can apply for family reunification. Denmark has some of the strictest family reunification requirements in the EU.",
+  timeline_summary: "Processing takes 3–12 months. Meeting the strict requirements is the main challenge.",
+  next_action: "Carefully review all conditions at nyidanmark.dk — Denmark's requirements are detailed and strict.",
+  official_sources: [{ title: "SIRI — Family reunification", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Family" }],
+  steps: [
+    {
+      title: "Check all conditions",
+      description: "For spouse reunification with a non-Danish citizen sponsor: both must be 24+, sponsor needs strong ties to Denmark (attachment requirement), sufficient housing, no welfare dependence, financial guarantee (DKK ~55,400), and sponsor must have passed Danish integration exam or been in Denmark 10+ years.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Both parties are 24 or older", item_type: "action" },
+        { label: "Sponsor's ties to Denmark confirmed (especially if dual citizen)", item_type: "action" },
+        { label: "Sufficient housing confirmed (size, ownership/rental)", item_type: "action" },
+        { label: "Sponsor not on welfare (within past 3 years)", item_type: "action" },
+        { label: "Financial guarantee (selvskyldnerkaution) arranged if needed", item_type: "action" },
+        { label: "Sponsor meets integration requirements", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit application at nyidanmark.dk. The sponsor must be involved in the application.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted online", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 8,680)", item_type: "payment" },
+        { label: "Marriage certificate uploaded (apostilled + translated)", item_type: "document" },
+        { label: "Documentation of all conditions uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Embassy interview and biometrics",
+      description: "Both applicant and potentially sponsor may be interviewed separately by Danish immigration authorities.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment attended", item_type: "appointment" },
+        { label: "Biometrics submitted", item_type: "action" },
+        { label: "Any additional documents submitted as requested", item_type: "document" },
+      ],
+    },
+    {
+      title: "Await decision and travel",
+      description: "SIRI makes the decision. Denmark has strict grounds for refusal — if refused, legal advice is recommended before appealing.",
+      estimated_duration: "3–12 months",
+      checklist_items: [
+        { label: "Decision received", item_type: "document" },
+        { label: "If approved: travel to Denmark and collect residence card", item_type: "action" },
+        { label: "CPR number applied for", item_type: "action" },
+        { label: "Integration programme (danskuddannelse) enrolled in", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkCPRNumber: ProcessTemplate = {
+  id: "dk_cpr_number",
+  keywords: ["cpr number denmark", "cpr nummer", "danish id number", "register denmark", "borgerservice denmark", "civil registration denmark", "folkeregister"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Borgerservice (local municipality)",
+  title: "CPR Number Registration — Denmark",
+  summary: "The CPR number (Central Person Register number) is the Danish personal identity number. You must register at your local borgerservice to receive it. It is required for almost all services in Denmark.",
+  timeline_summary: "CPR registration can be done within a few days of arrival. The number is issued immediately or within a few days.",
+  next_action: "Book an appointment at your local borgerservice as soon as you have a fixed address in Denmark.",
+  official_sources: [{ title: "Borger.dk — CPR registration", url: "https://www.borger.dk/da/Medborgerskab-og-rettigheder/Flytning-og-bopael/Tilmelding-til-folkeregisteret" }],
+  steps: [
+    {
+      title: "Confirm eligibility",
+      description: "You can register for a CPR number if you have a valid residence permit (or EU/EEA registration) and intend to live in Denmark for more than 3 months.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Valid residence permit or EU/EEA right of residence confirmed", item_type: "document" },
+        { label: "Fixed address in Denmark obtained", item_type: "action" },
+      ],
+    },
+    {
+      title: "Book borgerservice appointment",
+      description: "Book an appointment at the borgerservice office in the municipality where you live.",
+      estimated_duration: "1–5 days waiting",
+      checklist_items: [
+        { label: "Local borgerservice identified", item_type: "action" },
+        { label: "Appointment booked online or by phone", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Attend appointment",
+      description: "Bring all required documents in original form.",
+      estimated_duration: "30 minutes",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Residence permit or EU registration certificate", item_type: "document" },
+        { label: "Proof of address (rental contract or owner documentation)", item_type: "document" },
+        { label: "CPR number issued and yellow health insurance card (sundhedskort) requested", item_type: "document" },
+      ],
+    },
+    {
+      title: "Use CPR number",
+      description: "The CPR number enables access to the Danish healthcare system, NemID/MitID, bank account, tax registration, and more.",
+      estimated_duration: "Ongoing",
+      checklist_items: [
+        { label: "Yellow health insurance card (sundhedskort) received by post", item_type: "document" },
+        { label: "MitID digital identity activated", item_type: "action" },
+        { label: "Bank account opened", item_type: "action" },
+        { label: "Tax card (skattekort) applied for at Skattestyrelsen", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkPermanentResidence: ProcessTemplate = {
+  id: "dk_permanent_residence",
+  keywords: ["permanent residence denmark", "tidsubegrænset opholdstilladelse", "settle denmark", "permanent permit denmark", "indefinite denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Permanent Residence Permit — Denmark",
+  summary: "After 8 years of legal residence (4 under fast-track conditions), residents of Denmark can apply for a permanent residence permit. Denmark has demanding requirements including a language test, self-sufficiency, and integration conditions.",
+  timeline_summary: "Processing takes 3–6 months.",
+  next_action: "Check the current conditions carefully — Denmark's permanent residence requirements are among the most detailed in Europe.",
+  official_sources: [{ title: "SIRI — Permanent residence", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Permanent-residence-permit" }],
+  steps: [
+    {
+      title: "Check all conditions",
+      description: "Standard: 8 years legal residence, Danish language test (Prøve i Dansk 2/3), employment for 4 years, no criminal record, not received certain welfare benefits, no outstanding debt to public, active civic participation points accumulated.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "8 years legal residence confirmed (or 4 under fast-track)", item_type: "action" },
+        { label: "Danish language test passed (Prøve i Dansk 2 minimum, 3 for fast-track)", item_type: "action" },
+        { label: "Employment history for required period documented", item_type: "action" },
+        { label: "No disqualifying criminal convictions", item_type: "action" },
+        { label: "No welfare benefits received in disqualifying period", item_type: "action" },
+        { label: "Point requirement met (active citizenship activities)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "Compile the required documentation.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Current residence permit", item_type: "document" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Language test certificate (Prøve i Dansk)", item_type: "document" },
+        { label: "Employment documentation (contracts, payslips, tax returns)", item_type: "document" },
+        { label: "Criminal record extract", item_type: "document" },
+        { label: "Documentation of active citizenship / volunteer work / courses", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit application at nyidanmark.dk.",
+      estimated_duration: "3–6 months processing",
+      checklist_items: [
+        { label: "Online application submitted", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 3,040)", item_type: "payment" },
+        { label: "Decision received", item_type: "document" },
+        { label: "Permanent residence card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkCitizenship: ProcessTemplate = {
+  id: "dk_citizenship",
+  keywords: ["danish citizenship", "dansk statsborgerskab", "naturalisation denmark", "become danish", "danish passport", "danish nationality"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Ministry of Immigration and Integration / Folketing",
+  title: "Danish Citizenship by Naturalisation",
+  summary: "Danish citizenship is granted by a law passed in the Folketing (parliament) three times a year. Applicants must meet strict residency, language, and integration requirements.",
+  timeline_summary: "Applications are processed every few months when a new naturalisation bill is introduced. Total time from application to citizenship can be 2–4 years.",
+  next_action: "Check your eligibility and apply via the immigration authority — you must meet all conditions before your application can go to the Folketing.",
+  official_sources: [{ title: "SIRI — Danish citizenship", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Citizenship" }],
+  steps: [
+    {
+      title: "Check all conditions",
+      description: "Requirements: 9 years legal residence (7 for some), Danish language test Prøve i Dansk 3 or higher, self-sufficiency (no welfare in 4 years before application), clean criminal record, no outstanding public debt, renounce prior citizenship (with exceptions).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "9 years (or qualifying reduced period) legal residence confirmed", item_type: "action" },
+        { label: "Prøve i Dansk 3 (or equivalent) language test passed", item_type: "action" },
+        { label: "No welfare benefits received in last 4 years", item_type: "action" },
+        { label: "No disqualifying criminal convictions", item_type: "action" },
+        { label: "No outstanding debt to public authorities", item_type: "action" },
+        { label: "Prior citizenship renunciation reviewed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Submit application",
+      description: "Apply online at borger.dk. Your application will be checked and forwarded to be included in a naturalisation bill.",
+      estimated_duration: "1 day to apply",
+      checklist_items: [
+        { label: "Application submitted at borger.dk", item_type: "action" },
+        { label: "Application fee paid", item_type: "payment" },
+        { label: "All supporting documents uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Folketing process and ceremony",
+      description: "Your name is included in a naturalisation bill voted on by parliament three times a year. If passed, you attend a citizenship ceremony.",
+      estimated_duration: "6–24 months",
+      checklist_items: [
+        { label: "Notification of inclusion in naturalisation bill received", item_type: "document" },
+        { label: "Citizenship ceremony attended", item_type: "appointment" },
+        { label: "Declaration of loyalty to Denmark made", item_type: "action" },
+        { label: "Danish passport applied for", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkAsylum: ProcessTemplate = {
+  id: "dk_asylum",
+  keywords: ["asylum denmark", "refugee denmark", "asyl danmark", "asylansøger", "protection denmark", "flee denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Danish Immigration Service (Udlændingestyrelsen)",
+  title: "Asylum Application — Denmark",
+  summary: "Anyone in Denmark who needs international protection can apply for asylum. You must apply in person at the Danish Immigration Service or at the border.",
+  timeline_summary: "Processing times vary: from months to years. Denmark processes some cases under a special fast-track procedure.",
+  next_action: "Go to the nearest police station or the Danish Immigration Service reception centre and state that you want to apply for asylum.",
+  official_sources: [{ title: "Danish Immigration Service — Asylum", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Asylum" }],
+  steps: [
+    {
+      title: "Register application",
+      description: "Go to a police station or the Danish Immigration Service (Udlændingestyrelsen) reception centre and declare your intention to seek asylum.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Police or reception centre visited", item_type: "action" },
+        { label: "Asylum application registered", item_type: "action" },
+        { label: "Any identity documents presented", item_type: "document" },
+        { label: "Temporary accommodation assigned by Danish Immigration Service", item_type: "action" },
+      ],
+    },
+    {
+      title: "Asylum interview",
+      description: "You will be called for an interview with the Danish Immigration Service to explain your protection needs. You have the right to legal representation and an interpreter.",
+      estimated_duration: "Scheduled by authorities",
+      checklist_items: [
+        { label: "Interview appointment received", item_type: "appointment" },
+        { label: "Legal representative (advokat) arranged", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision",
+      description: "The Danish Immigration Service makes a decision. A negative decision can be appealed to the Refugee Appeals Board (Flygtningenævnet).",
+      estimated_duration: "Months to years",
+      checklist_items: [
+        { label: "Decision received", item_type: "document" },
+        { label: "If approved: residence permit issued", item_type: "action" },
+        { label: "If rejected: appeal to Flygtningenævnet within deadline", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkGreenCard: ProcessTemplate = {
+  id: "dk_green_card",
+  keywords: ["denmark green card", "point based denmark", "greencard denmark", "grønt kort", "skilled worker points denmark", "points scheme denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Establishment Card (formerly Green Card) — Denmark",
+  summary: "The Establishment Card allows highly qualified non-EU/EEA nationals to come to Denmark to seek work or start a business, without needing a prior job offer.",
+  timeline_summary: "Processing takes approximately 1 month.",
+  next_action: "Check whether you meet the points criteria on nyidanmark.dk.",
+  official_sources: [{ title: "SIRI — Establishment Card", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/Establishment-card" }],
+  steps: [
+    {
+      title: "Check points eligibility",
+      description: "You are assessed on education level, language skills (Danish, English, German, French), adaptability (age, Danish connections, previous stays), and salary history. A minimum number of points is required.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Points self-assessed using SIRI's points calculator", item_type: "action" },
+        { label: "Education level documented", item_type: "document" },
+        { label: "Language certifications gathered", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit application at nyidanmark.dk.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted online", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 3,655)", item_type: "payment" },
+        { label: "Degree certificates and transcripts uploaded", item_type: "document" },
+        { label: "Language certificates uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Embassy biometrics and decision",
+      description: "Attend embassy for biometrics. If approved, the card allows 2 years to find work or establish a business.",
+      estimated_duration: "~1 month processing",
+      checklist_items: [
+        { label: "Embassy appointment attended and biometrics submitted", item_type: "appointment" },
+        { label: "Decision received", item_type: "document" },
+        { label: "Establishment Card collected in Denmark", item_type: "action" },
+        { label: "Once employed: convert to work permit or apply for Pay Limit permit", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkIntegrationProgramme: ProcessTemplate = {
+  id: "dk_integration_programme",
+  keywords: ["integration program denmark", "danskuddannelse", "danish language course", "integrationsprogram", "learn danish", "danish for adults", "introduction program denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Local municipality (kommune)",
+  title: "Integration Programme & Danish Language Course (Danskuddannelse)",
+  summary: "Newly arrived non-EU nationals are entitled and often obliged to participate in a 3-year integration programme run by their municipality. It includes free Danish language courses (danskuddannelse) and an introduction programme.",
+  timeline_summary: "Enrolment should happen within the first weeks of receiving your residence permit. Courses are free.",
+  next_action: "Contact your municipality as soon as you receive your residence permit to be enrolled in the integration programme.",
+  official_sources: [{ title: "SIRI — Integration programme", url: "https://www.nyidanmark.dk/en-GB/Words-and-concepts/Residence/Danskuddannelse" }],
+  steps: [
+    {
+      title: "Contact your municipality",
+      description: "Your municipality (kommune) is responsible for offering you the integration programme. Contact the integration department (integrationafdeling) promptly.",
+      estimated_duration: "First week",
+      checklist_items: [
+        { label: "Local municipality integration office contacted", item_type: "action" },
+        { label: "Integration meeting/interview scheduled", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Language placement and course enrolment",
+      description: "You will be assessed and placed in one of three Danskuddannelse levels (DU1, DU2, DU3). The programme is free of charge for the first 3 years.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Language assessment completed", item_type: "action" },
+        { label: "Danskuddannelse level assigned (DU1/DU2/DU3)", item_type: "action" },
+        { label: "Language school and schedule confirmed", item_type: "action" },
+        { label: "First class attended", item_type: "action" },
+      ],
+    },
+    {
+      title: "Complete Danish language test",
+      description: "The integration programme aims for you to pass Prøve i Dansk 1, 2, or 3 depending on your level. Prøve i Dansk 2 is the minimum for many immigration applications.",
+      estimated_duration: "1–3 years",
+      checklist_items: [
+        { label: "Prøve i Dansk exam registered for", item_type: "action" },
+        { label: "Exam passed at target level", item_type: "action" },
+        { label: "Certificate saved for future immigration applications", item_type: "document" },
+      ],
+    },
+  ],
+};
+
+const denmarkEEARegistration: ProcessTemplate = {
+  id: "dk_eea_registration",
+  keywords: ["eu eea denmark", "eu citizen denmark", "registration certificate denmark", "registreringsbevis denmark", "right of residence denmark", "eu free movement denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI / Local Citizens Service",
+  title: "EU/EEA Registration Certificate — Denmark",
+  summary: "EU/EEA nationals can live and work in Denmark freely under EU freedom of movement rules. After 3 months, they must register and obtain a registration certificate (registreringsbevis).",
+  timeline_summary: "Registration is done online or at a citizen service centre. Processing is usually same-day or within a few days.",
+  next_action: "After establishing yourself in Denmark (work, study, self-sufficiency), apply for the registration certificate at SIRI's online portal.",
+  official_sources: [{ title: "SIRI — EU/EEA citizens registration", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/EU-EEA" }],
+  steps: [
+    {
+      title: "Confirm qualifying basis",
+      description: "You must be a worker, self-employed, student, self-sufficient, or family member of one of the above.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "EU/EEA passport or national ID confirmed", item_type: "document" },
+        { label: "Qualifying basis confirmed: employment contract / enrolment letter / proof of funds", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for registration certificate online",
+      description: "Apply at SIRI's online portal (nyidanmark.dk). You may also be able to register at a borgerservice office.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted at nyidanmark.dk or borgerservice", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 375)", item_type: "payment" },
+        { label: "Supporting documents uploaded (employment contract/study letter/bank statements)", item_type: "document" },
+        { label: "Registration certificate (registreringsbevis) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Register for CPR number",
+      description: "Take your registration certificate to the local borgerservice to register and get a CPR number.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Borgerservice appointment attended", item_type: "appointment" },
+        { label: "CPR number received", item_type: "document" },
+        { label: "Yellow health insurance card applied for", item_type: "action" },
+        { label: "MitID digital ID activated", item_type: "action" },
+      ],
+    },
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -2247,6 +2763,17 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   germanyFreelanceVisa,
   germanyCitizenship,
   germanyRecognition,
+  // Denmark
+  denmarkWorkPermit,
+  denmarkStudentPermit,
+  denmarkFamilyReunification,
+  denmarkCPRNumber,
+  denmarkPermanentResidence,
+  denmarkCitizenship,
+  denmarkAsylum,
+  denmarkGreenCard,
+  denmarkIntegrationProgramme,
+  denmarkEEARegistration,
   // Norway
   norwayWorkPermit,
   norwayStudentPermit,
