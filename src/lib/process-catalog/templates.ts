@@ -3051,6 +3051,281 @@ const spainAsylum: ProcessTemplate = {
   ],
 };
 
+// ── Italy — Ministero dell'Interno / Questura ──────────────────────────────
+
+const italyWorkVisa: ProcessTemplate = {
+  id: "it_work_visa",
+  keywords: ["italy work visa", "work italy", "visto lavoro", "nulla osta lavoro", "decreto flussi", "italy employment", "lavoro italia", "work permit italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Sportello Unico per l'Immigrazione / Questura",
+  title: "Work Visa (Nulla Osta) — Italy",
+  summary: "Non-EU nationals need a work authorisation (nulla osta) obtained by the Italian employer before applying for a visa. Italy regulates entries through an annual quota decree (decreto flussi).",
+  timeline_summary: "The decree flussi opens once or twice per year. Applications fill extremely quickly. Plan 3–6 months ahead.",
+  next_action: "Monitor the Ministero dell'Interno website for the next decreto flussi opening date and prepare all documents in advance.",
+  official_sources: [{ title: "Ministero dell'Interno — Flussi", url: "https://www.interno.gov.it/it/temi/immigrazione-e-asilo/flussi-migratori" }],
+  steps: [
+    { title: "Employer applies for nulla osta during decreto flussi", description: "The employer submits a request to the Sportello Unico per l'Immigrazione when the annual quota opens. Applications fill within hours or days.", estimated_duration: "Quota-dependent", checklist_items: [
+      { label: "Decreto flussi opening date monitored", item_type: "action" },
+      { label: "Employer submits nulla osta request online", item_type: "action" },
+      { label: "Nulla osta issued by Sportello Unico", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa at Italian consulate", description: "Once the nulla osta is issued, apply for a visto di ingresso per lavoro at the Italian consulate in your home country within 6 months.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Italian consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Nulla osta document", item_type: "document" },
+      { label: "Medical insurance", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and sign employment contract", description: "Within 8 days of arrival, go to the Sportello Unico to sign the employment contract and start the residence permit process.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Arrived in Italy within visa validity", item_type: "action" },
+      { label: "Sportello Unico visited within 8 days to sign contract", item_type: "action" },
+      { label: "Codice fiscale obtained from Agenzia delle Entrate", item_type: "action" },
+      { label: "Permesso di soggiorno application submitted at Post Office (kit postale)", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyStudentVisa: ProcessTemplate = {
+  id: "it_student_visa",
+  keywords: ["italy student visa", "visto studio", "study italy", "university italy", "student permit italy", "italian university", "studiare italia"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Italian Consulate / Questura",
+  title: "Student Visa — Italy",
+  summary: "Non-EU nationals accepted at an Italian university or educational institution must obtain a student visa (visto per studio) before arrival.",
+  timeline_summary: "Apply 2–3 months before your course start. Processing takes 4–8 weeks.",
+  next_action: "Apply to an Italian institution and obtain an acceptance letter before contacting the consulate.",
+  official_sources: [{ title: "Studiare in Italia — Visto per studio", url: "https://www.studiare-in-italia.it/studentistranieri/" }],
+  steps: [
+    { title: "Get university admission", description: "Apply through Universitaly (for degree courses) or directly to the institution for language/other courses.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Applied via Universitaly or directly to institution", item_type: "action" },
+      { label: "Acceptance letter (lettera di ammissione) received", item_type: "document" },
+    ]},
+    { title: "Apply for student visa", description: "Apply at the Italian consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Acceptance letter", item_type: "document" },
+      { label: "Proof of accommodation in Italy", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €448/month)", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+      { label: "Visa fee paid (approx. €50)", item_type: "payment" },
+    ]},
+    { title: "Arrive and apply for permesso di soggiorno", description: "Within 8 days of arrival, apply for a permesso di soggiorno at the Post Office using the kit postale.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Kit postale (immigration kit) obtained at Post Office", item_type: "action" },
+      { label: "Permesso di soggiorno application submitted", item_type: "action" },
+      { label: "Codice fiscale obtained", item_type: "action" },
+      { label: "Enrolled at university and student card received", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyPermessoDiSoggiorno: ProcessTemplate = {
+  id: "it_permesso_soggiorno",
+  keywords: ["permesso di soggiorno", "residence permit italy", "stay permit italy", "italy residence card", "soggiorno italy", "questura italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Questura / Post Office (Poste Italiane)",
+  title: "Residence Permit (Permesso di Soggiorno) — Italy",
+  summary: "All non-EU nationals staying in Italy for more than 90 days must apply for a permesso di soggiorno within 8 days of arrival. The application is submitted at the Post Office using an immigration kit.",
+  timeline_summary: "Application is submitted immediately; the actual permit card can take 2–6 months to be issued. You receive a receipt (ricevuta) that acts as proof of status in the meantime.",
+  next_action: "Obtain the immigration kit (kit postale per stranieri) at any Post Office and submit within 8 days of arrival.",
+  official_sources: [{ title: "Polizia di Stato — Permesso di soggiorno", url: "https://www.poliziadistato.it/articolo/191" }],
+  steps: [
+    { title: "Obtain kit and complete application", description: "Get the yellow immigration kit at a Post Office (Poste Italiane). Complete the form carefully — errors cause delays.", estimated_duration: "1–2 days", checklist_items: [
+      { label: "Immigration kit (kit postale) obtained at Post Office", item_type: "action" },
+      { label: "Application form (modulo 1 or specific form for permit type) completed", item_type: "document" },
+      { label: "All required documents photocopied", item_type: "document" },
+    ]},
+    { title: "Submit at designated Post Office", description: "Submit the kit at a Post Office with immigration services (not all branches). Pay the fee.", estimated_duration: "1 day", checklist_items: [
+      { label: "Designated Post Office (with immigration service) visited", item_type: "action" },
+      { label: "Passport + visa copy", item_type: "document" },
+      { label: "4 passport photos", item_type: "document" },
+      { label: "Fee paid (approx. €70–100 depending on permit type)", item_type: "payment" },
+      { label: "Ricevuta (receipt) received — keep this carefully", item_type: "document" },
+    ]},
+    { title: "Attend Questura appointment for biometrics", description: "You will be called to the Questura to give fingerprints and collect your permit card.", estimated_duration: "2–6 months waiting", checklist_items: [
+      { label: "Questura appointment notice received", item_type: "document" },
+      { label: "Questura appointment attended, biometrics given", item_type: "appointment" },
+      { label: "Permesso di soggiorno card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const italyCodiceFiscale: ProcessTemplate = {
+  id: "it_codice_fiscale",
+  keywords: ["codice fiscale", "italian tax code", "tax number italy", "fiscal code italy", "cf italy", "codice fiscale straniero"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Agenzia delle Entrate",
+  title: "Codice Fiscale (Tax Identification Number) — Italy",
+  summary: "The codice fiscale is Italy's personal tax code, required for almost all legal and financial activities — employment, banking, healthcare, renting, mobile contracts, and more.",
+  timeline_summary: "Issued immediately at the Agenzia delle Entrate office or by the Italian consulate abroad.",
+  next_action: "Visit your nearest Agenzia delle Entrate office with your passport, or apply at the Italian consulate before travelling.",
+  official_sources: [{ title: "Agenzia delle Entrate — Codice fiscale", url: "https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts-cf/info-ts-cf" }],
+  steps: [
+    { title: "Apply in Italy or at consulate abroad", description: "In Italy: walk into any Agenzia delle Entrate office with your passport and fill in form AA4/8. Abroad: apply at the Italian consulate.", estimated_duration: "Same day", checklist_items: [
+      { label: "Nearest Agenzia delle Entrate office or Italian consulate identified", item_type: "action" },
+      { label: "Valid passport or ID card", item_type: "document" },
+      { label: "Form AA4/8 completed (available at office)", item_type: "document" },
+      { label: "Codice fiscale certificate received", item_type: "document" },
+    ]},
+    { title: "Request physical health card (tessera sanitaria)", description: "Once registered with the Italian health system (SSN), your codice fiscale is also printed on a physical health card.", estimated_duration: "Weeks to months", checklist_items: [
+      { label: "Registered with local ASL (health authority) if eligible", item_type: "action" },
+      { label: "Tessera sanitaria received by post", item_type: "document" },
+    ]},
+  ],
+};
+
+const italyFamilyReunification: ProcessTemplate = {
+  id: "it_family_reunification",
+  keywords: ["italy family reunification", "ricongiungimento familiare", "family visa italy", "spouse visa italy", "join family italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Sportello Unico per l'Immigrazione",
+  title: "Family Reunification (Ricongiungimento Familiare) — Italy",
+  summary: "Legal residents in Italy with at least 1 year on their permesso di soggiorno can apply to bring their spouse and minor children to join them.",
+  timeline_summary: "Processing takes 3–6 months. The sponsor applies in Italy; family members apply for a visa abroad.",
+  next_action: "The sponsor must apply at the Sportello Unico per l'Immigrazione — family members cannot apply directly.",
+  official_sources: [{ title: "Ministero dell'Interno — Ricongiungimento familiare", url: "https://www.interno.gov.it" }],
+  steps: [
+    { title: "Sponsor applies for nulla osta", description: "The sponsor (resident in Italy) applies to the Sportello Unico per l'Immigrazione proving adequate income and housing.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Permesso di soggiorno with at least 1 year validity confirmed", item_type: "document" },
+      { label: "Income proof: at least €6,500/year for spouse (more for each child)", item_type: "document" },
+      { label: "Housing certificate (idoneità alloggiativa) obtained from Comune", item_type: "document" },
+      { label: "Application submitted to Sportello Unico", item_type: "action" },
+      { label: "Nulla osta issued", item_type: "document" },
+    ]},
+    { title: "Family member applies for visa", description: "With the nulla osta, the family member applies for a visto per ricongiungimento familiare at the Italian consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Nulla osta and relationship documents submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and apply for permesso di soggiorno", description: "Within 8 days of arrival, the family member applies for their own permesso di soggiorno.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Kit postale submitted at Post Office within 8 days", item_type: "action" },
+      { label: "Codice fiscale obtained", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyLongTermResidence: ProcessTemplate = {
+  id: "it_long_term_residence",
+  keywords: ["italy long term residence", "permesso CE lungo periodo", "permanent italy", "5 years italy", "carta soggiorno", "lungo periodo"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Questura",
+  title: "EU Long-Term Residence Permit (Permesso CE) — Italy",
+  summary: "After 5 years of continuous legal residence in Italy, non-EU nationals can apply for an EU long-term residence permit (permesso di soggiorno CE per soggiornanti di lungo periodo). It gives the right to live and work in Italy indefinitely.",
+  timeline_summary: "Processing takes 3–6 months at the Questura.",
+  next_action: "Confirm 5 continuous years of legal stay and gather income and language documentation.",
+  official_sources: [{ title: "Polizia di Stato — Lungo periodo", url: "https://www.poliziadistato.it" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of continuous legal residence, sufficient income (at least social allowance level), Italian language B1 certificate (or Italian school/university), no serious criminal record.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years continuous legal residence confirmed", item_type: "action" },
+      { label: "Income above minimum threshold confirmed", item_type: "action" },
+      { label: "Italian language B1 certificate obtained (CILS, CELI, PLIDA, or DITALS)", item_type: "document" },
+    ]},
+    { title: "Apply at Questura", description: "Submit application at the immigration office of the provincial Questura.", estimated_duration: "3–6 months", checklist_items: [
+      { label: "Current permesso di soggiorno", item_type: "document" },
+      { label: "Passport", item_type: "document" },
+      { label: "5 years' history of permits", item_type: "document" },
+      { label: "Income proof (CUD, tax return, payslips)", item_type: "document" },
+      { label: "Italian language certificate", item_type: "document" },
+      { label: "Fee paid (marca da bollo €16 + administrative fee)", item_type: "payment" },
+      { label: "Permesso CE card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const italyCitizenship: ProcessTemplate = {
+  id: "it_citizenship",
+  keywords: ["italian citizenship", "cittadinanza italiana", "naturalizzazione italia", "become italian", "italian passport", "nationalità italiana"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Ministero dell'Interno / Prefettura",
+  title: "Italian Citizenship by Naturalisation",
+  summary: "After 10 years of legal residence in Italy (4 years for EU citizens, 5 for stateless persons and refugees), you can apply for Italian citizenship. Italy allows dual citizenship.",
+  timeline_summary: "Processing takes 2–4 years due to high application volumes. Applications are submitted online via the Ministero dell'Interno portal.",
+  next_action: "Check your years of residence and gather all required documents — the list is extensive.",
+  official_sources: [{ title: "Ministero dell'Interno — Cittadinanza", url: "https://www.interno.gov.it/it/temi/cittadinanza" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years legal residence (4 for EU citizens), Italian language B1, no serious criminal record, sufficient income.", estimated_duration: "1 week", checklist_items: [
+      { label: "10 years (or reduced period) legal residence confirmed", item_type: "action" },
+      { label: "Italian language B1 certificate", item_type: "document" },
+      { label: "Income at least €8,263/year confirmed", item_type: "action" },
+    ]},
+    { title: "Apply online via Ministero dell'Interno portal", description: "Submit the application at cittadinanza.dlci.interno.it. The process is entirely online from 2016 onwards.", estimated_duration: "2–4 years processing", checklist_items: [
+      { label: "SPID or CIE digital identity created (if already in Italy)", item_type: "action" },
+      { label: "Application submitted online", item_type: "action" },
+      { label: "Application fee paid (€250)", item_type: "payment" },
+      { label: "Birth certificate (apostilled + translated) uploaded", item_type: "document" },
+      { label: "Criminal record from Italy and country of origin uploaded", item_type: "document" },
+      { label: "Income documents uploaded", item_type: "document" },
+      { label: "Language certificate uploaded", item_type: "document" },
+      { label: "Decree of naturalisation (decreto di concessione) received", item_type: "document" },
+      { label: "Oath sworn at Comune within 6 months of decree", item_type: "appointment" },
+    ]},
+  ],
+};
+
+const italyAsylum: ProcessTemplate = {
+  id: "it_asylum",
+  keywords: ["asylum italy", "asilo italia", "refugee italy", "protezione internazionale", "richiedente asilo", "asylum seeker italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Commissione Territoriale per il Riconoscimento della Protezione Internazionale",
+  title: "Asylum / International Protection — Italy",
+  summary: "Anyone in Italy who needs international protection can apply for asylum. Applications are submitted at the Questura (police headquarters) and assessed by a Territorial Commission.",
+  timeline_summary: "Processing times vary widely: from 6 months to over 2 years. You may stay in Italy while your case is pending.",
+  next_action: "Go to the Questura in your province and declare your intention to seek international protection.",
+  official_sources: [{ title: "UNHCR Italy — Come fare domanda", url: "https://www.unhcr.org/it/protezione/richiesta-di-asilo" }],
+  steps: [
+    { title: "Declare intention at Questura", description: "Go to the immigration office of the Questura and state you want to apply for international protection (protezione internazionale).", estimated_duration: "1 day", checklist_items: [
+      { label: "Questura immigration office (Ufficio Immigrazione) visited", item_type: "action" },
+      { label: "Asylum intention declared", item_type: "action" },
+      { label: "Appointment to formalise application given", item_type: "appointment" },
+    ]},
+    { title: "Formalise application (verbalizzazione)", description: "At the appointment, you give your personal details and reasons for seeking protection. You have the right to an interpreter and legal aid.", estimated_duration: "Scheduled date", checklist_items: [
+      { label: "Legal aid arranged if needed", item_type: "action" },
+      { label: "Verbalizzazione (formal registration) completed at Questura", item_type: "appointment" },
+      { label: "C3 form completed", item_type: "document" },
+      { label: "Permesso di soggiorno for pending asylum (6-month renewable) received", item_type: "document" },
+    ]},
+    { title: "Commission interview and decision", description: "The Territorial Commission calls you for a hearing. They assess your case and issue a decision (refugee status, subsidiary protection, humanitarian protection, or rejection).", estimated_duration: "6 months–2 years", checklist_items: [
+      { label: "Commission hearing attended", item_type: "appointment" },
+      { label: "Decision received", item_type: "document" },
+      { label: "If rejected: appeal to Tribunal within 30 days", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyEEARegistration: ProcessTemplate = {
+  id: "it_eea_registration",
+  keywords: ["eu citizen italy", "iscrizione anagrafe italy", "eu registration italy", "residency certificate italy", "certificato residenza ue", "eu free movement italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Comune (Anagrafe)",
+  title: "EU/EEA Residence Registration (Iscrizione Anagrafe) — Italy",
+  summary: "EU/EEA citizens staying more than 3 months in Italy must register with the local Anagrafe (municipal registry) to obtain a certificate of residence (certificato di residenza / attestato di soggiorno).",
+  timeline_summary: "Registration can usually be done within a few days. The certificate is issued immediately or within a few weeks.",
+  next_action: "Go to the Anagrafe office at your local Comune to register your address.",
+  official_sources: [{ title: "Ministero dell'Interno — Cittadini UE", url: "https://www.interno.gov.it" }],
+  steps: [
+    { title: "Register at the Anagrafe", description: "Bring documents showing your EU identity and qualifying basis (work, study, self-sufficiency). Some Comuni allow online pre-registration.", estimated_duration: "1 day", checklist_items: [
+      { label: "Comune Anagrafe office identified and appointment booked (if required)", item_type: "appointment" },
+      { label: "EU passport or national identity card", item_type: "document" },
+      { label: "Proof of qualifying basis: employment contract / enrolment letter / bank statements", item_type: "document" },
+      { label: "Proof of accommodation (rental contract, owner declaration)", item_type: "document" },
+      { label: "Registration form completed at office", item_type: "action" },
+    ]},
+    { title: "Receive certificate of residence", description: "The Anagrafe registers your address and issues a residence certificate. With this you can apply for your codice fiscale, open a bank account, and access public services.", estimated_duration: "Same day to 2 weeks", checklist_items: [
+      { label: "Certificato di residenza / attestato di soggiorno received", item_type: "document" },
+      { label: "Codice fiscale obtained from Agenzia delle Entrate", item_type: "action" },
+      { label: "Health system (SSN) registration completed at local ASL", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -3103,6 +3378,16 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   norwayNorskprøven,
   norwayFreelance,
   norwayQualificationRecognition,
+  // Italy
+  italyWorkVisa,
+  italyStudentVisa,
+  italyPermessoDiSoggiorno,
+  italyCodiceFiscale,
+  italyFamilyReunification,
+  italyLongTermResidence,
+  italyCitizenship,
+  italyAsylum,
+  italyEEARegistration,
   // Spain
   spainWorkPermit,
   spainStudentVisa,
