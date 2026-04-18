@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  icons: { icon: "/favicon.ico" },
   title: "migraDOCS — Immigration document intelligence",
   description:
     "Upload your immigration documents. Understand what they mean, what is being asked of you, and what to do next. Organised, plain-language guidance for every step.",
