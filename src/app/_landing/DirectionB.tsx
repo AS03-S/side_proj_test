@@ -34,7 +34,7 @@ export function DirectionB({ lang, onLang }: Props) {
               <span className="accent-bar" style={{ display: "inline-block", width: 24, height: 1, background: "var(--mute-2)" }} />
               {t.hero_kicker}
             </div>
-            <h1 style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)", lineHeight: 1.0, letterSpacing: "-0.04em", fontWeight: 700, margin: "0 0 28px", color: "var(--ink)", overflowWrap: "break-word", hyphens: "auto" }}>
+            <h1 style={{ fontSize: "clamp(2.2rem, 4.2vw, 3.8rem)", lineHeight: 1.0, letterSpacing: "-0.04em", fontWeight: 700, margin: "0 0 28px", color: "var(--ink)", overflowWrap: "break-word", hyphens: "auto" }}>
               <span style={{ display: "block", color: "var(--mute)" }}>{t.hero_h1_1}</span>
               <span style={{ display: "block" }}>{t.hero_h1_2}</span>
             </h1>
