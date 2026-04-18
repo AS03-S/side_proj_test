@@ -1,9 +1,17 @@
 import { getServerSession } from "next-auth/next";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/authOptions";
 import { ensureUserSetup } from "@/lib/setup";
 import { SessionProvider } from "@/components/providers/SessionProvider";
 import { Sidebar } from "@/components/layout/Sidebar";
+import type { Session } from "next-auth";
+
+const DEV_SESSION: Session = {
+  user: { id: "dev", name: "Dev", email: "dev@local", image: null },
+  expires: new Date(Date.now() + 86_400_000).toISOString(),
+  accessToken: "",
+};
 
 export default async function AppLayout({
   children,
@@ -12,18 +20,25 @@ export default async function AppLayout({
 }) {
   const session = await getServerSession(authOptions);
 
-  // Proxy handles the redirect, but this is a belt-and-suspenders check
-  if (!session) {
+  // Dev-password bypass — set by GET /dev/[token]
+  const cookieStore = await cookies();
+  const devCookie = cookieStore.get("_dev_access");
+  const hasDevAccess =
+    !!process.env.DEV_PASSWORD &&
+    devCookie?.value === process.env.DEV_PASSWORD;
+
+  if (!session && !hasDevAccess) {
     redirect("/login");
   }
 
-  // Ensure Drive folder exists for this user (skip for demo — no Drive access)
-  if (session.user?.id !== "demo") {
+  const activeSession = session ?? DEV_SESSION;
+
+  if (session && session.user?.id !== "demo") {
     await ensureUserSetup(session);
   }
 
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={activeSession}>
       <div className="flex min-h-screen bg-neutral-50">
         <Sidebar />
         <div className="flex flex-1 flex-col pl-56">

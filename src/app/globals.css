@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Neutral scale — clean grays per migraDOCS spec */
   --color-neutral-50: #F7F7F8;
   --color-neutral-100: #F0F0F1;
   --color-neutral-200: #E4E4E7;
@@ -13,13 +12,9 @@
   --color-neutral-800: #27272A;
   --color-neutral-900: #18181B;
   --color-neutral-950: #09090B;
-
-  /* Brand navy scale */
   --color-navy: #0d1b2e;
   --color-navy-mid: #1a2d4a;
   --color-navy-light: #e8edf5;
-
-  /* Semantic colours */
   --color-success: #16A34A;
   --color-warning: #D97706;
   --color-danger: #DC2626;
@@ -27,68 +22,259 @@
 }
 
 :root {
+  --navy: #0d1b2e;
+  --navy-mid: #1a2d4a;
+  --navy-light: #e8edf5;
+  --bg: #f8f8f6;
+  --bg-2: #f2f2ee;
+  --white: #ffffff;
+  --ink: #0d1b2e;
+  --ink-2: #3f3f46;
+  --mute: #71717a;
+  --mute-2: #a1a1aa;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --accent: oklch(0.58 0.12 48);
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --card-shadow: 0 1px 2px rgba(13, 27, 46, 0.04), 0 1px 3px rgba(13, 27, 46, 0.02);
+  /* Legacy tokens used by existing app components */
   --md-navy: #0d1b2e;
   --md-navy-mid: #1a2d4a;
   --md-navy-light: #e8edf5;
-  --md-white: #FFFFFF;
-  --md-bg-secondary: #F7F7F8;
-  --md-text-primary: #09090B;
-  --md-text-secondary: #71717A;
-  --md-text-tertiary: #A1A1AA;
-  --md-border: #E4E4E7;
-  --md-border-strong: #D4D4D8;
-  --md-success: #16A34A;
-  --md-warning: #D97706;
-  --md-danger: #DC2626;
-  --md-info: #2563EB;
+  --md-white: #ffffff;
+  --md-bg-secondary: #f7f7f8;
+  --md-text-primary: #09090b;
+  --md-text-secondary: #71717a;
+  --md-text-tertiary: #a1a1aa;
+  --md-border: #e4e4e7;
+  --md-border-strong: #d4d4d8;
+  --md-success: #16a34a;
+  --md-warning: #d97706;
+  --md-danger: #dc2626;
+  --md-info: #2563eb;
   --md-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
+* { box-sizing: border-box; }
+
 @layer base {
   html {
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    background-color: #FFFFFF;
-    color: var(--md-text-primary);
-    font-family: Inter, system-ui, -apple-system, sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "cv11";
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: Inter, system-ui, -apple-system, sans-serif;
-    color: var(--md-text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-weight: 600;
   }
 }
 
-/* Logo wordmark — tight tracked Inter bold, no external font needed */
+/* ── Typography helpers ───────────────────────────── */
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+.wordmark {
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
 .logo-wordmark {
   font-family: Inter, system-ui, -apple-system, sans-serif;
   font-weight: 700;
   letter-spacing: -0.04em;
 }
 
-/* Slide-up animation for process summary overlay card */
+.section-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--navy); color: var(--bg); }
+.btn-primary:hover { background: var(--navy-mid); }
+.btn-primary:active { transform: translateY(1px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn-ghost:hover { background: var(--white); }
+
+/* ── Nav CTA pulse ────────────────────────────────── */
+@keyframes nav-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(13, 27, 46, 0); }
+  50%       { box-shadow: 0 0 0 5px rgba(13, 27, 46, 0.06); }
+}
+.nav-pulse { animation: nav-pulse 2.4s ease-in-out infinite; }
+
+/* ── Scroll reveal ────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1),
+              transform 0.7s cubic-bezier(0.2, 0.6, 0, 1);
+}
+.reveal.is-in { opacity: 1; transform: translateY(0); }
+
+/* ── Doc card animations ──────────────────────────── */
+@keyframes doc-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.doc-in { animation: doc-in 0.5s cubic-bezier(0.2, 0.6, 0.2, 1); }
+
+/* Slide-up (used by existing app components) */
 @keyframes slide-up {
   from { transform: translateY(100%); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
-
 .animate-slide-up {
   animation: slide-up 0.22s cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* ── Focus ────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-/* Nav CTA pulse — stops when .nav-pulse class is removed */
-@keyframes nav-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.72; }
+/* ── Inputs ───────────────────────────────────────── */
+.input {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 11px 14px;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.input:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(13, 27, 46, 0.08);
+}
+.input.error { border-color: var(--danger); }
+
+/* ── Cards ────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
 }
 
-.nav-pulse {
-  animation: nav-pulse 2.4s ease-in-out infinite;
+/* Redacted text placeholder lines */
+.redact { height: 7px; background: var(--line); border-radius: 4px; }
+
+/* ── Layout containers ────────────────────────────── */
+.container-narrow { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.container-wide   { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+/* ── Horizontal rules ─────────────────────────────── */
+hr.rule { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+/* ── Pills ────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--warning); }
+
+/* ── Accent tint ──────────────────────────────────── */
+.accent-on .accent-bar  { background: var(--accent); }
+.accent-on .accent-text { color: var(--accent); }
+
+/* ── Tweaks panel ─────────────────────────────────── */
+.tweaks-panel {
+  position: fixed; bottom: 20px; right: 20px; z-index: 100;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(13, 27, 46, 0.08), 0 2px 6px rgba(13, 27, 46, 0.04);
+  padding: 16px 18px;
+  width: 280px;
+  font-size: 13px;
+}
+.tweaks-panel h4 {
+  margin: 0 0 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mute);
+  font-weight: 600;
+}
+.tweaks-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.tweaks-row:last-child { margin-bottom: 0; }
+.tweaks-row > label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mute);
+  font-weight: 600;
+}
+.seg {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.seg button {
+  flex: 1;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  background: var(--white);
+  color: var(--ink-2);
+  border: none;
+  padding: 7px 10px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--navy); color: var(--bg); }
+
+/* ── RTL ──────────────────────────────────────────── */
+html[dir="rtl"] { direction: rtl; }
+
+/* ── Stripes ──────────────────────────────────────── */
+.stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--line) 0 1px,
+    transparent 1px 10px
+  );
 }
