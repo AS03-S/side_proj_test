@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { CONTENT } from "./content";
 import { useReveal, scrollToEl, Nav, DocCard, WaitlistForm, IconLock, Logo } from "./shared";
 
-interface Props { lang: string; }
+interface Props { lang: string; onLang: (l: string) => void; }
 
-export function DirectionB({ lang }: Props) {
+export function DirectionB({ lang, onLang }: Props) {
   const t = CONTENT[lang as keyof typeof CONTENT];
   const [pulse, setPulse] = useState(true);
   const waitlistRef = useRef<HTMLElement | null>(null);
@@ -24,7 +24,7 @@ export function DirectionB({ lang }: Props) {
 
   return (
     <div>
-      <Nav lang={lang} onCTA={goCTA} pulse={pulse} variant="B" />
+      <Nav lang={lang} onCTA={goCTA} onLang={onLang} pulse={pulse} variant="B" />
 
       {/* Hero — split */}
       <section className="container-wide" style={{ paddingTop: 80, paddingBottom: 80 }}>
