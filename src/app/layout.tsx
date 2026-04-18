@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://migradocs.org"),
   title: "migraDOCS — Immigration document intelligence",
   description:
     "Upload your immigration documents. Understand what they mean, what is being asked of you, and what to do next. Organised, plain-language guidance for every step.",
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
     description:
       "Upload your immigration documents. Understand what they mean, what is being asked of you, and what to do next.",
     siteName: "migraDOCS",
+    url: "https://migradocs.org",
+    type: "website",
   },
 };
 

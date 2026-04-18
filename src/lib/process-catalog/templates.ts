@@ -332,7 +332,297 @@ const swedenCitizenship: ProcessTemplate = {
   ],
 };
 
-// ── UK — Home Office ───────────────────────────────────────────────────────
+const swedenAsylum: ProcessTemplate = {
+  id: "se_asylum",
+  keywords: ["asylum", "refugee", "protection", "asyl", "asylansökan", "flee", "persecution", "stateless", "asylum seeker", "protection sweden"],
+  destination_country: "Sweden",
+  jurisdiction: "Sweden",
+  authority_name: "Migrationsverket",
+  title: "Asylum Application (Asylansökan) — Sweden",
+  summary: "Anyone in Sweden who needs international protection can apply for asylum. You must apply in person at a Migrationsverket office or at the border. The process involves registration, an investigation, and a decision.",
+  timeline_summary: "The investigation process typically takes 3–15 months. You may stay in Sweden while your case is being examined.",
+  next_action: "Go to the nearest Migrationsverket office to register your asylum application in person.",
+  official_sources: [{ title: "Migrationsverket — Applying for asylum", url: "https://www.migrationsverket.se/en/applying-for-asylum" }],
+  steps: [
+    {
+      title: "Register your asylum application",
+      description: "Go to a Migrationsverket office to register your application in person. Bring any identity documents you have. You will be photographed and have your fingerprints taken.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Nearest Migrationsverket office located", item_type: "action" },
+        { label: "All identity documents brought (passport, ID, travel documents)", item_type: "document" },
+        { label: "Application registered and case number received", item_type: "action" },
+        { label: "Temporary ID document (LMA card) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Receive housing and support",
+      description: "Migrationsverket offers accommodation while your application is processed. You may also arrange your own housing.",
+      estimated_duration: "Ongoing",
+      checklist_items: [
+        { label: "Housing offer from Migrationsverket reviewed", item_type: "action" },
+        { label: "Daily allowance (dagersättning) applied for if needed", item_type: "action" },
+        { label: "Access to healthcare and schooling for children confirmed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Asylum investigation interview",
+      description: "You will be invited to an interview with Migrationsverket where you explain why you need protection. You have the right to an interpreter and legal counsel.",
+      estimated_duration: "Scheduled by Migrationsverket",
+      checklist_items: [
+        { label: "Interview appointment received", item_type: "appointment" },
+        { label: "Legal counsel / public counsel arranged", item_type: "action" },
+        { label: "Interpreter confirmed for interview language", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+        { label: "Any additional documents submitted after interview", item_type: "document" },
+      ],
+    },
+    {
+      title: "Await decision",
+      description: "Migrationsverket investigates your case and makes a decision. If approved, you receive a residence permit. If rejected, you have the right to appeal to the Migration Court.",
+      estimated_duration: "3–15 months",
+      checklist_items: [
+        { label: "Decision letter received from Migrationsverket", item_type: "document" },
+        { label: "If approved: residence permit card collected", item_type: "action" },
+        { label: "If rejected: appeal deadline noted (3 weeks from decision)", item_type: "action" },
+        { label: "If appealing: appeal submitted to Migration Court", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const swedenPermanentResidence: ProcessTemplate = {
+  id: "se_permanent_residence",
+  keywords: ["permanent residence", "PUT", "permanent uppehållstillstånd", "settle sweden", "stay permanently", "permanent permit sweden", "long term residence"],
+  destination_country: "Sweden",
+  jurisdiction: "Sweden",
+  authority_name: "Migrationsverket",
+  title: "Permanent Residence Permit (PUT) — Sweden",
+  summary: "After living in Sweden for a qualifying period on a temporary permit, you can apply for a permanent residence permit (permanentuppehållstillstånd). Requirements depend on your permit type.",
+  timeline_summary: "Processing typically takes 6–12 months. Apply when you meet the residency requirement.",
+  next_action: "Check how long you have held your current permit and whether you meet the requirement for permanent residence.",
+  official_sources: [{ title: "Migrationsverket — Permanent residence permit", url: "https://www.migrationsverket.se/en/permanent-residence-permit" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Most paths require 4–5 years of continuous residence in Sweden. Work permit holders, refugees, and family members have different thresholds. You must also have supported yourself (self-sufficiency requirement).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Years of residence in Sweden confirmed", item_type: "action" },
+        { label: "Current permit type noted (work, family, refugee)", item_type: "document" },
+        { label: "Self-sufficiency requirement checked (income, employment)", item_type: "action" },
+        { label: "No long breaks from Sweden (max 6 months at a time)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "Collect proof of identity, residence history, and income.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Valid passport or travel document", item_type: "document" },
+        { label: "Current residence permit card", item_type: "document" },
+        { label: "Proof of income / employment for the past years (payslips, tax returns)", item_type: "document" },
+        { label: "Population register extract from Skatteverket", item_type: "document" },
+        { label: "Biometric passport photos", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online via Migrationsverket",
+      description: "Submit application through Migrationsverket's e-service. The fee varies by permit type.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted", item_type: "action" },
+        { label: "Application fee paid (SEK 2 000 for most applicants)", item_type: "payment" },
+        { label: "Case number saved", item_type: "action" },
+      ],
+    },
+    {
+      title: "Attend service centre appointment",
+      description: "You will likely need to attend a Migrationsverket service centre to submit biometrics for the new permit card.",
+      estimated_duration: "2–4 weeks to get appointment",
+      checklist_items: [
+        { label: "Service centre appointment booked", item_type: "appointment" },
+        { label: "Documents organised for appointment", item_type: "action" },
+        { label: "Appointment attended and biometrics submitted", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision and collect permanent permit card",
+      description: "Processing takes 6–12 months. A positive decision means you can live in Sweden indefinitely.",
+      estimated_duration: "6–12 months",
+      checklist_items: [
+        { label: "Decision received from Migrationsverket", item_type: "document" },
+        { label: "Permanent residence permit card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+// ── Sweden — Skatteverket / SFI / EEA ─────────────────────────────────────
+
+const swedenFolkbokforing: ProcessTemplate = {
+  id: "se_folkbokforing",
+  keywords: ["folkbokföring", "personnummer", "population registration", "personal number", "skatteverket", "register sweden", "swedish id number", "swedish personal identity"],
+  destination_country: "Sweden",
+  jurisdiction: "Sweden",
+  authority_name: "Skatteverket",
+  title: "Population Registration & Personnummer — Sweden",
+  summary: "Anyone planning to live in Sweden for more than 12 months must register with Skatteverket (Tax Agency). Registration gives you a personnummer (personal identity number), which is required for most everyday services.",
+  timeline_summary: "Appointment waiting times vary by office, typically 1–4 weeks. The personnummer is issued within a few weeks of the appointment.",
+  next_action: "Book an appointment at your nearest Skatteverket service office.",
+  official_sources: [{ title: "Skatteverket — Population registration", url: "https://www.skatteverket.se/en/living-in-sweden/population-registration" }],
+  steps: [
+    {
+      title: "Confirm you are eligible to register",
+      description: "You may register if you have a valid residence permit (or right of residence) and intend to live in Sweden for more than 12 months. EU/EEA citizens must have registered their right of residence first.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Valid residence permit or EU/EEA registration certificate confirmed", item_type: "document" },
+        { label: "Intention to stay in Sweden for more than 12 months confirmed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Book an appointment at Skatteverket",
+      description: "Visit the Skatteverket website or call to book an appointment at a local service office. Bring all required documents — Skatteverket will not accept applications by post for first-time registration.",
+      estimated_duration: "1–4 weeks (waiting time)",
+      checklist_items: [
+        { label: "Nearest Skatteverket service office located", item_type: "action" },
+        { label: "Appointment booked online or by phone", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Attend appointment with documents",
+      description: "Bring original documents. You will fill in a registration form (SKV 7665) at the office.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Residence permit card or EU/EEA registration certificate", item_type: "document" },
+        { label: "Proof of address in Sweden (rental contract or equivalent)", item_type: "document" },
+        { label: "Proof of civil status if relevant (marriage certificate, birth certificate for children)", item_type: "document" },
+        { label: "Registration form SKV 7665 completed at office", item_type: "action" },
+      ],
+    },
+    {
+      title: "Receive your personnummer",
+      description: "After registration, Skatteverket processes your application and sends your personnummer by post. It typically arrives within a few weeks.",
+      estimated_duration: "1–4 weeks",
+      checklist_items: [
+        { label: "Personnummer letter received in post", item_type: "document" },
+        { label: "Tax card (skattsedel) noted for employer", item_type: "document" },
+        { label: "Bank account, healthcare, and other services registered with personnummer", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const swedenSFI: ProcessTemplate = {
+  id: "se_sfi",
+  keywords: ["sfi", "swedish for immigrants", "svenska för invandrare", "learn swedish", "swedish language course", "language school sweden", "swedish lessons", "kommunvux"],
+  destination_country: "Sweden",
+  jurisdiction: "Sweden",
+  authority_name: "Local municipality (kommun)",
+  title: "Swedish for Immigrants (SFI) — Enrollment",
+  summary: "SFI (Svenska för invandrare) is a free Swedish language course offered by every municipality. It is open to adult residents who lack basic knowledge of Swedish and have a personnummer.",
+  timeline_summary: "Enrollment can usually happen within a few weeks of arriving. Courses are ongoing and free of charge.",
+  next_action: "Contact your local municipality (kommun) to register for SFI.",
+  official_sources: [{ title: "Skolverket — SFI information", url: "https://www.skolverket.se/utbildning/komvux/svenska-for-invandrare-sfi" }],
+  steps: [
+    {
+      title: "Confirm eligibility",
+      description: "You must be 16 or older, registered in the municipality (have a personnummer), and lack basic knowledge of Swedish. SFI is free of charge.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Personnummer obtained from Skatteverket", item_type: "document" },
+        { label: "Registered as a resident in the municipality confirmed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Find and contact your municipality's SFI provider",
+      description: "Each municipality organises SFI differently — some run it directly, others through adult education centres (komvux). Find the right contact on your municipality's website.",
+      estimated_duration: "1–3 days",
+      checklist_items: [
+        { label: "Municipality SFI/komvux contact identified", item_type: "action" },
+        { label: "Application submitted (online, in person, or by phone depending on municipality)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Placement test and course assignment",
+      description: "The SFI school will assess your education level and prior language skills and place you in one of four study paths (A, B, C, D). No prior knowledge of Swedish is required.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Placement test / interview completed", item_type: "appointment" },
+        { label: "Study path (A/B/C/D) assigned", item_type: "action" },
+        { label: "Schedule and location confirmed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Attend SFI classes",
+      description: "Attend your assigned classes. SFI is offered in the mornings, evenings, and sometimes online. You can also study at your own pace (flex-SFI). Attendance is required to receive any related benefits.",
+      estimated_duration: "6–24 months (varies by individual)",
+      checklist_items: [
+        { label: "First class attended", item_type: "action" },
+        { label: "School materials / digital login received", item_type: "action" },
+        { label: "Final exam (SFI-prov) passed when ready", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const swedenEEARegistration: ProcessTemplate = {
+  id: "se_eea_registration",
+  keywords: ["eu eea registration", "uppehållsrätt", "right of residence", "eu citizen sweden", "eea citizen sweden", "migrationsverket eu", "free movement sweden", "eu registration certificate"],
+  destination_country: "Sweden",
+  jurisdiction: "Sweden",
+  authority_name: "Migrationsverket",
+  title: "EU/EEA Right of Residence Registration — Sweden",
+  summary: "EU/EEA nationals can live and work in Sweden under EU freedom of movement rules. If staying more than 3 months, you should register your right of residence (uppehållsrätt) with Migrationsverket to obtain a registration certificate.",
+  timeline_summary: "Registration is typically processed the same day or within a few days at a service centre. A registration certificate (uppehållsintyg) is issued immediately.",
+  next_action: "Gather proof that you meet one of the qualifying conditions (worker, student, self-sufficient, job-seeker) and book a Migrationsverket appointment.",
+  official_sources: [{ title: "Migrationsverket — EU/EEA citizens", url: "https://www.migrationsverket.se/en/eu-eea-citizens" }],
+  steps: [
+    {
+      title: "Confirm you qualify",
+      description: "You must be an EU/EEA national and meet one of the qualifying conditions: employed/self-employed in Sweden, studying full-time with sufficient resources, self-sufficient, or a job seeker with genuine prospects.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "EU/EEA nationality confirmed (passport or national ID)", item_type: "document" },
+        { label: "Qualifying status identified: worker / student / self-sufficient / job-seeker", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather supporting documents",
+      description: "The documents depend on your qualifying condition.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Valid EU passport or national identity card", item_type: "document" },
+        { label: "If employed: employment contract or employer letter", item_type: "document" },
+        { label: "If student: enrollment confirmation + proof of comprehensive health insurance + proof of sufficient funds", item_type: "document" },
+        { label: "If self-sufficient: bank statements or proof of income", item_type: "document" },
+        { label: "If job-seeking: proof of active job search (applications, CV)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Register at a Migrationsverket service centre",
+      description: "Visit a Migrationsverket service centre in person. You can apply online first and then verify in person, or handle everything at the service centre.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at migrationsverket.se (optional but recommended)", item_type: "action" },
+        { label: "Appointment at service centre booked", item_type: "appointment" },
+        { label: "All original documents brought to appointment", item_type: "action" },
+        { label: "Biometrics / photos taken at service centre", item_type: "action" },
+      ],
+    },
+    {
+      title: "Receive registration certificate (uppehållsintyg)",
+      description: "The registration certificate is normally issued at the service centre visit or shortly afterwards. You should then register with Skatteverket to get your personnummer.",
+      estimated_duration: "Same day or up to 1 week",
+      checklist_items: [
+        { label: "Registration certificate (uppehållsintyg) received", item_type: "document" },
+        { label: "Register with Skatteverket for personnummer (see separate guide)", item_type: "action" },
+      ],
+    },
+  ],
+};
 
 const ukStudentVisa: ProcessTemplate = {
   id: "uk_student_visa",
