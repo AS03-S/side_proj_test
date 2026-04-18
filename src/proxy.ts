@@ -2,25 +2,44 @@ import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-/**
- * Proxy (Next.js 16 name for middleware).
- * Protects all authenticated routes — redirects unauthenticated requests to /login.
- * Uses a lightweight JWT check (no DB round-trip) so it can run at the Edge.
- */
+const DEV_PASSWORD = "OKLE";
+
 export async function proxy(request: NextRequest) {
-  const token = await getToken({
+  const { pathname } = request.nextUrl;
+
+  // Dev access gate: /passwordOKLE sets a cookie and redirects to /dashboard
+  if (pathname.startsWith("/password")) {
+    const token = pathname.slice("/password".length);
+    if (token !== DEV_PASSWORD) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+    const res = NextResponse.redirect(new URL("/dashboard", request.url));
+    res.cookies.set("_dev_access", DEV_PASSWORD, {
+      httpOnly: true,
+      path: "/",
+      maxAge: 60 * 60 * 24,
+      sameSite: "lax",
+    });
+    return res;
+  }
+
+  // Allow requests that carry the dev access cookie
+  if (request.cookies.get("_dev_access")?.value === DEV_PASSWORD) {
+    return NextResponse.next();
+  }
+
+  const jwtToken = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  if (!token) {
+  if (!jwtToken) {
     const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("callbackUrl", request.nextUrl.pathname);
+    loginUrl.searchParams.set("callbackUrl", pathname);
     return NextResponse.redirect(loginUrl);
   }
 
-  // If the token refresh permanently failed, force re-login
-  if (token.error === "RefreshTokenError") {
+  if (jwtToken.error === "RefreshTokenError") {
     const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("error", "SessionExpired");
     return NextResponse.redirect(loginUrl);
@@ -31,6 +50,7 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/password(.*)",
     "/dashboard/:path*",
     "/documents/:path*",
     "/settings/:path*",
