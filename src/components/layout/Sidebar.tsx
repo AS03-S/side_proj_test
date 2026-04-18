@@ -13,7 +13,7 @@ const NAV_ITEMS = [
 
 function MigraDOCSLogo() {
   return (
-    <img src="/logo.svg" alt="migraDOCS" height={22} width={Math.round(22 * 5.25)} style={{ display: "block" }} />
+    <img src="/logo.svg" alt="migraDOCS" height={34} width={Math.round(34 * 5.25)} style={{ display: "block" }} />
   );
 }
 
