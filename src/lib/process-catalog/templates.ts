@@ -1717,6 +1717,506 @@ const usaJ1InternTrainee: ProcessTemplate = {
   ],
 };
 
+// ── Norway — UDI ───────────────────────────────────────────────────────────
+
+const norwayWorkPermit: ProcessTemplate = {
+  id: "no_work_permit",
+  keywords: ["norway work permit", "work norway", "skilled worker norway", "arbeidsinnvandring", "oppholdstillatelse arbeid", "norway employment", "job norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Skilled Worker Residence Permit — Norway",
+  summary: "Non-EU/EEA nationals who have received a job offer in Norway can apply for a residence permit as a skilled worker (faglært). The employer must confirm the offer meets Norwegian salary and conditions standards.",
+  timeline_summary: "Processing typically takes 2–4 months. Apply before travelling to Norway.",
+  next_action: "Confirm your job offer meets UDI's skilled worker criteria and gather your documents.",
+  official_sources: [{ title: "UDI — Skilled worker", url: "https://www.udi.no/en/want-to-apply/work-immigration/skilled-workers-from-countries-outside-the-eea-and-switzerland/" }],
+  steps: [
+    {
+      title: "Confirm job offer qualifies",
+      description: "Your offer must be full-time (or at least part-time with sufficient salary), within a profession requiring skills, and pay at least the standard Norwegian wage for the role. The employer must be registered in Norway.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Job offer letter received", item_type: "document" },
+        { label: "Salary meets Norwegian standard for profession confirmed", item_type: "action" },
+        { label: "Employer registered in Norwegian business registry (Brønnøysund)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online via UDI",
+      description: "Submit your application online at udi.no before arriving in Norway. Pay the application fee online.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "UDI online application completed at udi.no", item_type: "action" },
+        { label: "Application fee paid (NOK 6,300 approx.)", item_type: "payment" },
+        { label: "Application reference number saved", item_type: "action" },
+      ],
+    },
+    {
+      title: "Submit biometrics at Norwegian embassy",
+      description: "After applying online, you must appear in person at a Norwegian embassy or consulate to submit biometrics and original documents.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Signed employment contract", item_type: "document" },
+        { label: "Educational certificates / diploma confirming skilled status", item_type: "document" },
+        { label: "Biometrics (fingerprints and photo) submitted at embassy", item_type: "action" },
+      ],
+    },
+    {
+      title: "Await decision and travel",
+      description: "UDI processes the application. If approved, you receive an approval letter and must collect your residence card in Norway.",
+      estimated_duration: "2–4 months",
+      checklist_items: [
+        { label: "Approval decision received", item_type: "document" },
+        { label: "Travel to Norway within approval period", item_type: "action" },
+        { label: "Residence card (oppholdskort) collected at police station in Norway", item_type: "action" },
+        { label: "National identity number (fødselsnummer) applied for at Skatteetaten", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayStudentPermit: ProcessTemplate = {
+  id: "no_student_permit",
+  keywords: ["norway student visa", "study norway", "student permit norway", "university norway", "studietillatelse", "norwegian university", "higher education norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Student Residence Permit — Norway",
+  summary: "Non-EU/EEA nationals accepted at a Norwegian university or higher education institution must apply for a student residence permit before arriving in Norway.",
+  timeline_summary: "Apply as early as possible — processing can take 2–4 months.",
+  next_action: "Secure your admission letter from a Norwegian institution before applying.",
+  official_sources: [{ title: "UDI — Student permit", url: "https://www.udi.no/en/want-to-apply/studies/" }],
+  steps: [
+    {
+      title: "Get admission to a Norwegian institution",
+      description: "Apply and receive acceptance from a Norwegian university or university college. Norwegian universities offer many English-taught programmes.",
+      estimated_duration: "1–4 months",
+      checklist_items: [
+        { label: "Norwegian institution identified (universities, university colleges)", item_type: "action" },
+        { label: "Application submitted", item_type: "action" },
+        { label: "Admission letter (opptaksbrev) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online via UDI",
+      description: "Submit the student residence permit application online at udi.no before arriving in Norway.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "UDI online application submitted", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 5,900)", item_type: "payment" },
+        { label: "Proof of sufficient funds attached (NOK ~116,369/year or equivalent)", item_type: "document" },
+        { label: "Admission letter attached", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit documents at Norwegian embassy",
+      description: "Appear at the nearest Norwegian embassy with original documents and biometrics.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Biometrics submitted at embassy", item_type: "action" },
+      ],
+    },
+    {
+      title: "Arrive and register",
+      description: "After arriving in Norway with your permit, register with the police and Skatteetaten to get your identity number.",
+      estimated_duration: "First 2 weeks",
+      checklist_items: [
+        { label: "Registered with police within 1 week of arrival", item_type: "action" },
+        { label: "D-number or fødselsnummer applied for at Skatteetaten", item_type: "action" },
+        { label: "Enrolled at institution and student ID received", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayFamilyImmigration: ProcessTemplate = {
+  id: "no_family_immigration",
+  keywords: ["norway family reunification", "family visa norway", "spouse norway", "familieinnvandring", "join family norway", "dependent visa norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Family Immigration — Norway",
+  summary: "Spouses, registered partners, cohabitants, and children of Norwegian residents can apply for a family immigration permit (familieinnvandring).",
+  timeline_summary: "Processing takes 3–8 months on average.",
+  next_action: "Check that your sponsor meets the income requirement (underholdskravet) before applying.",
+  official_sources: [{ title: "UDI — Family immigration", url: "https://www.udi.no/en/want-to-apply/family-immigration/" }],
+  steps: [
+    {
+      title: "Sponsor confirms income requirement",
+      description: "The person in Norway (reference person) must have had sufficient income the previous year and be expected to have sufficient income going forward. The amount is updated annually.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Sponsor's income last year checked against UDI threshold", item_type: "action" },
+        { label: "Sponsor's income documentation gathered (tax return, payslips)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "The applicant (or the reference person on their behalf) submits the application online at udi.no.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at udi.no", item_type: "action" },
+        { label: "Application fee paid (NOK 10,700 approx. for spouse)", item_type: "payment" },
+        { label: "Relationship documentation uploaded (marriage certificate, photos)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend embassy interview",
+      description: "The applicant must attend an interview at the Norwegian embassy in their home country. Both partners may be interviewed separately to verify the relationship.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport brought", item_type: "document" },
+        { label: "Marriage certificate or proof of relationship (apostilled)", item_type: "document" },
+        { label: "Biometrics submitted", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision and travel",
+      description: "If approved, travel to Norway and register with the police.",
+      estimated_duration: "3–8 months",
+      checklist_items: [
+        { label: "Approval received", item_type: "document" },
+        { label: "Travel to Norway arranged", item_type: "action" },
+        { label: "Registered with local police in Norway", item_type: "action" },
+        { label: "Residence card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayEEARegistration: ProcessTemplate = {
+  id: "no_eea_registration",
+  keywords: ["eu eea norway", "eu citizen norway", "registration norway eu", "registreringsbevis", "right of residence norway", "nordic passport", "eea right norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI / Local police",
+  title: "EU/EEA Registration Certificate — Norway",
+  summary: "EU/EEA citizens can live and work in Norway freely but must register with the police after 3 months. The registration certificate (registreringsbevis) documents your right of residence.",
+  timeline_summary: "Registration can be done within days of arriving. Appointment wait varies by region.",
+  next_action: "Ensure you have a qualifying basis (work, study, self-sufficiency) and book a police registration appointment.",
+  official_sources: [{ title: "UDI — EEA registration", url: "https://www.udi.no/en/want-to-apply/eea-and-switzerland/" }],
+  steps: [
+    {
+      title: "Confirm you have a qualifying basis",
+      description: "You must be a worker, self-employed, student, self-sufficient person, or family member of one of the above.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "EU/EEA passport or national ID confirmed", item_type: "document" },
+        { label: "Qualifying basis confirmed: employment contract, enrolment letter, or proof of funds", item_type: "document" },
+      ],
+    },
+    {
+      title: "Register at a police station",
+      description: "Attend a police station (politistasjon) that handles immigration registration. Bring all original documents.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Police station appointment booked (some allow walk-ins)", item_type: "appointment" },
+        { label: "Valid EU/EEA passport or national ID", item_type: "document" },
+        { label: "Proof of basis: employment contract / enrolment letter / bank statements", item_type: "document" },
+        { label: "Completed registration form", item_type: "document" },
+        { label: "Registration certificate (registreringsbevis) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for D-number or national identity number",
+      description: "To receive pay, pay taxes, and access services, you need a D-number (for short stays) or a fødselsnummer (national identity number for stays over 6 months). Apply at Skatteetaten.",
+      estimated_duration: "1–4 weeks",
+      checklist_items: [
+        { label: "Skatteetaten office visited with registration certificate and passport", item_type: "action" },
+        { label: "D-number or fødselsnummer received", item_type: "document" },
+        { label: "Employer notified of tax number", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayPermanentResidence: ProcessTemplate = {
+  id: "no_permanent_residence",
+  keywords: ["permanent residence norway", "permanent opphold", "bosettingstillatelse", "settle norway", "indefinite norway", "long term norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Permanent Residence Permit (Permanent Opphold) — Norway",
+  summary: "After 3 years of legal residence in Norway (reduced from 5 for some), you may apply for a permanent residence permit (bosettingstillatelse). It gives the right to live and work in Norway indefinitely.",
+  timeline_summary: "Processing takes 6–12 months.",
+  next_action: "Confirm you have 3 years of continuous legal residence and meet the Norwegian language / social studies requirement.",
+  official_sources: [{ title: "UDI — Permanent residence", url: "https://www.udi.no/en/want-to-apply/permanent-residence-permit/" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "You need 3 years of continuous legal residence, no serious criminal offences, no misuse of welfare benefits, and completion of 600 hours of Norwegian language and social studies (or passed a test).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "3 years of legal residence in Norway confirmed", item_type: "action" },
+        { label: "No long breaks from Norway (less than 7 months total absence)", item_type: "action" },
+        { label: "600 hours Norwegian language / social studies completed or test passed", item_type: "action" },
+        { label: "No significant criminal record or welfare misuse", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online at UDI",
+      description: "Submit the application at udi.no. You can apply up to 1 year before you meet the 3-year requirement.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at udi.no", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 5,900)", item_type: "payment" },
+        { label: "Language/social studies certificate uploaded", item_type: "document" },
+        { label: "Residence history documentation uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit biometrics at police",
+      description: "Attend the local police immigration unit to submit biometrics for the permanent residence card.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Police appointment booked", item_type: "appointment" },
+        { label: "Biometrics submitted", item_type: "action" },
+        { label: "Decision letter received", item_type: "document" },
+        { label: "Permanent residence card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayCitizenship: ProcessTemplate = {
+  id: "no_citizenship",
+  keywords: ["norwegian citizenship", "norsk statsborgerskap", "naturalisation norway", "become norwegian", "norwegian passport", "norwegian nationality"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Norwegian Citizenship by Naturalisation",
+  summary: "After 7 years of legal residence in Norway (5 for spouses of Norwegian citizens), you can apply for Norwegian citizenship. Norway requires you to renounce prior citizenship in most cases.",
+  timeline_summary: "Processing takes 12–20 months.",
+  next_action: "Confirm you have completed the required residence years, language test, and are prepared to renounce prior citizenship if applicable.",
+  official_sources: [{ title: "UDI — Norwegian citizenship", url: "https://www.udi.no/en/want-to-apply/citizenship/" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Standard: 7 years in Norway (last 2 on permanent residence), passed Norwegian language test (B1 oral) or completed 600 hours Norwegian, no serious criminal record, renounce prior citizenship (exemptions exist for some countries and for those who cannot renounce).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "7 years legal residence confirmed", item_type: "action" },
+        { label: "Permanent residence permit held for at least 1 year", item_type: "action" },
+        { label: "Norwegian language test (B1 oral) passed or 600 hours completed", item_type: "action" },
+        { label: "Citizenship renunciation reviewed (prior citizenship situation)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit the application at udi.no.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 4,200)", item_type: "payment" },
+        { label: "Language certificate uploaded", item_type: "document" },
+        { label: "Residence history documentation uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend citizenship ceremony",
+      description: "If approved, you will be invited to a citizenship ceremony where you pledge loyalty to Norway. After the ceremony, you can apply for a Norwegian passport.",
+      estimated_duration: "12–20 months processing + ceremony",
+      checklist_items: [
+        { label: "Approval letter received", item_type: "document" },
+        { label: "Citizenship ceremony attended and pledge made", item_type: "appointment" },
+        { label: "Confirmation of citizenship issued", item_type: "document" },
+        { label: "Norwegian passport applied for", item_type: "action" },
+        { label: "Prior citizenship renounced if required", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayAsylum: ProcessTemplate = {
+  id: "no_asylum",
+  keywords: ["asylum norway", "refugee norway", "asyl norge", "asylsøker", "protection norway", "flee norway", "asylum seeker norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI / Politiet (Police)",
+  title: "Asylum Application — Norway",
+  summary: "Anyone in Norway who needs international protection can apply for asylum. You must apply as soon as possible after arrival. UDI investigates your case and makes a decision.",
+  timeline_summary: "Processing times vary widely: from a few months to several years depending on case complexity and country of origin.",
+  next_action: "Go to the nearest police station or border crossing and state that you wish to apply for asylum.",
+  official_sources: [{ title: "UDI — Asylum", url: "https://www.udi.no/en/want-to-apply/protection-asylum/" }],
+  steps: [
+    {
+      title: "Register asylum application with police",
+      description: "Go to a police station (politistasjon) with an immigration unit, or to the National Arrival Centre (Nasjonalt ankomstsenter) in Råde. State clearly that you are applying for asylum.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Police station or arrival centre visited", item_type: "action" },
+        { label: "Application registered and case number received", item_type: "action" },
+        { label: "Any identity documents presented", item_type: "document" },
+        { label: "Temporary accommodation assigned by UDI", item_type: "action" },
+      ],
+    },
+    {
+      title: "Asylum interview with UDI",
+      description: "You will be called to an interview where you explain why you need protection. You have the right to an interpreter. You may bring a lawyer.",
+      estimated_duration: "Scheduled by UDI",
+      checklist_items: [
+        { label: "Interview appointment received", item_type: "appointment" },
+        { label: "Legal aid / lawyer arranged if needed", item_type: "action" },
+        { label: "Interpreter language confirmed", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision",
+      description: "UDI assesses your case. If approved, you receive a protection permit. If rejected, you can appeal to the Immigration Appeals Board (UNE).",
+      estimated_duration: "Months to years",
+      checklist_items: [
+        { label: "Decision letter received from UDI", item_type: "document" },
+        { label: "If approved: residence permit received", item_type: "action" },
+        { label: "If rejected: appeal deadline noted (3 weeks) and UNE appeal submitted if applicable", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayNorskprøven: ProcessTemplate = {
+  id: "no_norskproven",
+  keywords: ["norskprøven", "norwegian language test", "norwegian test", "norsk test", "language certificate norway", "b1 norwegian", "norsk eksamen"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "Kompetanse Norge / Vox",
+  title: "Norwegian Language Test (Norskprøven)",
+  summary: "The Norskprøven is the official Norwegian language test required for permanent residence and citizenship. It tests reading, writing, listening, and speaking at levels A1–B2.",
+  timeline_summary: "Tests are held several times per year. Registration closes several weeks before each test date.",
+  next_action: "Register for the Norskprøven at kompetanse.no well before you need the result for your permit application.",
+  official_sources: [{ title: "Kompetanse Norge — Norskprøven", url: "https://www.kompetansenorge.no/norsk-og-samfunnskunnskap/norskproven/" }],
+  steps: [
+    {
+      title: "Find your test level and register",
+      description: "Choose the appropriate test level (A1–A2, B1–B2). For permanent residence you need B1 oral; for citizenship you need B1 oral. Register at the municipality or adult education centre near you.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Required test level identified (B1 oral for most immigration purposes)", item_type: "action" },
+        { label: "Local test provider found (voksenopplæring / adult education centre)", item_type: "action" },
+        { label: "Registration completed and confirmed", item_type: "action" },
+        { label: "Test fee paid", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Prepare for the test",
+      description: "The test covers all four skills. Free preparation materials are available at norskprøven.no. Many municipalities offer free Norwegian courses (norskkurs).",
+      estimated_duration: "Weeks to months",
+      checklist_items: [
+        { label: "Free practice materials used at norskproven.no", item_type: "action" },
+        { label: "Norwegian course enrolled in if needed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Take the test and receive results",
+      description: "Written tests are held at designated centres; speaking tests are conducted at your adult education centre. Results are sent digitally.",
+      estimated_duration: "Test day + 2–4 weeks for results",
+      checklist_items: [
+        { label: "Written test attended", item_type: "appointment" },
+        { label: "Speaking test attended", item_type: "appointment" },
+        { label: "Results certificate received digitally", item_type: "document" },
+        { label: "Certificate saved for UDI/immigration applications", item_type: "document" },
+      ],
+    },
+  ],
+};
+
+const norwayFreelance: ProcessTemplate = {
+  id: "no_self_employed",
+  keywords: ["self-employed norway", "freelance norway", "start business norway", "sole trader norway", "enkeltpersonforetak", "selvstendig næringsdrivende", "freelancer norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI / Brønnøysundregistrene",
+  title: "Self-Employment / Freelance Permit — Norway",
+  summary: "Non-EU/EEA nationals can apply for a residence permit based on self-employment or running a business in Norway. The activity must be able to support you financially.",
+  timeline_summary: "Processing takes 3–6 months.",
+  next_action: "Prepare a viable business plan showing income potential in Norway before applying.",
+  official_sources: [{ title: "UDI — Self-employed", url: "https://www.udi.no/en/want-to-apply/work-immigration/self-employed/" }],
+  steps: [
+    {
+      title: "Prepare business concept",
+      description: "You need a strong business plan showing market need, expected income, and your qualifications.",
+      estimated_duration: "2–4 weeks",
+      checklist_items: [
+        { label: "Business plan written (market analysis, revenue projections)", item_type: "document" },
+        { label: "Proof of professional qualifications or prior business experience", item_type: "document" },
+        { label: "Client letters of intent (strongly recommended)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online at UDI",
+      description: "Submit the self-employment permit application at udi.no before arriving in Norway.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at udi.no", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 6,300)", item_type: "payment" },
+        { label: "Business plan and supporting documents uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit biometrics and await decision",
+      description: "Attend Norwegian embassy for biometrics. UDI assesses the viability of your business.",
+      estimated_duration: "3–6 months",
+      checklist_items: [
+        { label: "Embassy appointment attended", item_type: "appointment" },
+        { label: "Decision received", item_type: "document" },
+        { label: "Enkeltpersonforetak (sole proprietorship) registered at Brønnøysundregistrene after arrival", item_type: "action" },
+        { label: "Residence card collected at police", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayQualificationRecognition: ProcessTemplate = {
+  id: "no_qualification_recognition",
+  keywords: ["qualification recognition norway", "foreign degree norway", "nokut", "godkjenning utdanning", "recognize diploma norway", "credential evaluation norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "NOKUT (Norwegian Agency for Quality Assurance in Education)",
+  title: "Foreign Qualification Recognition — Norway",
+  summary: "NOKUT evaluates foreign higher education qualifications for the Norwegian labour market. Regulated professions (healthcare, teaching, engineering) require separate professional approval.",
+  timeline_summary: "NOKUT general recognition takes 4–6 weeks. Regulated profession recognition varies.",
+  next_action: "Apply to NOKUT for a general recognition statement, or to the relevant professional body if your profession is regulated.",
+  official_sources: [{ title: "NOKUT — Foreign education recognition", url: "https://www.nokut.no/en/foreign-education/recognition-of-foreign-higher-education/" }],
+  steps: [
+    {
+      title: "Identify recognition type needed",
+      description: "General recognition from NOKUT is for most workers wanting to document their level. Regulated professions (nurse, doctor, teacher, etc.) need authorisation from specific bodies (Helsedirektoratet, Udir, etc.).",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Profession identified as regulated or non-regulated", item_type: "action" },
+        { label: "Relevant body identified (NOKUT, Helsedirektoratet, Udir, etc.)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Collect and translate documents",
+      description: "Gather your diplomas, transcripts, and have them translated into Norwegian or English by a certified translator.",
+      estimated_duration: "2–4 weeks",
+      checklist_items: [
+        { label: "Original diplomas and transcripts gathered", item_type: "document" },
+        { label: "Certified translation into Norwegian or English", item_type: "document" },
+        { label: "Apostille obtained if required", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply to NOKUT or professional body",
+      description: "Submit application online via NOKUT's portal or the relevant authority.",
+      estimated_duration: "4–6 weeks (NOKUT); longer for regulated professions",
+      checklist_items: [
+        { label: "Application submitted online", item_type: "action" },
+        { label: "Application fee paid", item_type: "payment" },
+        { label: "Recognition statement / professional authorisation received", item_type: "document" },
+        { label: "Document shared with employer or included in job applications", item_type: "action" },
+      ],
+    },
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -1747,6 +2247,17 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   germanyFreelanceVisa,
   germanyCitizenship,
   germanyRecognition,
+  // Norway
+  norwayWorkPermit,
+  norwayStudentPermit,
+  norwayFamilyImmigration,
+  norwayEEARegistration,
+  norwayPermanentResidence,
+  norwayCitizenship,
+  norwayAsylum,
+  norwayNorskprøven,
+  norwayFreelance,
+  norwayQualificationRecognition,
   // Netherlands
   netherlandsHighlySkilledMigrant,
   // Ireland
