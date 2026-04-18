@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>migraDOCS — The system, translated.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --navy: #0d1b2e;
+  --navy-mid: #1a2d4a;
+  --navy-light: #e8edf5;
+  --bg: #f8f8f6;
+  --bg-2: #f2f2ee;
+  --white: #ffffff;
+  --ink: #0d1b2e;
+  --ink-2: #3f3f46;
+  --mute: #71717a;
+  --mute-2: #a1a1aa;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --accent: oklch(0.58 0.12 48); /* warm ochre, used only when accent tweak on */
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --card-shadow: 0 1px 2px rgba(13, 27, 46, 0.04), 0 1px 3px rgba(13, 27, 46, 0.02);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "ss01", "cv11";
+}
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+.wordmark {
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: inherit; font-size: 13.5px; font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--navy); color: var(--bg); }
+.btn-primary:hover { background: var(--navy-mid); }
+.btn-primary:active { transform: translateY(1px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn-ghost:hover { background: var(--white); }
+
+/* ── Nav CTA pulse ─────────────────────────────────── */
+@keyframes nav-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(13, 27, 46, 0); }
+  50% { box-shadow: 0 0 0 5px rgba(13, 27, 46, 0.06); }
+}
+.nav-pulse { animation: nav-pulse 2.4s ease-in-out infinite; }
+
+/* ── Reveal ────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.6, 0, 1); }
+.reveal.is-in { opacity: 1; transform: translateY(0); }
+
+/* ── Doc card translation fade ─────────────────────── */
+@keyframes doc-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.doc-in { animation: doc-in 0.5s cubic-bezier(0.2, 0.6, 0.2, 1); }
+
+/* ── Focus ─────────────────────────────────────────── */
+:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; border-radius: 4px; }
+
+/* ── Inputs ────────────────────────────────────────── */
+.input {
+  font: inherit; font-size: 14px;
+  padding: 11px 14px;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(13, 27, 46, 0.08); }
+.input.error { border-color: var(--danger); }
+
+/* ── Tweaks panel ──────────────────────────────────── */
+.tweaks-panel {
+  position: fixed; bottom: 20px; right: 20px; z-index: 100;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(13, 27, 46, 0.08), 0 2px 6px rgba(13, 27, 46, 0.04);
+  padding: 16px 18px;
+  width: 280px;
+  font-size: 13px;
+}
+.tweaks-panel h4 { margin: 0 0 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mute); font-weight: 600; }
+.tweaks-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.tweaks-row:last-child { margin-bottom: 0; }
+.tweaks-row > label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mute); font-weight: 600; }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button {
+  flex: 1; font: inherit; font-size: 12.5px; font-weight: 500;
+  background: var(--white); color: var(--ink-2); border: none;
+  padding: 7px 10px; cursor: pointer; transition: background 0.12s, color 0.12s;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.on { background: var(--navy); color: var(--bg); }
+
+/* ── Accent tint ────────────────────────────────────── */
+.accent-on .accent-bar { background: var(--accent); }
+.accent-on .accent-text { color: var(--accent); }
+
+/* ── Page layout helpers ───────────────────────────── */
+.container-narrow { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+/* ── RTL for Arabic ────────────────────────────────── */
+html[dir="rtl"] { direction: rtl; }
+
+/* ── Print-ish card ────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Redacted text lines for doc mock */
+.redact { height: 7px; background: var(--line); border-radius: 4px; }
+
+/* Direction B — editorial numbers */
+.idx-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute-2);
+  letter-spacing: 0.05em;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mute);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+hr.rule { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+/* Direction B deadline pill */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--warning); }
+
+/* Subtle stripes for placeholder */
+.stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--line) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+</style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    // Tweak defaults — persisted via editmode markers
+    window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "direction": "B",
+      "language": "EN",
+      "accent": true
+    }/*EDITMODE-END*/;
+  </script>
+
+  <script type="text/babel" src="content.jsx"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="direction_a.jsx"></script>
+  <script type="text/babel" src="direction_b.jsx"></script>
+  <script type="text/babel" src="tweaks.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>
