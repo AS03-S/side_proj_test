@@ -261,9 +261,10 @@ export function WaitlistForm({ lang, layout = "row" }: WaitlistFormProps) {
 
 // ── Nav ───────────────────────────────────────────────────────────────────────
 
-const ALL_LANGS = ["EN", "DE", "FR", "IT", "SV", "PL", "UK", "AR"] as const;
+const ALL_LANGS = ["EN", "DE", "FR", "IT", "SV", "PL", "UK", "RU", "ES", "TR", "RO", "HU", "SO", "FA", "TI", "AM", "SW", "HA", "AR"] as const;
 const LANG_LABELS: Record<string, string> = {
-  EN: "EN", DE: "DE", FR: "FR", IT: "IT", SV: "SV", PL: "PL", UK: "УК", AR: "ع",
+  EN: "EN", DE: "DE", FR: "FR", IT: "IT", SV: "SV", PL: "PL", UK: "УК", RU: "РУ",
+  ES: "ES", TR: "TR", RO: "RO", HU: "HU", SO: "SO", FA: "فا", TI: "ትግ", AM: "አማ", SW: "SW", HA: "HA", AR: "ع",
 };
 
 interface NavProps {
