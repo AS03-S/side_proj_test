@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CONTENT } from "./content";
-import { useReveal, scrollToEl, Nav, DocCard, WaitlistForm, IconLock } from "./shared";
+import { useReveal, scrollToEl, Nav, DocCard, WaitlistForm, IconLock, Logo } from "./shared";
 
 interface Props { lang: string; }
 
@@ -126,8 +126,8 @@ export function DirectionA({ lang }: Props) {
 
       <footer style={{ borderTop: "1px solid var(--line)", padding: "24px 0" }}>
         <div className="container-narrow" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, fontSize: 12, color: "var(--mute-2)" }}>
-          <span>{t.footer_copy}</span>
-          <span>{t.footer_disclaimer}</span>
+          <Logo size={14} />
+          <span>{t.footer_copy} · {t.footer_disclaimer}</span>
         </div>
       </footer>
     </div>

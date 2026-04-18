@@ -66,6 +66,32 @@ export function IconCheck(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+// ── Logo ──────────────────────────────────────────────────────────────────────
+
+export function Logo({ size = 20 }: { size?: number }) {
+  const id = "logo-grad";
+  return (
+    <svg height={size} viewBox="0 0 220 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="migraDOCS">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#1c2e9e" />
+          <stop offset="100%" stopColor="#3dc8c8" />
+        </linearGradient>
+      </defs>
+      <text
+        x="0" y="32"
+        fontFamily="'Nunito', system-ui, sans-serif"
+        fontWeight="700"
+        fontSize="32"
+        letterSpacing="-0.3"
+        fill={`url(#${id})`}
+      >
+        migraDOCS
+      </text>
+    </svg>
+  );
+}
+
 // ── DocCard ───────────────────────────────────────────────────────────────────
 
 interface DocCardProps {
@@ -117,8 +143,11 @@ export function DocCard({ lang, variant = "A" }: DocCardProps) {
           </div>
         </div>
         <div style={{ padding: "16px 22px 20px", transition: "opacity 0.32s", opacity }}>
-          <div className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--mute)", textTransform: "uppercase", marginBottom: 8 }}>
-            {t.doc_plain}
+          <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 8 }}>
+            <div style={{ width: 3, height: 12, borderRadius: 2, background: "var(--teal)", flexShrink: 0 }} />
+            <div className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--teal)", textTransform: "uppercase" }}>
+              {t.doc_plain}
+            </div>
           </div>
           <p style={{ margin: 0, fontSize: 14, lineHeight: 1.55, color: "var(--ink)", fontWeight: 500 }}>
             {doc.translation}
@@ -154,8 +183,11 @@ export function DocCard({ lang, variant = "A" }: DocCardProps) {
         ))}
       </div>
       <div style={{ borderTop: "1px solid var(--line)", paddingTop: 14 }}>
-        <div className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--mute)", textTransform: "uppercase", marginBottom: 8 }}>
-          {t.doc_plain}
+        <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 8 }}>
+          <div style={{ width: 3, height: 12, borderRadius: 2, background: "var(--teal)", flexShrink: 0 }} />
+          <div className="mono" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--teal)", textTransform: "uppercase" }}>
+            {t.doc_plain}
+          </div>
         </div>
         <p style={{ margin: 0, fontSize: 14, lineHeight: 1.55, color: "var(--ink)" }}>
           {doc.translation}
@@ -251,7 +283,7 @@ export function Nav({ lang, onCTA, pulse, variant = "A" }: NavProps) {
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 40,
-      background: "rgba(248,248,246,0.92)",
+      background: "rgba(244,247,255,0.92)",
       backdropFilter: "saturate(1.1) blur(10px)",
       borderBottom: "1px solid var(--line)",
     }}>
@@ -260,7 +292,7 @@ export function Nav({ lang, onCTA, pulse, variant = "A" }: NavProps) {
         style={{ display: "flex", height: 60, alignItems: "center", justifyContent: "space-between" }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <span className="wordmark" style={{ fontSize: 19, color: "var(--ink)" }}>migraDOCS</span>
+          <Logo size={20} />
           {variant === "B" && (
             <span className="mono" style={{ fontSize: 10, color: "var(--mute-2)", letterSpacing: "0.14em", textTransform: "uppercase", borderLeft: "1px solid var(--line-strong)", paddingLeft: 12 }}>
               v0.1 · preview

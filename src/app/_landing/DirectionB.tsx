@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CONTENT } from "./content";
-import { useReveal, scrollToEl, Nav, DocCard, WaitlistForm, IconLock } from "./shared";
+import { useReveal, scrollToEl, Nav, DocCard, WaitlistForm, IconLock, Logo } from "./shared";
 
 interface Props { lang: string; }
 
@@ -127,7 +127,7 @@ export function DirectionB({ lang }: Props) {
       </section>
 
       {/* Privacy — dark panel */}
-      <section ref={privRef} className={"reveal" + (privIn ? " is-in" : "")} style={{ background: "var(--navy)", color: "var(--bg)" }}>
+      <section ref={privRef} className={"reveal" + (privIn ? " is-in" : "")} style={{ background: "var(--navy-dark)", color: "var(--bg)" }}>
         <div className="container-wide" style={{ padding: "80px 32px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 0.7fr) minmax(0, 1.3fr)", gap: 48 }}>
             <div>
@@ -183,7 +183,7 @@ export function DirectionB({ lang }: Props) {
 
       <footer style={{ borderTop: "1px solid var(--line)", padding: "28px 0" }}>
         <div className="container-wide" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, fontSize: 12, color: "var(--mute-2)" }}>
-          <span className="wordmark" style={{ fontSize: 14, color: "var(--ink-2)" }}>migraDOCS</span>
+          <Logo size={16} />
           <span>{t.footer_copy} · {t.footer_disclaimer}</span>
         </div>
       </footer>
