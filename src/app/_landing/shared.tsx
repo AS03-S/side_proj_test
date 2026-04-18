@@ -277,6 +277,7 @@ interface NavProps {
 
 export function Nav({ lang, onCTA, onLang, pulse, variant = "A" }: NavProps) {
   const t = CONTENT[lang as keyof typeof CONTENT] as LangContent;
+  const containerClass = variant === "B" ? "container-wide" : "container-narrow";
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 40,
@@ -284,10 +285,8 @@ export function Nav({ lang, onCTA, onLang, pulse, variant = "A" }: NavProps) {
       backdropFilter: "saturate(1.1) blur(10px)",
       borderBottom: "1px solid var(--line)",
     }}>
-      <div
-        className={variant === "B" ? "container-wide" : "container-narrow"}
-        style={{ display: "flex", height: 60, alignItems: "center", justifyContent: "space-between", gap: 12 }}
-      >
+      {/* Top row: logo + CTA */}
+      <div className={containerClass} style={{ display: "flex", height: 56, alignItems: "center", justifyContent: "space-between", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <Logo size={34} />
           {variant === "B" && (
@@ -296,32 +295,35 @@ export function Nav({ lang, onCTA, onLang, pulse, variant = "A" }: NavProps) {
             </span>
           )}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ display: "flex", gap: 2 }}>
-            {ALL_LANGS.map((l) => (
-              <button
-                key={l}
-                onClick={() => onLang(l)}
-                className="mono"
-                style={{
-                  fontSize: 11,
-                  fontWeight: lang === l ? 700 : 400,
-                  color: lang === l ? "var(--navy)" : "var(--mute)",
-                  background: lang === l ? "var(--navy-light)" : "transparent",
-                  border: "none",
-                  borderRadius: 4,
-                  padding: "3px 7px",
-                  cursor: "pointer",
-                  letterSpacing: "0.04em",
-                }}
-              >
-                {LANG_LABELS[l]}
-              </button>
-            ))}
-          </div>
-          <button onClick={onCTA} className={"btn btn-primary" + (pulse ? " nav-pulse" : "")} style={{ fontSize: 13 }}>
-            {t.nav_cta}
-          </button>
+        <button onClick={onCTA} className={"btn btn-primary" + (pulse ? " nav-pulse" : "")} style={{ fontSize: 13 }}>
+          {t.nav_cta}
+        </button>
+      </div>
+      {/* Language strip */}
+      <div style={{ borderTop: "1px solid var(--line)", overflowX: "auto", scrollbarWidth: "none" }}>
+        <div className={containerClass} style={{ display: "flex", gap: 2, padding: "4px 0", flexWrap: "nowrap" }}>
+          {ALL_LANGS.map((l) => (
+            <button
+              key={l}
+              onClick={() => onLang(l)}
+              className="mono"
+              style={{
+                fontSize: 10.5,
+                fontWeight: lang === l ? 700 : 400,
+                color: lang === l ? "var(--navy)" : "var(--mute)",
+                background: lang === l ? "var(--navy-light)" : "transparent",
+                border: "none",
+                borderRadius: 4,
+                padding: "3px 8px",
+                cursor: "pointer",
+                letterSpacing: "0.04em",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+              }}
+            >
+              {LANG_LABELS[l]}
+            </button>
+          ))}
         </div>
       </div>
     </nav>

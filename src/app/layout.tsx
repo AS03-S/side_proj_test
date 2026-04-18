@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,6 +11,11 @@ export const metadata: Metadata = {
       "Upload your immigration documents. Understand what they mean, what is being asked of you, and what to do next.",
     siteName: "migraDOCS",
   },
+};
+
+export const viewport: Viewport = {
+  width: 1100,
+  initialScale: 1,
 };
 
 export default function RootLayout({
