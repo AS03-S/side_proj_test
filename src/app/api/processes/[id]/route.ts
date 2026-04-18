@@ -80,3 +80,30 @@ export async function PATCH(
     return NextResponse.json({ error: "Failed to update process" }, { status: 500 });
   }
 }
+
+export async function DELETE(
+  _req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    }
+
+    const { id } = await params;
+
+    const { error } = await supabase
+      .from("processes")
+      .delete()
+      .eq("id", id)
+      .eq("user_id", session.user.id);
+
+    if (error) throw error;
+
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    console.error("[processes/[id]/DELETE]", err);
+    return NextResponse.json({ error: "Failed to delete process" }, { status: 500 });
+  }
+}

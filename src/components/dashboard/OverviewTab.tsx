@@ -26,17 +26,20 @@ function formatToday(): string {
 
 // ── Circular arc progress ──────────────────────────────────────────────────
 //
-// Flat-bottom semicircle: the arc runs from the left point (9 o'clock)
-// clockwise through the top (12 o'clock) to the right point (3 o'clock).
-// In SVG coords (y-down) this path is sweep=0 (counterclockwise in SVG,
-// but visually left → up → right, i.e. clockwise as perceived by the user).
+// Bowl / U-shape.  Endpoints sit at y=ARC_PAD_TOP with generous padding
+// above so round stroke-caps are never clipped.  Arc curves DOWN (CW sweep).
+// Positive-only viewBox — no negative min-y tricks.
 
-const ARC_W = 140;          // SVG width
-const ARC_CX = ARC_W / 2;  // circle centre x
-const ARC_CY = 70;          // circle centre y  (bottom of the arc)
-const ARC_R = 52;           // radius
-const ARC_SW = 9;           // stroke width
-const ARC_LEN = Math.PI * ARC_R; // half-circumference ≈ 163.4
+const ARC_W       = 170;                        // SVG width
+const ARC_CX      = ARC_W / 2;                  // 85
+const ARC_PAD_TOP  = 36;                        // arc endpoints Y
+const ARC_R        = 68;                        // radius
+const ARC_SW       = 14;                        // stroke width — thicker
+const ARC_LEN      = Math.PI * ARC_R;           // half-circumference ≈ 213.6
+const ARC_H        = ARC_PAD_TOP + ARC_R + Math.ceil(ARC_SW / 2) + 10; // ≈ 123
+// Text positions fixed so they don't shift when ARC_PAD_TOP changes
+const ARC_TEXT_Y1  = 24 + ARC_R * 0.32;        // process name  ≈ 46
+const ARC_TEXT_Y2  = 24 + ARC_R * 0.64;        // percentage    ≈ 68
 
 function CircleProgress({
   process,
@@ -57,25 +60,19 @@ function CircleProgress({
   const currentStep = process.steps.find((s) => s.status === "in_progress");
   const hint = (currentStep?.title ?? process.nextAction ?? "").slice(0, 38) || null;
 
-  const leftX = ARC_CX - ARC_R;
-  const leftY = ARC_CY;
-  const rightX = ARC_CX + ARC_R;
-  const rightY = ARC_CY;
+  // Endpoints at y = ARC_PAD_TOP; arc curves down (CW sweep=1).
+  const epX1 = ARC_CX - ARC_R;          // 17
+  const epX2 = ARC_CX + ARC_R;          // 153
+  const epY  = ARC_PAD_TOP;             // 16
 
-  // Full background arc (sweep=0 = upper semicircle)
-  const bgPath = `M ${leftX} ${leftY} A ${ARC_R} ${ARC_R} 0 0 0 ${rightX} ${rightY}`;
-
-  // Progress arc via stroke-dasharray
+  const bgPath = `M ${epX1} ${epY} A ${ARC_R} ${ARC_R} 0 0 1 ${epX2} ${epY}`;
   const dashOffset = ARC_LEN * (1 - progress / 100);
 
-  // Short name (first 1–2 words of the process name, strip parenthetical)
   const shortName = process.name
-    .replace(/\s*\(.*?\)/g, "")  // strip parentheticals like (Uppehållstillstånd)
+    .replace(/\s*\(.*?\)/g, "")
     .split(/\s+/)
     .slice(0, 2)
     .join(" ");
-
-  const svgHeight = ARC_CY + ARC_SW / 2 + 4; // just enough for stroke
 
   return (
     <button
@@ -85,34 +82,46 @@ function CircleProgress({
     >
       <svg
         width={ARC_W}
-        height={svgHeight}
-        viewBox={`0 0 ${ARC_W} ${svgHeight}`}
+        height={ARC_H}
+        viewBox={`0 0 ${ARC_W} ${ARC_H}`}
+        style={{ display: "block", width: ARC_W, height: ARC_H, overflow: "visible", flexShrink: 0 }}
         aria-hidden="true"
       >
-        {/* Grey background arc */}
+        <defs>
+          {/* Gradient runs left→right across the arc so colour deepens as progress fills */}
+          <linearGradient
+            id={`arcg-${process.id}`}
+            x1={epX1} y1="0" x2={epX2} y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%"   stopColor="#93c5fd" />
+            <stop offset="100%" stopColor="#1d4ed8" />
+          </linearGradient>
+        </defs>
+        {/* Light-blue background arc */}
         <path
           d={bgPath}
           fill="none"
-          stroke="#e4e4e7"
+          stroke="#bfdbfe"
           strokeWidth={ARC_SW}
           strokeLinecap="round"
         />
-        {/* Navy progress arc */}
+        {/* Progress arc — light→dark blue gradient */}
         {progress > 0 && (
           <path
             d={bgPath}
             fill="none"
-            stroke="#0d1b2e"
+            stroke={`url(#arcg-${process.id})`}
             strokeWidth={ARC_SW}
             strokeLinecap="round"
             strokeDasharray={ARC_LEN}
             strokeDashoffset={dashOffset}
           />
         )}
-        {/* Short process name */}
+        {/* Short process name — upper interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_CY - ARC_R * 0.38}
+          y={ARC_TEXT_Y1}
           textAnchor="middle"
           fontSize="11"
           fontWeight="500"
@@ -121,10 +130,10 @@ function CircleProgress({
         >
           {shortName}
         </text>
-        {/* Percentage */}
+        {/* Percentage — lower interior of bowl */}
         <text
           x={ARC_CX}
-          y={ARC_CY - ARC_R * 0.05}
+          y={ARC_TEXT_Y2}
           textAnchor="middle"
           fontSize="20"
           fontWeight="700"
@@ -133,12 +142,20 @@ function CircleProgress({
         >
           {progress}%
         </text>
+        {/* Hint — directly below percentage */}
+        {hint && (
+          <text
+            x={ARC_CX}
+            y={ARC_TEXT_Y2 + 15}
+            textAnchor="middle"
+            fontSize="9"
+            fill="#a1a1aa"
+            fontFamily="Inter, system-ui, sans-serif"
+          >
+            {hint.length > 24 ? hint.slice(0, 24) + "…" : hint}
+          </text>
+        )}
       </svg>
-      {hint && (
-        <p className="mt-0.5 max-w-[130px] truncate text-center text-[9px] leading-tight text-neutral-400">
-          {hint}
-        </p>
-      )}
     </button>
   );
 }
@@ -300,10 +317,10 @@ export function OverviewTab({
         </div>
       ) : (
         <div>
-          <p className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
+          <p className="mb-12 text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
             Your active processes
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-4">
             {activeProcesses.map((proc) => (
               <CircleProgress
                 key={proc.id}
