@@ -1269,6 +1269,11 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   swedenResidencePermitRenewal,
   swedenFamilyReunification,
   swedenCitizenship,
+  swedenAsylum,
+  swedenPermanentResidence,
+  swedenFolkbokforing,
+  swedenSFI,
+  swedenEEARegistration,
   // United Kingdom
   ukStudentVisa,
   ukSkilledWorkerVisa,
