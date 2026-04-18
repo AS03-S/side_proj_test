@@ -2733,6 +2733,324 @@ const denmarkEEARegistration: ProcessTemplate = {
   ],
 };
 
+// ── Spain — Extranjería / Ministerio del Interior ─────────────────────────
+
+const spainWorkPermit: ProcessTemplate = {
+  id: "es_work_permit",
+  keywords: ["spain work permit", "work spain", "autorización trabajo", "cuenta ajena", "spain employment", "residencia trabajo", "trabajo españa"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería / Ministerio del Interior",
+  title: "Work and Residence Permit (Cuenta Ajena) — Spain",
+  summary: "Non-EU/EEA nationals with a job offer in Spain must obtain a work and residence permit. The employer applies for a work authorisation (autorización de trabajo) first, then the worker applies for a visa at the Spanish consulate.",
+  timeline_summary: "Processing typically takes 1–3 months. Apply well before the intended start date.",
+  next_action: "Your employer must apply for the work authorisation before you can apply for your visa.",
+  official_sources: [{ title: "Ministerio de Inclusión — Autorización de trabajo", url: "https://extranjeros.inclusion.gob.es/es/InformacionInteres/InformacionProcedimientos/Ciudadanosnocomunitarios/hoja049/index.html" }],
+  steps: [
+    { title: "Employer applies for work authorisation", description: "The employer submits the autorización de trabajo application to the Oficina de Extranjería in the province where the job is located. They must show no suitable Spanish or EU candidate was found.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Job offer signed", item_type: "document" },
+      { label: "Employer submits work authorisation application", item_type: "action" },
+      { label: "Resolution (autorización) received", item_type: "document" },
+    ]},
+    { title: "Apply for visa at Spanish consulate", description: "Once the authorisation is granted, apply for a national visa (visado de residencia y trabajo) at the Spanish consulate in your home country within 1 month of the resolution.", estimated_duration: "1–4 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport (at least 1 year validity)", item_type: "document" },
+      { label: "Work authorisation resolution", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Medical certificate", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Enter Spain and register", description: "Enter Spain within the visa validity. Register at the local Oficina de Extranjería to obtain your TIE residence card.", estimated_duration: "First month", checklist_items: [
+      { label: "Entered Spain within visa validity", item_type: "action" },
+      { label: "NIE number registered (if not already obtained)", item_type: "action" },
+      { label: "Padron municipal (address registration) completed at Ayuntamiento", item_type: "action" },
+      { label: "TIE card appointment booked at Extranjería", item_type: "appointment" },
+      { label: "TIE card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const spainStudentVisa: ProcessTemplate = {
+  id: "es_student_visa",
+  keywords: ["spain student visa", "study spain", "visa estudiante", "visado estudios", "student permit spain", "spanish university", "estudiar españa"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Spanish Consulate / Oficina de Extranjería",
+  title: "Student Visa — Spain",
+  summary: "Non-EU/EEA nationals accepted at a Spanish university or educational institution must apply for a student visa (visado de estudios) before arrival.",
+  timeline_summary: "Apply at least 2 months before your course starts. Processing typically takes 4–8 weeks.",
+  next_action: "Secure an acceptance letter from your Spanish institution before applying.",
+  official_sources: [{ title: "Consulado España — Visado de estudios", url: "https://www.exteriores.gob.es/es/EmbajadasConsulados/Paginas/index.aspx" }],
+  steps: [
+    { title: "Obtain acceptance letter", description: "Apply to a Spanish university or accredited institution and receive an official acceptance (carta de admisión).", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Spanish institution identified and applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply at Spanish consulate", description: "Apply for the student visa at the Spanish consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Acceptance letter from institution", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €600/month)", item_type: "document" },
+      { label: "Health insurance covering Spain", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and obtain TIE card", description: "Once in Spain, register for a TIE (Tarjeta de Identidad de Extranjero) within 30 days of arrival if staying more than 6 months.", estimated_duration: "First month", checklist_items: [
+      { label: "Padron municipal completed at local Ayuntamiento", item_type: "action" },
+      { label: "TIE card appointment booked at Extranjería", item_type: "appointment" },
+      { label: "TIE card collected", item_type: "document" },
+      { label: "Enrolled at institution and student ID obtained", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainNonLucrative: ProcessTemplate = {
+  id: "es_non_lucrative",
+  keywords: ["spain non lucrative visa", "visa no lucrativa", "retire spain", "passive income spain", "non working visa spain", "spain residency passive income"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Spanish Consulate / Oficina de Extranjería",
+  title: "Non-Lucrative Residence Visa — Spain",
+  summary: "Allows non-EU/EEA nationals with sufficient passive income or savings to live in Spain without working. Popular with retirees and remote workers (though remote work is technically restricted on this visa).",
+  timeline_summary: "Consulate processing takes 4–8 weeks. Gather documents carefully as requirements are strict.",
+  next_action: "Confirm you have sufficient funds (approx. €2,400/month for an individual) and gather apostilled documents.",
+  official_sources: [{ title: "Consulado España — Visa no lucrativa", url: "https://www.exteriores.gob.es" }],
+  steps: [
+    { title: "Confirm financial eligibility", description: "You must show at least 400% of the Spanish IPREM (approx. €2,400/month) in passive income or savings for a single applicant.", estimated_duration: "1 week", checklist_items: [
+      { label: "Monthly income or savings level confirmed (400% IPREM threshold)", item_type: "action" },
+      { label: "Bank statements covering last 6 months gathered", item_type: "document" },
+      { label: "Proof of income source (pension, investment, rental income)", item_type: "document" },
+    ]},
+    { title: "Gather and apostille documents", description: "All documents must be official, recent, and apostilled with a certified Spanish translation.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "Valid passport (min. 1 year validity)", item_type: "document" },
+      { label: "Criminal record certificate (apostilled + translated)", item_type: "document" },
+      { label: "Medical certificate from approved doctor", item_type: "document" },
+      { label: "Proof of accommodation in Spain (rental contract or property deed)", item_type: "document" },
+      { label: "Health insurance (full coverage, no co-payments, min. €30,000)", item_type: "document" },
+    ]},
+    { title: "Submit visa application at consulate", description: "Apply in person at the Spanish consulate serving your area of residence.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Application form (EX-01) completed", item_type: "document" },
+      { label: "All documents submitted", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+      { label: "Visa received and travel to Spain within validity", item_type: "action" },
+      { label: "TIE card applied for within 30 days of arrival", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainSelfEmployed: ProcessTemplate = {
+  id: "es_self_employed",
+  keywords: ["spain self employed", "autonomo spain", "freelance spain", "cuenta propia", "self employment visa spain", "start business spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería",
+  title: "Self-Employment Permit (Cuenta Propia) — Spain",
+  summary: "Non-EU/EEA nationals who want to work as self-employed (autónomo) in Spain need a residence and work permit for self-employed activity.",
+  timeline_summary: "Processing takes 1–3 months.",
+  next_action: "Prepare your business plan and check that your professional qualifications are recognised in Spain if in a regulated profession.",
+  official_sources: [{ title: "Extranjería — Cuenta propia", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Prepare business plan and documents", description: "Show your business activity is viable in Spain, you have the required qualifications, and sufficient funds.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "Business plan drafted (activity, clients, revenue projections)", item_type: "document" },
+      { label: "Professional qualifications homologated if in regulated profession", item_type: "document" },
+      { label: "Proof of funds to sustain activity", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+    ]},
+    { title: "Apply at Spanish consulate", description: "Apply for self-employment visa (visado de residencia y trabajo por cuenta propia) at the consulate in your home country.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Application form and all documents submitted", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Enter Spain and register as autónomo", description: "Register with the Agencia Tributaria (tax authority), Social Security as autónomo, and get your TIE card.", estimated_duration: "First month", checklist_items: [
+      { label: "Padron municipal completed", item_type: "action" },
+      { label: "Registered with Agencia Tributaria (NIE + tax obligations)", item_type: "action" },
+      { label: "Registered with Social Security as autónomo", item_type: "action" },
+      { label: "TIE card applied for at Extranjería", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainNIE: ProcessTemplate = {
+  id: "es_nie",
+  keywords: ["nie spain", "número identificación extranjero", "nie number", "foreigner id spain", "spain tax number foreigner", "nie certificate"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Policía Nacional / Consulado Español",
+  title: "NIE Number (Número de Identificación de Extranjero) — Spain",
+  summary: "The NIE is a personal tax and identification number required for almost all legal and financial activities in Spain — buying property, working, opening a bank account, signing contracts.",
+  timeline_summary: "In Spain: appointment within days to weeks. At a consulate abroad: typically 2–4 weeks.",
+  next_action: "Book an appointment at the Policía Nacional (in Spain) or the nearest Spanish consulate (from abroad).",
+  official_sources: [{ title: "Policía Nacional — NIE", url: "https://www.policia.es/nie.html" }],
+  steps: [
+    { title: "Book appointment", description: "In Spain: book at sede.gob.es (cita previa for NIE at Policía Nacional or Extranjería). From abroad: contact the Spanish consulate.", estimated_duration: "Days to weeks waiting", checklist_items: [
+      { label: "Appointment booked at Policía Nacional (sede.gob.es) or consulate", item_type: "appointment" },
+    ]},
+    { title: "Attend appointment with documents", description: "Bring completed EX-15 form, valid passport and copy, and justification for needing the NIE (job offer, property purchase, etc.).", estimated_duration: "1 day", checklist_items: [
+      { label: "Form EX-15 (solicitud de NIE) completed", item_type: "document" },
+      { label: "Valid passport + photocopy", item_type: "document" },
+      { label: "Justification document (employment contract, property deed, etc.)", item_type: "document" },
+      { label: "Tasas form 790 (fee paid, approx. €10–12)", item_type: "payment" },
+    ]},
+    { title: "Receive NIE certificate", description: "The NIE certificate (certificado de NIE) is issued immediately or within a few days. It is a green A4 certificate — not a residence card.", estimated_duration: "Same day to 1 week", checklist_items: [
+      { label: "NIE certificate received", item_type: "document" },
+      { label: "NIE used for tax registration, bank account, and other formalities", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainEEARegistration: ProcessTemplate = {
+  id: "es_eea_registration",
+  keywords: ["eu registration spain", "certificado registro ue", "eu citizen spain", "registro ciudadano ue", "green certificate spain", "eu residency certificate spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería / Policía Nacional",
+  title: "EU/EEA Residence Certificate — Spain",
+  summary: "EU/EEA citizens staying more than 3 months in Spain must register and obtain a Certificado de Registro de Ciudadano de la UE (the 'green certificate'). This acts as proof of residence.",
+  timeline_summary: "Registration appointment typically available within 1–4 weeks. Certificate issued same day.",
+  next_action: "Book a cita previa at the Oficina de Extranjería or Policía Nacional in your province.",
+  official_sources: [{ title: "Extranjería — Certificado de registro UE", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Book appointment (cita previa)", description: "Book online at sede.gob.es for the Certificado de Registro de Ciudadano de la UE.", estimated_duration: "1–4 weeks waiting", checklist_items: [
+      { label: "Appointment booked at sede.gob.es", item_type: "appointment" },
+      { label: "Padron municipal (empadronamiento) completed at Ayuntamiento first", item_type: "action" },
+    ]},
+    { title: "Attend appointment", description: "Bring documents proving your EU identity and qualifying basis (work, study, self-sufficiency).", estimated_duration: "1 day", checklist_items: [
+      { label: "EU passport or national identity card", item_type: "document" },
+      { label: "Form EX-18 completed", item_type: "document" },
+      { label: "Proof of qualifying basis: employment contract / enrolment letter / bank statements", item_type: "document" },
+      { label: "Padron certificate (empadronamiento)", item_type: "document" },
+      { label: "Tasas 790 fee paid (approx. €10)", item_type: "payment" },
+    ]},
+    { title: "Receive green certificate and NIE", description: "The green certificate with your NIE (Número de Identificación de Extranjero) number is issued at the appointment.", estimated_duration: "Same day", checklist_items: [
+      { label: "Green certificate (Certificado de Registro) received", item_type: "document" },
+      { label: "NIE number noted and used for banking, taxes, etc.", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainFamilyReunification: ProcessTemplate = {
+  id: "es_family_reunification",
+  keywords: ["spain family reunification", "reagrupación familiar", "family visa spain", "spouse visa spain", "join family spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería",
+  title: "Family Reunification (Reagrupación Familiar) — Spain",
+  summary: "Legal residents in Spain who have had a residence permit for at least 1 year (and renewed for at least 1 more year) can bring close family members to join them.",
+  timeline_summary: "Processing typically takes 2–4 months.",
+  next_action: "The sponsor in Spain must apply for family reunification — the family member cannot apply directly.",
+  official_sources: [{ title: "Extranjería — Reagrupación familiar", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Sponsor checks eligibility and applies", description: "The sponsor must have held a residence permit for 1+ year and have renewed it. They must show adequate housing and sufficient income (at least 150% IPREM for spouse).", estimated_duration: "1–2 weeks prep", checklist_items: [
+      { label: "Sponsor's residence permit validity confirmed (1 year held, renewed)", item_type: "document" },
+      { label: "Income proof: at least 150% IPREM (approx. €900/month for spouse)", item_type: "document" },
+      { label: "Housing adequacy report (informe de vivienda) obtained from Ayuntamiento", item_type: "document" },
+      { label: "Application (EX-08 or EX-09) submitted at Extranjería", item_type: "action" },
+    ]},
+    { title: "Family member applies for visa at consulate", description: "Once authorisation is granted, the family member applies for a family reunification visa at the Spanish consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Authorisation granted and sent to family member", item_type: "document" },
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Passport and family relationship documents submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Family member arrives and gets TIE", description: "After arriving, the family member must obtain their own TIE residence card.", estimated_duration: "First month", checklist_items: [
+      { label: "Padron completed at Ayuntamiento", item_type: "action" },
+      { label: "TIE appointment booked at Extranjería", item_type: "appointment" },
+      { label: "TIE card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const spainLongTermResidence: ProcessTemplate = {
+  id: "es_long_term_residence",
+  keywords: ["spain long term residence", "residencia larga duración", "permanent spain", "5 year spain", "long stay spain", "indefinite spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería",
+  title: "Long-Term / Permanent Residence — Spain",
+  summary: "After 5 years of continuous legal residence in Spain, non-EU/EEA nationals can apply for long-term EU residence (residencia de larga duración). This gives the right to live and work indefinitely.",
+  timeline_summary: "Processing takes 3–6 months.",
+  next_action: "Confirm you have 5 continuous years of legal residence and gather your documents.",
+  official_sources: [{ title: "Extranjería — Larga duración", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Check eligibility", description: "5 continuous years of legal residence, sufficient income, no serious criminal record, and no welfare abuse.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "Income at least 100% IPREM confirmed", item_type: "action" },
+      { label: "No long absences from Spain (max 6 months per year, 10 months total)", item_type: "action" },
+    ]},
+    { title: "Gather documents and apply", description: "Submit application (form EX-11) at the Oficina de Extranjería.", estimated_duration: "3–6 months", checklist_items: [
+      { label: "Form EX-11 completed", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current residence permit (TIE)", item_type: "document" },
+      { label: "Proof of 5 years' residence (all prior permits, padron history)", item_type: "document" },
+      { label: "Proof of income", item_type: "document" },
+      { label: "Criminal record certificate", item_type: "document" },
+      { label: "Tasas fee paid", item_type: "payment" },
+      { label: "TIE card for long-term residence collected", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainCitizenship: ProcessTemplate = {
+  id: "es_citizenship",
+  keywords: ["spanish citizenship", "ciudadanía española", "naturalización españa", "become spanish", "spanish passport", "nationality spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Ministerio de Justicia / Registro Civil",
+  title: "Spanish Citizenship by Naturalisation",
+  summary: "After 10 years of legal residence (2 years for nationals of Latin American countries, Portugal, Philippines, Equatorial Guinea, Andorra, and Sephardic Jews), you can apply for Spanish citizenship.",
+  timeline_summary: "Processing has historically taken 1–3 years. Spain allows dual citizenship with many countries.",
+  next_action: "Confirm your years of legal residence and gather the required documents.",
+  official_sources: [{ title: "Ministerio de Justicia — Nacionalidad", url: "https://www.mjusticia.gob.es/es/ciudadanos/tramites/nacionalidad-residencia" }],
+  steps: [
+    { title: "Check eligibility", description: "Standard: 10 years legal residence (2 years for Iberoamerican nationals and others with special ties to Spain), no serious criminal record, basic Spanish language skills (DELE A2+), knowledge of Spanish constitution and society (CCSE exam).", estimated_duration: "1 week", checklist_items: [
+      { label: "Years of legal residence confirmed (10 standard, 2 for eligible nationalities)", item_type: "action" },
+      { label: "DELE A2 Spanish language certificate obtained", item_type: "document" },
+      { label: "CCSE exam (knowledge of Spain) passed", item_type: "document" },
+    ]},
+    { title: "Apply online", description: "Submit application online via the Ministerio de Justicia portal (expediente de nacionalidad).", estimated_duration: "1–3 years processing", checklist_items: [
+      { label: "Online application submitted", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Passport, current TIE, criminal record, birth certificate (apostilled) uploaded", item_type: "document" },
+      { label: "DELE and CCSE certificates uploaded", item_type: "document" },
+      { label: "Resolution (resolución) received", item_type: "document" },
+      { label: "Oath sworn at Registro Civil", item_type: "appointment" },
+      { label: "Spanish passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainAsylum: ProcessTemplate = {
+  id: "es_asylum",
+  keywords: ["asylum spain", "asilo españa", "refugee spain", "international protection spain", "solicitud asilo", "asylum seeker spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Asilo y Refugio (OAR)",
+  title: "Asylum Application — Spain",
+  summary: "Anyone in Spain who needs international protection can apply for asylum (protección internacional). Apply at the OAR in Madrid, a border post, or at a police station.",
+  timeline_summary: "Processing times vary widely: from months to several years. You may stay in Spain while your case is pending.",
+  next_action: "Go to the Oficina de Asilo y Refugio (OAR) in Madrid or a designated police station to register your asylum application.",
+  official_sources: [{ title: "OAR — Solicitud de protección internacional", url: "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/extranjeria/asilo-y-refugio/" }],
+  steps: [
+    { title: "Register application", description: "Present yourself at OAR (Madrid), a police station designated for asylum, or a border post. State clearly that you are requesting international protection.", estimated_duration: "1 day", checklist_items: [
+      { label: "OAR or designated police station visited", item_type: "action" },
+      { label: "Application intention stated (manifestación de la voluntad)", item_type: "action" },
+      { label: "Any available identity documents presented", item_type: "document" },
+      { label: "Appointment to formalise application (formalización) given", item_type: "appointment" },
+    ]},
+    { title: "Formalise the application", description: "At the scheduled appointment you give a full account of your reasons for seeking protection (audiencia). You have the right to a lawyer and interpreter.", estimated_duration: "Scheduled date", checklist_items: [
+      { label: "Legal representation arranged (free legal aid available)", item_type: "action" },
+      { label: "Formalisation appointment attended", item_type: "appointment" },
+      { label: "Red documentation card (tarjeta roja) received — provisional stay authorisation", item_type: "document" },
+    ]},
+    { title: "Await decision", description: "OAR examines your case and issues a resolution. If approved, you receive refugee status or subsidiary protection. If rejected, you can appeal.", estimated_duration: "Months to years", checklist_items: [
+      { label: "Decision received", item_type: "document" },
+      { label: "If approved: residence permit and travel document issued", item_type: "action" },
+      { label: "If rejected: appeal to Audiencia Nacional within 2 months", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -2785,6 +3103,17 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   norwayNorskprøven,
   norwayFreelance,
   norwayQualificationRecognition,
+  // Spain
+  spainWorkPermit,
+  spainStudentVisa,
+  spainNonLucrative,
+  spainSelfEmployed,
+  spainNIE,
+  spainEEARegistration,
+  spainFamilyReunification,
+  spainLongTermResidence,
+  spainCitizenship,
+  spainAsylum,
   // Netherlands
   netherlandsHighlySkilledMigrant,
   // Ireland
