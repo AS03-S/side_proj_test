@@ -1,20 +1,25 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-if (!process.env.SUPABASE_URL) throw new Error("SUPABASE_URL is not set");
-if (!process.env.SUPABASE_SERVICE_ROLE_KEY) throw new Error("SUPABASE_SERVICE_ROLE_KEY is not set");
+let _client: SupabaseClient | null = null;
 
 /** Server-side Supabase client using the service role key.
  *  Never expose this to the browser. */
-export const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY,
-  {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-    },
-  }
-);
+export function getSupabase(): SupabaseClient {
+  if (_client) return _client;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url) throw new Error("SUPABASE_URL is not set");
+  if (!key) throw new Error("SUPABASE_SERVICE_ROLE_KEY is not set");
+  _client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  return _client;
+}
+
+/** @deprecated Use getSupabase() instead */
+export const supabase = new Proxy({} as SupabaseClient, {
+  get(_t, prop) {
+    return (getSupabase() as unknown as Record<string | symbol, unknown>)[prop];
+  },
+});
 
 // ── Row types ──────────────────────────────────────────────────────────────
 
