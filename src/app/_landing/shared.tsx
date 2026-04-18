@@ -261,25 +261,31 @@ export function WaitlistForm({ lang, layout = "row" }: WaitlistFormProps) {
 
 // ── Nav ───────────────────────────────────────────────────────────────────────
 
+const ALL_LANGS = ["EN", "DE", "FR", "IT", "SV", "PL", "UK", "AR"] as const;
+const LANG_LABELS: Record<string, string> = {
+  EN: "EN", DE: "DE", FR: "FR", IT: "IT", SV: "SV", PL: "PL", UK: "УК", AR: "ع",
+};
+
 interface NavProps {
   lang: string;
   onCTA: () => void;
+  onLang: (l: string) => void;
   pulse: boolean;
   variant?: "A" | "B";
 }
 
-export function Nav({ lang, onCTA, pulse, variant = "A" }: NavProps) {
+export function Nav({ lang, onCTA, onLang, pulse, variant = "A" }: NavProps) {
   const t = CONTENT[lang as keyof typeof CONTENT] as LangContent;
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 40,
-      background: "rgba(244,247,255,0.92)",
+      background: "rgba(255,255,255,0.92)",
       backdropFilter: "saturate(1.1) blur(10px)",
       borderBottom: "1px solid var(--line)",
     }}>
       <div
         className={variant === "B" ? "container-wide" : "container-narrow"}
-        style={{ display: "flex", height: 60, alignItems: "center", justifyContent: "space-between" }}
+        style={{ display: "flex", height: 60, alignItems: "center", justifyContent: "space-between", gap: 12 }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <Logo size={34} />
@@ -289,9 +295,33 @@ export function Nav({ lang, onCTA, pulse, variant = "A" }: NavProps) {
             </span>
           )}
         </div>
-        <button onClick={onCTA} className={"btn btn-primary" + (pulse ? " nav-pulse" : "")} style={{ fontSize: 13 }}>
-          {t.nav_cta}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ display: "flex", gap: 2 }}>
+            {ALL_LANGS.map((l) => (
+              <button
+                key={l}
+                onClick={() => onLang(l)}
+                className="mono"
+                style={{
+                  fontSize: 11,
+                  fontWeight: lang === l ? 700 : 400,
+                  color: lang === l ? "var(--navy)" : "var(--mute)",
+                  background: lang === l ? "var(--navy-light)" : "transparent",
+                  border: "none",
+                  borderRadius: 4,
+                  padding: "3px 7px",
+                  cursor: "pointer",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {LANG_LABELS[l]}
+              </button>
+            ))}
+          </div>
+          <button onClick={onCTA} className={"btn btn-primary" + (pulse ? " nav-pulse" : "")} style={{ fontSize: 13 }}>
+            {t.nav_cta}
+          </button>
+        </div>
       </div>
     </nav>
   );

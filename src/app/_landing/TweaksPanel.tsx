@@ -8,7 +8,7 @@ interface Props {
   setState: (patch: Partial<TweakState>) => void;
 }
 
-const LANGS: Language[] = ["EN", "DE", "SV", "AR"];
+const LANGS: Language[] = ["EN", "DE", "FR", "IT", "SV", "PL", "UK", "AR"];
 
 export function TweaksPanel({ open, state, setState }: Props) {
   if (!open) return null;

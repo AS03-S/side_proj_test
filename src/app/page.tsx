@@ -46,8 +46,8 @@ export default function App() {
   return (
     <div className={rootClass}>
       {state.direction === "A"
-        ? <DirectionA lang={state.language} />
-        : <DirectionB lang={state.language} />
+        ? <DirectionA lang={state.language} onLang={(l) => setState({ language: l as TweakState["language"] })} />
+        : <DirectionB lang={state.language} onLang={(l) => setState({ language: l as TweakState["language"] })} />
       }
       <TweaksPanel open={editOn} state={state} setState={setState} />
     </div>
