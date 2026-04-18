@@ -971,6 +971,463 @@ const germanyJobSeekerVisa: ProcessTemplate = {
   ],
 };
 
+// ── Germany (continued) ────────────────────────────────────────────────────
+
+const germanyFamilyReunification: ProcessTemplate = {
+  id: "de_family_reunification",
+  keywords: ["germany family reunification", "family visa germany", "spouse visa germany", "familienzusammenführung", "nachzug", "join family germany", "dependent visa germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Family Reunification Visa — Germany",
+  summary: "Allows spouses and minor children of German residents or citizens to join them in Germany. The sponsor must prove sufficient income and suitable housing.",
+  timeline_summary: "Embassy appointments can take weeks to months to obtain. After submission, processing takes 4–12 weeks.",
+  next_action: "Contact the German embassy or consulate in your home country to check current appointment availability.",
+  official_sources: [{ title: "BAMF — Family reunification", url: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html" }],
+  steps: [
+    {
+      title: "Sponsor confirms eligibility",
+      description: "The person already in Germany (sponsor) must have a valid residence permit for at least 12 months, sufficient income (above social welfare threshold), and adequate housing.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Sponsor's residence permit validity confirmed (min. 12 months remaining)", item_type: "document" },
+        { label: "Income proof gathered (last 3 payslips, employment contract)", item_type: "document" },
+        { label: "Housing adequacy confirmed (rental contract, room sizes)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Applicant books embassy appointment",
+      description: "The family member abroad must apply at the German embassy or consulate in their country of residence. Book as early as possible — appointments can be scarce.",
+      estimated_duration: "Weeks to months (appointment wait)",
+      checklist_items: [
+        { label: "Nearest German embassy or consulate identified", item_type: "action" },
+        { label: "Appointment booked online", item_type: "appointment" },
+        { label: "Application form (Antrag auf Erteilung eines Visums) completed", item_type: "document" },
+      ],
+    },
+    {
+      title: "Gather and submit documents",
+      description: "Both the sponsor and applicant must provide documents. Requirements vary slightly by embassy.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Valid passport (at least 6 months beyond intended stay)", item_type: "document" },
+        { label: "Passport-size biometric photos", item_type: "document" },
+        { label: "Marriage certificate or birth certificate (apostilled/translated)", item_type: "document" },
+        { label: "Proof of relationship (photos, correspondence if needed)", item_type: "document" },
+        { label: "Sponsor's documents sent from Germany", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+        { label: "All documents submitted at embassy appointment", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Receive visa and travel",
+      description: "If approved, you receive a national visa (D visa) valid for 3–6 months. You must enter Germany and register within its validity.",
+      estimated_duration: "4–12 weeks processing",
+      checklist_items: [
+        { label: "Visa decision received", item_type: "document" },
+        { label: "Passport with visa collected from embassy", item_type: "action" },
+        { label: "Travel to Germany arranged within visa validity", item_type: "action" },
+        { label: "Address registered at Einwohnermeldeamt within 2 weeks of arrival", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyAusbuildung: ProcessTemplate = {
+  id: "de_ausbildung",
+  keywords: ["ausbildung", "vocational training germany", "apprenticeship germany", "dual training", "berufsausbildung", "vocational visa", "ausbildungsvisum"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Vocational Training Visa (Ausbildung) — Germany",
+  summary: "Allows non-EU nationals to come to Germany for a recognised vocational training programme (Ausbildung). Germany has a strong demand for trainees in many sectors.",
+  timeline_summary: "Finding an Ausbildung placement can take months. Visa processing takes 4–12 weeks after application.",
+  next_action: "Find an accredited Ausbildung position in Germany and confirm your employer will support the visa application.",
+  official_sources: [{ title: "Make it in Germany — Ausbildung", url: "https://www.make-it-in-germany.com/en/working-in-germany/training/ausbildung" }],
+  steps: [
+    {
+      title: "Find an Ausbildung placement",
+      description: "Search for a recognised dual vocational training position (betriebliche Ausbildung) with a German employer. The training company and vocational school together form the programme.",
+      estimated_duration: "1–6 months",
+      checklist_items: [
+        { label: "Ausbildung position found (job boards: Make it in Germany, Bundesagentur für Arbeit)", item_type: "action" },
+        { label: "Training contract (Ausbildungsvertrag) signed with employer", item_type: "document" },
+        { label: "Programme is in the list of recognised occupations (Ausbildungsberufe)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Obtain recognition of school qualifications (if needed)",
+      description: "Your previous school-leaving certificate may need to be recognised as equivalent to a German school qualification. Contact anabin database or relevant authority.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Qualifications checked on anabin database", item_type: "action" },
+        { label: "Recognition applied for if required", item_type: "action" },
+        { label: "Recognition certificate obtained", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for vocational training visa",
+      description: "Apply at the German embassy in your home country.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Signed training contract", item_type: "document" },
+        { label: "Proof of German language skills (usually B1 minimum)", item_type: "document" },
+        { label: "School-leaving certificate and recognition (if applicable)", item_type: "document" },
+        { label: "Proof of accommodation in Germany", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Arrive and register",
+      description: "After arrival, register your address and apply for a residence permit for vocational training.",
+      estimated_duration: "First 2 weeks",
+      checklist_items: [
+        { label: "Address registered at Einwohnermeldeamt", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+        { label: "Bank account opened", item_type: "action" },
+        { label: "Health insurance enrolled", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyStudentVisa: ProcessTemplate = {
+  id: "de_student_visa",
+  keywords: ["germany student visa", "study germany", "university germany", "studienvisum", "hochschule", "german university", "study permit germany", "student residence germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Student Visa — Germany",
+  summary: "Non-EU nationals who have been accepted at a German university or recognised higher education institution can apply for a student visa (Studienvisum).",
+  timeline_summary: "Allow at least 3 months before your intended start date. Processing takes 4–12 weeks.",
+  next_action: "Secure a university admission letter (Zulassungsbescheid) before applying for the visa.",
+  official_sources: [{ title: "DAAD — Visa and residence permit", url: "https://www.daad.de/en/study-and-research-in-germany/plan-your-studies/visa-and-residence-permit/" }],
+  steps: [
+    {
+      title: "Receive university admission",
+      description: "Apply to and receive an admission letter from a state-recognised German university. German universities are largely tuition-free.",
+      estimated_duration: "2–6 months",
+      checklist_items: [
+        { label: "German university (Hochschule) identified", item_type: "action" },
+        { label: "Application submitted to university", item_type: "action" },
+        { label: "Admission letter (Zulassungsbescheid) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Open blocked account (Sperrkonto)",
+      description: "You must prove you can fund your studies. The standard method is opening a blocked account with at least €11,208 (as of 2024) deposited.",
+      estimated_duration: "1–4 weeks",
+      checklist_items: [
+        { label: "Blocked account opened (Deutsche Bank, Fintiba, Expatrio, etc.)", item_type: "action" },
+        { label: "Required amount deposited (check current year's figure)", item_type: "payment" },
+        { label: "Blocked account confirmation letter obtained", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for student visa at German embassy",
+      description: "Apply at the German embassy or consulate in your home country.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "University admission letter", item_type: "document" },
+        { label: "Blocked account proof", item_type: "document" },
+        { label: "German language proof (if degree is in German) or English proof", item_type: "document" },
+        { label: "Health insurance proof (travel/incoming insurance for visa; statutory insurance after arrival)", item_type: "document" },
+        { label: "Biometric photos", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Arrive and enrol",
+      description: "After arrival, register your address, enrol at the university, and convert your visa to a student residence permit.",
+      estimated_duration: "First 3 weeks",
+      checklist_items: [
+        { label: "Address registered at Einwohnermeldeamt", item_type: "action" },
+        { label: "Enrolled at university and student ID obtained", item_type: "action" },
+        { label: "Statutory health insurance activated (TK, AOK, Barmer, etc.)", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+        { label: "Blocked account accessed (monthly release begins)", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanySettlement: ProcessTemplate = {
+  id: "de_niederlassungserlaubnis",
+  keywords: ["niederlassungserlaubnis", "permanent residence germany", "settle germany", "permanent permit germany", "long term germany", "indefinite leave germany", "unbefristet aufenthalt"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Ausländerbehörde",
+  title: "Permanent Settlement Permit (Niederlassungserlaubnis) — Germany",
+  summary: "After living in Germany for a qualifying period (usually 5 years), non-EU nationals can apply for a permanent settlement permit (Niederlassungserlaubnis), allowing indefinite residence.",
+  timeline_summary: "Processing takes 4–12 weeks at the local Ausländerbehörde.",
+  next_action: "Check whether you meet the 5-year residency requirement and language/integration conditions.",
+  official_sources: [{ title: "BAMF — Settlement permit", url: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Niederlassung/niederlassung-node.html" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Standard requirements: 5 years of legal residence on certain permit types, adequate German language skills (B1), sufficient income (no reliance on welfare), pension contributions paid, clean criminal record, and a valid current permit.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+        { label: "Current permit type checked (must be an eligible permit category)", item_type: "document" },
+        { label: "No welfare benefits (Bürgergeld/Sozialhilfe) received", item_type: "action" },
+        { label: "German language level B1 or higher confirmed", item_type: "action" },
+        { label: "Pension insurance contributions history confirmed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "Collect all supporting documents. Requirements vary slightly by Ausländerbehörde.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Current residence permit", item_type: "document" },
+        { label: "Proof of income (recent payslips, employment contract)", item_type: "document" },
+        { label: "German language certificate (B1 or integration course completion)", item_type: "document" },
+        { label: "Pension insurance statement (Rentenversicherungsverlauf)", item_type: "document" },
+        { label: "Criminal record clearance (Führungszeugnis)", item_type: "document" },
+        { label: "Rental contract and registration confirmation (Meldebescheinigung)", item_type: "document" },
+        { label: "Biometric photos", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply at Ausländerbehörde",
+      description: "Submit your application in person at the local foreigners' authority.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Appointment booked at Ausländerbehörde", item_type: "appointment" },
+        { label: "All documents submitted at appointment", item_type: "action" },
+        { label: "Application fee paid (approx. €113)", item_type: "payment" },
+        { label: "Receipt / interim permit received while waiting", item_type: "document" },
+        { label: "Niederlassungserlaubnis card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyAnmeldung: ProcessTemplate = {
+  id: "de_anmeldung",
+  keywords: ["anmeldung", "register address germany", "einwohnermeldeamt", "registration germany", "meldebescheinigung", "address registration", "residence registration germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Einwohnermeldeamt (Bürgeramt)",
+  title: "Address Registration (Anmeldung) — Germany",
+  summary: "Everyone living in Germany must register their address at the local Einwohnermeldeamt (citizens' office) within 14 days of moving in. You will receive a Meldebescheinigung (registration confirmation), which is needed for almost everything else.",
+  timeline_summary: "The registration itself takes minutes at the office. Getting an appointment can take a few days to several weeks in large cities.",
+  next_action: "Book an appointment at your local Bürgeramt/Einwohnermeldeamt as soon as you have a fixed address.",
+  official_sources: [{ title: "Berlin.de — Anmeldung (example)", url: "https://www.berlin.de/einwanderung/en/living/registration/" }],
+  steps: [
+    {
+      title: "Find your local Einwohnermeldeamt",
+      description: "The relevant office depends on the district (Bezirk) of your address. Search '[your city] Bürgeramt Anmeldung' to find the right office and book online.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Local Bürgeramt/Einwohnermeldeamt identified", item_type: "action" },
+        { label: "Appointment booked (online or by phone)", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Attend appointment",
+      description: "Bring your completed registration form and required documents.",
+      estimated_duration: "30 minutes",
+      checklist_items: [
+        { label: "Registration form (Anmeldeformular) completed", item_type: "document" },
+        { label: "Valid passport or national ID card", item_type: "document" },
+        { label: "Landlord confirmation (Wohnungsgeberbestätigung) — required since 2015", item_type: "document" },
+        { label: "Appointment attended", item_type: "appointment" },
+        { label: "Meldebescheinigung (registration confirmation) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Use Meldebescheinigung for other registrations",
+      description: "The Meldebescheinigung is required for opening a bank account, applying for a tax ID, registering with health insurance, and applying for a residence permit.",
+      estimated_duration: "Ongoing",
+      checklist_items: [
+        { label: "Bank account opened with Meldebescheinigung", item_type: "action" },
+        { label: "Tax ID (Steueridentifikationsnummer) received by post (automatic, ~2 weeks)", item_type: "document" },
+        { label: "Health insurance enrolled", item_type: "action" },
+        { label: "Residence permit application started at Ausländerbehörde (if non-EU)", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyFreelanceVisa: ProcessTemplate = {
+  id: "de_freelance_visa",
+  keywords: ["freelance visa germany", "freiberufler", "self-employed germany", "freelancer germany", "niederlassungserlaubnis selbständig", "freiberuflich visa", "creative visa germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Freelance / Self-Employment Visa — Germany",
+  summary: "Germany offers a residence permit for freelancers (Freiberufler) and the self-employed. Freelancers in regulated professions (artists, writers, journalists, engineers, teachers) have a clearer path than commercial self-employment.",
+  timeline_summary: "Embassy processing takes 4–12 weeks. Initial permit is typically issued for 1–3 years.",
+  next_action: "Identify whether your activity qualifies as a liberal profession (freier Beruf) or commercial self-employment (Gewerbe), as the requirements differ.",
+  official_sources: [{ title: "Make it in Germany — Self-employment", url: "https://www.make-it-in-germany.com/en/working-in-germany/self-employed" }],
+  steps: [
+    {
+      title: "Determine your activity type",
+      description: "Liberal professions (freie Berufe) include artists, writers, musicians, journalists, architects, doctors, lawyers, engineers, and teachers. Commercial self-employment requires additional trade registration (Gewerbeanmeldung).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Activity classified: liberal profession or commercial self-employment", item_type: "action" },
+        { label: "Relevant professional association or chamber contacted if applicable", item_type: "action" },
+      ],
+    },
+    {
+      title: "Prepare business concept and financial projections",
+      description: "You need a viable business plan showing clients, expected income, and German market demand for your services.",
+      estimated_duration: "2–4 weeks",
+      checklist_items: [
+        { label: "Business plan (Geschäftsplan) written", item_type: "document" },
+        { label: "Existing client letters of intent or contracts (strongly recommended)", item_type: "document" },
+        { label: "Financial projections for first 2 years", item_type: "document" },
+        { label: "Professional portfolio or credentials", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply at German embassy",
+      description: "Apply for a national visa (D visa) for self-employment at the German embassy in your home country.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Business plan and client letters submitted", item_type: "document" },
+        { label: "Proof of professional qualifications", item_type: "document" },
+        { label: "Health insurance proof", item_type: "document" },
+        { label: "Proof of sufficient funds to start", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Arrive, register, and obtain residence permit",
+      description: "After arrival, complete Anmeldung and apply for a residence permit for self-employment at the Ausländerbehörde.",
+      estimated_duration: "First 3 weeks",
+      checklist_items: [
+        { label: "Anmeldung (address registration) completed", item_type: "action" },
+        { label: "Trade registration (Gewerbeanmeldung) filed if commercial self-employment", item_type: "action" },
+        { label: "Business bank account opened", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyCitizenship: ProcessTemplate = {
+  id: "de_citizenship",
+  keywords: ["german citizenship", "einbürgerung", "naturalisation germany", "become german", "german passport", "german nationality", "staatsbürgerschaft"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Einbürgerungsbehörde (Naturalisation Office)",
+  title: "German Citizenship by Naturalisation (Einbürgerung)",
+  summary: "After living in Germany for 5 years (reduced to 3 for exceptional integration), legal residents can apply for German citizenship. Germany now allows dual citizenship.",
+  timeline_summary: "Processing typically takes 12–24 months depending on the state and workload.",
+  next_action: "Check your years of legal residence and whether you meet the income, language, and integration requirements.",
+  official_sources: [{ title: "BAMF — Naturalisation", url: "https://www.bamf.de/EN/Themen/Integration/Einbuergerung/einbuergerung-node.html" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Standard: 5 years legal residence, B1 German (C1 preferred), self-sufficient income, no serious criminal convictions, renunciation of prior citizenship (exceptions apply — Germany now widely accepts dual citizenship).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "5 years (or 3 years with exceptional integration) of legal residence confirmed", item_type: "action" },
+        { label: "No reliance on welfare benefits", item_type: "action" },
+        { label: "German language level B1+ confirmed", item_type: "action" },
+        { label: "No significant criminal record", item_type: "action" },
+        { label: "Dual citizenship situation reviewed (Germany generally permits it now)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "The required documents list is extensive. Your local naturalisation office may have a specific checklist.",
+      estimated_duration: "4–8 weeks",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Current residence permit", item_type: "document" },
+        { label: "Meldebescheinigung (current registration)", item_type: "document" },
+        { label: "Proof of income / employment (last 3 payslips)", item_type: "document" },
+        { label: "German language certificate (B1 or integration course graduation)", item_type: "document" },
+        { label: "Criminal record clearance (Führungszeugnis, €13)", item_type: "document" },
+        { label: "Birth certificate (apostilled + translated if not German)", item_type: "document" },
+        { label: "Marriage/divorce certificates if applicable", item_type: "document" },
+        { label: "Pension insurance record", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit application to naturalisation office",
+      description: "Submit to the Einbürgerungsbehörde in your city/district. Some offices allow online pre-registration.",
+      estimated_duration: "12–24 months processing",
+      checklist_items: [
+        { label: "Appointment at Einbürgerungsbehörde booked", item_type: "appointment" },
+        { label: "Application form completed and submitted", item_type: "action" },
+        { label: "Application fee paid (€255, reduced to €51 for minors)", item_type: "payment" },
+        { label: "Naturalisation certificate (Einbürgerungsurkunde) received", item_type: "document" },
+        { label: "German passport applied for", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyRecognition: ProcessTemplate = {
+  id: "de_qualification_recognition",
+  keywords: ["anerkennung", "qualification recognition germany", "foreign qualification germany", "anabin", "zab", "nostrification", "foreign degree germany", "berufsanerkennung"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Relevant competent authority (varies by profession)",
+  title: "Foreign Qualification Recognition — Germany",
+  summary: "Foreign professional and academic qualifications can be recognised in Germany to allow you to work in regulated professions or have your degree accepted. The process depends on the profession and the country of origin.",
+  timeline_summary: "Recognition processes range from a few weeks (academic equivalency) to 12+ months (regulated professions requiring assessments).",
+  next_action: "Use the Recognition Finder at anerkennung-in-deutschland.de to identify the correct authority and procedure for your qualification.",
+  official_sources: [{ title: "Anerkennung in Deutschland — Recognition Finder", url: "https://www.anerkennung-in-deutschland.de/en" }],
+  steps: [
+    {
+      title: "Identify your qualification type and competent authority",
+      description: "Regulated professions (doctors, nurses, teachers, engineers in certain roles) require formal recognition. Non-regulated professions can use recognition for labour market advantage. Use the Recognition Finder tool to find the right authority.",
+      estimated_duration: "1–3 days",
+      checklist_items: [
+        { label: "Profession classified as regulated or non-regulated", item_type: "action" },
+        { label: "Competent authority identified via anerkennung-in-deutschland.de", item_type: "action" },
+        { label: "Recognition Finder checklist downloaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Have documents translated and apostilled",
+      description: "All foreign documents must be officially translated into German by a certified translator and, where required, apostilled.",
+      estimated_duration: "2–6 weeks",
+      checklist_items: [
+        { label: "Original diplomas/certificates gathered", item_type: "document" },
+        { label: "Transcripts (academic records) obtained", item_type: "document" },
+        { label: "Certified German translation completed", item_type: "document" },
+        { label: "Apostille obtained from issuing country (if required)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit recognition application",
+      description: "Submit to the competent authority. For academic degrees, ZAB (Central Office for Foreign Education) or anabin database may suffice.",
+      estimated_duration: "Varies (weeks to months)",
+      checklist_items: [
+        { label: "Application submitted to competent authority", item_type: "action" },
+        { label: "Application fee paid (varies by authority and profession)", item_type: "payment" },
+        { label: "Recognition notice (Anerkennungsbescheid) or equivalency statement received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Complete any compensation measures if required",
+      description: "For regulated professions, if there are qualification gaps, you may need to complete an adaptation course (Anpassungslehrgang) or aptitude test (Eignungsprüfung).",
+      estimated_duration: "3–12 months (if applicable)",
+      checklist_items: [
+        { label: "Compensation measure requirement noted (if any)", item_type: "action" },
+        { label: "Adaptation course or aptitude test completed (if required)", item_type: "action" },
+        { label: "Full recognition certificate issued", item_type: "document" },
+      ],
+    },
+  ],
+};
+
 // ── Netherlands ────────────────────────────────────────────────────────────
 
 const netherlandsHighlySkilledMigrant: ProcessTemplate = {
@@ -1282,6 +1739,14 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   // Germany
   germanyEUBlueCard,
   germanyJobSeekerVisa,
+  germanyFamilyReunification,
+  germanyAusbuildung,
+  germanyStudentVisa,
+  germanySettlement,
+  germanyAnmeldung,
+  germanyFreelanceVisa,
+  germanyCitizenship,
+  germanyRecognition,
   // Netherlands
   netherlandsHighlySkilledMigrant,
   // Ireland
