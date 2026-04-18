@@ -20,12 +20,11 @@ export default async function AppLayout({
 }) {
   const session = await getServerSession(authOptions);
 
-  // Dev-password bypass — set by GET /dev/[token]
+  // Dev-password bypass — set by middleware when visiting /passwordOKLE
+  // Must match the DEV_PASSWORD constant in src/middleware.ts
   const cookieStore = await cookies();
   const devCookie = cookieStore.get("_dev_access");
-  const hasDevAccess =
-    !!process.env.DEV_PASSWORD &&
-    devCookie?.value === process.env.DEV_PASSWORD;
+  const hasDevAccess = devCookie?.value === "OKLE";
 
   if (!session && !hasDevAccess) {
     redirect("/login");
