@@ -13,7 +13,7 @@ export async function proxy(request: NextRequest) {
     if (token !== DEV_PASSWORD) {
       return NextResponse.redirect(new URL("/", request.url));
     }
-    const res = NextResponse.redirect(new URL("/dashboard", request.url));
+    const res = NextResponse.redirect(new URL("/login", request.url));
     res.cookies.set("_dev_access", DEV_PASSWORD, {
       httpOnly: true,
       path: "/",
