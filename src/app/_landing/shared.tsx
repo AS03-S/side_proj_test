@@ -69,26 +69,16 @@ export function IconCheck(props: React.SVGProps<SVGSVGElement>) {
 // ── Logo ──────────────────────────────────────────────────────────────────────
 
 export function Logo({ size = 20 }: { size?: number }) {
-  const id = "logo-grad";
+  const height = size;
+  const width = Math.round(size * 5.25); // ~aspect ratio of the SVG viewBox
   return (
-    <svg height={size} viewBox="0 0 220 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="migraDOCS">
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#1c2e9e" />
-          <stop offset="100%" stopColor="#3dc8c8" />
-        </linearGradient>
-      </defs>
-      <text
-        x="0" y="32"
-        fontFamily="'Nunito', system-ui, sans-serif"
-        fontWeight="700"
-        fontSize="32"
-        letterSpacing="-0.3"
-        fill={`url(#${id})`}
-      >
-        migraDOCS
-      </text>
-    </svg>
+    <img
+      src="/logo.svg"
+      alt="migraDOCS"
+      height={height}
+      width={width}
+      style={{ display: "block" }}
+    />
   );
 }
 
