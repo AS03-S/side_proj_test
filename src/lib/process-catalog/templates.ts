@@ -971,6 +971,463 @@ const germanyJobSeekerVisa: ProcessTemplate = {
   ],
 };
 
+// ── Germany (continued) ────────────────────────────────────────────────────
+
+const germanyFamilyReunification: ProcessTemplate = {
+  id: "de_family_reunification",
+  keywords: ["germany family reunification", "family visa germany", "spouse visa germany", "familienzusammenführung", "nachzug", "join family germany", "dependent visa germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Family Reunification Visa — Germany",
+  summary: "Allows spouses and minor children of German residents or citizens to join them in Germany. The sponsor must prove sufficient income and suitable housing.",
+  timeline_summary: "Embassy appointments can take weeks to months to obtain. After submission, processing takes 4–12 weeks.",
+  next_action: "Contact the German embassy or consulate in your home country to check current appointment availability.",
+  official_sources: [{ title: "BAMF — Family reunification", url: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html" }],
+  steps: [
+    {
+      title: "Sponsor confirms eligibility",
+      description: "The person already in Germany (sponsor) must have a valid residence permit for at least 12 months, sufficient income (above social welfare threshold), and adequate housing.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Sponsor's residence permit validity confirmed (min. 12 months remaining)", item_type: "document" },
+        { label: "Income proof gathered (last 3 payslips, employment contract)", item_type: "document" },
+        { label: "Housing adequacy confirmed (rental contract, room sizes)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Applicant books embassy appointment",
+      description: "The family member abroad must apply at the German embassy or consulate in their country of residence. Book as early as possible — appointments can be scarce.",
+      estimated_duration: "Weeks to months (appointment wait)",
+      checklist_items: [
+        { label: "Nearest German embassy or consulate identified", item_type: "action" },
+        { label: "Appointment booked online", item_type: "appointment" },
+        { label: "Application form (Antrag auf Erteilung eines Visums) completed", item_type: "document" },
+      ],
+    },
+    {
+      title: "Gather and submit documents",
+      description: "Both the sponsor and applicant must provide documents. Requirements vary slightly by embassy.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Valid passport (at least 6 months beyond intended stay)", item_type: "document" },
+        { label: "Passport-size biometric photos", item_type: "document" },
+        { label: "Marriage certificate or birth certificate (apostilled/translated)", item_type: "document" },
+        { label: "Proof of relationship (photos, correspondence if needed)", item_type: "document" },
+        { label: "Sponsor's documents sent from Germany", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+        { label: "All documents submitted at embassy appointment", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Receive visa and travel",
+      description: "If approved, you receive a national visa (D visa) valid for 3–6 months. You must enter Germany and register within its validity.",
+      estimated_duration: "4–12 weeks processing",
+      checklist_items: [
+        { label: "Visa decision received", item_type: "document" },
+        { label: "Passport with visa collected from embassy", item_type: "action" },
+        { label: "Travel to Germany arranged within visa validity", item_type: "action" },
+        { label: "Address registered at Einwohnermeldeamt within 2 weeks of arrival", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyAusbuildung: ProcessTemplate = {
+  id: "de_ausbildung",
+  keywords: ["ausbildung", "vocational training germany", "apprenticeship germany", "dual training", "berufsausbildung", "vocational visa", "ausbildungsvisum"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Vocational Training Visa (Ausbildung) — Germany",
+  summary: "Allows non-EU nationals to come to Germany for a recognised vocational training programme (Ausbildung). Germany has a strong demand for trainees in many sectors.",
+  timeline_summary: "Finding an Ausbildung placement can take months. Visa processing takes 4–12 weeks after application.",
+  next_action: "Find an accredited Ausbildung position in Germany and confirm your employer will support the visa application.",
+  official_sources: [{ title: "Make it in Germany — Ausbildung", url: "https://www.make-it-in-germany.com/en/working-in-germany/training/ausbildung" }],
+  steps: [
+    {
+      title: "Find an Ausbildung placement",
+      description: "Search for a recognised dual vocational training position (betriebliche Ausbildung) with a German employer. The training company and vocational school together form the programme.",
+      estimated_duration: "1–6 months",
+      checklist_items: [
+        { label: "Ausbildung position found (job boards: Make it in Germany, Bundesagentur für Arbeit)", item_type: "action" },
+        { label: "Training contract (Ausbildungsvertrag) signed with employer", item_type: "document" },
+        { label: "Programme is in the list of recognised occupations (Ausbildungsberufe)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Obtain recognition of school qualifications (if needed)",
+      description: "Your previous school-leaving certificate may need to be recognised as equivalent to a German school qualification. Contact anabin database or relevant authority.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Qualifications checked on anabin database", item_type: "action" },
+        { label: "Recognition applied for if required", item_type: "action" },
+        { label: "Recognition certificate obtained", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for vocational training visa",
+      description: "Apply at the German embassy in your home country.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Signed training contract", item_type: "document" },
+        { label: "Proof of German language skills (usually B1 minimum)", item_type: "document" },
+        { label: "School-leaving certificate and recognition (if applicable)", item_type: "document" },
+        { label: "Proof of accommodation in Germany", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Arrive and register",
+      description: "After arrival, register your address and apply for a residence permit for vocational training.",
+      estimated_duration: "First 2 weeks",
+      checklist_items: [
+        { label: "Address registered at Einwohnermeldeamt", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+        { label: "Bank account opened", item_type: "action" },
+        { label: "Health insurance enrolled", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyStudentVisa: ProcessTemplate = {
+  id: "de_student_visa",
+  keywords: ["germany student visa", "study germany", "university germany", "studienvisum", "hochschule", "german university", "study permit germany", "student residence germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Student Visa — Germany",
+  summary: "Non-EU nationals who have been accepted at a German university or recognised higher education institution can apply for a student visa (Studienvisum).",
+  timeline_summary: "Allow at least 3 months before your intended start date. Processing takes 4–12 weeks.",
+  next_action: "Secure a university admission letter (Zulassungsbescheid) before applying for the visa.",
+  official_sources: [{ title: "DAAD — Visa and residence permit", url: "https://www.daad.de/en/study-and-research-in-germany/plan-your-studies/visa-and-residence-permit/" }],
+  steps: [
+    {
+      title: "Receive university admission",
+      description: "Apply to and receive an admission letter from a state-recognised German university. German universities are largely tuition-free.",
+      estimated_duration: "2–6 months",
+      checklist_items: [
+        { label: "German university (Hochschule) identified", item_type: "action" },
+        { label: "Application submitted to university", item_type: "action" },
+        { label: "Admission letter (Zulassungsbescheid) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Open blocked account (Sperrkonto)",
+      description: "You must prove you can fund your studies. The standard method is opening a blocked account with at least €11,208 (as of 2024) deposited.",
+      estimated_duration: "1–4 weeks",
+      checklist_items: [
+        { label: "Blocked account opened (Deutsche Bank, Fintiba, Expatrio, etc.)", item_type: "action" },
+        { label: "Required amount deposited (check current year's figure)", item_type: "payment" },
+        { label: "Blocked account confirmation letter obtained", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for student visa at German embassy",
+      description: "Apply at the German embassy or consulate in your home country.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "University admission letter", item_type: "document" },
+        { label: "Blocked account proof", item_type: "document" },
+        { label: "German language proof (if degree is in German) or English proof", item_type: "document" },
+        { label: "Health insurance proof (travel/incoming insurance for visa; statutory insurance after arrival)", item_type: "document" },
+        { label: "Biometric photos", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Arrive and enrol",
+      description: "After arrival, register your address, enrol at the university, and convert your visa to a student residence permit.",
+      estimated_duration: "First 3 weeks",
+      checklist_items: [
+        { label: "Address registered at Einwohnermeldeamt", item_type: "action" },
+        { label: "Enrolled at university and student ID obtained", item_type: "action" },
+        { label: "Statutory health insurance activated (TK, AOK, Barmer, etc.)", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+        { label: "Blocked account accessed (monthly release begins)", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanySettlement: ProcessTemplate = {
+  id: "de_niederlassungserlaubnis",
+  keywords: ["niederlassungserlaubnis", "permanent residence germany", "settle germany", "permanent permit germany", "long term germany", "indefinite leave germany", "unbefristet aufenthalt"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Ausländerbehörde",
+  title: "Permanent Settlement Permit (Niederlassungserlaubnis) — Germany",
+  summary: "After living in Germany for a qualifying period (usually 5 years), non-EU nationals can apply for a permanent settlement permit (Niederlassungserlaubnis), allowing indefinite residence.",
+  timeline_summary: "Processing takes 4–12 weeks at the local Ausländerbehörde.",
+  next_action: "Check whether you meet the 5-year residency requirement and language/integration conditions.",
+  official_sources: [{ title: "BAMF — Settlement permit", url: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Niederlassung/niederlassung-node.html" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Standard requirements: 5 years of legal residence on certain permit types, adequate German language skills (B1), sufficient income (no reliance on welfare), pension contributions paid, clean criminal record, and a valid current permit.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+        { label: "Current permit type checked (must be an eligible permit category)", item_type: "document" },
+        { label: "No welfare benefits (Bürgergeld/Sozialhilfe) received", item_type: "action" },
+        { label: "German language level B1 or higher confirmed", item_type: "action" },
+        { label: "Pension insurance contributions history confirmed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "Collect all supporting documents. Requirements vary slightly by Ausländerbehörde.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Current residence permit", item_type: "document" },
+        { label: "Proof of income (recent payslips, employment contract)", item_type: "document" },
+        { label: "German language certificate (B1 or integration course completion)", item_type: "document" },
+        { label: "Pension insurance statement (Rentenversicherungsverlauf)", item_type: "document" },
+        { label: "Criminal record clearance (Führungszeugnis)", item_type: "document" },
+        { label: "Rental contract and registration confirmation (Meldebescheinigung)", item_type: "document" },
+        { label: "Biometric photos", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply at Ausländerbehörde",
+      description: "Submit your application in person at the local foreigners' authority.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Appointment booked at Ausländerbehörde", item_type: "appointment" },
+        { label: "All documents submitted at appointment", item_type: "action" },
+        { label: "Application fee paid (approx. €113)", item_type: "payment" },
+        { label: "Receipt / interim permit received while waiting", item_type: "document" },
+        { label: "Niederlassungserlaubnis card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyAnmeldung: ProcessTemplate = {
+  id: "de_anmeldung",
+  keywords: ["anmeldung", "register address germany", "einwohnermeldeamt", "registration germany", "meldebescheinigung", "address registration", "residence registration germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Einwohnermeldeamt (Bürgeramt)",
+  title: "Address Registration (Anmeldung) — Germany",
+  summary: "Everyone living in Germany must register their address at the local Einwohnermeldeamt (citizens' office) within 14 days of moving in. You will receive a Meldebescheinigung (registration confirmation), which is needed for almost everything else.",
+  timeline_summary: "The registration itself takes minutes at the office. Getting an appointment can take a few days to several weeks in large cities.",
+  next_action: "Book an appointment at your local Bürgeramt/Einwohnermeldeamt as soon as you have a fixed address.",
+  official_sources: [{ title: "Berlin.de — Anmeldung (example)", url: "https://www.berlin.de/einwanderung/en/living/registration/" }],
+  steps: [
+    {
+      title: "Find your local Einwohnermeldeamt",
+      description: "The relevant office depends on the district (Bezirk) of your address. Search '[your city] Bürgeramt Anmeldung' to find the right office and book online.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Local Bürgeramt/Einwohnermeldeamt identified", item_type: "action" },
+        { label: "Appointment booked (online or by phone)", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Attend appointment",
+      description: "Bring your completed registration form and required documents.",
+      estimated_duration: "30 minutes",
+      checklist_items: [
+        { label: "Registration form (Anmeldeformular) completed", item_type: "document" },
+        { label: "Valid passport or national ID card", item_type: "document" },
+        { label: "Landlord confirmation (Wohnungsgeberbestätigung) — required since 2015", item_type: "document" },
+        { label: "Appointment attended", item_type: "appointment" },
+        { label: "Meldebescheinigung (registration confirmation) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Use Meldebescheinigung for other registrations",
+      description: "The Meldebescheinigung is required for opening a bank account, applying for a tax ID, registering with health insurance, and applying for a residence permit.",
+      estimated_duration: "Ongoing",
+      checklist_items: [
+        { label: "Bank account opened with Meldebescheinigung", item_type: "action" },
+        { label: "Tax ID (Steueridentifikationsnummer) received by post (automatic, ~2 weeks)", item_type: "document" },
+        { label: "Health insurance enrolled", item_type: "action" },
+        { label: "Residence permit application started at Ausländerbehörde (if non-EU)", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyFreelanceVisa: ProcessTemplate = {
+  id: "de_freelance_visa",
+  keywords: ["freelance visa germany", "freiberufler", "self-employed germany", "freelancer germany", "niederlassungserlaubnis selbständig", "freiberuflich visa", "creative visa germany"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "German Embassy / Ausländerbehörde",
+  title: "Freelance / Self-Employment Visa — Germany",
+  summary: "Germany offers a residence permit for freelancers (Freiberufler) and the self-employed. Freelancers in regulated professions (artists, writers, journalists, engineers, teachers) have a clearer path than commercial self-employment.",
+  timeline_summary: "Embassy processing takes 4–12 weeks. Initial permit is typically issued for 1–3 years.",
+  next_action: "Identify whether your activity qualifies as a liberal profession (freier Beruf) or commercial self-employment (Gewerbe), as the requirements differ.",
+  official_sources: [{ title: "Make it in Germany — Self-employment", url: "https://www.make-it-in-germany.com/en/working-in-germany/self-employed" }],
+  steps: [
+    {
+      title: "Determine your activity type",
+      description: "Liberal professions (freie Berufe) include artists, writers, musicians, journalists, architects, doctors, lawyers, engineers, and teachers. Commercial self-employment requires additional trade registration (Gewerbeanmeldung).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Activity classified: liberal profession or commercial self-employment", item_type: "action" },
+        { label: "Relevant professional association or chamber contacted if applicable", item_type: "action" },
+      ],
+    },
+    {
+      title: "Prepare business concept and financial projections",
+      description: "You need a viable business plan showing clients, expected income, and German market demand for your services.",
+      estimated_duration: "2–4 weeks",
+      checklist_items: [
+        { label: "Business plan (Geschäftsplan) written", item_type: "document" },
+        { label: "Existing client letters of intent or contracts (strongly recommended)", item_type: "document" },
+        { label: "Financial projections for first 2 years", item_type: "document" },
+        { label: "Professional portfolio or credentials", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply at German embassy",
+      description: "Apply for a national visa (D visa) for self-employment at the German embassy in your home country.",
+      estimated_duration: "4–12 weeks",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Business plan and client letters submitted", item_type: "document" },
+        { label: "Proof of professional qualifications", item_type: "document" },
+        { label: "Health insurance proof", item_type: "document" },
+        { label: "Proof of sufficient funds to start", item_type: "document" },
+        { label: "Visa fee paid (€75)", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Arrive, register, and obtain residence permit",
+      description: "After arrival, complete Anmeldung and apply for a residence permit for self-employment at the Ausländerbehörde.",
+      estimated_duration: "First 3 weeks",
+      checklist_items: [
+        { label: "Anmeldung (address registration) completed", item_type: "action" },
+        { label: "Trade registration (Gewerbeanmeldung) filed if commercial self-employment", item_type: "action" },
+        { label: "Business bank account opened", item_type: "action" },
+        { label: "Residence permit applied for at Ausländerbehörde", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyCitizenship: ProcessTemplate = {
+  id: "de_citizenship",
+  keywords: ["german citizenship", "einbürgerung", "naturalisation germany", "become german", "german passport", "german nationality", "staatsbürgerschaft"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Einbürgerungsbehörde (Naturalisation Office)",
+  title: "German Citizenship by Naturalisation (Einbürgerung)",
+  summary: "After living in Germany for 5 years (reduced to 3 for exceptional integration), legal residents can apply for German citizenship. Germany now allows dual citizenship.",
+  timeline_summary: "Processing typically takes 12–24 months depending on the state and workload.",
+  next_action: "Check your years of legal residence and whether you meet the income, language, and integration requirements.",
+  official_sources: [{ title: "BAMF — Naturalisation", url: "https://www.bamf.de/EN/Themen/Integration/Einbuergerung/einbuergerung-node.html" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Standard: 5 years legal residence, B1 German (C1 preferred), self-sufficient income, no serious criminal convictions, renunciation of prior citizenship (exceptions apply — Germany now widely accepts dual citizenship).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "5 years (or 3 years with exceptional integration) of legal residence confirmed", item_type: "action" },
+        { label: "No reliance on welfare benefits", item_type: "action" },
+        { label: "German language level B1+ confirmed", item_type: "action" },
+        { label: "No significant criminal record", item_type: "action" },
+        { label: "Dual citizenship situation reviewed (Germany generally permits it now)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "The required documents list is extensive. Your local naturalisation office may have a specific checklist.",
+      estimated_duration: "4–8 weeks",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Current residence permit", item_type: "document" },
+        { label: "Meldebescheinigung (current registration)", item_type: "document" },
+        { label: "Proof of income / employment (last 3 payslips)", item_type: "document" },
+        { label: "German language certificate (B1 or integration course graduation)", item_type: "document" },
+        { label: "Criminal record clearance (Führungszeugnis, €13)", item_type: "document" },
+        { label: "Birth certificate (apostilled + translated if not German)", item_type: "document" },
+        { label: "Marriage/divorce certificates if applicable", item_type: "document" },
+        { label: "Pension insurance record", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit application to naturalisation office",
+      description: "Submit to the Einbürgerungsbehörde in your city/district. Some offices allow online pre-registration.",
+      estimated_duration: "12–24 months processing",
+      checklist_items: [
+        { label: "Appointment at Einbürgerungsbehörde booked", item_type: "appointment" },
+        { label: "Application form completed and submitted", item_type: "action" },
+        { label: "Application fee paid (€255, reduced to €51 for minors)", item_type: "payment" },
+        { label: "Naturalisation certificate (Einbürgerungsurkunde) received", item_type: "document" },
+        { label: "German passport applied for", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const germanyRecognition: ProcessTemplate = {
+  id: "de_qualification_recognition",
+  keywords: ["anerkennung", "qualification recognition germany", "foreign qualification germany", "anabin", "zab", "nostrification", "foreign degree germany", "berufsanerkennung"],
+  destination_country: "Germany",
+  jurisdiction: "Germany",
+  authority_name: "Relevant competent authority (varies by profession)",
+  title: "Foreign Qualification Recognition — Germany",
+  summary: "Foreign professional and academic qualifications can be recognised in Germany to allow you to work in regulated professions or have your degree accepted. The process depends on the profession and the country of origin.",
+  timeline_summary: "Recognition processes range from a few weeks (academic equivalency) to 12+ months (regulated professions requiring assessments).",
+  next_action: "Use the Recognition Finder at anerkennung-in-deutschland.de to identify the correct authority and procedure for your qualification.",
+  official_sources: [{ title: "Anerkennung in Deutschland — Recognition Finder", url: "https://www.anerkennung-in-deutschland.de/en" }],
+  steps: [
+    {
+      title: "Identify your qualification type and competent authority",
+      description: "Regulated professions (doctors, nurses, teachers, engineers in certain roles) require formal recognition. Non-regulated professions can use recognition for labour market advantage. Use the Recognition Finder tool to find the right authority.",
+      estimated_duration: "1–3 days",
+      checklist_items: [
+        { label: "Profession classified as regulated or non-regulated", item_type: "action" },
+        { label: "Competent authority identified via anerkennung-in-deutschland.de", item_type: "action" },
+        { label: "Recognition Finder checklist downloaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Have documents translated and apostilled",
+      description: "All foreign documents must be officially translated into German by a certified translator and, where required, apostilled.",
+      estimated_duration: "2–6 weeks",
+      checklist_items: [
+        { label: "Original diplomas/certificates gathered", item_type: "document" },
+        { label: "Transcripts (academic records) obtained", item_type: "document" },
+        { label: "Certified German translation completed", item_type: "document" },
+        { label: "Apostille obtained from issuing country (if required)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit recognition application",
+      description: "Submit to the competent authority. For academic degrees, ZAB (Central Office for Foreign Education) or anabin database may suffice.",
+      estimated_duration: "Varies (weeks to months)",
+      checklist_items: [
+        { label: "Application submitted to competent authority", item_type: "action" },
+        { label: "Application fee paid (varies by authority and profession)", item_type: "payment" },
+        { label: "Recognition notice (Anerkennungsbescheid) or equivalency statement received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Complete any compensation measures if required",
+      description: "For regulated professions, if there are qualification gaps, you may need to complete an adaptation course (Anpassungslehrgang) or aptitude test (Eignungsprüfung).",
+      estimated_duration: "3–12 months (if applicable)",
+      checklist_items: [
+        { label: "Compensation measure requirement noted (if any)", item_type: "action" },
+        { label: "Adaptation course or aptitude test completed (if required)", item_type: "action" },
+        { label: "Full recognition certificate issued", item_type: "document" },
+      ],
+    },
+  ],
+};
+
 // ── Netherlands ────────────────────────────────────────────────────────────
 
 const netherlandsHighlySkilledMigrant: ProcessTemplate = {
@@ -1260,6 +1717,1615 @@ const usaJ1InternTrainee: ProcessTemplate = {
   ],
 };
 
+// ── Norway — UDI ───────────────────────────────────────────────────────────
+
+const norwayWorkPermit: ProcessTemplate = {
+  id: "no_work_permit",
+  keywords: ["norway work permit", "work norway", "skilled worker norway", "arbeidsinnvandring", "oppholdstillatelse arbeid", "norway employment", "job norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Skilled Worker Residence Permit — Norway",
+  summary: "Non-EU/EEA nationals who have received a job offer in Norway can apply for a residence permit as a skilled worker (faglært). The employer must confirm the offer meets Norwegian salary and conditions standards.",
+  timeline_summary: "Processing typically takes 2–4 months. Apply before travelling to Norway.",
+  next_action: "Confirm your job offer meets UDI's skilled worker criteria and gather your documents.",
+  official_sources: [{ title: "UDI — Skilled worker", url: "https://www.udi.no/en/want-to-apply/work-immigration/skilled-workers-from-countries-outside-the-eea-and-switzerland/" }],
+  steps: [
+    {
+      title: "Confirm job offer qualifies",
+      description: "Your offer must be full-time (or at least part-time with sufficient salary), within a profession requiring skills, and pay at least the standard Norwegian wage for the role. The employer must be registered in Norway.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Job offer letter received", item_type: "document" },
+        { label: "Salary meets Norwegian standard for profession confirmed", item_type: "action" },
+        { label: "Employer registered in Norwegian business registry (Brønnøysund)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online via UDI",
+      description: "Submit your application online at udi.no before arriving in Norway. Pay the application fee online.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "UDI online application completed at udi.no", item_type: "action" },
+        { label: "Application fee paid (NOK 6,300 approx.)", item_type: "payment" },
+        { label: "Application reference number saved", item_type: "action" },
+      ],
+    },
+    {
+      title: "Submit biometrics at Norwegian embassy",
+      description: "After applying online, you must appear in person at a Norwegian embassy or consulate to submit biometrics and original documents.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Signed employment contract", item_type: "document" },
+        { label: "Educational certificates / diploma confirming skilled status", item_type: "document" },
+        { label: "Biometrics (fingerprints and photo) submitted at embassy", item_type: "action" },
+      ],
+    },
+    {
+      title: "Await decision and travel",
+      description: "UDI processes the application. If approved, you receive an approval letter and must collect your residence card in Norway.",
+      estimated_duration: "2–4 months",
+      checklist_items: [
+        { label: "Approval decision received", item_type: "document" },
+        { label: "Travel to Norway within approval period", item_type: "action" },
+        { label: "Residence card (oppholdskort) collected at police station in Norway", item_type: "action" },
+        { label: "National identity number (fødselsnummer) applied for at Skatteetaten", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayStudentPermit: ProcessTemplate = {
+  id: "no_student_permit",
+  keywords: ["norway student visa", "study norway", "student permit norway", "university norway", "studietillatelse", "norwegian university", "higher education norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Student Residence Permit — Norway",
+  summary: "Non-EU/EEA nationals accepted at a Norwegian university or higher education institution must apply for a student residence permit before arriving in Norway.",
+  timeline_summary: "Apply as early as possible — processing can take 2–4 months.",
+  next_action: "Secure your admission letter from a Norwegian institution before applying.",
+  official_sources: [{ title: "UDI — Student permit", url: "https://www.udi.no/en/want-to-apply/studies/" }],
+  steps: [
+    {
+      title: "Get admission to a Norwegian institution",
+      description: "Apply and receive acceptance from a Norwegian university or university college. Norwegian universities offer many English-taught programmes.",
+      estimated_duration: "1–4 months",
+      checklist_items: [
+        { label: "Norwegian institution identified (universities, university colleges)", item_type: "action" },
+        { label: "Application submitted", item_type: "action" },
+        { label: "Admission letter (opptaksbrev) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online via UDI",
+      description: "Submit the student residence permit application online at udi.no before arriving in Norway.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "UDI online application submitted", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 5,900)", item_type: "payment" },
+        { label: "Proof of sufficient funds attached (NOK ~116,369/year or equivalent)", item_type: "document" },
+        { label: "Admission letter attached", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit documents at Norwegian embassy",
+      description: "Appear at the nearest Norwegian embassy with original documents and biometrics.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Biometrics submitted at embassy", item_type: "action" },
+      ],
+    },
+    {
+      title: "Arrive and register",
+      description: "After arriving in Norway with your permit, register with the police and Skatteetaten to get your identity number.",
+      estimated_duration: "First 2 weeks",
+      checklist_items: [
+        { label: "Registered with police within 1 week of arrival", item_type: "action" },
+        { label: "D-number or fødselsnummer applied for at Skatteetaten", item_type: "action" },
+        { label: "Enrolled at institution and student ID received", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayFamilyImmigration: ProcessTemplate = {
+  id: "no_family_immigration",
+  keywords: ["norway family reunification", "family visa norway", "spouse norway", "familieinnvandring", "join family norway", "dependent visa norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Family Immigration — Norway",
+  summary: "Spouses, registered partners, cohabitants, and children of Norwegian residents can apply for a family immigration permit (familieinnvandring).",
+  timeline_summary: "Processing takes 3–8 months on average.",
+  next_action: "Check that your sponsor meets the income requirement (underholdskravet) before applying.",
+  official_sources: [{ title: "UDI — Family immigration", url: "https://www.udi.no/en/want-to-apply/family-immigration/" }],
+  steps: [
+    {
+      title: "Sponsor confirms income requirement",
+      description: "The person in Norway (reference person) must have had sufficient income the previous year and be expected to have sufficient income going forward. The amount is updated annually.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Sponsor's income last year checked against UDI threshold", item_type: "action" },
+        { label: "Sponsor's income documentation gathered (tax return, payslips)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "The applicant (or the reference person on their behalf) submits the application online at udi.no.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at udi.no", item_type: "action" },
+        { label: "Application fee paid (NOK 10,700 approx. for spouse)", item_type: "payment" },
+        { label: "Relationship documentation uploaded (marriage certificate, photos)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend embassy interview",
+      description: "The applicant must attend an interview at the Norwegian embassy in their home country. Both partners may be interviewed separately to verify the relationship.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport brought", item_type: "document" },
+        { label: "Marriage certificate or proof of relationship (apostilled)", item_type: "document" },
+        { label: "Biometrics submitted", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision and travel",
+      description: "If approved, travel to Norway and register with the police.",
+      estimated_duration: "3–8 months",
+      checklist_items: [
+        { label: "Approval received", item_type: "document" },
+        { label: "Travel to Norway arranged", item_type: "action" },
+        { label: "Registered with local police in Norway", item_type: "action" },
+        { label: "Residence card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayEEARegistration: ProcessTemplate = {
+  id: "no_eea_registration",
+  keywords: ["eu eea norway", "eu citizen norway", "registration norway eu", "registreringsbevis", "right of residence norway", "nordic passport", "eea right norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI / Local police",
+  title: "EU/EEA Registration Certificate — Norway",
+  summary: "EU/EEA citizens can live and work in Norway freely but must register with the police after 3 months. The registration certificate (registreringsbevis) documents your right of residence.",
+  timeline_summary: "Registration can be done within days of arriving. Appointment wait varies by region.",
+  next_action: "Ensure you have a qualifying basis (work, study, self-sufficiency) and book a police registration appointment.",
+  official_sources: [{ title: "UDI — EEA registration", url: "https://www.udi.no/en/want-to-apply/eea-and-switzerland/" }],
+  steps: [
+    {
+      title: "Confirm you have a qualifying basis",
+      description: "You must be a worker, self-employed, student, self-sufficient person, or family member of one of the above.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "EU/EEA passport or national ID confirmed", item_type: "document" },
+        { label: "Qualifying basis confirmed: employment contract, enrolment letter, or proof of funds", item_type: "document" },
+      ],
+    },
+    {
+      title: "Register at a police station",
+      description: "Attend a police station (politistasjon) that handles immigration registration. Bring all original documents.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Police station appointment booked (some allow walk-ins)", item_type: "appointment" },
+        { label: "Valid EU/EEA passport or national ID", item_type: "document" },
+        { label: "Proof of basis: employment contract / enrolment letter / bank statements", item_type: "document" },
+        { label: "Completed registration form", item_type: "document" },
+        { label: "Registration certificate (registreringsbevis) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for D-number or national identity number",
+      description: "To receive pay, pay taxes, and access services, you need a D-number (for short stays) or a fødselsnummer (national identity number for stays over 6 months). Apply at Skatteetaten.",
+      estimated_duration: "1–4 weeks",
+      checklist_items: [
+        { label: "Skatteetaten office visited with registration certificate and passport", item_type: "action" },
+        { label: "D-number or fødselsnummer received", item_type: "document" },
+        { label: "Employer notified of tax number", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayPermanentResidence: ProcessTemplate = {
+  id: "no_permanent_residence",
+  keywords: ["permanent residence norway", "permanent opphold", "bosettingstillatelse", "settle norway", "indefinite norway", "long term norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Permanent Residence Permit (Permanent Opphold) — Norway",
+  summary: "After 3 years of legal residence in Norway (reduced from 5 for some), you may apply for a permanent residence permit (bosettingstillatelse). It gives the right to live and work in Norway indefinitely.",
+  timeline_summary: "Processing takes 6–12 months.",
+  next_action: "Confirm you have 3 years of continuous legal residence and meet the Norwegian language / social studies requirement.",
+  official_sources: [{ title: "UDI — Permanent residence", url: "https://www.udi.no/en/want-to-apply/permanent-residence-permit/" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "You need 3 years of continuous legal residence, no serious criminal offences, no misuse of welfare benefits, and completion of 600 hours of Norwegian language and social studies (or passed a test).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "3 years of legal residence in Norway confirmed", item_type: "action" },
+        { label: "No long breaks from Norway (less than 7 months total absence)", item_type: "action" },
+        { label: "600 hours Norwegian language / social studies completed or test passed", item_type: "action" },
+        { label: "No significant criminal record or welfare misuse", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online at UDI",
+      description: "Submit the application at udi.no. You can apply up to 1 year before you meet the 3-year requirement.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at udi.no", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 5,900)", item_type: "payment" },
+        { label: "Language/social studies certificate uploaded", item_type: "document" },
+        { label: "Residence history documentation uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit biometrics at police",
+      description: "Attend the local police immigration unit to submit biometrics for the permanent residence card.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Police appointment booked", item_type: "appointment" },
+        { label: "Biometrics submitted", item_type: "action" },
+        { label: "Decision letter received", item_type: "document" },
+        { label: "Permanent residence card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayCitizenship: ProcessTemplate = {
+  id: "no_citizenship",
+  keywords: ["norwegian citizenship", "norsk statsborgerskap", "naturalisation norway", "become norwegian", "norwegian passport", "norwegian nationality"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI (Norwegian Directorate of Immigration)",
+  title: "Norwegian Citizenship by Naturalisation",
+  summary: "After 7 years of legal residence in Norway (5 for spouses of Norwegian citizens), you can apply for Norwegian citizenship. Norway requires you to renounce prior citizenship in most cases.",
+  timeline_summary: "Processing takes 12–20 months.",
+  next_action: "Confirm you have completed the required residence years, language test, and are prepared to renounce prior citizenship if applicable.",
+  official_sources: [{ title: "UDI — Norwegian citizenship", url: "https://www.udi.no/en/want-to-apply/citizenship/" }],
+  steps: [
+    {
+      title: "Check eligibility",
+      description: "Standard: 7 years in Norway (last 2 on permanent residence), passed Norwegian language test (B1 oral) or completed 600 hours Norwegian, no serious criminal record, renounce prior citizenship (exemptions exist for some countries and for those who cannot renounce).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "7 years legal residence confirmed", item_type: "action" },
+        { label: "Permanent residence permit held for at least 1 year", item_type: "action" },
+        { label: "Norwegian language test (B1 oral) passed or 600 hours completed", item_type: "action" },
+        { label: "Citizenship renunciation reviewed (prior citizenship situation)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit the application at udi.no.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 4,200)", item_type: "payment" },
+        { label: "Language certificate uploaded", item_type: "document" },
+        { label: "Residence history documentation uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend citizenship ceremony",
+      description: "If approved, you will be invited to a citizenship ceremony where you pledge loyalty to Norway. After the ceremony, you can apply for a Norwegian passport.",
+      estimated_duration: "12–20 months processing + ceremony",
+      checklist_items: [
+        { label: "Approval letter received", item_type: "document" },
+        { label: "Citizenship ceremony attended and pledge made", item_type: "appointment" },
+        { label: "Confirmation of citizenship issued", item_type: "document" },
+        { label: "Norwegian passport applied for", item_type: "action" },
+        { label: "Prior citizenship renounced if required", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayAsylum: ProcessTemplate = {
+  id: "no_asylum",
+  keywords: ["asylum norway", "refugee norway", "asyl norge", "asylsøker", "protection norway", "flee norway", "asylum seeker norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI / Politiet (Police)",
+  title: "Asylum Application — Norway",
+  summary: "Anyone in Norway who needs international protection can apply for asylum. You must apply as soon as possible after arrival. UDI investigates your case and makes a decision.",
+  timeline_summary: "Processing times vary widely: from a few months to several years depending on case complexity and country of origin.",
+  next_action: "Go to the nearest police station or border crossing and state that you wish to apply for asylum.",
+  official_sources: [{ title: "UDI — Asylum", url: "https://www.udi.no/en/want-to-apply/protection-asylum/" }],
+  steps: [
+    {
+      title: "Register asylum application with police",
+      description: "Go to a police station (politistasjon) with an immigration unit, or to the National Arrival Centre (Nasjonalt ankomstsenter) in Råde. State clearly that you are applying for asylum.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Police station or arrival centre visited", item_type: "action" },
+        { label: "Application registered and case number received", item_type: "action" },
+        { label: "Any identity documents presented", item_type: "document" },
+        { label: "Temporary accommodation assigned by UDI", item_type: "action" },
+      ],
+    },
+    {
+      title: "Asylum interview with UDI",
+      description: "You will be called to an interview where you explain why you need protection. You have the right to an interpreter. You may bring a lawyer.",
+      estimated_duration: "Scheduled by UDI",
+      checklist_items: [
+        { label: "Interview appointment received", item_type: "appointment" },
+        { label: "Legal aid / lawyer arranged if needed", item_type: "action" },
+        { label: "Interpreter language confirmed", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision",
+      description: "UDI assesses your case. If approved, you receive a protection permit. If rejected, you can appeal to the Immigration Appeals Board (UNE).",
+      estimated_duration: "Months to years",
+      checklist_items: [
+        { label: "Decision letter received from UDI", item_type: "document" },
+        { label: "If approved: residence permit received", item_type: "action" },
+        { label: "If rejected: appeal deadline noted (3 weeks) and UNE appeal submitted if applicable", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayNorskprøven: ProcessTemplate = {
+  id: "no_norskproven",
+  keywords: ["norskprøven", "norwegian language test", "norwegian test", "norsk test", "language certificate norway", "b1 norwegian", "norsk eksamen"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "Kompetanse Norge / Vox",
+  title: "Norwegian Language Test (Norskprøven)",
+  summary: "The Norskprøven is the official Norwegian language test required for permanent residence and citizenship. It tests reading, writing, listening, and speaking at levels A1–B2.",
+  timeline_summary: "Tests are held several times per year. Registration closes several weeks before each test date.",
+  next_action: "Register for the Norskprøven at kompetanse.no well before you need the result for your permit application.",
+  official_sources: [{ title: "Kompetanse Norge — Norskprøven", url: "https://www.kompetansenorge.no/norsk-og-samfunnskunnskap/norskproven/" }],
+  steps: [
+    {
+      title: "Find your test level and register",
+      description: "Choose the appropriate test level (A1–A2, B1–B2). For permanent residence you need B1 oral; for citizenship you need B1 oral. Register at the municipality or adult education centre near you.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "Required test level identified (B1 oral for most immigration purposes)", item_type: "action" },
+        { label: "Local test provider found (voksenopplæring / adult education centre)", item_type: "action" },
+        { label: "Registration completed and confirmed", item_type: "action" },
+        { label: "Test fee paid", item_type: "payment" },
+      ],
+    },
+    {
+      title: "Prepare for the test",
+      description: "The test covers all four skills. Free preparation materials are available at norskprøven.no. Many municipalities offer free Norwegian courses (norskkurs).",
+      estimated_duration: "Weeks to months",
+      checklist_items: [
+        { label: "Free practice materials used at norskproven.no", item_type: "action" },
+        { label: "Norwegian course enrolled in if needed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Take the test and receive results",
+      description: "Written tests are held at designated centres; speaking tests are conducted at your adult education centre. Results are sent digitally.",
+      estimated_duration: "Test day + 2–4 weeks for results",
+      checklist_items: [
+        { label: "Written test attended", item_type: "appointment" },
+        { label: "Speaking test attended", item_type: "appointment" },
+        { label: "Results certificate received digitally", item_type: "document" },
+        { label: "Certificate saved for UDI/immigration applications", item_type: "document" },
+      ],
+    },
+  ],
+};
+
+const norwayFreelance: ProcessTemplate = {
+  id: "no_self_employed",
+  keywords: ["self-employed norway", "freelance norway", "start business norway", "sole trader norway", "enkeltpersonforetak", "selvstendig næringsdrivende", "freelancer norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "UDI / Brønnøysundregistrene",
+  title: "Self-Employment / Freelance Permit — Norway",
+  summary: "Non-EU/EEA nationals can apply for a residence permit based on self-employment or running a business in Norway. The activity must be able to support you financially.",
+  timeline_summary: "Processing takes 3–6 months.",
+  next_action: "Prepare a viable business plan showing income potential in Norway before applying.",
+  official_sources: [{ title: "UDI — Self-employed", url: "https://www.udi.no/en/want-to-apply/work-immigration/self-employed/" }],
+  steps: [
+    {
+      title: "Prepare business concept",
+      description: "You need a strong business plan showing market need, expected income, and your qualifications.",
+      estimated_duration: "2–4 weeks",
+      checklist_items: [
+        { label: "Business plan written (market analysis, revenue projections)", item_type: "document" },
+        { label: "Proof of professional qualifications or prior business experience", item_type: "document" },
+        { label: "Client letters of intent (strongly recommended)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online at UDI",
+      description: "Submit the self-employment permit application at udi.no before arriving in Norway.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Online application submitted at udi.no", item_type: "action" },
+        { label: "Application fee paid (approx. NOK 6,300)", item_type: "payment" },
+        { label: "Business plan and supporting documents uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Submit biometrics and await decision",
+      description: "Attend Norwegian embassy for biometrics. UDI assesses the viability of your business.",
+      estimated_duration: "3–6 months",
+      checklist_items: [
+        { label: "Embassy appointment attended", item_type: "appointment" },
+        { label: "Decision received", item_type: "document" },
+        { label: "Enkeltpersonforetak (sole proprietorship) registered at Brønnøysundregistrene after arrival", item_type: "action" },
+        { label: "Residence card collected at police", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const norwayQualificationRecognition: ProcessTemplate = {
+  id: "no_qualification_recognition",
+  keywords: ["qualification recognition norway", "foreign degree norway", "nokut", "godkjenning utdanning", "recognize diploma norway", "credential evaluation norway"],
+  destination_country: "Norway",
+  jurisdiction: "Norway",
+  authority_name: "NOKUT (Norwegian Agency for Quality Assurance in Education)",
+  title: "Foreign Qualification Recognition — Norway",
+  summary: "NOKUT evaluates foreign higher education qualifications for the Norwegian labour market. Regulated professions (healthcare, teaching, engineering) require separate professional approval.",
+  timeline_summary: "NOKUT general recognition takes 4–6 weeks. Regulated profession recognition varies.",
+  next_action: "Apply to NOKUT for a general recognition statement, or to the relevant professional body if your profession is regulated.",
+  official_sources: [{ title: "NOKUT — Foreign education recognition", url: "https://www.nokut.no/en/foreign-education/recognition-of-foreign-higher-education/" }],
+  steps: [
+    {
+      title: "Identify recognition type needed",
+      description: "General recognition from NOKUT is for most workers wanting to document their level. Regulated professions (nurse, doctor, teacher, etc.) need authorisation from specific bodies (Helsedirektoratet, Udir, etc.).",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Profession identified as regulated or non-regulated", item_type: "action" },
+        { label: "Relevant body identified (NOKUT, Helsedirektoratet, Udir, etc.)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Collect and translate documents",
+      description: "Gather your diplomas, transcripts, and have them translated into Norwegian or English by a certified translator.",
+      estimated_duration: "2–4 weeks",
+      checklist_items: [
+        { label: "Original diplomas and transcripts gathered", item_type: "document" },
+        { label: "Certified translation into Norwegian or English", item_type: "document" },
+        { label: "Apostille obtained if required", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply to NOKUT or professional body",
+      description: "Submit application online via NOKUT's portal or the relevant authority.",
+      estimated_duration: "4–6 weeks (NOKUT); longer for regulated professions",
+      checklist_items: [
+        { label: "Application submitted online", item_type: "action" },
+        { label: "Application fee paid", item_type: "payment" },
+        { label: "Recognition statement / professional authorisation received", item_type: "document" },
+        { label: "Document shared with employer or included in job applications", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+// ── Denmark — SIRI / Styrelsen for International Rekruttering ──────────────
+
+const denmarkWorkPermit: ProcessTemplate = {
+  id: "dk_work_permit",
+  keywords: ["denmark work permit", "work denmark", "job denmark", "danish work visa", "opholdstilladelse arbejde", "positivliste denmark", "fast track denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI (Danish Agency for International Recruitment and Integration)",
+  title: "Work Permit — Denmark",
+  summary: "Non-EU/EEA nationals need a residence and work permit to work in Denmark. The Pay Limit Scheme (beløbsordningen) and Positive List are the most common routes for skilled workers.",
+  timeline_summary: "Pay Limit Scheme: 30 days processing. Positive List: up to 3 months. Apply before arriving.",
+  next_action: "Check whether your salary offer qualifies under the Pay Limit Scheme or if your profession is on the Positive List.",
+  official_sources: [{ title: "SIRI — Work in Denmark", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work" }],
+  steps: [
+    {
+      title: "Identify your permit scheme",
+      description: "Pay Limit Scheme: annual salary ≥ DKK 448,000 (2024). Positive List: certain occupations in shortage regardless of salary. Fast Track Scheme: for certified employers. Choose the most applicable scheme.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Salary checked against Pay Limit threshold (nyidanmark.dk)", item_type: "action" },
+        { label: "Occupation checked against Positive List", item_type: "action" },
+        { label: "Employer checked for Fast Track certification (if applicable)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online via nyidanmark.dk",
+      description: "Both you and your employer submit parts of the application online.",
+      estimated_duration: "1–2 days",
+      checklist_items: [
+        { label: "Online application submitted at nyidanmark.dk", item_type: "action" },
+        { label: "Employer section completed by employer", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 3,655)", item_type: "payment" },
+        { label: "Signed employment contract uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend Danish embassy for biometrics",
+      description: "After submitting online, attend the Danish embassy or VFS Global centre in your home country to submit biometrics.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy or VFS Global appointment booked", item_type: "appointment" },
+        { label: "Valid passport brought", item_type: "document" },
+        { label: "Biometrics (photo and fingerprints) submitted", item_type: "action" },
+      ],
+    },
+    {
+      title: "Receive approval and travel",
+      description: "On approval you receive a visa sticker to enter Denmark and then collect your residence card.",
+      estimated_duration: "30 days (Pay Limit) – 3 months",
+      checklist_items: [
+        { label: "Approval letter and entry visa received", item_type: "document" },
+        { label: "Travel to Denmark", item_type: "action" },
+        { label: "Residence card (opholdskort) collected at local citizen service centre", item_type: "action" },
+        { label: "CPR number applied for at borgerservice", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkStudentPermit: ProcessTemplate = {
+  id: "dk_student_permit",
+  keywords: ["denmark student permit", "study denmark", "danish university", "studietilladelse denmark", "university denmark", "higher education denmark", "student visa denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Student Residence Permit — Denmark",
+  summary: "Non-EU/EEA nationals accepted at a Danish university or higher education institution must apply for a student residence permit before arriving.",
+  timeline_summary: "Apply at least 3 months before your programme starts. Processing typically takes 1–2 months.",
+  next_action: "Secure your university admission letter before applying.",
+  official_sources: [{ title: "SIRI — Student permit", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Studies" }],
+  steps: [
+    {
+      title: "Get university admission",
+      description: "Apply to a Danish university and receive an official admission letter.",
+      estimated_duration: "1–4 months",
+      checklist_items: [
+        { label: "Danish institution identified", item_type: "action" },
+        { label: "Application submitted", item_type: "action" },
+        { label: "Admission letter (optagelsesbrev) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit student permit application at nyidanmark.dk.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted at nyidanmark.dk", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 2,160)", item_type: "payment" },
+        { label: "Admission letter uploaded", item_type: "document" },
+        { label: "Proof of sufficient funds uploaded (DKK 6,243/month recommended)", item_type: "document" },
+      ],
+    },
+    {
+      title: "Attend embassy",
+      description: "Appear at the Danish embassy for biometrics.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment booked", item_type: "appointment" },
+        { label: "Valid passport brought", item_type: "document" },
+        { label: "Biometrics submitted", item_type: "action" },
+      ],
+    },
+    {
+      title: "Arrive and register",
+      description: "After arrival, register at the municipal citizen service centre to get your CPR number.",
+      estimated_duration: "First 2 weeks",
+      checklist_items: [
+        { label: "Borgerservice (citizen service) visited", item_type: "action" },
+        { label: "CPR number received", item_type: "document" },
+        { label: "Enrolled at university and student card received", item_type: "action" },
+        { label: "Health insurance card (sygesikringsbevis) received", item_type: "document" },
+      ],
+    },
+  ],
+};
+
+const denmarkFamilyReunification: ProcessTemplate = {
+  id: "dk_family_reunification",
+  keywords: ["denmark family reunification", "spouse visa denmark", "family visa denmark", "ægtefællesammenføring", "join family denmark", "family permit denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Family Reunification — Denmark",
+  summary: "Spouses and minor children of Danish residents can apply for family reunification. Denmark has some of the strictest family reunification requirements in the EU.",
+  timeline_summary: "Processing takes 3–12 months. Meeting the strict requirements is the main challenge.",
+  next_action: "Carefully review all conditions at nyidanmark.dk — Denmark's requirements are detailed and strict.",
+  official_sources: [{ title: "SIRI — Family reunification", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Family" }],
+  steps: [
+    {
+      title: "Check all conditions",
+      description: "For spouse reunification with a non-Danish citizen sponsor: both must be 24+, sponsor needs strong ties to Denmark (attachment requirement), sufficient housing, no welfare dependence, financial guarantee (DKK ~55,400), and sponsor must have passed Danish integration exam or been in Denmark 10+ years.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Both parties are 24 or older", item_type: "action" },
+        { label: "Sponsor's ties to Denmark confirmed (especially if dual citizen)", item_type: "action" },
+        { label: "Sufficient housing confirmed (size, ownership/rental)", item_type: "action" },
+        { label: "Sponsor not on welfare (within past 3 years)", item_type: "action" },
+        { label: "Financial guarantee (selvskyldnerkaution) arranged if needed", item_type: "action" },
+        { label: "Sponsor meets integration requirements", item_type: "action" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit application at nyidanmark.dk. The sponsor must be involved in the application.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted online", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 8,680)", item_type: "payment" },
+        { label: "Marriage certificate uploaded (apostilled + translated)", item_type: "document" },
+        { label: "Documentation of all conditions uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Embassy interview and biometrics",
+      description: "Both applicant and potentially sponsor may be interviewed separately by Danish immigration authorities.",
+      estimated_duration: "Appointment dependent",
+      checklist_items: [
+        { label: "Embassy appointment attended", item_type: "appointment" },
+        { label: "Biometrics submitted", item_type: "action" },
+        { label: "Any additional documents submitted as requested", item_type: "document" },
+      ],
+    },
+    {
+      title: "Await decision and travel",
+      description: "SIRI makes the decision. Denmark has strict grounds for refusal — if refused, legal advice is recommended before appealing.",
+      estimated_duration: "3–12 months",
+      checklist_items: [
+        { label: "Decision received", item_type: "document" },
+        { label: "If approved: travel to Denmark and collect residence card", item_type: "action" },
+        { label: "CPR number applied for", item_type: "action" },
+        { label: "Integration programme (danskuddannelse) enrolled in", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkCPRNumber: ProcessTemplate = {
+  id: "dk_cpr_number",
+  keywords: ["cpr number denmark", "cpr nummer", "danish id number", "register denmark", "borgerservice denmark", "civil registration denmark", "folkeregister"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Borgerservice (local municipality)",
+  title: "CPR Number Registration — Denmark",
+  summary: "The CPR number (Central Person Register number) is the Danish personal identity number. You must register at your local borgerservice to receive it. It is required for almost all services in Denmark.",
+  timeline_summary: "CPR registration can be done within a few days of arrival. The number is issued immediately or within a few days.",
+  next_action: "Book an appointment at your local borgerservice as soon as you have a fixed address in Denmark.",
+  official_sources: [{ title: "Borger.dk — CPR registration", url: "https://www.borger.dk/da/Medborgerskab-og-rettigheder/Flytning-og-bopael/Tilmelding-til-folkeregisteret" }],
+  steps: [
+    {
+      title: "Confirm eligibility",
+      description: "You can register for a CPR number if you have a valid residence permit (or EU/EEA registration) and intend to live in Denmark for more than 3 months.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Valid residence permit or EU/EEA right of residence confirmed", item_type: "document" },
+        { label: "Fixed address in Denmark obtained", item_type: "action" },
+      ],
+    },
+    {
+      title: "Book borgerservice appointment",
+      description: "Book an appointment at the borgerservice office in the municipality where you live.",
+      estimated_duration: "1–5 days waiting",
+      checklist_items: [
+        { label: "Local borgerservice identified", item_type: "action" },
+        { label: "Appointment booked online or by phone", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Attend appointment",
+      description: "Bring all required documents in original form.",
+      estimated_duration: "30 minutes",
+      checklist_items: [
+        { label: "Valid passport", item_type: "document" },
+        { label: "Residence permit or EU registration certificate", item_type: "document" },
+        { label: "Proof of address (rental contract or owner documentation)", item_type: "document" },
+        { label: "CPR number issued and yellow health insurance card (sundhedskort) requested", item_type: "document" },
+      ],
+    },
+    {
+      title: "Use CPR number",
+      description: "The CPR number enables access to the Danish healthcare system, NemID/MitID, bank account, tax registration, and more.",
+      estimated_duration: "Ongoing",
+      checklist_items: [
+        { label: "Yellow health insurance card (sundhedskort) received by post", item_type: "document" },
+        { label: "MitID digital identity activated", item_type: "action" },
+        { label: "Bank account opened", item_type: "action" },
+        { label: "Tax card (skattekort) applied for at Skattestyrelsen", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkPermanentResidence: ProcessTemplate = {
+  id: "dk_permanent_residence",
+  keywords: ["permanent residence denmark", "tidsubegrænset opholdstilladelse", "settle denmark", "permanent permit denmark", "indefinite denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Permanent Residence Permit — Denmark",
+  summary: "After 8 years of legal residence (4 under fast-track conditions), residents of Denmark can apply for a permanent residence permit. Denmark has demanding requirements including a language test, self-sufficiency, and integration conditions.",
+  timeline_summary: "Processing takes 3–6 months.",
+  next_action: "Check the current conditions carefully — Denmark's permanent residence requirements are among the most detailed in Europe.",
+  official_sources: [{ title: "SIRI — Permanent residence", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Permanent-residence-permit" }],
+  steps: [
+    {
+      title: "Check all conditions",
+      description: "Standard: 8 years legal residence, Danish language test (Prøve i Dansk 2/3), employment for 4 years, no criminal record, not received certain welfare benefits, no outstanding debt to public, active civic participation points accumulated.",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "8 years legal residence confirmed (or 4 under fast-track)", item_type: "action" },
+        { label: "Danish language test passed (Prøve i Dansk 2 minimum, 3 for fast-track)", item_type: "action" },
+        { label: "Employment history for required period documented", item_type: "action" },
+        { label: "No disqualifying criminal convictions", item_type: "action" },
+        { label: "No welfare benefits received in disqualifying period", item_type: "action" },
+        { label: "Point requirement met (active citizenship activities)", item_type: "action" },
+      ],
+    },
+    {
+      title: "Gather documents",
+      description: "Compile the required documentation.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Current residence permit", item_type: "document" },
+        { label: "Valid passport", item_type: "document" },
+        { label: "Language test certificate (Prøve i Dansk)", item_type: "document" },
+        { label: "Employment documentation (contracts, payslips, tax returns)", item_type: "document" },
+        { label: "Criminal record extract", item_type: "document" },
+        { label: "Documentation of active citizenship / volunteer work / courses", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit application at nyidanmark.dk.",
+      estimated_duration: "3–6 months processing",
+      checklist_items: [
+        { label: "Online application submitted", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 3,040)", item_type: "payment" },
+        { label: "Decision received", item_type: "document" },
+        { label: "Permanent residence card collected", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkCitizenship: ProcessTemplate = {
+  id: "dk_citizenship",
+  keywords: ["danish citizenship", "dansk statsborgerskab", "naturalisation denmark", "become danish", "danish passport", "danish nationality"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Ministry of Immigration and Integration / Folketing",
+  title: "Danish Citizenship by Naturalisation",
+  summary: "Danish citizenship is granted by a law passed in the Folketing (parliament) three times a year. Applicants must meet strict residency, language, and integration requirements.",
+  timeline_summary: "Applications are processed every few months when a new naturalisation bill is introduced. Total time from application to citizenship can be 2–4 years.",
+  next_action: "Check your eligibility and apply via the immigration authority — you must meet all conditions before your application can go to the Folketing.",
+  official_sources: [{ title: "SIRI — Danish citizenship", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Citizenship" }],
+  steps: [
+    {
+      title: "Check all conditions",
+      description: "Requirements: 9 years legal residence (7 for some), Danish language test Prøve i Dansk 3 or higher, self-sufficiency (no welfare in 4 years before application), clean criminal record, no outstanding public debt, renounce prior citizenship (with exceptions).",
+      estimated_duration: "1 week",
+      checklist_items: [
+        { label: "9 years (or qualifying reduced period) legal residence confirmed", item_type: "action" },
+        { label: "Prøve i Dansk 3 (or equivalent) language test passed", item_type: "action" },
+        { label: "No welfare benefits received in last 4 years", item_type: "action" },
+        { label: "No disqualifying criminal convictions", item_type: "action" },
+        { label: "No outstanding debt to public authorities", item_type: "action" },
+        { label: "Prior citizenship renunciation reviewed", item_type: "action" },
+      ],
+    },
+    {
+      title: "Submit application",
+      description: "Apply online at borger.dk. Your application will be checked and forwarded to be included in a naturalisation bill.",
+      estimated_duration: "1 day to apply",
+      checklist_items: [
+        { label: "Application submitted at borger.dk", item_type: "action" },
+        { label: "Application fee paid", item_type: "payment" },
+        { label: "All supporting documents uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Folketing process and ceremony",
+      description: "Your name is included in a naturalisation bill voted on by parliament three times a year. If passed, you attend a citizenship ceremony.",
+      estimated_duration: "6–24 months",
+      checklist_items: [
+        { label: "Notification of inclusion in naturalisation bill received", item_type: "document" },
+        { label: "Citizenship ceremony attended", item_type: "appointment" },
+        { label: "Declaration of loyalty to Denmark made", item_type: "action" },
+        { label: "Danish passport applied for", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkAsylum: ProcessTemplate = {
+  id: "dk_asylum",
+  keywords: ["asylum denmark", "refugee denmark", "asyl danmark", "asylansøger", "protection denmark", "flee denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Danish Immigration Service (Udlændingestyrelsen)",
+  title: "Asylum Application — Denmark",
+  summary: "Anyone in Denmark who needs international protection can apply for asylum. You must apply in person at the Danish Immigration Service or at the border.",
+  timeline_summary: "Processing times vary: from months to years. Denmark processes some cases under a special fast-track procedure.",
+  next_action: "Go to the nearest police station or the Danish Immigration Service reception centre and state that you want to apply for asylum.",
+  official_sources: [{ title: "Danish Immigration Service — Asylum", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Asylum" }],
+  steps: [
+    {
+      title: "Register application",
+      description: "Go to a police station or the Danish Immigration Service (Udlændingestyrelsen) reception centre and declare your intention to seek asylum.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Police or reception centre visited", item_type: "action" },
+        { label: "Asylum application registered", item_type: "action" },
+        { label: "Any identity documents presented", item_type: "document" },
+        { label: "Temporary accommodation assigned by Danish Immigration Service", item_type: "action" },
+      ],
+    },
+    {
+      title: "Asylum interview",
+      description: "You will be called for an interview with the Danish Immigration Service to explain your protection needs. You have the right to legal representation and an interpreter.",
+      estimated_duration: "Scheduled by authorities",
+      checklist_items: [
+        { label: "Interview appointment received", item_type: "appointment" },
+        { label: "Legal representative (advokat) arranged", item_type: "action" },
+        { label: "Interview attended", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Await decision",
+      description: "The Danish Immigration Service makes a decision. A negative decision can be appealed to the Refugee Appeals Board (Flygtningenævnet).",
+      estimated_duration: "Months to years",
+      checklist_items: [
+        { label: "Decision received", item_type: "document" },
+        { label: "If approved: residence permit issued", item_type: "action" },
+        { label: "If rejected: appeal to Flygtningenævnet within deadline", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkGreenCard: ProcessTemplate = {
+  id: "dk_green_card",
+  keywords: ["denmark green card", "point based denmark", "greencard denmark", "grønt kort", "skilled worker points denmark", "points scheme denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI",
+  title: "Establishment Card (formerly Green Card) — Denmark",
+  summary: "The Establishment Card allows highly qualified non-EU/EEA nationals to come to Denmark to seek work or start a business, without needing a prior job offer.",
+  timeline_summary: "Processing takes approximately 1 month.",
+  next_action: "Check whether you meet the points criteria on nyidanmark.dk.",
+  official_sources: [{ title: "SIRI — Establishment Card", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Work/Establishment-card" }],
+  steps: [
+    {
+      title: "Check points eligibility",
+      description: "You are assessed on education level, language skills (Danish, English, German, French), adaptability (age, Danish connections, previous stays), and salary history. A minimum number of points is required.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Points self-assessed using SIRI's points calculator", item_type: "action" },
+        { label: "Education level documented", item_type: "document" },
+        { label: "Language certifications gathered", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply online",
+      description: "Submit application at nyidanmark.dk.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted online", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 3,655)", item_type: "payment" },
+        { label: "Degree certificates and transcripts uploaded", item_type: "document" },
+        { label: "Language certificates uploaded", item_type: "document" },
+      ],
+    },
+    {
+      title: "Embassy biometrics and decision",
+      description: "Attend embassy for biometrics. If approved, the card allows 2 years to find work or establish a business.",
+      estimated_duration: "~1 month processing",
+      checklist_items: [
+        { label: "Embassy appointment attended and biometrics submitted", item_type: "appointment" },
+        { label: "Decision received", item_type: "document" },
+        { label: "Establishment Card collected in Denmark", item_type: "action" },
+        { label: "Once employed: convert to work permit or apply for Pay Limit permit", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+const denmarkIntegrationProgramme: ProcessTemplate = {
+  id: "dk_integration_programme",
+  keywords: ["integration program denmark", "danskuddannelse", "danish language course", "integrationsprogram", "learn danish", "danish for adults", "introduction program denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "Local municipality (kommune)",
+  title: "Integration Programme & Danish Language Course (Danskuddannelse)",
+  summary: "Newly arrived non-EU nationals are entitled and often obliged to participate in a 3-year integration programme run by their municipality. It includes free Danish language courses (danskuddannelse) and an introduction programme.",
+  timeline_summary: "Enrolment should happen within the first weeks of receiving your residence permit. Courses are free.",
+  next_action: "Contact your municipality as soon as you receive your residence permit to be enrolled in the integration programme.",
+  official_sources: [{ title: "SIRI — Integration programme", url: "https://www.nyidanmark.dk/en-GB/Words-and-concepts/Residence/Danskuddannelse" }],
+  steps: [
+    {
+      title: "Contact your municipality",
+      description: "Your municipality (kommune) is responsible for offering you the integration programme. Contact the integration department (integrationafdeling) promptly.",
+      estimated_duration: "First week",
+      checklist_items: [
+        { label: "Local municipality integration office contacted", item_type: "action" },
+        { label: "Integration meeting/interview scheduled", item_type: "appointment" },
+      ],
+    },
+    {
+      title: "Language placement and course enrolment",
+      description: "You will be assessed and placed in one of three Danskuddannelse levels (DU1, DU2, DU3). The programme is free of charge for the first 3 years.",
+      estimated_duration: "1–2 weeks",
+      checklist_items: [
+        { label: "Language assessment completed", item_type: "action" },
+        { label: "Danskuddannelse level assigned (DU1/DU2/DU3)", item_type: "action" },
+        { label: "Language school and schedule confirmed", item_type: "action" },
+        { label: "First class attended", item_type: "action" },
+      ],
+    },
+    {
+      title: "Complete Danish language test",
+      description: "The integration programme aims for you to pass Prøve i Dansk 1, 2, or 3 depending on your level. Prøve i Dansk 2 is the minimum for many immigration applications.",
+      estimated_duration: "1–3 years",
+      checklist_items: [
+        { label: "Prøve i Dansk exam registered for", item_type: "action" },
+        { label: "Exam passed at target level", item_type: "action" },
+        { label: "Certificate saved for future immigration applications", item_type: "document" },
+      ],
+    },
+  ],
+};
+
+const denmarkEEARegistration: ProcessTemplate = {
+  id: "dk_eea_registration",
+  keywords: ["eu eea denmark", "eu citizen denmark", "registration certificate denmark", "registreringsbevis denmark", "right of residence denmark", "eu free movement denmark"],
+  destination_country: "Denmark",
+  jurisdiction: "Denmark",
+  authority_name: "SIRI / Local Citizens Service",
+  title: "EU/EEA Registration Certificate — Denmark",
+  summary: "EU/EEA nationals can live and work in Denmark freely under EU freedom of movement rules. After 3 months, they must register and obtain a registration certificate (registreringsbevis).",
+  timeline_summary: "Registration is done online or at a citizen service centre. Processing is usually same-day or within a few days.",
+  next_action: "After establishing yourself in Denmark (work, study, self-sufficiency), apply for the registration certificate at SIRI's online portal.",
+  official_sources: [{ title: "SIRI — EU/EEA citizens registration", url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/EU-EEA" }],
+  steps: [
+    {
+      title: "Confirm qualifying basis",
+      description: "You must be a worker, self-employed, student, self-sufficient, or family member of one of the above.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "EU/EEA passport or national ID confirmed", item_type: "document" },
+        { label: "Qualifying basis confirmed: employment contract / enrolment letter / proof of funds", item_type: "document" },
+      ],
+    },
+    {
+      title: "Apply for registration certificate online",
+      description: "Apply at SIRI's online portal (nyidanmark.dk). You may also be able to register at a borgerservice office.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Application submitted at nyidanmark.dk or borgerservice", item_type: "action" },
+        { label: "Application fee paid (approx. DKK 375)", item_type: "payment" },
+        { label: "Supporting documents uploaded (employment contract/study letter/bank statements)", item_type: "document" },
+        { label: "Registration certificate (registreringsbevis) received", item_type: "document" },
+      ],
+    },
+    {
+      title: "Register for CPR number",
+      description: "Take your registration certificate to the local borgerservice to register and get a CPR number.",
+      estimated_duration: "1 day",
+      checklist_items: [
+        { label: "Borgerservice appointment attended", item_type: "appointment" },
+        { label: "CPR number received", item_type: "document" },
+        { label: "Yellow health insurance card applied for", item_type: "action" },
+        { label: "MitID digital ID activated", item_type: "action" },
+      ],
+    },
+  ],
+};
+
+// ── Spain — Extranjería / Ministerio del Interior ─────────────────────────
+
+const spainWorkPermit: ProcessTemplate = {
+  id: "es_work_permit",
+  keywords: ["spain work permit", "work spain", "autorización trabajo", "cuenta ajena", "spain employment", "residencia trabajo", "trabajo españa"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería / Ministerio del Interior",
+  title: "Work and Residence Permit (Cuenta Ajena) — Spain",
+  summary: "Non-EU/EEA nationals with a job offer in Spain must obtain a work and residence permit. The employer applies for a work authorisation (autorización de trabajo) first, then the worker applies for a visa at the Spanish consulate.",
+  timeline_summary: "Processing typically takes 1–3 months. Apply well before the intended start date.",
+  next_action: "Your employer must apply for the work authorisation before you can apply for your visa.",
+  official_sources: [{ title: "Ministerio de Inclusión — Autorización de trabajo", url: "https://extranjeros.inclusion.gob.es/es/InformacionInteres/InformacionProcedimientos/Ciudadanosnocomunitarios/hoja049/index.html" }],
+  steps: [
+    { title: "Employer applies for work authorisation", description: "The employer submits the autorización de trabajo application to the Oficina de Extranjería in the province where the job is located. They must show no suitable Spanish or EU candidate was found.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Job offer signed", item_type: "document" },
+      { label: "Employer submits work authorisation application", item_type: "action" },
+      { label: "Resolution (autorización) received", item_type: "document" },
+    ]},
+    { title: "Apply for visa at Spanish consulate", description: "Once the authorisation is granted, apply for a national visa (visado de residencia y trabajo) at the Spanish consulate in your home country within 1 month of the resolution.", estimated_duration: "1–4 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport (at least 1 year validity)", item_type: "document" },
+      { label: "Work authorisation resolution", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Medical certificate", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Enter Spain and register", description: "Enter Spain within the visa validity. Register at the local Oficina de Extranjería to obtain your TIE residence card.", estimated_duration: "First month", checklist_items: [
+      { label: "Entered Spain within visa validity", item_type: "action" },
+      { label: "NIE number registered (if not already obtained)", item_type: "action" },
+      { label: "Padron municipal (address registration) completed at Ayuntamiento", item_type: "action" },
+      { label: "TIE card appointment booked at Extranjería", item_type: "appointment" },
+      { label: "TIE card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const spainStudentVisa: ProcessTemplate = {
+  id: "es_student_visa",
+  keywords: ["spain student visa", "study spain", "visa estudiante", "visado estudios", "student permit spain", "spanish university", "estudiar españa"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Spanish Consulate / Oficina de Extranjería",
+  title: "Student Visa — Spain",
+  summary: "Non-EU/EEA nationals accepted at a Spanish university or educational institution must apply for a student visa (visado de estudios) before arrival.",
+  timeline_summary: "Apply at least 2 months before your course starts. Processing typically takes 4–8 weeks.",
+  next_action: "Secure an acceptance letter from your Spanish institution before applying.",
+  official_sources: [{ title: "Consulado España — Visado de estudios", url: "https://www.exteriores.gob.es/es/EmbajadasConsulados/Paginas/index.aspx" }],
+  steps: [
+    { title: "Obtain acceptance letter", description: "Apply to a Spanish university or accredited institution and receive an official acceptance (carta de admisión).", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Spanish institution identified and applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply at Spanish consulate", description: "Apply for the student visa at the Spanish consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Acceptance letter from institution", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €600/month)", item_type: "document" },
+      { label: "Health insurance covering Spain", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and obtain TIE card", description: "Once in Spain, register for a TIE (Tarjeta de Identidad de Extranjero) within 30 days of arrival if staying more than 6 months.", estimated_duration: "First month", checklist_items: [
+      { label: "Padron municipal completed at local Ayuntamiento", item_type: "action" },
+      { label: "TIE card appointment booked at Extranjería", item_type: "appointment" },
+      { label: "TIE card collected", item_type: "document" },
+      { label: "Enrolled at institution and student ID obtained", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainNonLucrative: ProcessTemplate = {
+  id: "es_non_lucrative",
+  keywords: ["spain non lucrative visa", "visa no lucrativa", "retire spain", "passive income spain", "non working visa spain", "spain residency passive income"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Spanish Consulate / Oficina de Extranjería",
+  title: "Non-Lucrative Residence Visa — Spain",
+  summary: "Allows non-EU/EEA nationals with sufficient passive income or savings to live in Spain without working. Popular with retirees and remote workers (though remote work is technically restricted on this visa).",
+  timeline_summary: "Consulate processing takes 4–8 weeks. Gather documents carefully as requirements are strict.",
+  next_action: "Confirm you have sufficient funds (approx. €2,400/month for an individual) and gather apostilled documents.",
+  official_sources: [{ title: "Consulado España — Visa no lucrativa", url: "https://www.exteriores.gob.es" }],
+  steps: [
+    { title: "Confirm financial eligibility", description: "You must show at least 400% of the Spanish IPREM (approx. €2,400/month) in passive income or savings for a single applicant.", estimated_duration: "1 week", checklist_items: [
+      { label: "Monthly income or savings level confirmed (400% IPREM threshold)", item_type: "action" },
+      { label: "Bank statements covering last 6 months gathered", item_type: "document" },
+      { label: "Proof of income source (pension, investment, rental income)", item_type: "document" },
+    ]},
+    { title: "Gather and apostille documents", description: "All documents must be official, recent, and apostilled with a certified Spanish translation.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "Valid passport (min. 1 year validity)", item_type: "document" },
+      { label: "Criminal record certificate (apostilled + translated)", item_type: "document" },
+      { label: "Medical certificate from approved doctor", item_type: "document" },
+      { label: "Proof of accommodation in Spain (rental contract or property deed)", item_type: "document" },
+      { label: "Health insurance (full coverage, no co-payments, min. €30,000)", item_type: "document" },
+    ]},
+    { title: "Submit visa application at consulate", description: "Apply in person at the Spanish consulate serving your area of residence.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Application form (EX-01) completed", item_type: "document" },
+      { label: "All documents submitted", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+      { label: "Visa received and travel to Spain within validity", item_type: "action" },
+      { label: "TIE card applied for within 30 days of arrival", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainSelfEmployed: ProcessTemplate = {
+  id: "es_self_employed",
+  keywords: ["spain self employed", "autonomo spain", "freelance spain", "cuenta propia", "self employment visa spain", "start business spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería",
+  title: "Self-Employment Permit (Cuenta Propia) — Spain",
+  summary: "Non-EU/EEA nationals who want to work as self-employed (autónomo) in Spain need a residence and work permit for self-employed activity.",
+  timeline_summary: "Processing takes 1–3 months.",
+  next_action: "Prepare your business plan and check that your professional qualifications are recognised in Spain if in a regulated profession.",
+  official_sources: [{ title: "Extranjería — Cuenta propia", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Prepare business plan and documents", description: "Show your business activity is viable in Spain, you have the required qualifications, and sufficient funds.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "Business plan drafted (activity, clients, revenue projections)", item_type: "document" },
+      { label: "Professional qualifications homologated if in regulated profession", item_type: "document" },
+      { label: "Proof of funds to sustain activity", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+    ]},
+    { title: "Apply at Spanish consulate", description: "Apply for self-employment visa (visado de residencia y trabajo por cuenta propia) at the consulate in your home country.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Application form and all documents submitted", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Enter Spain and register as autónomo", description: "Register with the Agencia Tributaria (tax authority), Social Security as autónomo, and get your TIE card.", estimated_duration: "First month", checklist_items: [
+      { label: "Padron municipal completed", item_type: "action" },
+      { label: "Registered with Agencia Tributaria (NIE + tax obligations)", item_type: "action" },
+      { label: "Registered with Social Security as autónomo", item_type: "action" },
+      { label: "TIE card applied for at Extranjería", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainNIE: ProcessTemplate = {
+  id: "es_nie",
+  keywords: ["nie spain", "número identificación extranjero", "nie number", "foreigner id spain", "spain tax number foreigner", "nie certificate"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Policía Nacional / Consulado Español",
+  title: "NIE Number (Número de Identificación de Extranjero) — Spain",
+  summary: "The NIE is a personal tax and identification number required for almost all legal and financial activities in Spain — buying property, working, opening a bank account, signing contracts.",
+  timeline_summary: "In Spain: appointment within days to weeks. At a consulate abroad: typically 2–4 weeks.",
+  next_action: "Book an appointment at the Policía Nacional (in Spain) or the nearest Spanish consulate (from abroad).",
+  official_sources: [{ title: "Policía Nacional — NIE", url: "https://www.policia.es/nie.html" }],
+  steps: [
+    { title: "Book appointment", description: "In Spain: book at sede.gob.es (cita previa for NIE at Policía Nacional or Extranjería). From abroad: contact the Spanish consulate.", estimated_duration: "Days to weeks waiting", checklist_items: [
+      { label: "Appointment booked at Policía Nacional (sede.gob.es) or consulate", item_type: "appointment" },
+    ]},
+    { title: "Attend appointment with documents", description: "Bring completed EX-15 form, valid passport and copy, and justification for needing the NIE (job offer, property purchase, etc.).", estimated_duration: "1 day", checklist_items: [
+      { label: "Form EX-15 (solicitud de NIE) completed", item_type: "document" },
+      { label: "Valid passport + photocopy", item_type: "document" },
+      { label: "Justification document (employment contract, property deed, etc.)", item_type: "document" },
+      { label: "Tasas form 790 (fee paid, approx. €10–12)", item_type: "payment" },
+    ]},
+    { title: "Receive NIE certificate", description: "The NIE certificate (certificado de NIE) is issued immediately or within a few days. It is a green A4 certificate — not a residence card.", estimated_duration: "Same day to 1 week", checklist_items: [
+      { label: "NIE certificate received", item_type: "document" },
+      { label: "NIE used for tax registration, bank account, and other formalities", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainEEARegistration: ProcessTemplate = {
+  id: "es_eea_registration",
+  keywords: ["eu registration spain", "certificado registro ue", "eu citizen spain", "registro ciudadano ue", "green certificate spain", "eu residency certificate spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería / Policía Nacional",
+  title: "EU/EEA Residence Certificate — Spain",
+  summary: "EU/EEA citizens staying more than 3 months in Spain must register and obtain a Certificado de Registro de Ciudadano de la UE (the 'green certificate'). This acts as proof of residence.",
+  timeline_summary: "Registration appointment typically available within 1–4 weeks. Certificate issued same day.",
+  next_action: "Book a cita previa at the Oficina de Extranjería or Policía Nacional in your province.",
+  official_sources: [{ title: "Extranjería — Certificado de registro UE", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Book appointment (cita previa)", description: "Book online at sede.gob.es for the Certificado de Registro de Ciudadano de la UE.", estimated_duration: "1–4 weeks waiting", checklist_items: [
+      { label: "Appointment booked at sede.gob.es", item_type: "appointment" },
+      { label: "Padron municipal (empadronamiento) completed at Ayuntamiento first", item_type: "action" },
+    ]},
+    { title: "Attend appointment", description: "Bring documents proving your EU identity and qualifying basis (work, study, self-sufficiency).", estimated_duration: "1 day", checklist_items: [
+      { label: "EU passport or national identity card", item_type: "document" },
+      { label: "Form EX-18 completed", item_type: "document" },
+      { label: "Proof of qualifying basis: employment contract / enrolment letter / bank statements", item_type: "document" },
+      { label: "Padron certificate (empadronamiento)", item_type: "document" },
+      { label: "Tasas 790 fee paid (approx. €10)", item_type: "payment" },
+    ]},
+    { title: "Receive green certificate and NIE", description: "The green certificate with your NIE (Número de Identificación de Extranjero) number is issued at the appointment.", estimated_duration: "Same day", checklist_items: [
+      { label: "Green certificate (Certificado de Registro) received", item_type: "document" },
+      { label: "NIE number noted and used for banking, taxes, etc.", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainFamilyReunification: ProcessTemplate = {
+  id: "es_family_reunification",
+  keywords: ["spain family reunification", "reagrupación familiar", "family visa spain", "spouse visa spain", "join family spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería",
+  title: "Family Reunification (Reagrupación Familiar) — Spain",
+  summary: "Legal residents in Spain who have had a residence permit for at least 1 year (and renewed for at least 1 more year) can bring close family members to join them.",
+  timeline_summary: "Processing typically takes 2–4 months.",
+  next_action: "The sponsor in Spain must apply for family reunification — the family member cannot apply directly.",
+  official_sources: [{ title: "Extranjería — Reagrupación familiar", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Sponsor checks eligibility and applies", description: "The sponsor must have held a residence permit for 1+ year and have renewed it. They must show adequate housing and sufficient income (at least 150% IPREM for spouse).", estimated_duration: "1–2 weeks prep", checklist_items: [
+      { label: "Sponsor's residence permit validity confirmed (1 year held, renewed)", item_type: "document" },
+      { label: "Income proof: at least 150% IPREM (approx. €900/month for spouse)", item_type: "document" },
+      { label: "Housing adequacy report (informe de vivienda) obtained from Ayuntamiento", item_type: "document" },
+      { label: "Application (EX-08 or EX-09) submitted at Extranjería", item_type: "action" },
+    ]},
+    { title: "Family member applies for visa at consulate", description: "Once authorisation is granted, the family member applies for a family reunification visa at the Spanish consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Authorisation granted and sent to family member", item_type: "document" },
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Passport and family relationship documents submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Family member arrives and gets TIE", description: "After arriving, the family member must obtain their own TIE residence card.", estimated_duration: "First month", checklist_items: [
+      { label: "Padron completed at Ayuntamiento", item_type: "action" },
+      { label: "TIE appointment booked at Extranjería", item_type: "appointment" },
+      { label: "TIE card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const spainLongTermResidence: ProcessTemplate = {
+  id: "es_long_term_residence",
+  keywords: ["spain long term residence", "residencia larga duración", "permanent spain", "5 year spain", "long stay spain", "indefinite spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Extranjería",
+  title: "Long-Term / Permanent Residence — Spain",
+  summary: "After 5 years of continuous legal residence in Spain, non-EU/EEA nationals can apply for long-term EU residence (residencia de larga duración). This gives the right to live and work indefinitely.",
+  timeline_summary: "Processing takes 3–6 months.",
+  next_action: "Confirm you have 5 continuous years of legal residence and gather your documents.",
+  official_sources: [{ title: "Extranjería — Larga duración", url: "https://extranjeros.inclusion.gob.es" }],
+  steps: [
+    { title: "Check eligibility", description: "5 continuous years of legal residence, sufficient income, no serious criminal record, and no welfare abuse.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "Income at least 100% IPREM confirmed", item_type: "action" },
+      { label: "No long absences from Spain (max 6 months per year, 10 months total)", item_type: "action" },
+    ]},
+    { title: "Gather documents and apply", description: "Submit application (form EX-11) at the Oficina de Extranjería.", estimated_duration: "3–6 months", checklist_items: [
+      { label: "Form EX-11 completed", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current residence permit (TIE)", item_type: "document" },
+      { label: "Proof of 5 years' residence (all prior permits, padron history)", item_type: "document" },
+      { label: "Proof of income", item_type: "document" },
+      { label: "Criminal record certificate", item_type: "document" },
+      { label: "Tasas fee paid", item_type: "payment" },
+      { label: "TIE card for long-term residence collected", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainCitizenship: ProcessTemplate = {
+  id: "es_citizenship",
+  keywords: ["spanish citizenship", "ciudadanía española", "naturalización españa", "become spanish", "spanish passport", "nationality spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Ministerio de Justicia / Registro Civil",
+  title: "Spanish Citizenship by Naturalisation",
+  summary: "After 10 years of legal residence (2 years for nationals of Latin American countries, Portugal, Philippines, Equatorial Guinea, Andorra, and Sephardic Jews), you can apply for Spanish citizenship.",
+  timeline_summary: "Processing has historically taken 1–3 years. Spain allows dual citizenship with many countries.",
+  next_action: "Confirm your years of legal residence and gather the required documents.",
+  official_sources: [{ title: "Ministerio de Justicia — Nacionalidad", url: "https://www.mjusticia.gob.es/es/ciudadanos/tramites/nacionalidad-residencia" }],
+  steps: [
+    { title: "Check eligibility", description: "Standard: 10 years legal residence (2 years for Iberoamerican nationals and others with special ties to Spain), no serious criminal record, basic Spanish language skills (DELE A2+), knowledge of Spanish constitution and society (CCSE exam).", estimated_duration: "1 week", checklist_items: [
+      { label: "Years of legal residence confirmed (10 standard, 2 for eligible nationalities)", item_type: "action" },
+      { label: "DELE A2 Spanish language certificate obtained", item_type: "document" },
+      { label: "CCSE exam (knowledge of Spain) passed", item_type: "document" },
+    ]},
+    { title: "Apply online", description: "Submit application online via the Ministerio de Justicia portal (expediente de nacionalidad).", estimated_duration: "1–3 years processing", checklist_items: [
+      { label: "Online application submitted", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Passport, current TIE, criminal record, birth certificate (apostilled) uploaded", item_type: "document" },
+      { label: "DELE and CCSE certificates uploaded", item_type: "document" },
+      { label: "Resolution (resolución) received", item_type: "document" },
+      { label: "Oath sworn at Registro Civil", item_type: "appointment" },
+      { label: "Spanish passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const spainAsylum: ProcessTemplate = {
+  id: "es_asylum",
+  keywords: ["asylum spain", "asilo españa", "refugee spain", "international protection spain", "solicitud asilo", "asylum seeker spain"],
+  destination_country: "Spain",
+  jurisdiction: "Spain",
+  authority_name: "Oficina de Asilo y Refugio (OAR)",
+  title: "Asylum Application — Spain",
+  summary: "Anyone in Spain who needs international protection can apply for asylum (protección internacional). Apply at the OAR in Madrid, a border post, or at a police station.",
+  timeline_summary: "Processing times vary widely: from months to several years. You may stay in Spain while your case is pending.",
+  next_action: "Go to the Oficina de Asilo y Refugio (OAR) in Madrid or a designated police station to register your asylum application.",
+  official_sources: [{ title: "OAR — Solicitud de protección internacional", url: "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/extranjeria/asilo-y-refugio/" }],
+  steps: [
+    { title: "Register application", description: "Present yourself at OAR (Madrid), a police station designated for asylum, or a border post. State clearly that you are requesting international protection.", estimated_duration: "1 day", checklist_items: [
+      { label: "OAR or designated police station visited", item_type: "action" },
+      { label: "Application intention stated (manifestación de la voluntad)", item_type: "action" },
+      { label: "Any available identity documents presented", item_type: "document" },
+      { label: "Appointment to formalise application (formalización) given", item_type: "appointment" },
+    ]},
+    { title: "Formalise the application", description: "At the scheduled appointment you give a full account of your reasons for seeking protection (audiencia). You have the right to a lawyer and interpreter.", estimated_duration: "Scheduled date", checklist_items: [
+      { label: "Legal representation arranged (free legal aid available)", item_type: "action" },
+      { label: "Formalisation appointment attended", item_type: "appointment" },
+      { label: "Red documentation card (tarjeta roja) received — provisional stay authorisation", item_type: "document" },
+    ]},
+    { title: "Await decision", description: "OAR examines your case and issues a resolution. If approved, you receive refugee status or subsidiary protection. If rejected, you can appeal.", estimated_duration: "Months to years", checklist_items: [
+      { label: "Decision received", item_type: "document" },
+      { label: "If approved: residence permit and travel document issued", item_type: "action" },
+      { label: "If rejected: appeal to Audiencia Nacional within 2 months", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Italy — Ministero dell'Interno / Questura ──────────────────────────────
+
+const italyWorkVisa: ProcessTemplate = {
+  id: "it_work_visa",
+  keywords: ["italy work visa", "work italy", "visto lavoro", "nulla osta lavoro", "decreto flussi", "italy employment", "lavoro italia", "work permit italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Sportello Unico per l'Immigrazione / Questura",
+  title: "Work Visa (Nulla Osta) — Italy",
+  summary: "Non-EU nationals need a work authorisation (nulla osta) obtained by the Italian employer before applying for a visa. Italy regulates entries through an annual quota decree (decreto flussi).",
+  timeline_summary: "The decree flussi opens once or twice per year. Applications fill extremely quickly. Plan 3–6 months ahead.",
+  next_action: "Monitor the Ministero dell'Interno website for the next decreto flussi opening date and prepare all documents in advance.",
+  official_sources: [{ title: "Ministero dell'Interno — Flussi", url: "https://www.interno.gov.it/it/temi/immigrazione-e-asilo/flussi-migratori" }],
+  steps: [
+    { title: "Employer applies for nulla osta during decreto flussi", description: "The employer submits a request to the Sportello Unico per l'Immigrazione when the annual quota opens. Applications fill within hours or days.", estimated_duration: "Quota-dependent", checklist_items: [
+      { label: "Decreto flussi opening date monitored", item_type: "action" },
+      { label: "Employer submits nulla osta request online", item_type: "action" },
+      { label: "Nulla osta issued by Sportello Unico", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa at Italian consulate", description: "Once the nulla osta is issued, apply for a visto di ingresso per lavoro at the Italian consulate in your home country within 6 months.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Italian consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Nulla osta document", item_type: "document" },
+      { label: "Medical insurance", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and sign employment contract", description: "Within 8 days of arrival, go to the Sportello Unico to sign the employment contract and start the residence permit process.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Arrived in Italy within visa validity", item_type: "action" },
+      { label: "Sportello Unico visited within 8 days to sign contract", item_type: "action" },
+      { label: "Codice fiscale obtained from Agenzia delle Entrate", item_type: "action" },
+      { label: "Permesso di soggiorno application submitted at Post Office (kit postale)", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyStudentVisa: ProcessTemplate = {
+  id: "it_student_visa",
+  keywords: ["italy student visa", "visto studio", "study italy", "university italy", "student permit italy", "italian university", "studiare italia"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Italian Consulate / Questura",
+  title: "Student Visa — Italy",
+  summary: "Non-EU nationals accepted at an Italian university or educational institution must obtain a student visa (visto per studio) before arrival.",
+  timeline_summary: "Apply 2–3 months before your course start. Processing takes 4–8 weeks.",
+  next_action: "Apply to an Italian institution and obtain an acceptance letter before contacting the consulate.",
+  official_sources: [{ title: "Studiare in Italia — Visto per studio", url: "https://www.studiare-in-italia.it/studentistranieri/" }],
+  steps: [
+    { title: "Get university admission", description: "Apply through Universitaly (for degree courses) or directly to the institution for language/other courses.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Applied via Universitaly or directly to institution", item_type: "action" },
+      { label: "Acceptance letter (lettera di ammissione) received", item_type: "document" },
+    ]},
+    { title: "Apply for student visa", description: "Apply at the Italian consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Acceptance letter", item_type: "document" },
+      { label: "Proof of accommodation in Italy", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €448/month)", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+      { label: "Visa fee paid (approx. €50)", item_type: "payment" },
+    ]},
+    { title: "Arrive and apply for permesso di soggiorno", description: "Within 8 days of arrival, apply for a permesso di soggiorno at the Post Office using the kit postale.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Kit postale (immigration kit) obtained at Post Office", item_type: "action" },
+      { label: "Permesso di soggiorno application submitted", item_type: "action" },
+      { label: "Codice fiscale obtained", item_type: "action" },
+      { label: "Enrolled at university and student card received", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyPermessoDiSoggiorno: ProcessTemplate = {
+  id: "it_permesso_soggiorno",
+  keywords: ["permesso di soggiorno", "residence permit italy", "stay permit italy", "italy residence card", "soggiorno italy", "questura italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Questura / Post Office (Poste Italiane)",
+  title: "Residence Permit (Permesso di Soggiorno) — Italy",
+  summary: "All non-EU nationals staying in Italy for more than 90 days must apply for a permesso di soggiorno within 8 days of arrival. The application is submitted at the Post Office using an immigration kit.",
+  timeline_summary: "Application is submitted immediately; the actual permit card can take 2–6 months to be issued. You receive a receipt (ricevuta) that acts as proof of status in the meantime.",
+  next_action: "Obtain the immigration kit (kit postale per stranieri) at any Post Office and submit within 8 days of arrival.",
+  official_sources: [{ title: "Polizia di Stato — Permesso di soggiorno", url: "https://www.poliziadistato.it/articolo/191" }],
+  steps: [
+    { title: "Obtain kit and complete application", description: "Get the yellow immigration kit at a Post Office (Poste Italiane). Complete the form carefully — errors cause delays.", estimated_duration: "1–2 days", checklist_items: [
+      { label: "Immigration kit (kit postale) obtained at Post Office", item_type: "action" },
+      { label: "Application form (modulo 1 or specific form for permit type) completed", item_type: "document" },
+      { label: "All required documents photocopied", item_type: "document" },
+    ]},
+    { title: "Submit at designated Post Office", description: "Submit the kit at a Post Office with immigration services (not all branches). Pay the fee.", estimated_duration: "1 day", checklist_items: [
+      { label: "Designated Post Office (with immigration service) visited", item_type: "action" },
+      { label: "Passport + visa copy", item_type: "document" },
+      { label: "4 passport photos", item_type: "document" },
+      { label: "Fee paid (approx. €70–100 depending on permit type)", item_type: "payment" },
+      { label: "Ricevuta (receipt) received — keep this carefully", item_type: "document" },
+    ]},
+    { title: "Attend Questura appointment for biometrics", description: "You will be called to the Questura to give fingerprints and collect your permit card.", estimated_duration: "2–6 months waiting", checklist_items: [
+      { label: "Questura appointment notice received", item_type: "document" },
+      { label: "Questura appointment attended, biometrics given", item_type: "appointment" },
+      { label: "Permesso di soggiorno card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const italyCodiceFiscale: ProcessTemplate = {
+  id: "it_codice_fiscale",
+  keywords: ["codice fiscale", "italian tax code", "tax number italy", "fiscal code italy", "cf italy", "codice fiscale straniero"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Agenzia delle Entrate",
+  title: "Codice Fiscale (Tax Identification Number) — Italy",
+  summary: "The codice fiscale is Italy's personal tax code, required for almost all legal and financial activities — employment, banking, healthcare, renting, mobile contracts, and more.",
+  timeline_summary: "Issued immediately at the Agenzia delle Entrate office or by the Italian consulate abroad.",
+  next_action: "Visit your nearest Agenzia delle Entrate office with your passport, or apply at the Italian consulate before travelling.",
+  official_sources: [{ title: "Agenzia delle Entrate — Codice fiscale", url: "https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts-cf/info-ts-cf" }],
+  steps: [
+    { title: "Apply in Italy or at consulate abroad", description: "In Italy: walk into any Agenzia delle Entrate office with your passport and fill in form AA4/8. Abroad: apply at the Italian consulate.", estimated_duration: "Same day", checklist_items: [
+      { label: "Nearest Agenzia delle Entrate office or Italian consulate identified", item_type: "action" },
+      { label: "Valid passport or ID card", item_type: "document" },
+      { label: "Form AA4/8 completed (available at office)", item_type: "document" },
+      { label: "Codice fiscale certificate received", item_type: "document" },
+    ]},
+    { title: "Request physical health card (tessera sanitaria)", description: "Once registered with the Italian health system (SSN), your codice fiscale is also printed on a physical health card.", estimated_duration: "Weeks to months", checklist_items: [
+      { label: "Registered with local ASL (health authority) if eligible", item_type: "action" },
+      { label: "Tessera sanitaria received by post", item_type: "document" },
+    ]},
+  ],
+};
+
+const italyFamilyReunification: ProcessTemplate = {
+  id: "it_family_reunification",
+  keywords: ["italy family reunification", "ricongiungimento familiare", "family visa italy", "spouse visa italy", "join family italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Sportello Unico per l'Immigrazione",
+  title: "Family Reunification (Ricongiungimento Familiare) — Italy",
+  summary: "Legal residents in Italy with at least 1 year on their permesso di soggiorno can apply to bring their spouse and minor children to join them.",
+  timeline_summary: "Processing takes 3–6 months. The sponsor applies in Italy; family members apply for a visa abroad.",
+  next_action: "The sponsor must apply at the Sportello Unico per l'Immigrazione — family members cannot apply directly.",
+  official_sources: [{ title: "Ministero dell'Interno — Ricongiungimento familiare", url: "https://www.interno.gov.it" }],
+  steps: [
+    { title: "Sponsor applies for nulla osta", description: "The sponsor (resident in Italy) applies to the Sportello Unico per l'Immigrazione proving adequate income and housing.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Permesso di soggiorno with at least 1 year validity confirmed", item_type: "document" },
+      { label: "Income proof: at least €6,500/year for spouse (more for each child)", item_type: "document" },
+      { label: "Housing certificate (idoneità alloggiativa) obtained from Comune", item_type: "document" },
+      { label: "Application submitted to Sportello Unico", item_type: "action" },
+      { label: "Nulla osta issued", item_type: "document" },
+    ]},
+    { title: "Family member applies for visa", description: "With the nulla osta, the family member applies for a visto per ricongiungimento familiare at the Italian consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Nulla osta and relationship documents submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and apply for permesso di soggiorno", description: "Within 8 days of arrival, the family member applies for their own permesso di soggiorno.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Kit postale submitted at Post Office within 8 days", item_type: "action" },
+      { label: "Codice fiscale obtained", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyLongTermResidence: ProcessTemplate = {
+  id: "it_long_term_residence",
+  keywords: ["italy long term residence", "permesso CE lungo periodo", "permanent italy", "5 years italy", "carta soggiorno", "lungo periodo"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Questura",
+  title: "EU Long-Term Residence Permit (Permesso CE) — Italy",
+  summary: "After 5 years of continuous legal residence in Italy, non-EU nationals can apply for an EU long-term residence permit (permesso di soggiorno CE per soggiornanti di lungo periodo). It gives the right to live and work in Italy indefinitely.",
+  timeline_summary: "Processing takes 3–6 months at the Questura.",
+  next_action: "Confirm 5 continuous years of legal stay and gather income and language documentation.",
+  official_sources: [{ title: "Polizia di Stato — Lungo periodo", url: "https://www.poliziadistato.it" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of continuous legal residence, sufficient income (at least social allowance level), Italian language B1 certificate (or Italian school/university), no serious criminal record.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years continuous legal residence confirmed", item_type: "action" },
+      { label: "Income above minimum threshold confirmed", item_type: "action" },
+      { label: "Italian language B1 certificate obtained (CILS, CELI, PLIDA, or DITALS)", item_type: "document" },
+    ]},
+    { title: "Apply at Questura", description: "Submit application at the immigration office of the provincial Questura.", estimated_duration: "3–6 months", checklist_items: [
+      { label: "Current permesso di soggiorno", item_type: "document" },
+      { label: "Passport", item_type: "document" },
+      { label: "5 years' history of permits", item_type: "document" },
+      { label: "Income proof (CUD, tax return, payslips)", item_type: "document" },
+      { label: "Italian language certificate", item_type: "document" },
+      { label: "Fee paid (marca da bollo €16 + administrative fee)", item_type: "payment" },
+      { label: "Permesso CE card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const italyCitizenship: ProcessTemplate = {
+  id: "it_citizenship",
+  keywords: ["italian citizenship", "cittadinanza italiana", "naturalizzazione italia", "become italian", "italian passport", "nationalità italiana"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Ministero dell'Interno / Prefettura",
+  title: "Italian Citizenship by Naturalisation",
+  summary: "After 10 years of legal residence in Italy (4 years for EU citizens, 5 for stateless persons and refugees), you can apply for Italian citizenship. Italy allows dual citizenship.",
+  timeline_summary: "Processing takes 2–4 years due to high application volumes. Applications are submitted online via the Ministero dell'Interno portal.",
+  next_action: "Check your years of residence and gather all required documents — the list is extensive.",
+  official_sources: [{ title: "Ministero dell'Interno — Cittadinanza", url: "https://www.interno.gov.it/it/temi/cittadinanza" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years legal residence (4 for EU citizens), Italian language B1, no serious criminal record, sufficient income.", estimated_duration: "1 week", checklist_items: [
+      { label: "10 years (or reduced period) legal residence confirmed", item_type: "action" },
+      { label: "Italian language B1 certificate", item_type: "document" },
+      { label: "Income at least €8,263/year confirmed", item_type: "action" },
+    ]},
+    { title: "Apply online via Ministero dell'Interno portal", description: "Submit the application at cittadinanza.dlci.interno.it. The process is entirely online from 2016 onwards.", estimated_duration: "2–4 years processing", checklist_items: [
+      { label: "SPID or CIE digital identity created (if already in Italy)", item_type: "action" },
+      { label: "Application submitted online", item_type: "action" },
+      { label: "Application fee paid (€250)", item_type: "payment" },
+      { label: "Birth certificate (apostilled + translated) uploaded", item_type: "document" },
+      { label: "Criminal record from Italy and country of origin uploaded", item_type: "document" },
+      { label: "Income documents uploaded", item_type: "document" },
+      { label: "Language certificate uploaded", item_type: "document" },
+      { label: "Decree of naturalisation (decreto di concessione) received", item_type: "document" },
+      { label: "Oath sworn at Comune within 6 months of decree", item_type: "appointment" },
+    ]},
+  ],
+};
+
+const italyAsylum: ProcessTemplate = {
+  id: "it_asylum",
+  keywords: ["asylum italy", "asilo italia", "refugee italy", "protezione internazionale", "richiedente asilo", "asylum seeker italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Commissione Territoriale per il Riconoscimento della Protezione Internazionale",
+  title: "Asylum / International Protection — Italy",
+  summary: "Anyone in Italy who needs international protection can apply for asylum. Applications are submitted at the Questura (police headquarters) and assessed by a Territorial Commission.",
+  timeline_summary: "Processing times vary widely: from 6 months to over 2 years. You may stay in Italy while your case is pending.",
+  next_action: "Go to the Questura in your province and declare your intention to seek international protection.",
+  official_sources: [{ title: "UNHCR Italy — Come fare domanda", url: "https://www.unhcr.org/it/protezione/richiesta-di-asilo" }],
+  steps: [
+    { title: "Declare intention at Questura", description: "Go to the immigration office of the Questura and state you want to apply for international protection (protezione internazionale).", estimated_duration: "1 day", checklist_items: [
+      { label: "Questura immigration office (Ufficio Immigrazione) visited", item_type: "action" },
+      { label: "Asylum intention declared", item_type: "action" },
+      { label: "Appointment to formalise application given", item_type: "appointment" },
+    ]},
+    { title: "Formalise application (verbalizzazione)", description: "At the appointment, you give your personal details and reasons for seeking protection. You have the right to an interpreter and legal aid.", estimated_duration: "Scheduled date", checklist_items: [
+      { label: "Legal aid arranged if needed", item_type: "action" },
+      { label: "Verbalizzazione (formal registration) completed at Questura", item_type: "appointment" },
+      { label: "C3 form completed", item_type: "document" },
+      { label: "Permesso di soggiorno for pending asylum (6-month renewable) received", item_type: "document" },
+    ]},
+    { title: "Commission interview and decision", description: "The Territorial Commission calls you for a hearing. They assess your case and issue a decision (refugee status, subsidiary protection, humanitarian protection, or rejection).", estimated_duration: "6 months–2 years", checklist_items: [
+      { label: "Commission hearing attended", item_type: "appointment" },
+      { label: "Decision received", item_type: "document" },
+      { label: "If rejected: appeal to Tribunal within 30 days", item_type: "action" },
+    ]},
+  ],
+};
+
+const italyEEARegistration: ProcessTemplate = {
+  id: "it_eea_registration",
+  keywords: ["eu citizen italy", "iscrizione anagrafe italy", "eu registration italy", "residency certificate italy", "certificato residenza ue", "eu free movement italy"],
+  destination_country: "Italy",
+  jurisdiction: "Italy",
+  authority_name: "Comune (Anagrafe)",
+  title: "EU/EEA Residence Registration (Iscrizione Anagrafe) — Italy",
+  summary: "EU/EEA citizens staying more than 3 months in Italy must register with the local Anagrafe (municipal registry) to obtain a certificate of residence (certificato di residenza / attestato di soggiorno).",
+  timeline_summary: "Registration can usually be done within a few days. The certificate is issued immediately or within a few weeks.",
+  next_action: "Go to the Anagrafe office at your local Comune to register your address.",
+  official_sources: [{ title: "Ministero dell'Interno — Cittadini UE", url: "https://www.interno.gov.it" }],
+  steps: [
+    { title: "Register at the Anagrafe", description: "Bring documents showing your EU identity and qualifying basis (work, study, self-sufficiency). Some Comuni allow online pre-registration.", estimated_duration: "1 day", checklist_items: [
+      { label: "Comune Anagrafe office identified and appointment booked (if required)", item_type: "appointment" },
+      { label: "EU passport or national identity card", item_type: "document" },
+      { label: "Proof of qualifying basis: employment contract / enrolment letter / bank statements", item_type: "document" },
+      { label: "Proof of accommodation (rental contract, owner declaration)", item_type: "document" },
+      { label: "Registration form completed at office", item_type: "action" },
+    ]},
+    { title: "Receive certificate of residence", description: "The Anagrafe registers your address and issues a residence certificate. With this you can apply for your codice fiscale, open a bank account, and access public services.", estimated_duration: "Same day to 2 weeks", checklist_items: [
+      { label: "Certificato di residenza / attestato di soggiorno received", item_type: "document" },
+      { label: "Codice fiscale obtained from Agenzia delle Entrate", item_type: "action" },
+      { label: "Health system (SSN) registration completed at local ASL", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -1269,6 +3335,11 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   swedenResidencePermitRenewal,
   swedenFamilyReunification,
   swedenCitizenship,
+  swedenAsylum,
+  swedenPermanentResidence,
+  swedenFolkbokforing,
+  swedenSFI,
+  swedenEEARegistration,
   // United Kingdom
   ukStudentVisa,
   ukSkilledWorkerVisa,
@@ -1277,6 +3348,57 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   // Germany
   germanyEUBlueCard,
   germanyJobSeekerVisa,
+  germanyFamilyReunification,
+  germanyAusbuildung,
+  germanyStudentVisa,
+  germanySettlement,
+  germanyAnmeldung,
+  germanyFreelanceVisa,
+  germanyCitizenship,
+  germanyRecognition,
+  // Denmark
+  denmarkWorkPermit,
+  denmarkStudentPermit,
+  denmarkFamilyReunification,
+  denmarkCPRNumber,
+  denmarkPermanentResidence,
+  denmarkCitizenship,
+  denmarkAsylum,
+  denmarkGreenCard,
+  denmarkIntegrationProgramme,
+  denmarkEEARegistration,
+  // Norway
+  norwayWorkPermit,
+  norwayStudentPermit,
+  norwayFamilyImmigration,
+  norwayEEARegistration,
+  norwayPermanentResidence,
+  norwayCitizenship,
+  norwayAsylum,
+  norwayNorskprøven,
+  norwayFreelance,
+  norwayQualificationRecognition,
+  // Italy
+  italyWorkVisa,
+  italyStudentVisa,
+  italyPermessoDiSoggiorno,
+  italyCodiceFiscale,
+  italyFamilyReunification,
+  italyLongTermResidence,
+  italyCitizenship,
+  italyAsylum,
+  italyEEARegistration,
+  // Spain
+  spainWorkPermit,
+  spainStudentVisa,
+  spainNonLucrative,
+  spainSelfEmployed,
+  spainNIE,
+  spainEEARegistration,
+  spainFamilyReunification,
+  spainLongTermResidence,
+  spainCitizenship,
+  spainAsylum,
   // Netherlands
   netherlandsHighlySkilledMigrant,
   // Ireland
