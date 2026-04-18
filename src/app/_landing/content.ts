@@ -49,7 +49,7 @@ export interface LangContent {
   footer_disclaimer: string;
 }
 
-export type Language = "EN" | "DE" | "FR" | "IT" | "SV" | "PL" | "UK" | "RU" | "ES" | "TR" | "RO" | "HU" | "SO" | "FA" | "TI" | "AM" | "SW" | "HA" | "AR";
+export type Language = "EN" | "DE" | "FR" | "IT" | "SV" | "PL" | "UK" | "RU" | "ES" | "TR" | "RO" | "HU" | "SO" | "FA" | "TI" | "AM" | "SW" | "HA" | "AR" | "ZH";
 export type Direction = "A" | "B";
 
 export interface TweakState {
@@ -1090,5 +1090,59 @@ export const CONTENT: Record<Language, LangContent> = {
     waitlist_err: "يرجى إدخال بريد إلكتروني صالح.",
     footer_copy: "© ٢٠٢٦ migraDOCS",
     footer_disclaimer: "معلومات منظَّمة فقط. ليست استشارة قانونية.",
+  },
+  ZH: {
+    dir: "ltr",
+    nav_cta: "加入等候名单",
+    lang_label: "语言",
+    hero_kicker: "结构化信息 · 非法律建议",
+    hero_h1_1: "移民系统，",
+    hero_h1_2: "看懂它。",
+    hero_sub: "上传文件，读懂内容，知道该做什么、何时去做。",
+    hero_cta: "加入等候名单",
+    hero_meta: "文件不会被保存，处理后立即删除。",
+    doc_plain: "通俗解释",
+    doc_deadline: "截止日期",
+    doc_action: "所需行动",
+    docs: [
+      { type: "工作许可通知", auth: "移民局", date: "2026年4月12日签发", translation: "您的工作许可已获批准，请在30天内亲自前往领取。", deadline: "2026年5月12日", action: "预约领取" },
+      { type: "生物特征预约函", auth: "生物特征采集中心", date: "2026年4月3日签发", translation: "您的生物特征采集预约已确认，必须本人出席。", deadline: "2026年4月28日", action: "本人到场" },
+      { type: "上诉裁定通知", auth: "行政法院", date: "2026年3月21日签发", translation: "您的上诉正在审查中，书面裁定将在60天内发出。", deadline: "2026年5月20日", action: "等待书面通知" },
+      { type: "补交材料通知", auth: "移民局", date: "2026年4月8日签发", translation: "需要补交额外材料，请在14天内提交，否则案件将被暂停处理。", deadline: "2026年4月22日", action: "提交3份文件" },
+    ],
+    how_label: "流程",
+    how_h: "使用方式",
+    how_sub: "三个步骤，简单明了。",
+    steps: [
+      { n: "01", t: "上传文件", d: "任何来自移民部门的官方信件或通知。" },
+      { n: "02", t: "读懂内容", d: "获得通俗摘要、关键日期及所需行动。" },
+      { n: "03", t: "知道下一步", d: "按正确顺序列出清晰的后续步骤与截止时间。" },
+    ],
+    who_label: "适用人群",
+    who_h: "为身处移民系统中的人而设。",
+    who_sub: "个人移民者、支持他们的机构，以及为他们提供咨询的律师。",
+    personas: [
+      { t: "庇护申请人", d: "无需翻译，即可理解移民局每一封来信。" },
+      { t: "国际学生", d: "不错过陌生系统中的任何续签、预约或截止日期。" },
+      { t: "工作者与家庭", d: "将全家的移民文件集中保存在一处。" },
+    ],
+    privacy_label: "数据处理",
+    privacy_h: "您的文件不会离开处理环节。",
+    privacy_sub: "migraDOCS 遵循严格的最小数据保留原则。",
+    privacy_points: [
+      { t: "不存储文件", d: "原始文件在内存中处理后立即销毁，仅保留结构化摘要。" },
+      { t: "仅提取字段", d: "只保存日期、操作和分类，不保留原文内容或页面图像。" },
+      { t: "可审计删除", d: "您可随时从账户中永久删除任何摘要。" },
+    ],
+    waitlist_h: "率先获得通知。",
+    waitlist_sub: "留下您的邮箱，我们将在服务上线时联系您。",
+    waitlist_placeholder: "you@email.com",
+    waitlist_cta: "加入等候名单",
+    waitlist_joining: "提交中…",
+    waitlist_ok_t: "您已加入名单。",
+    waitlist_ok_d: "我们会与您联系。",
+    waitlist_err: "请输入有效的电子邮件地址。",
+    footer_copy: "© 2026 migraDOCS",
+    footer_disclaimer: "仅提供结构化信息，非法律建议。",
   },
 };
