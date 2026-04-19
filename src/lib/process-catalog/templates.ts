@@ -4989,6 +4989,1054 @@ const finlandYKILanguageTest: ProcessTemplate = {
   ],
 };
 
+const irelandAsylum: ProcessTemplate = {
+  id: "ie_asylum",
+  keywords: ["asylum", "refugee", "international protection", "ireland", "IPO"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "International Protection Office (IPO)",
+  title: "Ireland international protection (asylum)",
+  summary: "Apply for refugee status or subsidiary protection in Ireland if you face persecution or serious harm in your home country.",
+  timeline_summary: "Initial decision typically 12–24 months; appeals can extend this further.",
+  next_action: "Present yourself to the International Protection Office in Dublin to make an application for international protection.",
+  steps: [
+    { title: "Make an application at the IPO", description: "You must apply in person at the International Protection Office, 79–83 Lower Mount Street, Dublin 2. You cannot apply by post. Bring any identity documents you have.", checklist_items: [
+      { label: "Attended IPO in person to make application", item_type: "action" },
+      { label: "Passport or national ID (if available)", item_type: "document" },
+      { label: "Preliminary interview completed", item_type: "appointment" },
+    ]},
+    { title: "Receive accommodation and services", description: "While your application is processed you may be accommodated in a reception/accommodation centre and receive a weekly allowance from the International Protection Accommodation Service (IPAS).", checklist_items: [
+      { label: "Accommodation arranged via IPAS if required", item_type: "action" },
+      { label: "Emergency Needs Payment / weekly allowance set up", item_type: "action" },
+    ]},
+    { title: "Substantive interview", description: "IPO will schedule a detailed interview about your claim. You can bring a legal representative. An interpreter is provided. Prepare to explain why you cannot return to your country.", checklist_items: [
+      { label: "Substantive interview attended", item_type: "appointment" },
+      { label: "Legal aid solicitor arranged (LSRA Legal Aid Board)", item_type: "action" },
+      { label: "Supporting evidence / country-of-origin documents submitted", item_type: "document" },
+    ]},
+    { title: "Receive IPO decision", description: "IPO issues a written decision granting refugee status, subsidiary protection, or a recommendation to refuse. If refused, you have 15 working days to appeal.", checklist_items: [
+      { label: "IPO decision letter received", item_type: "document" },
+      { label: "Appeal filed with International Protection Appeals Tribunal if refused", item_type: "action" },
+    ]},
+    { title: "Receive permission to remain and registration", description: "If granted protection, you receive a travel document and a Stamp 4 permission. Register with the Garda National Immigration Bureau (GNIB) to get an Irish Residence Permit (IRP) card.", checklist_items: [
+      { label: "Protection status granted", item_type: "document" },
+      { label: "Registered with GNIB and IRP card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandEEARegistration: ProcessTemplate = {
+  id: "ie_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "EU Treaty Rights", "ireland", "GNIB", "IRP"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Department of Justice / GNIB",
+  title: "Ireland EU Treaty Rights registration",
+  summary: "EU/EEA/Swiss citizens exercising free movement rights in Ireland must register with the Department of Justice after 3 months.",
+  timeline_summary: "Register within 3 months of arrival. IRP card issued at registration appointment.",
+  next_action: "Book a registration appointment online via the Department of Justice INIS online registration portal.",
+  steps: [
+    { title: "Confirm your right to reside", description: "EU/EEA/Swiss nationals have an automatic right to enter and reside in Ireland for up to 3 months. After 3 months you must be exercising a Treaty Right: working, self-employed, studying, or self-sufficient.", checklist_items: [
+      { label: "Confirmed Treaty Right category (worker/student/self-sufficient)", item_type: "action" },
+    ]},
+    { title: "Book a registration appointment", description: "Book online at the Garda National Immigration Bureau or at a local Garda station (outside Dublin). Bring original documents — no copies.", checklist_items: [
+      { label: "Registration appointment booked", item_type: "appointment" },
+    ]},
+    { title: "Attend appointment with required documents", description: "Workers bring: EU passport/ID + employment contract or payslips. Students: EU passport/ID + enrollment letter + proof of health insurance. Self-sufficient: EU passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Employment contract or payslips (if worker)", item_type: "document" },
+      { label: "College enrollment letter (if student)", item_type: "document" },
+      { label: "Comprehensive health insurance (if not worker)", item_type: "document" },
+      { label: "Bank statements showing sufficient funds (if self-sufficient)", item_type: "document" },
+      { label: "Registration fee paid (€55 for adults)", item_type: "payment" },
+    ]},
+    { title: "Receive Irish Residence Permit (IRP) card", description: "The IRP card (Stamp 4 EU/EEA or Stamp 4EUFAM for family members) is issued at the appointment or posted to your address. It confirms your legal residence.", checklist_items: [
+      { label: "IRP card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandFamilyReunification: ProcessTemplate = {
+  id: "ie_family_reunification",
+  keywords: ["family reunification", "spouse visa", "join family", "ireland", "INIS", "de facto partner"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Irish Naturalisation and Immigration Service (INIS)",
+  title: "Ireland family reunification",
+  summary: "Non-EEA family members of an Irish citizen or non-EEA resident can apply to join them in Ireland.",
+  timeline_summary: "6–12 months. Apply well in advance and ensure all documents are apostilled.",
+  next_action: "Submit a family reunification application to INIS online via the Immigration Service Delivery portal.",
+  steps: [
+    { title: "Determine the correct application route", description: "Irish citizen sponsors use the Non-EEA Family Member application. Non-EEA permit holders (Critical Skills, Stamp 1, etc.) have different eligibility rules. Check inis.gov.ie for the correct form.", checklist_items: [
+      { label: "Confirmed sponsor's status (Irish citizen or non-EEA resident)", item_type: "action" },
+      { label: "Identified correct application form/route", item_type: "action" },
+    ]},
+    { title: "Gather documents for sponsor and family member", description: "Both sponsor and applicant need to submit documentation. All foreign documents must be apostilled and translated into English.", checklist_items: [
+      { label: "Sponsor's Irish passport or IRP card", item_type: "document" },
+      { label: "Marriage certificate (apostilled and translated)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and translated)", item_type: "document" },
+      { label: "Family member's current passport", item_type: "document" },
+      { label: "Proof of sponsor's income and accommodation", item_type: "document" },
+    ]},
+    { title: "Submit application online", description: "Apply via the ISD online portal. Pay the application fee. You will receive a reference number — keep this for tracking.", checklist_items: [
+      { label: "Application submitted via ISD portal", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Reference number saved", item_type: "action" },
+    ]},
+    { title: "Family member applies for visa (if required)", description: "If the family member requires a visa to enter Ireland (non-visa-exempt country), they must apply for a Join Family (D) visa at the Irish embassy/consulate in their country.", checklist_items: [
+      { label: "Visa application submitted at Irish embassy (if required)", item_type: "action" },
+      { label: "Visa issued", item_type: "document" },
+    ]},
+    { title: "Register on arrival and receive IRP", description: "Once in Ireland, the family member must register with GNIB and obtain an Irish Residence Permit (IRP) card within 90 days of arrival.", checklist_items: [
+      { label: "GNIB registration appointment booked on arrival", item_type: "appointment" },
+      { label: "IRP card received (Stamp 3 or Stamp 4)", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandPPSNumber: ProcessTemplate = {
+  id: "ie_pps_number",
+  keywords: ["PPS number", "PPSN", "personal public service number", "ireland", "DSP", "tax number"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Department of Social Protection (DSP)",
+  title: "Ireland PPS Number application",
+  summary: "Apply for a Personal Public Service (PPS) number — the Irish tax and social services identifier required for work, benefits, and public services.",
+  timeline_summary: "Appointment available within 1–4 weeks; PPS number issued immediately or within a few days by post.",
+  next_action: "Book an appointment at your local Intreo Centre or DSP office via MyWelfare.ie.",
+  steps: [
+    { title: "Book an appointment at a DSP/Intreo office", description: "You must apply in person. Book via MyWelfare.ie or by phoning your local Intreo Centre. Bring original documents — no copies accepted.", checklist_items: [
+      { label: "Appointment booked at local Intreo Centre", item_type: "appointment" },
+    ]},
+    { title: "Bring required identity documents", description: "You need photo ID and proof of address. Non-EEA nationals also need proof of right to remain in Ireland.", checklist_items: [
+      { label: "Valid passport or national identity card", item_type: "document" },
+      { label: "Proof of address in Ireland (utility bill, bank letter — dated within 3 months)", item_type: "document" },
+      { label: "IRP card or visa (non-EEA nationals)", item_type: "document" },
+      { label: "Evidence of reason for needing PPS number (employment contract, letter from employer)", item_type: "document" },
+    ]},
+    { title: "Attend appointment and receive PPS number", description: "The DSP officer verifies your documents and assigns your PPS number. It may be given on the spot or mailed to your address within a few days.", checklist_items: [
+      { label: "Appointment attended and documents verified", item_type: "appointment" },
+      { label: "PPS number received (in person or by post)", item_type: "document" },
+    ]},
+    { title: "Register PPS number with Revenue (for employment)", description: "Tell your employer your PPS number. Register for tax on Revenue's myAccount portal so your tax credits are correctly allocated.", checklist_items: [
+      { label: "PPS number provided to employer", item_type: "action" },
+      { label: "Registered on Revenue myAccount (www.revenue.ie)", item_type: "action" },
+      { label: "Tax credits confirmed on Revenue record", item_type: "action" },
+    ]},
+  ],
+};
+
+const irelandWorkingHoliday: ProcessTemplate = {
+  id: "ie_working_holiday",
+  keywords: ["working holiday", "working holiday visa", "youth mobility", "ireland", "work and travel"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Irish Naturalisation and Immigration Service (INIS)",
+  title: "Ireland Working Holiday Authorisation",
+  summary: "Citizens of certain countries (Australia, Canada, Japan, South Korea, etc.) can apply for a working holiday authorisation to live and work in Ireland for up to 12–24 months.",
+  timeline_summary: "Apply online before travel. Processing typically 4–8 weeks. Must be under 35 (varies by country).",
+  next_action: "Check if your country has a working holiday agreement with Ireland on inis.gov.ie, then apply online before you travel.",
+  steps: [
+    { title: "Check eligibility and bilateral agreement", description: "Ireland has working holiday agreements with Australia, Canada, Japan, South Korea, Argentina, Hong Kong, New Zealand, and others. Check the current list and your country's specific age and duration limits.", checklist_items: [
+      { label: "Confirmed your country has a working holiday agreement with Ireland", item_type: "action" },
+      { label: "Confirmed you meet the age requirement (typically 18–35)", item_type: "action" },
+      { label: "Confirmed you have not previously held an Irish Working Holiday Authorisation", item_type: "action" },
+    ]},
+    { title: "Apply online before travelling", description: "Apply via the INIS online portal. You will need a valid passport, proof of funds (typically €3,000), return/onward ticket, and health insurance.", checklist_items: [
+      { label: "Valid passport (must be valid for the duration of stay)", item_type: "document" },
+      { label: "Proof of funds (bank statement showing approx. €3,000)", item_type: "document" },
+      { label: "Health insurance for the duration of stay", item_type: "document" },
+      { label: "Return or onward ticket (or proof of funds to purchase)", item_type: "document" },
+      { label: "Application submitted online and fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive Working Holiday Authorisation letter", description: "INIS emails the authorisation letter. Print it and bring it when you travel to Ireland — immigration officers at the port of entry will stamp your passport.", checklist_items: [
+      { label: "Authorisation letter received by email", item_type: "document" },
+      { label: "Authorisation letter printed and in hand for travel", item_type: "document" },
+    ]},
+    { title: "Register with GNIB on arrival", description: "Within 90 days of arrival, register at the Garda National Immigration Bureau and receive an Irish Residence Permit (IRP) card stamped with your working holiday permission.", checklist_items: [
+      { label: "GNIB/IRP registration appointment booked", item_type: "appointment" },
+      { label: "IRP card received", item_type: "document" },
+      { label: "PPS number obtained for employment", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaFamilyReunification: ProcessTemplate = {
+  id: "at_family_reunification",
+  keywords: ["family reunification", "spouse visa", "children", "austria", "AMS", "Niederlassungsbewilligung"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Magistratisches Bezirksamt / Bezirkshauptmannschaft",
+  title: "Austria family reunification residence permit",
+  summary: "Bring a spouse or dependent children to Austria to join a third-country national holding a residence permit.",
+  timeline_summary: "3–6 months. Apply from the family member's home country before they travel.",
+  next_action: "Submit the family reunification application at the Austrian embassy in the family member's country of residence.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must hold a valid Austrian residence permit (Red-White-Red Card, Settlement Permit, or similar) and have sufficient income (approx. the Austrian Ausgleichszulagenrichtsatz threshold) and adequate housing.", checklist_items: [
+      { label: "Confirmed sponsor's permit type and validity", item_type: "action" },
+      { label: "Checked income threshold (approx. €1,200–1,500/month net)", item_type: "action" },
+      { label: "Confirmed accommodation meets minimum space requirements", item_type: "action" },
+    ]},
+    { title: "Gather family member documents", description: "All foreign documents must be apostilled and officially translated into German.", checklist_items: [
+      { label: "Valid passport for family member", item_type: "document" },
+      { label: "Marriage certificate (apostilled and German translation)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and German translation)", item_type: "document" },
+      { label: "Passport photos", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy in home country", description: "The family member submits the application at the Austrian embassy or consulate in their country of residence. Pay the application fee.", checklist_items: [
+      { label: "Application submitted at Austrian embassy", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Biometrics provided at embassy", item_type: "appointment" },
+    ]},
+    { title: "Quota check and Austrian authority decision", description: "Austria applies an annual quota to family reunification for third-country nationals. The Magistrat or Bezirkshauptmannschaft issues the final decision.", checklist_items: [
+      { label: "Decision received from Austrian authority", item_type: "document" },
+      { label: "Visa D issued at embassy for travel to Austria", item_type: "document" },
+    ]},
+    { title: "Register in Austria and collect residence permit card", description: "Within 3 days of arrival, register at the Meldeamt (residence registration). Collect the residence permit card from the Magistratisches Bezirksamt.", checklist_items: [
+      { label: "Meldezettel (registration) completed within 3 days", item_type: "action" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaAsylum: ProcessTemplate = {
+  id: "at_asylum",
+  keywords: ["asylum", "refugee", "international protection", "austria", "BFA", "Bundesamt für Fremdenwesen"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Bundesamt für Fremdenwesen und Asyl (BFA)",
+  title: "Austria asylum and international protection",
+  summary: "Apply for asylum or subsidiary protection in Austria if you face persecution or serious harm in your home country.",
+  timeline_summary: "First instance decision: 3–15 months. Appeals can extend the timeline significantly.",
+  next_action: "Register your asylum application at a police station or initial reception centre (Erstaufnahmestelle) immediately after arriving in Austria.",
+  steps: [
+    { title: "Register the asylum application", description: "Go to the nearest police station or the initial reception centre (Erstaufnahmestelle) in Traiskirchen, Schwechat, or Fieberbrunn. You must apply as soon as possible after arrival.", checklist_items: [
+      { label: "Application registered at police station or Erstaufnahmestelle", item_type: "action" },
+      { label: "Any identity documents provided (passport, ID)", item_type: "document" },
+    ]},
+    { title: "Initial registration and fingerprinting", description: "BFA records your data, takes fingerprints, and checks the Eurodac database. You are assigned to an initial reception centre.", checklist_items: [
+      { label: "Fingerprints and photograph taken by BFA", item_type: "action" },
+      { label: "Assigned to initial reception centre", item_type: "action" },
+    ]},
+    { title: "Admissibility check", description: "BFA first checks whether Austria is responsible under the Dublin Regulation. If yes, the substantive asylum procedure begins.", checklist_items: [
+      { label: "Admissibility interview conducted", item_type: "appointment" },
+      { label: "Dublin Regulation responsibility confirmed (if applicable)", item_type: "action" },
+    ]},
+    { title: "Substantive asylum interview", description: "BFA schedules a detailed personal interview about your asylum grounds. You can request an interpreter. You may be represented by a legal counsellor (Rechtsberater).", checklist_items: [
+      { label: "Substantive interview attended at BFA", item_type: "appointment" },
+      { label: "Supporting evidence of persecution submitted", item_type: "document" },
+      { label: "Legal counsellor arranged (free via Rechtsberatung)", item_type: "action" },
+    ]},
+    { title: "Receive BFA decision and appeal if needed", description: "BFA issues a written decision granting or refusing protection. If refused, you may appeal to the Federal Administrative Court (Bundesverwaltungsgericht) within 4 weeks.", checklist_items: [
+      { label: "BFA decision received", item_type: "document" },
+      { label: "Appeal filed with Bundesverwaltungsgericht within 4 weeks (if refused)", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaEEARegistration: ProcessTemplate = {
+  id: "at_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "Anmeldebescheinigung", "austria", "MA35", "EU free movement"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "MA 35 (Vienna) / Bezirkshauptmannschaft",
+  title: "Austria EU/EEA residence registration (Anmeldebescheinigung)",
+  summary: "EU/EEA citizens staying in Austria for more than 3 months must apply for an Anmeldebescheinigung (registration certificate) from the local authority.",
+  timeline_summary: "Apply within 3 months of arrival. Certificate typically issued on the same day or within a few weeks.",
+  next_action: "Book an appointment at MA 35 (in Vienna) or your district Bezirkshauptmannschaft and bring proof of employment, study, or sufficient means.",
+  steps: [
+    { title: "Register your address (Meldezettel)", description: "Before applying for the Anmeldebescheinigung, register your Austrian address at the Meldeamt within 3 days of moving in. You need your landlord's signature on the Meldezettel form.", checklist_items: [
+      { label: "Meldezettel form signed by landlord", item_type: "document" },
+      { label: "Address registered at Meldeamt within 3 days", item_type: "action" },
+      { label: "Meldezettel confirmation received", item_type: "document" },
+    ]},
+    { title: "Book appointment at MA 35 / Bezirkshauptmannschaft", description: "In Vienna, apply to MA 35 (Magistratsabteilung 35). Outside Vienna, apply to your district Bezirkshauptmannschaft.", checklist_items: [
+      { label: "Appointment booked at MA 35 or Bezirkshauptmannschaft", item_type: "appointment" },
+    ]},
+    { title: "Bring required documents", description: "Workers: EU passport/ID + employment contract or employer letter. Students: EU passport/ID + enrollment certificate + health insurance. Self-sufficient: EU passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Meldezettel (registered address confirmation)", item_type: "document" },
+      { label: "Employment contract / employer letter (if worker)", item_type: "document" },
+      { label: "Enrollment certificate (if student)", item_type: "document" },
+      { label: "Comprehensive health insurance (if not worker)", item_type: "document" },
+      { label: "Bank statements (if self-sufficient)", item_type: "document" },
+      { label: "Application fee paid (approx. €15)", item_type: "payment" },
+    ]},
+    { title: "Receive Anmeldebescheinigung", description: "The registration certificate (Anmeldebescheinigung) is issued. It has no expiry date but reflects the reason for residence (worker, student, etc.).", checklist_items: [
+      { label: "Anmeldebescheinigung received", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaSettlementPermit: ProcessTemplate = {
+  id: "at_settlement_permit",
+  keywords: ["settlement permit", "Niederlassungsbewilligung", "permanent residence", "austria", "long-term"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Magistratisches Bezirksamt / Bezirkshauptmannschaft",
+  title: "Austria settlement permit (Niederlassungsbewilligung)",
+  summary: "Apply for an Austrian settlement permit after 5 years of continuous legal residence, granting long-term or permanent settlement rights.",
+  timeline_summary: "Apply 3 months before current permit expires. Processing 2–4 months.",
+  next_action: "Apply at your local Magistratisches Bezirksamt or Bezirkshauptmannschaft with proof of 5 years of legal residence and German language certificate.",
+  steps: [
+    { title: "Check eligibility", description: "You must have held a legal residence permit in Austria continuously for at least 5 years, have sufficient income, accommodation, and German language skills (A2 level minimum for standard permit, B1 for plus variant).", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence in Austria", item_type: "action" },
+      { label: "German language certificate at A2 or B1 level", item_type: "document" },
+      { label: "Proof of income above the social assistance threshold", item_type: "document" },
+    ]},
+    { title: "Gather documents", description: "Collect all required documents. All foreign documents must be apostilled and translated into German.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current Austrian residence permit", item_type: "document" },
+      { label: "Proof of continuous residence (previous permit cards, registration confirmations)", item_type: "document" },
+      { label: "Proof of income (payslips, tax assessments)", item_type: "document" },
+      { label: "Proof of accommodation (rental contract or ownership)", item_type: "document" },
+      { label: "Health insurance certificate", item_type: "document" },
+      { label: "German language certificate (ÖIF or equivalent)", item_type: "document" },
+      { label: "Criminal record certificate", item_type: "document" },
+      { label: "Passport photos", item_type: "document" },
+    ]},
+    { title: "Submit application before current permit expires", description: "Apply at the local settlement authority (Magistrat in cities, Bezirkshauptmannschaft in districts). Apply at least 3 months before your current permit expires.", checklist_items: [
+      { label: "Application submitted at settlement authority", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive settlement permit card", description: "The settlement permit card is issued with an indefinite or long-term validity. It allows work without a separate work permit and travel within the EU/Schengen area.", checklist_items: [
+      { label: "Settlement permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaLongTermResidence: ProcessTemplate = {
+  id: "at_long_term_residence",
+  keywords: ["long-term residence", "Daueraufenthalt EU", "permanent residence EU", "austria", "5 years"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Magistratisches Bezirksamt / Bezirkshauptmannschaft",
+  title: "Austria EU long-term residence permit (Daueraufenthalt-EU)",
+  summary: "Apply for the EU long-term residence permit after 5 years of legal residence in Austria, which grants enhanced rights and EU-wide mobility.",
+  timeline_summary: "Apply 3 months before current permit expires. Processing 2–4 months.",
+  next_action: "Gather proof of 5 years' legal residence and German language B1 certificate, then apply at your settlement authority.",
+  steps: [
+    { title: "Confirm eligibility", description: "Must have held legal residence in Austria for at least 5 continuous years. Requires German language skills at B1 level (spoken and written), stable income, health insurance, and no serious criminal record.", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "German B1 language certificate obtained (ÖIF or equivalent)", item_type: "document" },
+    ]},
+    { title: "Gather documents", description: "Assemble all required documents. Foreign documents must be apostilled and translated into German.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Proof of continuous residence (previous permits)", item_type: "document" },
+      { label: "Proof of income exceeding social assistance threshold", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Health insurance certificate", item_type: "document" },
+      { label: "Criminal record certificate", item_type: "document" },
+      { label: "German B1 language certificate", item_type: "document" },
+    ]},
+    { title: "Submit application", description: "Apply at the Magistrat or Bezirkshauptmannschaft. The Daueraufenthalt-EU permit has no expiry date and allows work in any field without a separate work permit.", checklist_items: [
+      { label: "Application submitted at settlement authority", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Daueraufenthalt-EU card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaJobSeekerVisa: ProcessTemplate = {
+  id: "at_job_seeker_visa",
+  keywords: ["job seeker", "job search", "Jobsuchvisum", "austria", "highly qualified"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Austrian Embassy / WKO Austria",
+  title: "Austria job seeker visa for highly qualified professionals",
+  summary: "Highly qualified third-country nationals can apply for a 6-month job seeker visa to look for skilled employment in Austria.",
+  timeline_summary: "Apply at Austrian embassy before travel. Processing 4–8 weeks. Valid 6 months; cannot be extended.",
+  next_action: "Check the AMS point system (minimum 70 points required) and apply at the Austrian embassy in your country.",
+  steps: [
+    { title: "Check AMS point system score", description: "Austria uses a points-based system for the job seeker visa. You need at least 70 points from: age, education, work experience, language skills, and Austria-specific factors. Use the online calculator at migration.gv.at.", checklist_items: [
+      { label: "Points calculated on migration.gv.at (must score ≥ 70)", item_type: "action" },
+      { label: "Confirmed eligibility for highly qualified category", item_type: "action" },
+    ]},
+    { title: "Gather application documents", description: "Collect university diploma, CV, language certificates (German and/or English), and any professional certifications. All documents must be translated into German.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "University degree / diploma (apostilled and German translation)", item_type: "document" },
+      { label: "Professional CV in German", item_type: "document" },
+      { label: "German language certificate (if applicable)", item_type: "document" },
+      { label: "Proof of funds for 6-month stay", item_type: "document" },
+      { label: "Health insurance for duration of stay", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy", description: "Submit the application at the Austrian embassy or consulate in your country of residence. Pay the visa fee.", checklist_items: [
+      { label: "Application submitted at Austrian embassy", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+      { label: "Biometrics provided (if required)", item_type: "appointment" },
+    ]},
+    { title: "Travel and job search in Austria", description: "Use the 6-month period to attend interviews, network, and find employment. Register your address (Meldezettel) within 3 days of arrival.", checklist_items: [
+      { label: "Arrived in Austria and registered Meldezettel within 3 days", item_type: "action" },
+      { label: "Actively applying for jobs matching qualifications", item_type: "action" },
+    ]},
+    { title: "Convert to Red-White-Red Card if job is found", description: "If you receive a job offer, apply for a Red-White-Red Card before the job seeker visa expires. Your employer can also sponsor the application.", checklist_items: [
+      { label: "Job offer received and employment contract signed", item_type: "document" },
+      { label: "Red-White-Red Card application submitted", item_type: "action" },
+    ]},
+  ],
+};
+
+const portugalStudentVisa: ProcessTemplate = {
+  id: "pt_student_visa",
+  keywords: ["student visa", "study", "university", "portugal", "SEF", "AIMA", "Visto de Estudo"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal student visa (Visto de Estudo)",
+  summary: "Non-EU students accepted at a Portuguese higher education institution can apply for a student visa and subsequent residence permit.",
+  timeline_summary: "Apply at least 2–3 months before the course starts. Visa typically processed in 4–8 weeks.",
+  next_action: "Apply for a Type D student visa at the Portuguese embassy in your home country after receiving your acceptance letter.",
+  steps: [
+    { title: "Receive acceptance from a Portuguese institution", description: "You must have a formal acceptance letter from a Portuguese university, polytechnic, or language school before applying for the visa.", checklist_items: [
+      { label: "Acceptance letter from Portuguese institution received", item_type: "document" },
+      { label: "Course start date and duration confirmed", item_type: "action" },
+    ]},
+    { title: "Apply for Type D student visa at Portuguese embassy", description: "Apply in person at the Portuguese embassy or consulate in your home country. Book the appointment in advance — demand can be high.", checklist_items: [
+      { label: "Embassy appointment booked", item_type: "appointment" },
+      { label: "Valid passport (valid at least 3 months beyond course end)", item_type: "document" },
+      { label: "Acceptance letter from institution", item_type: "document" },
+      { label: "Proof of accommodation in Portugal", item_type: "document" },
+      { label: "Proof of financial means (bank statements, scholarship letter)", item_type: "document" },
+      { label: "Health insurance covering Portugal", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Travel to Portugal on student visa", description: "Enter Portugal on the Type D visa. You must then apply for a residence permit (Autorização de Residência) within the validity period of the visa.", checklist_items: [
+      { label: "Arrived in Portugal", item_type: "action" },
+      { label: "Portuguese address registered (if required by institution)", item_type: "action" },
+    ]},
+    { title: "Apply for student residence permit at AIMA", description: "Book an appointment with AIMA and apply for a student residence permit. Bring all original documents.", checklist_items: [
+      { label: "AIMA appointment booked online (aima.gov.pt)", item_type: "appointment" },
+      { label: "Application submitted with original documents", item_type: "action" },
+      { label: "Biometrics provided at AIMA", item_type: "appointment" },
+      { label: "Residence permit fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive student residence permit card", description: "AIMA issues the residence permit card. It is valid for 1–2 years and renewable as long as you remain enrolled.", checklist_items: [
+      { label: "Residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalFamilyReunification: ProcessTemplate = {
+  id: "pt_family_reunification",
+  keywords: ["family reunification", "spouse visa", "family member", "portugal", "AIMA", "reagrupamento familiar"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal family reunification",
+  summary: "Bring a spouse, minor children, or dependent relatives to Portugal to join a non-EU resident holding a valid residence permit.",
+  timeline_summary: "3–6 months. Apply early — AIMA appointments can have long waiting times.",
+  next_action: "Submit a family reunification application to AIMA and arrange a visa for the family member at the Portuguese embassy.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must hold a valid Portuguese residence permit for at least 1 year (or a long-term/permanent permit) and have sufficient income and adequate housing.", checklist_items: [
+      { label: "Confirmed residence permit valid for ≥ 1 year", item_type: "action" },
+      { label: "Confirmed income exceeds minimum wage threshold", item_type: "action" },
+      { label: "Confirmed accommodation is adequate", item_type: "action" },
+    ]},
+    { title: "Gather and apostille documents", description: "All foreign documents must be apostilled and officially translated into Portuguese.", checklist_items: [
+      { label: "Family member's valid passport", item_type: "document" },
+      { label: "Marriage certificate (apostilled and Portuguese translation)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and Portuguese translation)", item_type: "document" },
+      { label: "Sponsor's residence permit and proof of income", item_type: "document" },
+      { label: "Proof of accommodation in Portugal", item_type: "document" },
+    ]},
+    { title: "Submit family reunification request to AIMA", description: "The sponsor submits the family reunification application to AIMA in Portugal. Once pre-approved, AIMA notifies the Portuguese embassy in the family member's country.", checklist_items: [
+      { label: "Family reunification application submitted at AIMA", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "AIMA pre-approval received", item_type: "document" },
+    ]},
+    { title: "Family member applies for visa at Portuguese embassy", description: "After AIMA pre-approves the application, the family member applies for a Type D visa at the Portuguese embassy in their country.", checklist_items: [
+      { label: "Visa application submitted at Portuguese embassy", item_type: "action" },
+      { label: "Visa issued", item_type: "document" },
+    ]},
+    { title: "Register in Portugal and obtain residence permit", description: "On arrival, the family member applies for a residence permit at AIMA.", checklist_items: [
+      { label: "AIMA appointment booked on arrival", item_type: "appointment" },
+      { label: "Residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalAsylum: ProcessTemplate = {
+  id: "pt_asylum",
+  keywords: ["asylum", "refugee", "international protection", "portugal", "SEF", "AIMA", "proteção internacional"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal asylum and international protection",
+  summary: "Apply for asylum or subsidiary protection in Portugal if you face persecution or serious harm in your home country.",
+  timeline_summary: "Initial decision in 6–12 months; appeals can extend this. You can remain in Portugal during the process.",
+  next_action: "Present yourself to AIMA or a border post immediately upon arriving in Portugal to register your asylum application.",
+  steps: [
+    { title: "Express intention to seek asylum", description: "Immediately on arrival in Portugal, present yourself to AIMA, a Garda Nacional Republicana (GNR) post, or a border control officer and state your intention to seek international protection.", checklist_items: [
+      { label: "Intention to seek protection expressed to AIMA or border officer", item_type: "action" },
+      { label: "Any available identity documents provided", item_type: "document" },
+    ]},
+    { title: "Registration and first interview", description: "AIMA registers your application and conducts a first interview to collect personal information and the broad reasons for your application. You receive a registration certificate.", checklist_items: [
+      { label: "Application registered and registration certificate received", item_type: "document" },
+      { label: "Accommodation arranged (reception centre if needed)", item_type: "action" },
+    ]},
+    { title: "Detailed asylum interview", description: "AIMA schedules a full interview where you explain in detail why you cannot return to your country. An interpreter is provided. You may have a lawyer present.", checklist_items: [
+      { label: "Detailed interview attended", item_type: "appointment" },
+      { label: "Supporting documents submitted (evidence of persecution)", item_type: "document" },
+      { label: "Legal representation arranged (free legal aid available)", item_type: "action" },
+    ]},
+    { title: "Receive AIMA decision", description: "AIMA issues a written decision. If granted, you receive refugee status or subsidiary protection. If refused, you may appeal to the Administrative Court within 15 days.", checklist_items: [
+      { label: "AIMA decision received", item_type: "document" },
+      { label: "Appeal filed within 15 days if refused", item_type: "action" },
+    ]},
+    { title: "Receive residence permit if granted", description: "On grant of protection, AIMA issues a residence permit valid for 5 years (refugee) or 1 year renewable (subsidiary protection).", checklist_items: [
+      { label: "Residence permit card received", item_type: "document" },
+      { label: "NIF (tax number) obtained", item_type: "action" },
+    ]},
+  ],
+};
+
+const portugalEEARegistration: ProcessTemplate = {
+  id: "pt_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "Certificado de Registo", "portugal", "AIMA", "free movement"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo) / Câmara Municipal",
+  title: "Portugal EU/EEA residence registration (Certificado de Registo)",
+  summary: "EU/EEA citizens staying in Portugal for more than 3 months must register with AIMA or the local council and obtain a Certificado de Registo.",
+  timeline_summary: "Register within 3 months of arrival. Certificate issued on the same day at most AIMA offices.",
+  next_action: "Book an appointment at your local AIMA office or Câmara Municipal to register and obtain the Certificado de Registo.",
+  steps: [
+    { title: "Check registration deadline", description: "EU/EEA/Swiss citizens can stay in Portugal without registration for up to 3 months. After that, registration is required for workers, students, and self-sufficient residents.", checklist_items: [
+      { label: "Noted 3-month registration deadline from arrival", item_type: "action" },
+    ]},
+    { title: "Book appointment at AIMA or Câmara Municipal", description: "In Lisbon and Porto, appointments are at AIMA. In smaller municipalities, some Câmaras Municipais handle EU registrations. Book online at aima.gov.pt.", checklist_items: [
+      { label: "Appointment booked at AIMA or Câmara Municipal", item_type: "appointment" },
+    ]},
+    { title: "Bring required documents", description: "Workers: EU passport/ID + employment contract or employer declaration. Students: EU passport/ID + enrollment certificate + health insurance. Self-sufficient: EU passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Employment contract or employer declaration (if worker)", item_type: "document" },
+      { label: "University enrollment certificate (if student)", item_type: "document" },
+      { label: "Health insurance (if not worker/student)", item_type: "document" },
+      { label: "Bank statements (if self-sufficient)", item_type: "document" },
+      { label: "Registration fee paid (approx. €15)", item_type: "payment" },
+    ]},
+    { title: "Receive Certificado de Registo", description: "The registration certificate is issued on the spot. It has no expiry date. Keep it — you will need it for NIF registration, bank accounts, and other administrative tasks.", checklist_items: [
+      { label: "Certificado de Registo received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalLongTermResidence: ProcessTemplate = {
+  id: "pt_long_term_residence",
+  keywords: ["long-term residence", "permanent residence", "5 years", "portugal", "AIMA", "autorização de residência permanente"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal permanent / long-term residence permit",
+  summary: "Apply for a permanent residence permit or EU long-term residence status after 5 years of legal residence in Portugal.",
+  timeline_summary: "Apply up to 90 days before current permit expires. Processing 3–6 months.",
+  next_action: "Book an AIMA appointment and gather proof of 5 years of continuous legal residence in Portugal.",
+  steps: [
+    { title: "Check eligibility", description: "You must have held a valid residence permit for at least 5 continuous years in Portugal. No absence of more than 6 consecutive months or 10 months total in the 5-year period.", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence", item_type: "action" },
+      { label: "Checked absence record (not more than 6 consecutive months abroad)", item_type: "action" },
+    ]},
+    { title: "Gather required documents", description: "Collect proof of continuous residence, income, accommodation, and criminal record. Foreign documents must be apostilled and translated.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current residence permit", item_type: "document" },
+      { label: "Previous residence permit cards (proof of 5 years)", item_type: "document" },
+      { label: "Proof of income (payslips, tax returns)", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Portuguese criminal record certificate", item_type: "document" },
+      { label: "Foreign criminal record certificate (apostilled)", item_type: "document" },
+    ]},
+    { title: "Submit application at AIMA", description: "Apply in person at an AIMA office. Pay the application fee. You may apply up to 90 days before your current permit expires.", checklist_items: [
+      { label: "AIMA appointment booked", item_type: "appointment" },
+      { label: "Application submitted with all documents", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive permanent residence permit", description: "AIMA issues a permanent or EU long-term residence permit. It is valid for 5 years and renewable, or indefinite depending on the category.", checklist_items: [
+      { label: "Permanent residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalNIF: ProcessTemplate = {
+  id: "pt_nif_registration",
+  keywords: ["NIF", "tax number", "Número de Identificação Fiscal", "portugal", "AT", "Finanças"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "Autoridade Tributária e Aduaneira (AT) / Finanças",
+  title: "Portugal NIF (tax identification number) registration",
+  summary: "Obtain a Portuguese NIF (Número de Identificação Fiscal) — required for opening a bank account, signing contracts, working, or buying property in Portugal.",
+  timeline_summary: "NIF issued on the same day at a Finanças office or via an appointed fiscal representative.",
+  next_action: "Visit your local Serviço de Finanças office in person with your passport and Portuguese address proof.",
+  steps: [
+    { title: "Decide how to apply", description: "EU/EEA citizens and non-EU residents in Portugal can apply in person at any Finanças office. Non-EU citizens not yet resident in Portugal must appoint a Portuguese fiscal representative first.", checklist_items: [
+      { label: "Determined application route (in person or via fiscal representative)", item_type: "action" },
+    ]},
+    { title: "Apply at a Finanças office (for residents)", description: "Go to any Serviço de Finanças office with your passport/ID and proof of Portuguese address. No appointment needed in most offices.", checklist_items: [
+      { label: "Valid passport or national ID card", item_type: "document" },
+      { label: "Proof of Portuguese address (rental contract, utility bill, or AIMA registration)", item_type: "document" },
+      { label: "NIF application form completed at Finanças counter", item_type: "action" },
+    ]},
+    { title: "Receive NIF card", description: "The NIF is issued immediately. You receive a paper card with your number. Keep it — you will need it for virtually every administrative task in Portugal.", checklist_items: [
+      { label: "NIF card received at Finanças office", item_type: "document" },
+    ]},
+    { title: "Activate NIF for online services (optional)", description: "Register on the AT portal (portaldasfinancas.gov.pt) to manage your tax situation, file returns, and receive electronic correspondence.", checklist_items: [
+      { label: "Registered on portaldasfinancas.gov.pt", item_type: "action" },
+      { label: "NIF provided to employer and bank", item_type: "action" },
+    ]},
+  ],
+};
+
+const netherlandsFamilyReunification: ProcessTemplate = {
+  id: "nl_family_reunification",
+  keywords: ["family reunification", "spouse visa", "partner permit", "netherlands", "IND", "MVV", "nareis"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands family reunification (gezinshereniging)",
+  summary: "Bring a spouse, registered partner, or minor children to the Netherlands to join a non-EU resident holding a valid residence permit.",
+  timeline_summary: "3–6 months. The family member usually needs an MVV (entry visa) before travelling.",
+  next_action: "Submit a family reunification application to the IND via IND.nl and arrange an MVV at the Dutch embassy for the family member.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must have a valid residence permit for at least 1 year, sufficient income (generally above the social assistance norm), and adequate housing.", checklist_items: [
+      { label: "Confirmed residence permit valid and of sufficient duration", item_type: "action" },
+      { label: "Checked income requirement (approx. €1,800/month net)", item_type: "action" },
+      { label: "Confirmed adequate housing", item_type: "action" },
+    ]},
+    { title: "Submit application to IND", description: "Apply online or by post to the IND. Pay the application fee. IND assesses the application and sends a decision.", checklist_items: [
+      { label: "Application submitted to IND (ind.nl)", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Proof of relationship (marriage certificate, apostilled and translated)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and translated)", item_type: "document" },
+      { label: "Sponsor's residence permit and payslips", item_type: "document" },
+    ]},
+    { title: "Family member applies for MVV at Dutch embassy", description: "Once IND approves the application, the family member applies for an MVV (Machtiging tot Voorlopig Verblijf — entry visa) at the Dutch embassy in their country.", checklist_items: [
+      { label: "IND approval received", item_type: "document" },
+      { label: "MVV application submitted at Dutch embassy", item_type: "action" },
+      { label: "MVV visa issued", item_type: "document" },
+    ]},
+    { title: "Collect residence permit on arrival", description: "Within 3 days of arriving in the Netherlands, the family member must collect the residence permit sticker (verblijfssticker) from the IND desk, and register at the municipality (BRP).", checklist_items: [
+      { label: "BRP registration at local municipality within 5 days of arrival", item_type: "action" },
+      { label: "Residence permit sticker collected from IND desk", item_type: "document" },
+      { label: "Residence document (biometric card) received", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsAsylum: ProcessTemplate = {
+  id: "nl_asylum",
+  keywords: ["asylum", "refugee", "international protection", "netherlands", "IND", "COA", "asielzoeker"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands asylum procedure",
+  summary: "Apply for asylum (refugee status or subsidiary protection) in the Netherlands if you face persecution or serious harm in your home country.",
+  timeline_summary: "General asylum procedure: 6 months, but can extend to several years. Extended procedure applies in complex cases.",
+  next_action: "Register your asylum application at the COA registration centre in Ter Apel immediately upon arriving in the Netherlands.",
+  steps: [
+    { title: "Register at Ter Apel", description: "All asylum seekers must first present themselves at the COA registration location in Ter Apel (Groningen). From there you are transferred to a processing centre.", checklist_items: [
+      { label: "Registered at Ter Apel COA registration centre", item_type: "action" },
+      { label: "Any available identity documents provided", item_type: "document" },
+    ]},
+    { title: "Rest and Preparation period (Rust en Voorbereidingstijd)", description: "You receive a 6-day rest and preparation period before the formal procedure. Use this time to find legal aid (a lawyer is provided free of charge).", checklist_items: [
+      { label: "Free lawyer arranged via the Dutch Council for Refugees or IND", item_type: "action" },
+      { label: "All evidence and supporting documents gathered", item_type: "document" },
+    ]},
+    { title: "General asylum procedure interviews", description: "IND conducts up to 3 interviews: identity/nationality, travel route, and asylum grounds. Your lawyer is present. An interpreter is provided.", checklist_items: [
+      { label: "Identity and travel route interview attended", item_type: "appointment" },
+      { label: "Asylum grounds interview attended", item_type: "appointment" },
+    ]},
+    { title: "Receive IND decision", description: "IND issues a decision within 6 days (general procedure) or longer (extended procedure). If granted, you receive a residence permit. If refused, appeal within 4 weeks.", checklist_items: [
+      { label: "IND decision received", item_type: "document" },
+      { label: "Appeal filed at District Court within 4 weeks (if refused)", item_type: "action" },
+    ]},
+    { title: "Receive asylum residence permit and register with municipality", description: "On grant of asylum, you receive a 5-year residence permit and are housed by the COA until you find independent accommodation.", checklist_items: [
+      { label: "Asylum residence permit received", item_type: "document" },
+      { label: "Registered with municipality (BRP)", item_type: "action" },
+      { label: "BSN number obtained", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsEEARegistration: ProcessTemplate = {
+  id: "nl_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "free movement", "netherlands", "BRP", "registration"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "Municipality (Gemeente) / IND",
+  title: "Netherlands EU/EEA residence registration",
+  summary: "EU/EEA citizens staying in the Netherlands for more than 4 months must register in the BRP (Basisregistratie Personen) at their local municipality.",
+  timeline_summary: "Register within 5 days of moving in. BSN issued the same day in most municipalities.",
+  next_action: "Book an appointment at your local Gemeente (town hall) to register your address in the BRP.",
+  steps: [
+    { title: "Find accommodation and book a municipality appointment", description: "You need a registered Dutch address before you can register in the BRP. Book an appointment at your local Gemeente. In Amsterdam, use the online appointment system.", checklist_items: [
+      { label: "Dutch rental contract or address confirmation obtained", item_type: "document" },
+      { label: "Gemeente appointment booked", item_type: "appointment" },
+    ]},
+    { title: "Register at the Gemeente and receive BSN", description: "Bring your EU passport/ID and proof of address. The Gemeente officer registers you in the BRP and issues a BSN (Burgerservicenummer — Dutch citizen service number). Workers must also show an employment contract.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Rental contract or tenancy agreement", item_type: "document" },
+      { label: "Employment contract (if applicable)", item_type: "document" },
+      { label: "BSN number issued at appointment", item_type: "document" },
+    ]},
+    { title: "Obtain a DigiD (digital identity)", description: "Register for DigiD at digid.nl to access Dutch government digital services. You need your BSN and a Dutch address.", checklist_items: [
+      { label: "DigiD registration completed at digid.nl", item_type: "action" },
+      { label: "DigiD activation letter received by post", item_type: "document" },
+    ]},
+    { title: "Register with IND after 4 months (if staying longer)", description: "If you plan to stay more than 4 months, you must notify the IND as an EU citizen exercising free movement rights. This is done automatically in some cases via the municipality.", checklist_items: [
+      { label: "IND notification completed (if staying > 4 months)", item_type: "action" },
+    ]},
+  ],
+};
+
+const netherlandsLongTermResidence: ProcessTemplate = {
+  id: "nl_long_term_residence",
+  keywords: ["long-term residence", "permanent residence", "5 years", "netherlands", "IND", "duurzame verblijfsvergunning"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands long-term / permanent residence permit",
+  summary: "Apply for a long-term or EU long-term residence permit after 5 years of continuous legal residence in the Netherlands.",
+  timeline_summary: "Apply up to 3 months before current permit expires. Processing 3–6 months.",
+  next_action: "Submit your long-term residence application to the IND via ind.nl with proof of 5 years of continuous legal residence.",
+  steps: [
+    { title: "Check eligibility", description: "Must have held a valid residence permit for 5 consecutive years. Must show sufficient income, civic integration (Dutch language certificate), and no serious criminal record.", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence", item_type: "action" },
+      { label: "Dutch civic integration certificate (inburgeringsexamen) obtained", item_type: "document" },
+      { label: "Confirmed sufficient and stable income", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Collect all supporting documents. Foreign documents must be apostilled and translated into Dutch.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current and previous residence permits (5-year history)", item_type: "document" },
+      { label: "Proof of income (payslips, employer statement)", item_type: "document" },
+      { label: "Civic integration certificate", item_type: "document" },
+      { label: "Dutch criminal record extract (VOG)", item_type: "document" },
+    ]},
+    { title: "Submit application to IND", description: "Apply online via ind.nl or visit an IND desk. Pay the application fee.", checklist_items: [
+      { label: "Application submitted to IND", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive long-term residence permit", description: "IND issues the EU long-term residence permit (valid 5 years, renewable indefinitely) or permanent residence permit, giving expanded rights including freedom to work in any job.", checklist_items: [
+      { label: "Long-term residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsSelfEmployed: ProcessTemplate = {
+  id: "nl_self_employed",
+  keywords: ["self-employed", "freelance", "ZZP", "entrepreneur", "netherlands", "IND", "zelfstandige"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND / KVK (Kamer van Koophandel)",
+  title: "Netherlands self-employed / freelance residence permit (ZZP)",
+  summary: "Non-EU/EEA entrepreneurs and freelancers can apply for a Dutch residence permit as a self-employed person (zelfstandige) by demonstrating business viability.",
+  timeline_summary: "3–6 months. IND uses a points-based assessment of business viability and essential interest to the Netherlands.",
+  next_action: "Submit a self-employed residence permit application to the IND with a detailed business plan and financial projections.",
+  steps: [
+    { title: "Assess the IND points system", description: "IND evaluates self-employed applications using a points system based on: personal experience (max 30 pts), business plan (max 30 pts), and added value to the Netherlands (max 40 pts). You need at least 90 points.", checklist_items: [
+      { label: "Self-assessed points using IND criteria (must score ≥ 90)", item_type: "action" },
+      { label: "Identified essential interest of business to the Netherlands", item_type: "action" },
+    ]},
+    { title: "Prepare a business plan", description: "Write a detailed business plan including market analysis, target clients, financial projections for 3 years, and your unique value proposition. The business plan is the core of the assessment.", checklist_items: [
+      { label: "Business plan drafted (market, clients, financials, USP)", item_type: "document" },
+      { label: "3-year financial projections prepared", item_type: "document" },
+      { label: "CV and professional qualifications prepared", item_type: "document" },
+    ]},
+    { title: "Apply for MVV and residence permit at Dutch embassy", description: "If applying from abroad, you need an MVV (entry visa) as well as the residence permit. Apply at the Dutch embassy in your country of residence.", checklist_items: [
+      { label: "Application submitted at Dutch embassy (MVV + residence permit)", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Biometrics provided", item_type: "appointment" },
+    ]},
+    { title: "Register business with KVK on arrival", description: "Within 5 days of arrival, register your address at the Gemeente. Then register your business with the Kamer van Koophandel (KVK) to get a KVK number.", checklist_items: [
+      { label: "Address registered at Gemeente (BRP)", item_type: "action" },
+      { label: "Business registered with KVK", item_type: "action" },
+      { label: "KVK number received", item_type: "document" },
+      { label: "Residence permit card collected from IND", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsOrientationYear: ProcessTemplate = {
+  id: "nl_orientation_year",
+  keywords: ["orientation year", "zoekjaar", "highly educated", "graduate", "netherlands", "IND", "orientation visa"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands orientation year permit (zoekjaar)",
+  summary: "Highly educated graduates from non-EU countries can apply for a 1-year residence permit to search for work or start a business in the Netherlands.",
+  timeline_summary: "Apply within 3 years of graduation. Processing 2–4 weeks for most applications.",
+  next_action: "Submit a zoekjaar (orientation year) application to the IND within 3 years of completing your degree.",
+  steps: [
+    { title: "Check eligibility", description: "You must have graduated from a Dutch university/HBO in the past 3 years, OR from a top-200 global university (QS/THE/ARWU ranking) within the past 3 years. The degree must be at least a Master's level (or Dutch Bachelor's).", checklist_items: [
+      { label: "Confirmed graduation date is within the past 3 years", item_type: "action" },
+      { label: "Confirmed institution is eligible (Dutch HEI or top-200 global ranking)", item_type: "action" },
+      { label: "Degree is at Master's level or above (or Dutch Bachelor's)", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Prepare your diploma, transcripts, and proof of Dutch address or travel intent.", checklist_items: [
+      { label: "Degree certificate (apostilled if issued outside the Netherlands)", item_type: "document" },
+      { label: "Academic transcripts", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Proof of financial means (approx. €900/month)", item_type: "document" },
+    ]},
+    { title: "Apply to IND online", description: "Apply via ind.nl. No job offer is required — the permit allows you to work freely during the orientation year to find employment or test a business idea.", checklist_items: [
+      { label: "Application submitted online at ind.nl", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Orientation year permit issued", item_type: "document" },
+    ]},
+    { title: "Convert to work permit or self-employed permit", description: "If you find employment, convert to a Highly Skilled Migrant (kennismigrant) permit. If starting a business, apply for the self-employed (zelfstandige) permit before the orientation year expires.", checklist_items: [
+      { label: "Employment contract signed with a recognised IND sponsor", item_type: "document" },
+      { label: "Kennismigrant or zelfstandige permit applied for before zoekjaar expires", item_type: "action" },
+    ]},
+  ],
+};
+
+const belgiumFamilyReunification: ProcessTemplate = {
+  id: "be_family_reunification",
+  keywords: ["family reunification", "spouse visa", "family member", "belgium", "DVZ", "CGVS", "regroupement familial"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ — Dienst Vreemdelingenzaken / Office des Étrangers",
+  title: "Belgium family reunification",
+  summary: "Bring a spouse, registered partner, or dependent children to Belgium to join a non-EU national holding a valid residence permit.",
+  timeline_summary: "3–9 months. Apply via the Belgian embassy in the family member's country. Ensure all documents are apostilled.",
+  next_action: "The family member should apply for a Type D visa for family reunification at the Belgian embassy in their country of residence.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must have held a valid residence permit for at least 12 months (or be a Belgian citizen), have a stable and adequate income (above the OMNIO threshold), and appropriate housing.", checklist_items: [
+      { label: "Confirmed sponsor's permit type and minimum 12 months of residence", item_type: "action" },
+      { label: "Confirmed income exceeds OMNIO threshold", item_type: "action" },
+      { label: "Confirmed adequate housing (minimum surface area)", item_type: "action" },
+    ]},
+    { title: "Gather and apostille documents", description: "All foreign documents must be apostilled and officially translated into French, Dutch, or German.", checklist_items: [
+      { label: "Valid passport for family member", item_type: "document" },
+      { label: "Marriage certificate (apostilled and translated)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and translated)", item_type: "document" },
+      { label: "Sponsor's residence card and proof of income", item_type: "document" },
+      { label: "Proof of Belgian accommodation", item_type: "document" },
+    ]},
+    { title: "Family member applies for Type D visa at Belgian embassy", description: "Submit the family reunification application at the Belgian embassy or consulate in the family member's country of residence.", checklist_items: [
+      { label: "Type D visa application submitted at Belgian embassy", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+      { label: "Biometrics provided at embassy", item_type: "appointment" },
+      { label: "Type D visa issued", item_type: "document" },
+    ]},
+    { title: "Register at the commune on arrival", description: "Within 8 days of arriving in Belgium, the family member must register at the local commune (gemeentehuis/maison communale) to start the residence permit procedure.", checklist_items: [
+      { label: "Registered at commune within 8 days of arrival", item_type: "action" },
+      { label: "Annex 19 issued by commune (provisional residence document)", item_type: "document" },
+    ]},
+    { title: "DVZ decision and receive residence card", description: "DVZ reviews the file and issues a decision. If approved, the commune issues an electronic residence card (E+ or F+ card for family members).", checklist_items: [
+      { label: "DVZ approval received", item_type: "document" },
+      { label: "Electronic residence card received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumAsylum: ProcessTemplate = {
+  id: "be_asylum",
+  keywords: ["asylum", "refugee", "international protection", "belgium", "CGRS", "Fedasil", "asielzoeker"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "CGRS — Commissariaat-generaal voor de Vluchtelingen en de Staatlozen",
+  title: "Belgium asylum and international protection",
+  summary: "Apply for refugee status or subsidiary protection in Belgium if you face persecution or serious harm in your home country.",
+  timeline_summary: "First instance decision: 6–18 months. You may remain in Belgium during the procedure and any appeal.",
+  next_action: "Register your asylum application at the Immigration Office (DVZ) in Brussels or at a Fedasil reception centre.",
+  steps: [
+    { title: "Register the application at DVZ", description: "Present yourself to the Immigration Office (Klein Kasteeltje / Petit Château) in Brussels or at a border point. You must register your intention to seek asylum as soon as possible.", checklist_items: [
+      { label: "Application registered at DVZ in Brussels or border post", item_type: "action" },
+      { label: "Any available identity documents provided", item_type: "document" },
+      { label: "Placed in a Fedasil reception centre", item_type: "action" },
+    ]},
+    { title: "Dublin check and registration", description: "DVZ checks whether Belgium is responsible under the Dublin Regulation. Fingerprints are taken and checked against the Eurodac database.", checklist_items: [
+      { label: "Fingerprints and photo taken", item_type: "action" },
+      { label: "Annex 26 (attestation of registration) received", item_type: "document" },
+    ]},
+    { title: "CGRS personal interview", description: "The Commissioner-General for Refugees and Stateless Persons (CGRS) schedules a personal interview. An interpreter is provided. You may have a lawyer or NGO representative present.", checklist_items: [
+      { label: "Personal interview at CGRS attended", item_type: "appointment" },
+      { label: "Supporting evidence of persecution submitted", item_type: "document" },
+      { label: "Legal aid arranged (free via Juridische Tweedelijnsbijstand)", item_type: "action" },
+    ]},
+    { title: "Receive CGRS decision", description: "CGRS issues refugee status, subsidiary protection, or a rejection. If rejected, appeal to the Council for Alien Law Litigation (RvV/CCE) within 30 days.", checklist_items: [
+      { label: "CGRS decision received", item_type: "document" },
+      { label: "Appeal filed with RvV/CCE within 30 days (if refused)", item_type: "action" },
+    ]},
+    { title: "Receive residence card if granted", description: "On grant of protection, register at your commune. DVZ issues a residence card valid for 5 years (refugee) or 1 year renewable (subsidiary protection).", checklist_items: [
+      { label: "Registered at commune", item_type: "action" },
+      { label: "Residence card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumEEARegistration: ProcessTemplate = {
+  id: "be_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "E card", "belgium", "commune", "bijlage 19", "free movement"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "Local commune (gemeentehuis / maison communale)",
+  title: "Belgium EU/EEA residence registration (E card)",
+  summary: "EU/EEA citizens staying in Belgium for more than 3 months must register at their local commune and obtain an E card (electronic residence card).",
+  timeline_summary: "Register within 3 months of arrival. E card issued within 3–6 months after commune investigation.",
+  next_action: "Register at your local commune within 3 months of arriving in Belgium and request the EU residence attestation.",
+  steps: [
+    { title: "Register at the commune within 3 months", description: "Go to the commune (gemeentehuis/maison communale) where you live. Bring your EU passport/ID and proof of address. You will receive a provisional Annex 19 document while your file is processed.", checklist_items: [
+      { label: "Registered at commune within 3 months of arrival", item_type: "action" },
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Proof of Belgian address (rental contract or letter from landlord)", item_type: "document" },
+      { label: "Annex 19 provisional document received", item_type: "document" },
+    ]},
+    { title: "Commune investigation visit", description: "A commune officer visits your address to verify you actually live there. Be present at home or arrange for the letter to be signed.", checklist_items: [
+      { label: "Commune address verification visit completed", item_type: "action" },
+    ]},
+    { title: "Provide proof of Treaty Right", description: "Submit proof that you are exercising a free movement right: employment contract (worker), enrollment certificate (student), or bank statements and health insurance (self-sufficient).", checklist_items: [
+      { label: "Employment contract or payslips (if worker)", item_type: "document" },
+      { label: "Enrollment certificate (if student)", item_type: "document" },
+      { label: "Health insurance certificate (if not worker)", item_type: "document" },
+      { label: "Bank statements (if self-sufficient)", item_type: "document" },
+    ]},
+    { title: "Receive E card", description: "Once DVZ confirms your right of residence, the commune issues an electronic E card (resident card for EU/EEA citizens). Valid for 5 years and renewable.", checklist_items: [
+      { label: "E card received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumLongTermResidence: ProcessTemplate = {
+  id: "be_long_term_residence",
+  keywords: ["long-term residence", "permanent residence", "5 years", "belgium", "DVZ", "unbegrenzte Niederlassung"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ — Dienst Vreemdelingenzaken / Office des Étrangers",
+  title: "Belgium EU long-term residence permit (permanent settlement)",
+  summary: "Apply for EU long-term residence status in Belgium after 5 years of continuous legal residence, granting enhanced rights and settlement security.",
+  timeline_summary: "Apply before current permit expires. Processing 4–6 months.",
+  next_action: "Submit a long-term residence application to DVZ via your local commune, with proof of 5 years of legal residence and language/integration evidence.",
+  steps: [
+    { title: "Check eligibility", description: "You must have resided legally and continuously in Belgium for at least 5 years. No period of absence exceeding 6 consecutive months or 10 months total within the 5-year period.", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence", item_type: "action" },
+      { label: "Checked absence record", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Collect proof of residence, income, accommodation, and any integration/language certificates. All foreign documents must be apostilled and translated.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current and previous residence cards (5-year history)", item_type: "document" },
+      { label: "Proof of stable income (payslips, tax assessments)", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Belgian criminal record certificate (via commune)", item_type: "document" },
+      { label: "Language/integration certificate (recommended)", item_type: "document" },
+    ]},
+    { title: "Submit application via commune to DVZ", description: "Apply at your commune. The commune forwards the file to DVZ. DVZ processes and issues the decision.", checklist_items: [
+      { label: "Application submitted at commune and forwarded to DVZ", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive EU long-term residence card", description: "DVZ issues the EU long-term residence permit. The card is valid for 5 years and indefinitely renewable. It grants the right to work in any sector and improved family reunification rights.", checklist_items: [
+      { label: "EU long-term residence card received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumSelfEmployed: ProcessTemplate = {
+  id: "be_self_employed",
+  keywords: ["self-employed", "freelance", "indépendant", "zelfstandige", "belgium", "professional card", "carte professionnelle"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "FPS Economy / Vlaio / Service public économie",
+  title: "Belgium self-employed professional card",
+  summary: "Non-EU nationals who wish to work as a self-employed person or run a business in Belgium must obtain a professional card (beroepskaart / carte professionnelle).",
+  timeline_summary: "2–4 months. Apply at the Belgian embassy in your home country before travelling.",
+  next_action: "Apply for a professional card at the Belgian embassy in your country of residence, combined with a Type D visa for self-employment.",
+  steps: [
+    { title: "Check eligibility and plan your business", description: "Your self-employed activity must not harm Belgian economic interests and must demonstrate added value. Prepare a detailed business plan with financial projections.", checklist_items: [
+      { label: "Business plan drafted (activity, market, clients, financials)", item_type: "document" },
+      { label: "Confirmed activity is permitted for self-employment in Belgium", item_type: "action" },
+    ]},
+    { title: "Apply for professional card at Belgian embassy", description: "Apply for the professional card (beroepskaart) at the Belgian embassy or consulate in your country of residence. The application is assessed by FPS Economy.", checklist_items: [
+      { label: "Application form completed", item_type: "action" },
+      { label: "Business plan and financial projections submitted", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Proof of professional qualifications", item_type: "document" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive professional card and combine with Type D visa", description: "If approved, the professional card is issued and a Type D visa is attached for entry into Belgium. The card is valid for 1–5 years.", checklist_items: [
+      { label: "Professional card received", item_type: "document" },
+      { label: "Type D visa issued for travel to Belgium", item_type: "document" },
+    ]},
+    { title: "Register business and residence in Belgium", description: "Within 8 days of arrival, register at your commune. Register your business with the Crossroads Bank for Enterprises (KBO/BCE) to obtain an enterprise number.", checklist_items: [
+      { label: "Registered at commune within 8 days", item_type: "action" },
+      { label: "Business registered with KBO/BCE", item_type: "action" },
+      { label: "Enterprise number received", item_type: "document" },
+      { label: "Joined a social insurance fund (sociaal verzekeringsfonds)", item_type: "action" },
+    ]},
+  ],
+};
+
+const belgiumPermanentResidence: ProcessTemplate = {
+  id: "be_permanent_residence",
+  keywords: ["permanent residence", "unlimited stay", "onbeperkt verblijf", "belgium", "DVZ", "A card"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ — Dienst Vreemdelingenzaken / Office des Étrangers",
+  title: "Belgium permanent residence (unlimited stay — A card)",
+  summary: "After 5 years of legal residence in Belgium, non-EU nationals can apply for an unlimited residence card (A card), granting the right to stay indefinitely.",
+  timeline_summary: "Apply before current permit expires. Processing 3–6 months.",
+  next_action: "Apply at your commune for an A card, with proof of 5 years of continuous legal residence in Belgium.",
+  steps: [
+    { title: "Confirm 5-year residence and eligibility", description: "You must have held consecutive valid residence permits totalling at least 5 years. No single gap in residence, no absence over 6 consecutive months, and a clean criminal record.", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "No serious criminal convictions confirmed", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Collect all previous residence cards, proof of income, and accommodation. Foreign documents must be apostilled and translated.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "All previous Belgian residence cards", item_type: "document" },
+      { label: "Proof of income (payslips, tax assessments)", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Belgian criminal record certificate", item_type: "document" },
+    ]},
+    { title: "Apply at commune", description: "Submit the A card application at your local commune. The commune forwards the file to DVZ for a decision.", checklist_items: [
+      { label: "Application submitted at commune", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Provisional attestation received (Annex 15)", item_type: "document" },
+    ]},
+    { title: "Receive A card", description: "DVZ approves and the commune issues the A card (permanent residence). The card is valid for 5 years and indefinitely renewable with no conditions attached.", checklist_items: [
+      { label: "A card (permanent residence) received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumNaturalisation: ProcessTemplate = {
+  id: "be_naturalisation",
+  keywords: ["naturalisation", "citizenship", "Belgian nationality", "nationalité belge", "Belgische nationaliteit", "belgium"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "SPF Justice / FOD Justitie",
+  title: "Belgium naturalisation (Belgian citizenship)",
+  summary: "Apply for Belgian citizenship through naturalisation after meeting the residence, integration, and language requirements.",
+  timeline_summary: "Standard route: 5 years legal residence + integration. Fast-track: 10 years. Processing 4–24 months after submission.",
+  next_action: "Check your eligibility on the SPF Justice website and submit a naturalisation declaration at your commune.",
+  steps: [
+    { title: "Check eligibility and route", description: "The standard route requires 5 years of legal residence, a language certificate (Dutch, French, or German at A2+), and proof of social and economic integration. Special routes exist for people with 10+ years of residence.", checklist_items: [
+      { label: "Confirmed residence duration meets the required threshold", item_type: "action" },
+      { label: "Identified correct naturalisation route (standard/extended)", item_type: "action" },
+    ]},
+    { title: "Obtain required certificates", description: "Get a language certificate (OKAN, CentreExamens, Goethe) and a civic integration certificate (inburgeringsattest from Agentschap Integratie en Inburgering or equivalent).", checklist_items: [
+      { label: "Language certificate at A2+ level obtained", item_type: "document" },
+      { label: "Civic integration certificate obtained", item_type: "document" },
+    ]},
+    { title: "Prepare the naturalisation declaration file", description: "Collect all required documents: passport, residence cards, criminal record, language and integration certificates, proof of Belgian ties (work, family, civic participation).", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "All Belgian residence cards", item_type: "document" },
+      { label: "Belgian criminal record certificate", item_type: "document" },
+      { label: "Foreign criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Language and integration certificates", item_type: "document" },
+      { label: "Proof of economic participation (payslips, tax returns)", item_type: "document" },
+    ]},
+    { title: "Submit declaration at commune", description: "File the naturalisation declaration at your commune. The commune forwards the file to the Chamber of Representatives (for standard route) or to SPF Justice.", checklist_items: [
+      { label: "Declaration submitted at commune", item_type: "action" },
+      { label: "Acknowledgment of receipt obtained", item_type: "document" },
+    ]},
+    { title: "Await decision and receive Belgian nationality", description: "The Chamber or SPF Justice reviews the file. If approved, you are notified and can apply for a Belgian passport and national register number.", checklist_items: [
+      { label: "Approval decision received", item_type: "document" },
+      { label: "Belgian passport applied for", item_type: "action" },
+      { label: "National register number updated at commune", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5008,11 +6056,23 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   portugalD7Visa,
   portugalWorkVisa,
   portugalCitizenship,
+  portugalStudentVisa,
+  portugalFamilyReunification,
+  portugalAsylum,
+  portugalEEARegistration,
+  portugalLongTermResidence,
+  portugalNIF,
   // Austria
   austriaRedWhiteRedCard,
   austriaStudentVisa,
   austriaCitizenship,
   austriaMeldung,
+  austriaFamilyReunification,
+  austriaAsylum,
+  austriaEEARegistration,
+  austriaSettlementPermit,
+  austriaLongTermResidence,
+  austriaJobSeekerVisa,
   // Switzerland
   switzerlandBPermit,
   switzerlandCPermit,
@@ -5116,16 +6176,34 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   netherlandsStudentVisa,
   netherlandsCitizenship,
   netherlandsBSN,
+  netherlandsFamilyReunification,
+  netherlandsAsylum,
+  netherlandsEEARegistration,
+  netherlandsLongTermResidence,
+  netherlandsSelfEmployed,
+  netherlandsOrientationYear,
   // Belgium
   belgiumWorkPermit,
   belgiumStudentVisa,
   belgiumCitizenship,
+  belgiumFamilyReunification,
+  belgiumAsylum,
+  belgiumEEARegistration,
+  belgiumLongTermResidence,
+  belgiumSelfEmployed,
+  belgiumPermanentResidence,
+  belgiumNaturalisation,
   // Ireland
   irelandCriticalSkills,
   irelandWorkPermit,
   irelandStudentVisa,
   irelandStamp4,
   irelandCitizenship,
+  irelandAsylum,
+  irelandEEARegistration,
+  irelandFamilyReunification,
+  irelandPPSNumber,
+  irelandWorkingHoliday,
   // Australia
   australiaSkilledIndependent,
   // Canada
