@@ -3326,9 +3326,75 @@ const italyEEARegistration: ProcessTemplate = {
   ],
 };
 
+// ── France — OFII / Préfecture ─────────────────────────────────────────────
+
+const franceTalentPassport: ProcessTemplate = {
+  id: "fr_talent_passport",
+  keywords: ["france talent passport", "passeport talent", "highly skilled france", "exceptional talent france", "french work visa skilled"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture / French Consulate",
+  title: "Passeport Talent — France",
+  summary: "A 4-year renewable residence permit for highly qualified workers, researchers, investors, artists, and entrepreneurs. Covers the holder and family under a single permit.",
+  timeline_summary: "Consulate processing takes 4–8 weeks. In-country prefectural processing takes 1–3 months.",
+  next_action: "Identify which Passeport Talent category applies to you (salaried employee, researcher, investor, etc.) and gather your documents.",
+  official_sources: [{ title: "Service-public.fr — Passeport Talent", url: "https://www.service-public.fr/particuliers/vosdroits/F16922" }],
+  steps: [
+    { title: "Identify your category and gather documents", description: "There are several Passeport Talent categories: highly qualified employee (salary ≥ 1.5× SMIC), researcher, EU Blue Card, company creator, investor, artist/cultural professional. Each has specific document requirements.", estimated_duration: "1–2 weeks", checklist_items: [
+      { label: "Category identified", item_type: "action" },
+      { label: "Employment contract or proof of activity", item_type: "document" },
+      { label: "Degree/qualification proof (level equivalent to Master's for most categories)", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+    ]},
+    { title: "Apply at French consulate (from abroad) or préfecture (in France)", description: "If outside France, apply for a long-stay visa (visa de long séjour valant titre de séjour — VLS-TS) at the French consulate. If already in France, apply at the préfecture.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate or préfecture appointment booked", item_type: "appointment" },
+      { label: "Application form and documents submitted", item_type: "action" },
+      { label: "Fee paid", item_type: "payment" },
+      { label: "Passeport Talent permit received (4 years, renewable)", item_type: "document" },
+    ]},
+    { title: "Validate visa and register with OFII", description: "Within 3 months of arrival, validate your VLS-TS online via the ANEF portal (administration-etrangers-en-france.interieur.gouv.fr).", estimated_duration: "First 3 months", checklist_items: [
+      { label: "VLS-TS validated online via ANEF portal", item_type: "action" },
+      { label: "OFII medical visit completed if required", item_type: "appointment" },
+    ]},
+  ],
+};
+
+const franceWorkAuthorisation: ProcessTemplate = {
+  id: "fr_work_authorisation",
+  keywords: ["france work permit", "autorisation travail", "work visa france", "salaried employee france", "titre sejour salarie", "work france non eu"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "DREETS / French Consulate",
+  title: "Work Authorisation (Autorisation de Travail) — France",
+  summary: "Non-EU/EEA nationals who do not qualify for the Passeport Talent need a work authorisation issued by the regional labour authority (DREETS) before the employer can hire them.",
+  timeline_summary: "DREETS processing takes 2–4 months. Apply well in advance.",
+  next_action: "Your employer applies for the work authorisation — you cannot apply directly.",
+  official_sources: [{ title: "Service-public.fr — Autorisation de travail", url: "https://www.service-public.fr/professionnels-entreprises/vosdroits/F23107" }],
+  steps: [
+    { title: "Employer applies for work authorisation at DREETS", description: "The employer submits an online application via the ANEF portal proving the job could not be filled by an EU/EEA candidate (opposabilité de l'emploi check).", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Job offer confirmed and signed", item_type: "document" },
+      { label: "Employer submits application on ANEF portal", item_type: "action" },
+      { label: "DREETS authorisation issued", item_type: "document" },
+    ]},
+    { title: "Apply for long-stay visa at French consulate", description: "With the authorisation, apply for a VLS-TS 'salarié' at the French consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Passport, work authorisation, employment contract submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and validate visa", description: "Validate your VLS-TS online within 3 months of arrival. The visa acts as your residence permit for the first year.", estimated_duration: "First 3 months", checklist_items: [
+      { label: "VLS-TS validated via ANEF portal", item_type: "action" },
+      { label: "OFII medical visit attended if required", item_type: "appointment" },
+      { label: "Titre de séjour 'salarié' applied for before VLS expires", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
+  // France
+  franceTalentPassport,
+  franceWorkAuthorisation,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
