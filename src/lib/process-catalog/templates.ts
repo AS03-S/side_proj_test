@@ -4376,6 +4376,188 @@ const portugalCitizenship: ProcessTemplate = {
   ],
 };
 
+// ── Netherlands (expanded) ─────────────────────────────────────────────────
+
+const netherlandsStudentVisa: ProcessTemplate = {
+  id: "nl_student_visa",
+  keywords: ["netherlands student visa", "study netherlands", "dutch university", "student permit netherlands", "mvv student", "holland study"],
+  destination_country: "Netherlands",
+  jurisdiction: "Netherlands",
+  authority_name: "IND (Immigration and Naturalisation Service)",
+  title: "Student Residence Permit — Netherlands",
+  summary: "Non-EU/EEA students accepted at a Dutch university apply through their institution — the university sponsors the student and submits to IND on their behalf.",
+  timeline_summary: "Apply at least 3 months before your start date. IND decides within 4–8 weeks once the institution submits.",
+  next_action: "Contact your Dutch university's international office — they handle the IND application on your behalf.",
+  official_sources: [{ title: "IND — Student residence permit", url: "https://ind.nl/en/study" }],
+  steps: [
+    { title: "Get university acceptance", description: "Apply to a Dutch university and receive an official acceptance. The institution must be IND-recognised.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Dutch university accepted", item_type: "document" },
+      { label: "International office contacted about residence permit process", item_type: "action" },
+    ]},
+    { title: "University submits to IND", description: "The university submits your residence permit application to IND on your behalf. You provide them with your documents.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Passport copy provided to university", item_type: "document" },
+      { label: "Proof of sufficient funds provided (approx. €900/month)", item_type: "document" },
+      { label: "IND approval received and notified by university", item_type: "document" },
+    ]},
+    { title: "Apply for MVV entry visa (if required) and collect permit", description: "Some nationalities need an MVV (authorisation for temporary stay) entry visa before travelling. After arrival collect your residence card from IND.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "MVV applied for at Dutch embassy if required", item_type: "action" },
+      { label: "Arrived in Netherlands", item_type: "action" },
+      { label: "Residence permit (verblijfsvergunning) collected from IND desk or sent by post", item_type: "document" },
+      { label: "BSN (citizen service number) obtained at gemeente", item_type: "action" },
+    ]},
+  ],
+};
+
+const netherlandsCitizenship: ProcessTemplate = {
+  id: "nl_citizenship",
+  keywords: ["dutch citizenship", "netherlands naturalisation", "become dutch", "dutch passport", "naturalisation nederland"],
+  destination_country: "Netherlands",
+  jurisdiction: "Netherlands",
+  authority_name: "IND / Municipality",
+  title: "Dutch Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in the Netherlands on a valid permit, applicants can apply for Dutch citizenship. The Netherlands generally requires renouncing prior citizenship.",
+  timeline_summary: "Processing takes 12–24 months.",
+  next_action: "Confirm 5 years of residence, Dutch language B1, and civic integration exam passed.",
+  official_sources: [{ title: "IND — Naturalisation", url: "https://ind.nl/en/dutch-citizenship/naturalisation" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of uninterrupted legal residence, valid residence permit, Dutch language B1 (inburgering passed or exempted), no serious criminal convictions.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of legal residence confirmed", item_type: "action" },
+      { label: "Civic integration exam (inburgering) passed or exemption confirmed", item_type: "action" },
+      { label: "No disqualifying criminal convictions", item_type: "action" },
+    ]},
+    { title: "Apply at municipality", description: "Submit naturalisation application at your local municipality (gemeente).", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Appointment booked at gemeente", item_type: "appointment" },
+      { label: "Passport, current residence permit, birth certificate submitted", item_type: "document" },
+      { label: "Fee paid (approx. €1,038)", item_type: "payment" },
+      { label: "Royal Decree of naturalisation issued", item_type: "document" },
+      { label: "Naturalisation ceremony attended", item_type: "appointment" },
+      { label: "Dutch passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const netherlandsBSN: ProcessTemplate = {
+  id: "nl_bsn",
+  keywords: ["bsn netherlands", "burgerservicenummer", "dutch citizen number", "register netherlands", "gemeente netherlands", "bsn registration"],
+  destination_country: "Netherlands",
+  jurisdiction: "Netherlands",
+  authority_name: "Municipality (Gemeente)",
+  title: "BSN Registration (Burgerservicenummer) — Netherlands",
+  summary: "The BSN (Burger Service Number) is the Dutch personal identification number required for employment, healthcare, tax, and banking. It is issued when you register at your local municipality.",
+  timeline_summary: "Registration can be done within days of arrival. BSN is issued at the appointment.",
+  next_action: "Register at your local gemeente (municipality) as soon as you have a fixed address in the Netherlands.",
+  official_sources: [{ title: "Government.nl — BSN", url: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn" }],
+  steps: [
+    { title: "Book gemeente appointment", description: "Book an appointment at your local gemeente for address registration and BSN issuance.", estimated_duration: "Days to 1 week", checklist_items: [
+      { label: "Local gemeente identified", item_type: "action" },
+      { label: "Appointment booked online or by phone", item_type: "appointment" },
+    ]},
+    { title: "Attend appointment", description: "Bring your passport, residence permit, and rental contract. BSN is issued at the appointment.", estimated_duration: "30 minutes", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Residence permit (or EU/EEA identity document)", item_type: "document" },
+      { label: "Rental contract or proof of address", item_type: "document" },
+      { label: "BSN issued", item_type: "document" },
+    ]},
+    { title: "Use BSN for services", description: "Register with health insurance (zorgverzekering), employer, and DigiD (digital government ID).", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Dutch health insurance enrolled in (mandatory within 4 months)", item_type: "action" },
+      { label: "DigiD digital ID applied for at digid.nl", item_type: "action" },
+      { label: "Employer notified of BSN for tax purposes", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Belgium — DVZ / Commune ────────────────────────────────────────────────
+
+const belgiumWorkPermit: ProcessTemplate = {
+  id: "be_work_permit",
+  keywords: ["belgium work permit", "work belgium", "single permit belgium", "permis unique belgique", "gecombineerde vergunning belgie"],
+  destination_country: "Belgium",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ (Office of Foreigners) / Regional Employment Authority",
+  title: "Single Permit (Permis Unique / Gecombineerde Vergunning) — Belgium",
+  summary: "Non-EU/EEA nationals working in Belgium need a single permit (permis unique) combining residence and work authorisation. Applications are filed jointly by employer and employee with the regional employment authority.",
+  timeline_summary: "Processing takes 4–6 months. The employer submits the application.",
+  next_action: "Your employer initiates the application to the regional employment authority (VDAB, Forem, or Actiris depending on the region).",
+  official_sources: [{ title: "DVZ — Single permit", url: "https://dofi.ibz.be/en/themes/work/single-permit" }],
+  steps: [
+    { title: "Employer applies to regional employment authority", description: "The employer submits to the regional authority: VDAB (Flanders), Forem (Wallonia), or Actiris (Brussels). A Labour Market Test applies in most cases.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Employer confirms job offer and signed contract", item_type: "document" },
+      { label: "Employer submits to regional employment authority", item_type: "action" },
+      { label: "Work permit part approved", item_type: "document" },
+    ]},
+    { title: "DVZ issues residence authorisation", description: "After regional approval, DVZ issues the residence part of the single permit.", estimated_duration: "1–2 months", checklist_items: [
+      { label: "DVZ residence authorisation received", item_type: "document" },
+      { label: "Single permit document issued", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa and register in Belgium", description: "Apply for a D visa at the Belgian embassy if outside Belgium. After arrival, register at the commune.", estimated_duration: "First month", checklist_items: [
+      { label: "Belgian embassy D visa obtained if required", item_type: "action" },
+      { label: "Registered at local commune (town hall) within 8 days", item_type: "action" },
+      { label: "Belgian eID card collected from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumStudentVisa: ProcessTemplate = {
+  id: "be_student_visa",
+  keywords: ["belgium student visa", "study belgium", "belgian university", "student permit belgium", "visa etudiant belgique"],
+  destination_country: "Belgium",
+  jurisdiction: "Belgium",
+  authority_name: "Belgian Embassy / DVZ",
+  title: "Student Visa — Belgium",
+  summary: "Non-EU/EEA students enrolled in a full-time programme at a Belgian university or recognised institution apply for a student long-stay visa (D visa for studies).",
+  timeline_summary: "Apply at least 2 months before studies start. Processing takes 4–8 weeks.",
+  next_action: "Get your Belgian university enrolment proof and apply at the Belgian embassy or consulate.",
+  official_sources: [{ title: "Belgium.be — Student visa", url: "https://dofi.ibz.be/en/themes/studies" }],
+  steps: [
+    { title: "Obtain enrolment proof", description: "Apply to a Belgian university and receive official enrolment or acceptance.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Belgian institution applied to and accepted", item_type: "action" },
+      { label: "Proof of enrolment / acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply at Belgian embassy", description: "Submit D visa application for studies at the Belgian embassy.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Embassy appointment booked", item_type: "appointment" },
+      { label: "Enrolment proof submitted", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €620/month)", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+      { label: "Visa fee paid (approx. €180)", item_type: "payment" },
+    ]},
+    { title: "Register at commune after arrival", description: "Within 8 days of arriving, register at the local commune.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Registered at commune within 8 days", item_type: "action" },
+      { label: "eID or A card (student) issued", item_type: "document" },
+      { label: "Enrolled at university and student card received", item_type: "action" },
+    ]},
+  ],
+};
+
+const belgiumCitizenship: ProcessTemplate = {
+  id: "be_citizenship",
+  keywords: ["belgian citizenship", "naturalisation belgium", "become belgian", "belgian passport", "nationalite belge", "belgisch staatsburgerschap"],
+  destination_country: "Belgium",
+  jurisdiction: "Belgium",
+  authority_name: "Municipality / Federal Justice Ministry",
+  title: "Belgian Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in Belgium with economic and social integration, applicants can apply for Belgian citizenship. Belgium allows dual citizenship.",
+  timeline_summary: "Processing takes 12–24 months.",
+  next_action: "Confirm 5 years of legal residence and that you meet the integration and income conditions.",
+  official_sources: [{ title: "Belgium.be — Naturalisation", url: "https://www.belgium.be/en/family/residence/becoming_belgian" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of legal residence, demonstrate integration (language, civic participation, employment/study), sufficient income, no serious criminal convictions.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of legal residence confirmed", item_type: "action" },
+      { label: "Language proof (Dutch, French or German — level A2 minimum)", item_type: "document" },
+      { label: "Integration evidence: employment, study, volunteer work", item_type: "document" },
+      { label: "Income above integration threshold confirmed", item_type: "action" },
+    ]},
+    { title: "Apply at commune", description: "Submit the declaration of acquisition of Belgian nationality at your local commune.", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Application submitted at commune", item_type: "action" },
+      { label: "Birth certificate (apostilled + translated) submitted", item_type: "document" },
+      { label: "Residence history documentation submitted", item_type: "document" },
+      { label: "Integration evidence submitted", item_type: "document" },
+      { label: "Federal prosecution and municipal council review passed", item_type: "action" },
+      { label: "Belgian eID issued after citizenship confirmed", item_type: "document" },
+      { label: "Belgian passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4487,6 +4669,13 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   spainAsylum,
   // Netherlands
   netherlandsHighlySkilledMigrant,
+  netherlandsStudentVisa,
+  netherlandsCitizenship,
+  netherlandsBSN,
+  // Belgium
+  belgiumWorkPermit,
+  belgiumStudentVisa,
+  belgiumCitizenship,
   // Ireland
   irelandCriticalSkills,
   irelandWorkPermit,
