@@ -4247,6 +4247,135 @@ const austriaMeldung: ProcessTemplate = {
   ],
 };
 
+// ── Portugal — AIMA / SEF ──────────────────────────────────────────────────
+
+const portugalD2Visa: ProcessTemplate = {
+  id: "pt_d2_visa",
+  keywords: ["portugal d2 visa", "entrepreneur visa portugal", "freelance visa portugal", "self employed portugal", "portugal nomad visa", "startup portugal"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo) / Portuguese Consulate",
+  title: "D2 Visa (Entrepreneur / Freelance) — Portugal",
+  summary: "The D2 visa allows entrepreneurs, freelancers, and self-employed individuals to live and work in Portugal. It is also used for independent service providers (prestadores de serviços).",
+  timeline_summary: "Consulate processing takes 4–8 weeks. After arrival, apply for a residence permit at AIMA within 4 months.",
+  next_action: "Prepare your business/freelance plan and proof of clients or contracts, then apply at the Portuguese consulate.",
+  official_sources: [{ title: "Vistos.mne.gov.pt — D2", url: "https://vistos.mne.gov.pt/en/national-visas/general-information/required-documentation" }],
+  steps: [
+    { title: "Prepare documents", description: "Show viable business activity in Portugal — registered company, clients, or freelance contracts. Proof of accommodation and financial means required.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "Business plan or client contracts prepared", item_type: "document" },
+      { label: "Proof of accommodation in Portugal", item_type: "document" },
+      { label: "Proof of sufficient funds (min. €760/month roughly)", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Health insurance covering Portugal", item_type: "document" },
+    ]},
+    { title: "Apply at Portuguese consulate", description: "Submit D2 visa application at the Portuguese consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "All documents and passport submitted", item_type: "document" },
+      { label: "Visa fee paid (approx. €90)", item_type: "payment" },
+      { label: "D2 visa received (valid 4 months)", item_type: "document" },
+    ]},
+    { title: "Arrive and apply for residence permit at AIMA", description: "Within 4 months of arrival, apply for a residence permit at AIMA (formerly SEF).", estimated_duration: "Within 4 months", checklist_items: [
+      { label: "AIMA appointment booked", item_type: "appointment" },
+      { label: "Portuguese NIF (tax number) obtained at Finanças", item_type: "action" },
+      { label: "Social Security registration completed", item_type: "action" },
+      { label: "Residence permit (Autorização de Residência) applied for at AIMA", item_type: "action" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalD7Visa: ProcessTemplate = {
+  id: "pt_d7_visa",
+  keywords: ["portugal d7 visa", "passive income portugal", "retire portugal", "portugal residency passive income", "portugal digital nomad", "portugal retiree"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA / Portuguese Consulate",
+  title: "D7 Passive Income Visa — Portugal",
+  summary: "The D7 visa allows non-EU nationals with stable passive income (pension, rental income, dividends, remote work) to live in Portugal. It is popular with retirees and remote workers.",
+  timeline_summary: "Consulate processing takes 4–8 weeks. Apply for residence permit at AIMA within 4 months of arrival.",
+  next_action: "Confirm you have regular monthly income above the minimum threshold (~€760/month) and gather documents.",
+  official_sources: [{ title: "Vistos.mne.gov.pt — D7", url: "https://vistos.mne.gov.pt/en/national-visas/general-information/required-documentation" }],
+  steps: [
+    { title: "Confirm income and gather documents", description: "Monthly income must be at least 100% of Portugal's minimum wage (approx. €760) from passive sources. More is recommended for dependants.", estimated_duration: "1–2 weeks", checklist_items: [
+      { label: "Proof of regular passive income (pension statement, bank statements, investment income)", item_type: "document" },
+      { label: "Proof of accommodation in Portugal (rental or property)", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+    ]},
+    { title: "Apply at Portuguese consulate", description: "Apply at the Portuguese consulate in your country of residence.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Application form and documents submitted", item_type: "document" },
+      { label: "Visa fee paid (approx. €90)", item_type: "payment" },
+      { label: "D7 visa received", item_type: "document" },
+    ]},
+    { title: "Arrive and get residence permit", description: "Within 4 months, apply for a residence permit at AIMA.", estimated_duration: "Within 4 months", checklist_items: [
+      { label: "NIF (Portuguese tax number) obtained at Finanças", item_type: "action" },
+      { label: "AIMA appointment booked and attended", item_type: "appointment" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalWorkVisa: ProcessTemplate = {
+  id: "pt_work_visa",
+  keywords: ["portugal work visa", "work permit portugal", "visto trabalho", "authorização trabalho", "employment portugal"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA / Portuguese Consulate",
+  title: "Work Visa (D1 / Employment) — Portugal",
+  summary: "Non-EU/EEA nationals with a job offer in Portugal apply for a work visa (D1 — subordinate work). The employer must have a signed contract and proof the position could not be filled by an EU candidate.",
+  timeline_summary: "Consulate processing takes 4–8 weeks.",
+  next_action: "Your employer must sign a work contract with you before you can apply for the visa.",
+  official_sources: [{ title: "Vistos.mne.gov.pt — D1", url: "https://vistos.mne.gov.pt/en" }],
+  steps: [
+    { title: "Employer confirms job offer and signs contract", description: "A signed employment contract is required before applying. The contract must be registered with Social Security.", estimated_duration: "1–2 weeks", checklist_items: [
+      { label: "Employment contract signed", item_type: "document" },
+      { label: "Employer confirms Social Security registration", item_type: "action" },
+    ]},
+    { title: "Apply at Portuguese consulate", description: "Apply for the D1 visa at the Portuguese consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Employment contract submitted", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and register", description: "Get your NIF, register with Social Security, and apply for residence permit at AIMA within 4 months.", estimated_duration: "Within 4 months", checklist_items: [
+      { label: "NIF obtained at Finanças or online", item_type: "action" },
+      { label: "Social Security number obtained", item_type: "action" },
+      { label: "Residence permit applied for at AIMA", item_type: "action" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalCitizenship: ProcessTemplate = {
+  id: "pt_citizenship",
+  keywords: ["portuguese citizenship", "cidadania portuguesa", "naturalisation portugal", "become portuguese", "portuguese passport"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "IRN (Instituto dos Registos e do Notariado)",
+  title: "Portuguese Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in Portugal, applicants can apply for Portuguese citizenship. Portugal allows dual citizenship and has one of the more accessible naturalisation processes in Europe.",
+  timeline_summary: "Processing takes 12–24 months currently.",
+  next_action: "Confirm 5 years of legal residence and sufficient Portuguese language skills (A2 level).",
+  official_sources: [{ title: "IRN — Nationality", url: "https://www.irn.mj.pt/IRN/sections/irn/a_registral/registo-civil/docs-e-formularios/nacionalidade/" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of legal residence, Portuguese A2 language level, no serious criminal convictions, no threat to national security.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of legal residence confirmed", item_type: "action" },
+      { label: "Portuguese A2 language certificate obtained (CIPLE exam)", item_type: "document" },
+      { label: "No disqualifying criminal history", item_type: "action" },
+    ]},
+    { title: "Apply at the registry office or online", description: "Submit naturalisation application at a Conservatória do Registo Civil or online via the IRN portal.", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Application submitted online or at registry", item_type: "action" },
+      { label: "Fee paid (approx. €250)", item_type: "payment" },
+      { label: "Birth certificate (apostilled + translated) submitted", item_type: "document" },
+      { label: "Proof of 5 years' residence submitted", item_type: "document" },
+      { label: "Language certificate submitted", item_type: "document" },
+      { label: "Naturalisation certificate received", item_type: "document" },
+      { label: "Portuguese passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4259,6 +4388,11 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceCitizenship,
   franceAsylum,
   franceEEARegistration,
+  // Portugal
+  portugalD2Visa,
+  portugalD7Visa,
+  portugalWorkVisa,
+  portugalCitizenship,
   // Austria
   austriaRedWhiteRedCard,
   austriaStudentVisa,
