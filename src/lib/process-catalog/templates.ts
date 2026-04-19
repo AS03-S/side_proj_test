@@ -3573,6 +3573,150 @@ const franceEEARegistration: ProcessTemplate = {
   ],
 };
 
+const ukFamilyVisa: ProcessTemplate = {
+  id: "uk_family_visa",
+  keywords: ["uk family visa", "spouse visa uk", "partner visa uk", "family route uk", "join family uk", "uk marriage visa"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office / UKVI",
+  title: "UK Family Visa (Spouse / Partner Route)",
+  summary: "Allows spouses, civil partners, and unmarried partners of British citizens or settled persons to join them in the UK. Leads to settlement after 5 years.",
+  timeline_summary: "Processing takes 12–24 weeks from outside the UK. Priority and super-priority services are available for a fee.",
+  next_action: "Confirm your sponsor meets the financial requirement (£29,000/year gross income as of 2024) before applying.",
+  official_sources: [{ title: "GOV.UK — Family visa", url: "https://www.gov.uk/uk-family-visa" }],
+  steps: [
+    { title: "Check eligibility and financial requirement", description: "The UK sponsor must earn at least £29,000/year (threshold subject to change). The relationship must be genuine and subsisting.", estimated_duration: "1 week", checklist_items: [
+      { label: "Sponsor income confirmed at or above £29,000/year", item_type: "action" },
+      { label: "Genuine relationship evidence gathered (photos, messages, travel history)", item_type: "document" },
+      { label: "English language requirement checked (A2 level — SELT test or passport from majority English-speaking country)", item_type: "action" },
+    ]},
+    { title: "Apply online and pay", description: "Apply on GOV.UK. Pay the visa fee and Immigration Health Surcharge (IHS).", estimated_duration: "1 day", checklist_items: [
+      { label: "Online application completed at gov.uk", item_type: "action" },
+      { label: "Visa fee paid (approx. £1,846 from outside UK)", item_type: "payment" },
+      { label: "Immigration Health Surcharge paid (£1,035/year)", item_type: "payment" },
+    ]},
+    { title: "Biometrics and document upload", description: "Attend a visa application centre for biometrics and upload supporting documents.", estimated_duration: "Appointment dependent", checklist_items: [
+      { label: "Visa Application Centre appointment attended", item_type: "appointment" },
+      { label: "Passport submitted or scanned", item_type: "document" },
+      { label: "Sponsor's financial evidence uploaded", item_type: "document" },
+      { label: "Relationship evidence uploaded", item_type: "document" },
+      { label: "Decision received and BRP collected on arrival", item_type: "action" },
+    ]},
+  ],
+};
+
+const ukILR: ProcessTemplate = {
+  id: "uk_ilr",
+  keywords: ["uk ilr", "indefinite leave to remain", "uk settlement", "permanent uk", "uk settled status", "uk permanent residence"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office / UKVI",
+  title: "Indefinite Leave to Remain (ILR) — UK",
+  summary: "ILR grants the right to live and work in the UK permanently with no time restrictions. Eligibility depends on your visa route — most routes require 5 years of continuous residence.",
+  timeline_summary: "Standard processing: 6 months. Priority: 5 working days. Super-priority: next working day.",
+  next_action: "Check which ILR route applies to your current visa and confirm you have met the continuous residence requirement.",
+  official_sources: [{ title: "GOV.UK — Indefinite leave to remain", url: "https://www.gov.uk/indefinite-leave-to-remain" }],
+  steps: [
+    { title: "Check eligibility", description: "Most routes require 5 continuous years in the UK, passing the Life in the UK test, English level B1+, and not exceeding 180 days' absence in any 12-month period.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous residence in UK confirmed", item_type: "action" },
+      { label: "Absences checked (max 180 days per year)", item_type: "action" },
+      { label: "Life in the UK test passed", item_type: "document" },
+      { label: "English B1 SELT certificate obtained (if required for your route)", item_type: "document" },
+    ]},
+    { title: "Apply online and pay", description: "Apply on GOV.UK. Choose standard, priority, or super-priority service.", estimated_duration: "1 day", checklist_items: [
+      { label: "Online ILR application submitted", item_type: "action" },
+      { label: "Application fee paid (approx. £2,885)", item_type: "payment" },
+      { label: "Biometric Residence Permit (BRP) or eVisa issued", item_type: "document" },
+    ]},
+  ],
+};
+
+const ukCitizenship: ProcessTemplate = {
+  id: "uk_citizenship",
+  keywords: ["british citizenship", "uk naturalisation", "become british", "british passport", "uk citizenship application"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office",
+  title: "British Citizenship by Naturalisation",
+  summary: "After holding ILR (or settled status) for 12 months (or immediately if married to a British citizen), you can apply for British citizenship by naturalisation.",
+  timeline_summary: "Processing takes 6–9 months. UK generally does not allow dual citizenship with all countries but does not require renunciation on naturalisation.",
+  next_action: "Confirm you have held ILR/settled status for 12 months and meet the residence and language requirements.",
+  official_sources: [{ title: "GOV.UK — British citizenship", url: "https://www.gov.uk/british-citizenship" }],
+  steps: [
+    { title: "Check eligibility", description: "Must have ILR/settled status for 12 months, 5 years of UK residence (3 if spouse of British citizen), no more than 450 days' absence in 5 years (90 in final year), Life in the UK test passed, English B1+.", estimated_duration: "1 week", checklist_items: [
+      { label: "ILR/settled status held for 12 months confirmed", item_type: "action" },
+      { label: "Absence record checked (max 450 days in 5 years, 90 in final year)", item_type: "action" },
+      { label: "Life in the UK test certificate", item_type: "document" },
+      { label: "English B1+ certificate (if required)", item_type: "document" },
+    ]},
+    { title: "Apply online and attend ceremony", description: "Apply via GOV.UK, pay the fee, and if approved attend a citizenship ceremony.", estimated_duration: "6–9 months", checklist_items: [
+      { label: "Online application submitted", item_type: "action" },
+      { label: "Application fee paid (£1,500)", item_type: "payment" },
+      { label: "Biometrics submitted", item_type: "action" },
+      { label: "Approval letter received", item_type: "document" },
+      { label: "Citizenship ceremony attended", item_type: "appointment" },
+      { label: "Certificate of naturalisation received", item_type: "document" },
+      { label: "British passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const ukAsylum: ProcessTemplate = {
+  id: "uk_asylum",
+  keywords: ["uk asylum", "asylum uk", "refugee uk", "protection uk", "asylum seeker uk", "home office asylum"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office",
+  title: "Asylum Application — United Kingdom",
+  summary: "Anyone in the UK who fears persecution in their home country can claim asylum. Claims must be made as soon as possible after arrival.",
+  timeline_summary: "The Home Office aims to decide within 6 months but many cases take longer.",
+  next_action: "Claim asylum as soon as possible — delays can negatively affect your case. Go to the Asylum Intake Unit or call the Home Office.",
+  official_sources: [{ title: "GOV.UK — Claim asylum", url: "https://www.gov.uk/claim-asylum" }],
+  steps: [
+    { title: "Make your asylum claim", description: "Call the Home Office Asylum Intake Unit or attend in person. You will be screened and given an asylum registration card (ARC).", estimated_duration: "1 day", checklist_items: [
+      { label: "Asylum Intake Unit contacted or attended in person", item_type: "action" },
+      { label: "Screening interview completed", item_type: "appointment" },
+      { label: "Asylum Registration Card (ARC) received", item_type: "document" },
+    ]},
+    { title: "Substantive interview", description: "The Home Office conducts a detailed interview about your asylum claim. You have the right to legal representation.", estimated_duration: "Scheduled by Home Office", checklist_items: [
+      { label: "Legal representative arranged (Legal Aid available)", item_type: "action" },
+      { label: "Substantive asylum interview attended", item_type: "appointment" },
+      { label: "Any additional evidence submitted", item_type: "document" },
+    ]},
+    { title: "Await decision", description: "The Home Office issues a decision. If refused, you can appeal to the First-tier Tribunal (Immigration and Asylum Chamber).", estimated_duration: "6–24 months", checklist_items: [
+      { label: "Decision letter received", item_type: "document" },
+      { label: "If approved: refugee status and permission to stay granted", item_type: "action" },
+      { label: "If refused: appeal to First-tier Tribunal within 14 days", item_type: "action" },
+    ]},
+  ],
+};
+
+const ukEUSS: ProcessTemplate = {
+  id: "uk_euss",
+  keywords: ["eu settlement scheme", "euss uk", "settled status uk", "pre-settled status", "eu citizen uk", "brexit uk residence"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office",
+  title: "EU Settlement Scheme (EUSS) — UK",
+  summary: "EU, EEA and Swiss citizens who were living in the UK before 31 December 2020 can apply for settled or pre-settled status under the EUSS. The scheme remains open for late applications.",
+  timeline_summary: "Most applications decided within 5 working days. Some take longer if evidence is needed.",
+  next_action: "Apply via the EU Exit: ID Document Check app or online if you have a valid EU identity document or BRP.",
+  official_sources: [{ title: "GOV.UK — EU Settlement Scheme", url: "https://www.gov.uk/settled-status-eu-citizens-families" }],
+  steps: [
+    { title: "Check eligibility", description: "You must be an EU/EEA/Swiss citizen (or their family member) who was living in the UK before 31 December 2020. Settled status requires 5 years' continuous residence; pre-settled status for less than 5 years.", estimated_duration: "1 day", checklist_items: [
+      { label: "EU/EEA/Swiss nationality or qualifying family member confirmed", item_type: "action" },
+      { label: "UK residence before 31 Dec 2020 confirmed", item_type: "action" },
+      { label: "Years of UK residence calculated (settled = 5 years, pre-settled = less)", item_type: "action" },
+    ]},
+    { title: "Apply online or via app", description: "Apply for free using the UKVI online service. Use the EU Exit: ID Document Check app to scan your identity document.", estimated_duration: "30 minutes", checklist_items: [
+      { label: "Application started at gov.uk/settled-status-eu-citizens-families", item_type: "action" },
+      { label: "Identity verified via app or online", item_type: "action" },
+      { label: "Proof of UK residence uploaded (if needed)", item_type: "document" },
+      { label: "Settled or pre-settled status granted (digital status — no physical card)", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -3601,6 +3745,11 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   ukSkilledWorkerVisa,
   ukGraduateVisa,
   ukYouthMobility,
+  ukFamilyVisa,
+  ukILR,
+  ukCitizenship,
+  ukAsylum,
+  ukEUSS,
   // Germany
   germanyEUBlueCard,
   germanyJobSeekerVisa,
