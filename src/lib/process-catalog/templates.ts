@@ -4558,6 +4558,437 @@ const belgiumCitizenship: ProcessTemplate = {
   ],
 };
 
+const franceAutoEntrepreneur: ProcessTemplate = {
+  id: "fr_auto_entrepreneur",
+  keywords: ["auto entrepreneur france", "freelance france", "micro enterprise france", "self employed france", "autoentrepreneur visa", "independant france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "URSSAF / Préfecture",
+  title: "Auto-Entrepreneur / Freelance Registration — France",
+  summary: "The auto-entrepreneur (micro-entreprise) regime is France's simplified self-employment status. EU citizens can register freely; non-EU nationals need a work permit covering self-employment first.",
+  timeline_summary: "Registration itself takes minutes online. Getting the right visa/permit first may take months.",
+  next_action: "If non-EU: ensure your titre de séjour (e.g. Passeport Talent or VLS-TS with self-employment rights) authorises independent activity before registering.",
+  official_sources: [{ title: "AutoEntrepreneur.urssaf.fr", url: "https://www.autoentrepreneur.urssaf.fr/portail/accueil.html" }],
+  steps: [
+    { title: "Confirm right to self-employment in France", description: "Check your visa/permit allows independent professional activity. EU citizens are free to register. Non-EU nationals need a permit covering self-employment (e.g. Passeport Talent, VLS-TS entrepreneur).", estimated_duration: "1 day", checklist_items: [
+      { label: "Visa/permit confirmed as authorising self-employment", item_type: "action" },
+      { label: "Business activity classified (liberal profession, commercial, artisanal)", item_type: "action" },
+    ]},
+    { title: "Register on autoentrepreneur.urssaf.fr", description: "Create your micro-entreprise online — takes about 15 minutes. You receive a SIRET number (business ID) within a few days.", estimated_duration: "15 minutes online", checklist_items: [
+      { label: "Account created at autoentrepreneur.urssaf.fr", item_type: "action" },
+      { label: "Business activity code (NAF/APE) selected", item_type: "action" },
+      { label: "SIRET number received by post", item_type: "document" },
+    ]},
+    { title: "Set up tax and social contributions", description: "Declare turnover monthly or quarterly on the URSSAF portal and pay contributions as a percentage of revenue.", estimated_duration: "Ongoing", checklist_items: [
+      { label: "Bank account for business opened", item_type: "action" },
+      { label: "French tax account (impots.gouv.fr) set up", item_type: "action" },
+      { label: "First turnover declaration submitted on schedule", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceLongTermResidence: ProcessTemplate = {
+  id: "fr_long_term_residence",
+  keywords: ["france long term resident", "carte résident longue durée ue", "eu long term france", "permanent france non eu", "10 year eu permit france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture",
+  title: "EU Long-Term Resident Permit (Résident de Longue Durée-UE) — France",
+  summary: "After 5 years of legal residence in France, non-EU nationals can apply for the EU long-term resident status (carte de résident mention 'résident de longue durée-UE'), valid 10 years and renewable.",
+  timeline_summary: "Processing at the préfecture typically takes 2–4 months.",
+  next_action: "Confirm 5 years of continuous legal residence and book a préfecture appointment via the ANEF portal.",
+  official_sources: [{ title: "Service-public.fr — Résident longue durée UE", url: "https://www.service-public.fr/particuliers/vosdroits/F11580" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of continuous legal residence on a valid titre de séjour, sufficient and stable income, no serious criminal record.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "Stable income above poverty threshold confirmed", item_type: "action" },
+      { label: "French language A2 or higher", item_type: "action" },
+    ]},
+    { title: "Apply at préfecture via ANEF portal", description: "Book appointment and submit documents at the préfecture.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "ANEF portal appointment booked", item_type: "appointment" },
+      { label: "Current titre de séjour", item_type: "document" },
+      { label: "All prior permits showing 5 years", item_type: "document" },
+      { label: "Income proof", item_type: "document" },
+      { label: "Tax stamp paid", item_type: "payment" },
+      { label: "Carte de résident (10-year) collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const ukHealthCareWorker: ProcessTemplate = {
+  id: "uk_health_care_worker",
+  keywords: ["uk health care worker visa", "health and care visa", "nhs visa", "nurse uk visa", "doctor uk visa", "healthcare worker uk"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office / UKVI",
+  title: "Health and Care Worker Visa — UK",
+  summary: "A fast-track, reduced-fee route under the Skilled Worker visa for qualified healthcare professionals taking up eligible roles with the NHS, social care sector, or with employers registered with CQC.",
+  timeline_summary: "Processing: 3 weeks standard, 5 days priority. Certificate of Sponsorship required from employer.",
+  next_action: "Confirm your role is on the eligible occupations list and that your employer is a licensed Home Office sponsor.",
+  official_sources: [{ title: "GOV.UK — Health and Care Worker visa", url: "https://www.gov.uk/health-care-worker-visa" }],
+  steps: [
+    { title: "Confirm eligibility and get Certificate of Sponsorship", description: "Your role must be in an eligible healthcare occupation (nurse, doctor, social worker, etc.) and your employer must be a licensed sponsor. They issue a Certificate of Sponsorship (CoS).", estimated_duration: "1–4 weeks", checklist_items: [
+      { label: "Role confirmed on Health and Care Worker eligible occupations list", item_type: "action" },
+      { label: "Employer confirmed as licensed Home Office sponsor", item_type: "action" },
+      { label: "Certificate of Sponsorship (CoS) issued by employer", item_type: "document" },
+      { label: "Salary meets minimum threshold (£23,200 or going rate for role)", item_type: "action" },
+    ]},
+    { title: "Apply online", description: "Apply online on GOV.UK. The Health and Care Worker visa has reduced fees and IHS is waived.", estimated_duration: "3 weeks", checklist_items: [
+      { label: "Online application submitted at gov.uk", item_type: "action" },
+      { label: "Visa fee paid (reduced: approx. £284 for up to 3 years)", item_type: "payment" },
+      { label: "English language requirement met (B1 — IELTS or degree in English)", item_type: "document" },
+      { label: "Biometrics submitted at visa application centre", item_type: "appointment" },
+      { label: "Visa/BRP issued and role started", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandKVGInsurance: ProcessTemplate = {
+  id: "ch_kvg_insurance",
+  keywords: ["KVG", "health insurance", "Grundversicherung", "LAMal", "krankenversicherung", "switzerland"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal health authority / Kantonsarzt",
+  title: "Switzerland KVG mandatory health insurance",
+  summary: "Register for compulsory health insurance (Grundversicherung) within 3 months of arriving in Switzerland.",
+  timeline_summary: "Enroll within 3 months of arrival — coverage is backdated to your arrival date.",
+  next_action: "Compare insurers at priminfo.admin.ch and submit an enrollment application.",
+  steps: [
+    { title: "Understand the obligation", description: "All residents in Switzerland must have KVG/LAMal basic health insurance. You have 3 months from arrival or permit issue to enroll — coverage is backdated to arrival date.", checklist_items: [
+      { label: "Confirm you are subject to KVG (most permit holders are)", item_type: "action" },
+      { label: "Check if your canton grants an extension (rarely granted)", item_type: "action" },
+    ]},
+    { title: "Compare insurers and choose a plan", description: "All insurers offer the same basic coverage — compare premiums on the official comparator at bag.admin.ch/priminfo. Choose standard, telmed, or HMO model to lower costs.", checklist_items: [
+      { label: "Used priminfo.admin.ch to compare premiums for your canton", item_type: "action" },
+      { label: "Chosen an insurer and model (standard/telmed/HMO)", item_type: "action" },
+      { label: "Selected optional deductible (Franchise) — CHF 300–2500", item_type: "action" },
+    ]},
+    { title: "Submit application to insurer", description: "Apply online or by post. You will need your Swiss address, permit type, and date of arrival.", checklist_items: [
+      { label: "Application submitted with Swiss address and arrival date", item_type: "action" },
+      { label: "Confirmation of enrollment received", item_type: "document" },
+    ]},
+    { title: "Receive insurance card", description: "The insurer will send your Versicherungsausweis (insurance card). Carry it at all times. Show it at any medical appointment.", checklist_items: [
+      { label: "Insurance card received", item_type: "document" },
+      { label: "Inform your employer of insurer (if they contribute to premium)", item_type: "action" },
+    ]},
+    { title: "Check canton premium subsidy (IPV)", description: "If your income is below a cantonal threshold you may receive a premium reduction (Individuelle Prämienverbilligung / IPV). Apply to your cantonal social welfare office.", checklist_items: [
+      { label: "Checked cantonal IPV eligibility", item_type: "action" },
+      { label: "IPV application submitted if eligible", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandEHICExemption: ProcessTemplate = {
+  id: "ch_ehic_exemption",
+  keywords: ["EHIC", "KVG exemption", "health insurance exemption", "student", "EU student", "exchange"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal health authority / Kantonsarzt",
+  title: "Switzerland KVG exemption for students with EHIC",
+  summary: "EU/EEA students on a short exchange programme can apply for an exemption from Swiss KVG if they hold a valid EHIC and equivalent home-country health coverage.",
+  timeline_summary: "Apply within 3 months of arrival. Exemption valid for up to 12 months of studies.",
+  next_action: "Obtain the exemption form from your cantonal health authority or university and submit with your EHIC and enrollment certificate.",
+  steps: [
+    { title: "Check eligibility", description: "The exemption applies to EU/EEA students enrolled at a Swiss institution for ≤ 12 months who hold a valid European Health Insurance Card (EHIC) and have health coverage in their home country.", checklist_items: [
+      { label: "Enrolled at Swiss university/HEI for ≤ 12 months", item_type: "action" },
+      { label: "Current EHIC card (or PRC from home country) valid for entire stay", item_type: "document" },
+      { label: "Home-country health insurance certificate", item_type: "document" },
+    ]},
+    { title: "Obtain exemption request form", description: "Download the official exemption form from the cantonal health authority (Kantonsarzt / médecin cantonal) or from your university's student services.", checklist_items: [
+      { label: "Exemption request form obtained", item_type: "document" },
+      { label: "Student enrollment certificate obtained from university", item_type: "document" },
+    ]},
+    { title: "Submit application within 3 months of arrival", description: "Send the completed form, EHIC copy, home insurance certificate, and enrollment proof to the cantonal authority. If approved, you are exempt for the duration of your studies (up to 12 months).", checklist_items: [
+      { label: "Completed form + EHIC copy + enrollment certificate sent", item_type: "action" },
+      { label: "Application submitted within 3-month KVG deadline", item_type: "action" },
+    ]},
+    { title: "Receive exemption confirmation", description: "The cantonal authority sends a written confirmation. Keep this document — insurers and universities may ask for it.", checklist_items: [
+      { label: "Written exemption confirmation received", item_type: "document" },
+      { label: "Copy filed with university student services if required", item_type: "action" },
+    ]},
+    { title: "Renew or transition to KVG if stay extends", description: "If your studies extend beyond 12 months or your EHIC expires, you must enroll in Swiss KVG immediately. Notify the cantonal authority and apply for coverage.", checklist_items: [
+      { label: "Monitored EHIC expiry and enrollment end date", item_type: "action" },
+      { label: "Applied for KVG if stay extended beyond exemption period", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandFamilyReunification: ProcessTemplate = {
+  id: "ch_family_reunification",
+  keywords: ["family reunification", "spouse visa", "partner permit", "children", "switzerland", "B permit", "C permit"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Kantonale Migrationsbehörde",
+  title: "Switzerland family reunification permit",
+  summary: "Bring a spouse, registered partner, or dependent children to join you in Switzerland under your B or C permit.",
+  timeline_summary: "3–6 months from application. B-permit holders must apply within 5 years of receiving their own permit.",
+  next_action: "Submit the family reunification application at your cantonal migration authority with proof of accommodation and income.",
+  steps: [
+    { title: "Check sponsor eligibility and deadlines", description: "B-permit holders must apply within 5 years of receiving the permit. C-permit holders have no time limit. Children must be applied for before they turn 18.", checklist_items: [
+      { label: "Confirmed permit type (B or C) and application deadline", item_type: "action" },
+      { label: "Checked children's ages — all under 18 at application", item_type: "action" },
+    ]},
+    { title: "Gather family member documents", description: "Each family member needs passport, civil status documents, and proof of relationship. All documents must be apostilled and translated if not in DE/FR/IT.", checklist_items: [
+      { label: "Valid passport for each family member", item_type: "document" },
+      { label: "Marriage certificate / registered partnership certificate", item_type: "document" },
+      { label: "Birth certificates for children", item_type: "document" },
+      { label: "Documents apostilled and translated into DE/FR/IT", item_type: "document" },
+    ]},
+    { title: "Apply at cantonal migration authority", description: "Submit the application at the Kantonale Migrationsbehörde. You must show your own permit, proof of adequate accommodation, and proof of sufficient income.", checklist_items: [
+      { label: "Your valid Swiss residence permit (B or C)", item_type: "document" },
+      { label: "Proof of accommodation (rental contract or ownership documents)", item_type: "document" },
+      { label: "Proof of income (payslips, employment contract)", item_type: "document" },
+      { label: "Application form submitted at cantonal migration authority", item_type: "action" },
+    ]},
+    { title: "Family member applies for visa at Swiss embassy", description: "After the canton pre-approves the application, the family member applies for a Type D national visa at the Swiss embassy/consulate in their country of residence.", checklist_items: [
+      { label: "Canton pre-approval letter received", item_type: "document" },
+      { label: "Family member visa appointment booked at Swiss embassy", item_type: "appointment" },
+      { label: "Visa issued and family member traveled to Switzerland", item_type: "action" },
+    ]},
+    { title: "Register in Switzerland and receive permit", description: "Within 14 days of arrival, the family member must register at the local Einwohnerkontrolle/contrôle des habitants and collect their permit (B for family member).", checklist_items: [
+      { label: "Registration at Einwohnerkontrolle within 14 days of arrival", item_type: "appointment" },
+      { label: "Permit B (family reunification) received", item_type: "document" },
+    ]},
+  ],
+};
+
+const switzerlandSelfEmployed: ProcessTemplate = {
+  id: "ch_self_employed",
+  keywords: ["self-employed", "freelance", "sole trader", "Einzelunternehmen", "switzerland", "B permit"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Kantonale Migrationsbehörde / Handelsregisteramt",
+  title: "Switzerland self-employed / freelance residence",
+  summary: "Third-country nationals can apply for a B permit to work as a self-employed person or freelancer in Switzerland, subject to a labour market and viability test.",
+  timeline_summary: "3–6 months. Authorities assess business viability and economic interest before approving.",
+  next_action: "Prepare a detailed business plan and apply at your cantonal migration authority before starting any self-employed activity.",
+  steps: [
+    { title: "Assess eligibility", description: "Non-EU/EEA nationals must show their self-employment is in Switzerland's economic interest and that no suitable local candidate is available. EU/EEA nationals can self-employ with less scrutiny under AFMP.", checklist_items: [
+      { label: "Determined nationality category (EU/EEA or third-country)", item_type: "action" },
+      { label: "Confirmed intended activity qualifies as self-employment", item_type: "action" },
+    ]},
+    { title: "Prepare a business plan", description: "Write a detailed business plan including market analysis, projected income, client contracts or letters of intent, and professional qualifications.", checklist_items: [
+      { label: "Business plan drafted with projected revenue and clients", item_type: "document" },
+      { label: "Professional qualifications / portfolio prepared", item_type: "document" },
+      { label: "Client contracts or letters of intent (if available)", item_type: "document" },
+    ]},
+    { title: "Apply at cantonal migration authority", description: "Submit the self-employment permit application along with your business plan, passport, and proof of address. The canton consults the State Secretariat for Economic Affairs (SECO) if required.", checklist_items: [
+      { label: "Application submitted at Kantonale Migrationsbehörde", item_type: "action" },
+      { label: "Biometric residence card (B permit) received", item_type: "document" },
+    ]},
+    { title: "Register with AHV/IV and pension authorities", description: "Self-employed people must register with the Ausgleichskasse (AHV/IV/EO compensation fund) and pay social contributions themselves.", checklist_items: [
+      { label: "Registered with cantonal Ausgleichskasse", item_type: "action" },
+      { label: "Social contribution class determined", item_type: "action" },
+    ]},
+    { title: "Register in the commercial register (if required)", description: "If your sole proprietorship turnover exceeds CHF 100,000 per year, registration in the Handelsregister is mandatory. Below that threshold it is optional.", checklist_items: [
+      { label: "Checked turnover threshold and registration obligation", item_type: "action" },
+      { label: "Registered in Handelsregister if required", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandQualificationRecognition: ProcessTemplate = {
+  id: "ch_qualification_recognition",
+  keywords: ["qualification recognition", "diploma recognition", "SERI", "regulated profession", "switzerland"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "SERI — State Secretariat for Education, Research and Innovation",
+  title: "Switzerland foreign qualification recognition",
+  summary: "Have a foreign diploma, degree, or vocational qualification formally recognised in Switzerland so it is accepted by employers and for regulated professions.",
+  timeline_summary: "2–6 months depending on profession and completeness of documents.",
+  next_action: "Identify whether your profession is regulated in Switzerland, then submit an application to SERI or the competent authority.",
+  steps: [
+    { title: "Determine if the profession is regulated", description: "Regulated professions (doctor, nurse, lawyer, pharmacist, architect, etc.) require formal recognition by the relevant authority. Unregulated professions can be recognised voluntarily via SERI's equivalence assessment.", checklist_items: [
+      { label: "Checked the list of regulated professions at ch.ch", item_type: "action" },
+      { label: "Identified competent recognition authority", item_type: "action" },
+    ]},
+    { title: "Gather qualification documents", description: "Collect original diplomas, transcripts, and certificates. All documents must be officially translated into German, French, or Italian and apostilled.", checklist_items: [
+      { label: "Original diploma / degree certificate", item_type: "document" },
+      { label: "Academic transcripts", item_type: "document" },
+      { label: "Certified translations into DE/FR/IT", item_type: "document" },
+      { label: "Apostille affixed by issuing country", item_type: "document" },
+      { label: "Work experience certificates (if applicable)", item_type: "document" },
+    ]},
+    { title: "Submit recognition application to SERI or sectoral authority", description: "For academic qualifications: apply to SERI. For health professions: apply to MedReg. For lawyers and architects: apply to cantonal authority. Fees apply.", checklist_items: [
+      { label: "Application submitted to correct authority with all documents", item_type: "action" },
+      { label: "Application fee paid", item_type: "action" },
+    ]},
+    { title: "Receive decision and any compensation measures", description: "If there are significant differences between your qualification and the Swiss equivalent, you may need to complete an aptitude test or adaptation period.", checklist_items: [
+      { label: "Recognition decision received", item_type: "document" },
+      { label: "Completed aptitude test / adaptation period if required", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandFamilyReunification: ProcessTemplate = {
+  id: "fi_family_reunification",
+  keywords: ["family reunification", "spouse visa", "children", "finland", "Migri", "family member"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Migri — Finnish Immigration Service",
+  title: "Finland family reunification residence permit",
+  summary: "Apply for a residence permit for a spouse, partner, or children to join you in Finland.",
+  timeline_summary: "3–9 months. Processing times vary; apply online via Enter Finland as early as possible.",
+  next_action: "Create an Enter Finland account and submit the family reunification application online.",
+  steps: [
+    { title: "Check sponsor requirements", description: "The sponsor (person already in Finland) must generally hold a valid residence permit or be a Finnish/EU citizen. Income requirements apply for non-EU family members.", checklist_items: [
+      { label: "Confirmed sponsor's permit type and validity", item_type: "action" },
+      { label: "Checked income requirement (approx. €1,400/month net)", item_type: "action" },
+    ]},
+    { title: "Apply online via Enter Finland", description: "Family members must submit an application via Enter Finland. If family members are outside Finland, Migri may require a visit to a Finnish embassy to provide biometrics.", checklist_items: [
+      { label: "Enter Finland account created by family member", item_type: "action" },
+      { label: "Application submitted with all required documents", item_type: "action" },
+    ]},
+    { title: "Gather required documents", description: "Documents needed include passports, proof of relationship (marriage certificate, birth certificates), sponsor's permit and payslips, and proof of housing.", checklist_items: [
+      { label: "Valid passports for all applicants", item_type: "document" },
+      { label: "Marriage certificate / cohabitation agreement", item_type: "document" },
+      { label: "Birth certificates for children", item_type: "document" },
+      { label: "Sponsor's residence permit and latest payslips", item_type: "document" },
+      { label: "Rental or ownership proof for Finnish accommodation", item_type: "document" },
+    ]},
+    { title: "Provide biometrics", description: "Adult applicants must provide fingerprints and a photo. If applying from abroad, this is done at the Finnish embassy.", checklist_items: [
+      { label: "Biometrics appointment booked (Finnish embassy if abroad)", item_type: "appointment" },
+      { label: "Biometrics submitted", item_type: "action" },
+    ]},
+    { title: "Receive residence permit card", description: "Once approved, Migri sends the residence permit card to a Finnish Police station. Collect it in person.", checklist_items: [
+      { label: "Approval notice received from Migri", item_type: "document" },
+      { label: "Residence permit card collected from Police station", item_type: "document" },
+    ]},
+  ],
+};
+
+const finlandAsylum: ProcessTemplate = {
+  id: "fi_asylum",
+  keywords: ["asylum", "refugee", "international protection", "finland", "Migri"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Migri — Finnish Immigration Service",
+  title: "Finland asylum and international protection",
+  summary: "Apply for asylum or subsidiary/humanitarian protection if you face persecution or serious harm in your home country.",
+  timeline_summary: "Varies widely — from a few months to over a year depending on case complexity and country of origin.",
+  next_action: "Register your asylum application at a Police station or border crossing immediately upon arriving in Finland.",
+  steps: [
+    { title: "Register the application", description: "You must register your asylum application in person, either at a border crossing point, a police station, or the Migri reception centre in Helsinki.", checklist_items: [
+      { label: "Application registered at police station / border / Migri", item_type: "action" },
+      { label: "Placed in a reception centre", item_type: "action" },
+    ]},
+    { title: "Personal interview", description: "Migri will schedule a personal interview where you explain your reasons for seeking protection. You may request an interpreter.", checklist_items: [
+      { label: "Personal interview scheduled and attended", item_type: "appointment" },
+      { label: "Interpreter requested if needed", item_type: "action" },
+    ]},
+    { title: "Provide supporting documents", description: "Submit any documents that support your claim — identity documents, evidence of threats, news articles, or country-of-origin information.", checklist_items: [
+      { label: "Passport or national ID (if available)", item_type: "document" },
+      { label: "Evidence supporting protection claim", item_type: "document" },
+    ]},
+    { title: "Await Migri decision", description: "Migri issues a written decision granting refugee status, subsidiary protection, humanitarian protection, or rejection.", checklist_items: [
+      { label: "Decision received from Migri", item_type: "document" },
+      { label: "Consulted legal aid if decision is negative", item_type: "action" },
+    ]},
+    { title: "Appeal if rejected", description: "If your application is rejected you may appeal to the Administrative Court within 21 days. You may remain in Finland during the appeal.", checklist_items: [
+      { label: "Appeal filed within 21 days (if applicable)", item_type: "action" },
+      { label: "Administrative Court decision received", item_type: "document" },
+    ]},
+  ],
+};
+
+const finlandEEARegistration: ProcessTemplate = {
+  id: "fi_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "EU/EEA right of residence", "finland", "police"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Finnish Police / Migri",
+  title: "Finland EU/EEA right of residence registration",
+  summary: "EU/EEA citizens staying in Finland for more than 3 months must register their right of residence with the Finnish Police.",
+  timeline_summary: "Register within 3 months of arrival. The certificate is issued on the spot or within a few days.",
+  next_action: "Book an appointment at a Finnish Police station and bring proof of employment, study, or sufficient means.",
+  steps: [
+    { title: "Check registration deadline", description: "EU/EEA citizens and their family members may live in Finland for up to 3 months without registration. After that, registration is required.", checklist_items: [
+      { label: "Noted 3-month registration deadline from arrival date", item_type: "action" },
+    ]},
+    { title: "Book an appointment at a Police station", description: "Book via the Finnish Police online booking system (ajanvaraus.poliisi.fi). Bring original documents — copies are not accepted.", checklist_items: [
+      { label: "Police appointment booked online", item_type: "appointment" },
+    ]},
+    { title: "Bring required documents", description: "Workers need: passport/ID + employment contract or employer's letter. Students: passport/ID + enrollment certificate + proof of health insurance. Financially independent: passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Employment contract or employer letter (if worker)", item_type: "document" },
+      { label: "Enrollment certificate (if student)", item_type: "document" },
+      { label: "Proof of comprehensive health insurance (if not worker/student)", item_type: "document" },
+      { label: "Bank statements showing sufficient means (if financially independent)", item_type: "document" },
+    ]},
+    { title: "Receive right of residence registration certificate", description: "The Police officer registers you and issues a certificate (EU/EEA oleskeluoikeuden rekisteröinti). This document confirms your legal residence in Finland.", checklist_items: [
+      { label: "Registration certificate received at Police station", item_type: "document" },
+    ]},
+    { title: "Register with DVV (Population Register)", description: "After getting the Police certificate, register your address with the Digital and Population Data Services Agency (DVV) to get a Finnish personal identity code (henkilötunnus).", checklist_items: [
+      { label: "DVV registration completed", item_type: "action" },
+      { label: "Finnish personal identity code (henkilötunnus) obtained", item_type: "document" },
+    ]},
+  ],
+};
+
+const finlandStartupPermit: ProcessTemplate = {
+  id: "fi_startup_permit",
+  keywords: ["startup", "startup permit", "entrepreneur", "business founder", "finland", "Business Finland"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Business Finland / Migri",
+  title: "Finland startup permit",
+  summary: "Non-EU entrepreneurs can apply for a Finnish startup permit to found and develop a scalable startup company in Finland.",
+  timeline_summary: "3–4 months. Business Finland evaluates the startup application first, then Migri processes the residence permit.",
+  next_action: "Apply to Business Finland for a startup evaluation statement, then submit a residence permit application to Migri.",
+  steps: [
+    { title: "Get a startup evaluation statement from Business Finland", description: "Before applying to Migri, you must receive a positive startup evaluation statement from Business Finland. Submit your business plan, team information, and growth strategy.", checklist_items: [
+      { label: "Business plan prepared (product, market, team, financials)", item_type: "document" },
+      { label: "Startup evaluation application submitted to Business Finland", item_type: "action" },
+      { label: "Positive startup evaluation statement received", item_type: "document" },
+    ]},
+    { title: "Apply to Migri for residence permit", description: "Once you have the Business Finland statement, apply for a startup entrepreneur's residence permit (Type P) on the Enter Finland portal.", checklist_items: [
+      { label: "Enter Finland account created and startup permit application submitted", item_type: "action" },
+      { label: "Business Finland statement uploaded", item_type: "document" },
+      { label: "Passport and photo uploaded", item_type: "document" },
+      { label: "Application fee paid", item_type: "action" },
+    ]},
+    { title: "Provide biometrics at Finnish embassy", description: "If applying from abroad, attend your Finnish embassy appointment to provide fingerprints and photo.", checklist_items: [
+      { label: "Finnish embassy appointment attended", item_type: "appointment" },
+      { label: "Biometrics submitted", item_type: "action" },
+    ]},
+    { title: "Receive residence permit and arrive in Finland", description: "Migri issues a startup entrepreneur's residence permit for up to 2 years, renewable if the startup is progressing.", checklist_items: [
+      { label: "Residence permit issued", item_type: "document" },
+      { label: "Arrived in Finland and collected permit card from Police", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandYKILanguageTest: ProcessTemplate = {
+  id: "fi_yki_language_test",
+  keywords: ["YKI", "language test", "Finnish language", "certificate of language proficiency", "finland", "kielitutkinto"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Finnish National Agency for Education (Opetushallitus)",
+  title: "Finland YKI national certificate of language proficiency",
+  summary: "Sit the YKI (Yleinen kielitutkinto) language test to prove Finnish or Swedish language skills for permanent residence, citizenship, or employment purposes.",
+  timeline_summary: "Tests are held several times a year. Book at least 6–8 weeks in advance. Results in 6–8 weeks after the test.",
+  next_action: "Register for the next YKI exam session at the Finnish National Agency for Education website.",
+  steps: [
+    { title: "Choose the right level and language", description: "YKI tests Finnish and Swedish at three levels: Basic (1–2), Intermediate (3–4), and Advanced (5–6). For permanent residence you need level 3–4; for citizenship, level 3–4 is standard.", checklist_items: [
+      { label: "Determined required YKI level (e.g. intermediate 3–4)", item_type: "action" },
+      { label: "Chosen language to be tested (Finnish or Swedish)", item_type: "action" },
+    ]},
+    { title: "Register for the exam", description: "Registration opens approximately 6–8 weeks before the exam date. Register via the Opetushallitus website. Places are limited.", checklist_items: [
+      { label: "Exam registration completed on Opetushallitus website", item_type: "action" },
+      { label: "Exam fee paid", item_type: "action" },
+      { label: "Exam confirmation email received", item_type: "document" },
+    ]},
+    { title: "Sit the exam", description: "The YKI tests all four skills: reading, writing, listening, and speaking. Bring a valid photo ID. Arrive at least 15 minutes before start time.", checklist_items: [
+      { label: "Exam attended with valid photo ID", item_type: "appointment" },
+    ]},
+    { title: "Receive results and certificate", description: "Results are published approximately 6–8 weeks after the exam. The certificate of language proficiency is mailed to your address.", checklist_items: [
+      { label: "Results checked on Opetushallitus website", item_type: "action" },
+      { label: "YKI certificate received by post", item_type: "document" },
+      { label: "Certificate submitted to Migri / employer as required", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4570,6 +5001,8 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceCitizenship,
   franceAsylum,
   franceEEARegistration,
+  franceAutoEntrepreneur,
+  franceLongTermResidence,
   // Portugal
   portugalD2Visa,
   portugalD7Visa,
@@ -4586,12 +5019,22 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   switzerlandStudentPermit,
   switzerlandCitizenship,
   switzerlandAsylum,
+  switzerlandKVGInsurance,
+  switzerlandEHICExemption,
+  switzerlandFamilyReunification,
+  switzerlandSelfEmployed,
+  switzerlandQualificationRecognition,
   // Finland
   finlandWorkPermit,
   finlandStudentPermit,
   finlandPermanentResidence,
   finlandCitizenship,
   finlandHenkilotunnus,
+  finlandFamilyReunification,
+  finlandAsylum,
+  finlandEEARegistration,
+  finlandStartupPermit,
+  finlandYKILanguageTest,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
@@ -4613,6 +5056,7 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   ukCitizenship,
   ukAsylum,
   ukEUSS,
+  ukHealthCareWorker,
   // Germany
   germanyEUBlueCard,
   germanyJobSeekerVisa,
