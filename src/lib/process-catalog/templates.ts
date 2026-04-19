@@ -4124,6 +4124,129 @@ const irelandCitizenship: ProcessTemplate = {
   ],
 };
 
+// ── Austria — AMS / MA35 ───────────────────────────────────────────────────
+
+const austriaRedWhiteRedCard: ProcessTemplate = {
+  id: "at_red_white_red_card",
+  keywords: ["austria red white red card", "rot weiss rot karte", "work austria", "skilled worker austria", "austria employment", "rwr karte"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Austrian Public Employment Service (AMS) / MA35",
+  title: "Red-White-Red Card — Austria",
+  summary: "The Red-White-Red (RWR) Card grants non-EU/EEA skilled workers the right to live and work in Austria. It is points-based and covers several categories: Very Highly Qualified Workers, Skilled Workers in Shortage Occupations, and others.",
+  timeline_summary: "Processing takes 4–8 weeks. Applications are submitted to the Austrian embassy or MA35 (in Vienna).",
+  next_action: "Check the online points calculator to see if you qualify, and identify the correct RWR Card category.",
+  official_sources: [{ title: "Migration.gv.at — Red-White-Red Card", url: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/red-white-red-card/" }],
+  steps: [
+    { title: "Check points eligibility", description: "Use the online points calculator at migration.gv.at. Skilled workers in shortage occupations need a job offer and 55 points; very highly qualified workers need 70 points without a job offer.", estimated_duration: "1 week", checklist_items: [
+      { label: "Points calculated using migration.gv.at calculator", item_type: "action" },
+      { label: "RWR Card category identified", item_type: "action" },
+      { label: "Job offer obtained (for most categories)", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy or AMS/MA35", description: "Apply at the Austrian embassy abroad (if outside Austria) or at AMS/MA35 (if already in Austria on another status).", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Application submitted with all required documents", item_type: "action" },
+      { label: "University degree or professional qualification certificates", item_type: "document" },
+      { label: "Language certificate (German B1 or English B2 for some categories)", item_type: "document" },
+      { label: "Salary confirmation meeting Austrian collective agreement level", item_type: "document" },
+      { label: "Fee paid (approx. €160)", item_type: "payment" },
+    ]},
+    { title: "Receive RWR Card and register in Austria", description: "On approval, collect your RWR Card and register at the local Meldeamt within 3 days of moving in.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "RWR Card collected", item_type: "document" },
+      { label: "Meldezettel (address registration) completed at Meldeamt within 3 days", item_type: "action" },
+      { label: "Social insurance (ÖGK) registered with employer", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaStudentVisa: ProcessTemplate = {
+  id: "at_student_visa",
+  keywords: ["austria student visa", "study austria", "student permit austria", "vienna university", "studentenvisum österreich"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Austrian Embassy / MA35",
+  title: "Student Residence Permit — Austria",
+  summary: "Non-EU/EEA students accepted at an Austrian university must apply for a student residence permit (Aufenthaltsbewilligung Student).",
+  timeline_summary: "Processing takes 4–8 weeks at the Austrian embassy or MA35.",
+  next_action: "Get an acceptance letter from an Austrian university and apply at the Austrian embassy in your home country.",
+  official_sources: [{ title: "Migration.gv.at — Students", url: "https://www.migration.gv.at/en/types-of-immigration/temporary-immigration/students/" }],
+  steps: [
+    { title: "Get university acceptance", description: "Apply to an Austrian university (e.g. University of Vienna, TU Vienna, WU Vienna) and receive an acceptance letter.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Austrian university applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy", description: "Submit the student residence permit application at the Austrian embassy in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Austrian embassy appointment booked", item_type: "appointment" },
+      { label: "Acceptance letter submitted", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €1,000/month)", item_type: "document" },
+      { label: "Health insurance covering Austria", item_type: "document" },
+      { label: "Accommodation proof", item_type: "document" },
+      { label: "Fee paid (approx. €160)", item_type: "payment" },
+    ]},
+    { title: "Register in Austria", description: "Register at the Meldeamt within 3 days of moving in and collect your residence permit card from MA35.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Meldezettel completed at Meldeamt within 3 days", item_type: "action" },
+      { label: "Residence permit card collected from MA35", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaCitizenship: ProcessTemplate = {
+  id: "at_citizenship",
+  keywords: ["austrian citizenship", "österreichische staatsbürgerschaft", "naturalisation austria", "become austrian", "austrian passport"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Provincial Government (Landesregierung)",
+  title: "Austrian Citizenship by Naturalisation",
+  summary: "After 10 years of legal residence in Austria (6 years for those with sustained integration), applicants can apply for Austrian citizenship. Austria strictly prohibits dual citizenship in most cases.",
+  timeline_summary: "Processing takes 12–24 months.",
+  next_action: "Confirm your years of legal residence and whether you must renounce your current citizenship before applying.",
+  official_sources: [{ title: "HELP.gv.at — Staatsbürgerschaft", url: "https://www.help.gv.at/Portal.Node/hlpd/public/content/16/Seite.160400.html" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years of legal residence (6 with sustained integration), no welfare dependency, stable income, German language B1 minimum, no serious criminal record, renunciation of prior citizenship required.", estimated_duration: "1 week", checklist_items: [
+      { label: "10 years (or 6 years with sustained integration) legal residence confirmed", item_type: "action" },
+      { label: "German language B1 certificate obtained", item_type: "document" },
+      { label: "Austrian civics knowledge (Staatsbürgerkunde) confirmed", item_type: "action" },
+      { label: "Prior citizenship renunciation plan reviewed — Austria generally requires it", item_type: "action" },
+    ]},
+    { title: "Apply at provincial government office", description: "Submit the naturalisation application to the relevant provincial government (Landesregierung) in your federal state.", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Application submitted at Landesregierung", item_type: "action" },
+      { label: "All identity and residence documents submitted", item_type: "document" },
+      { label: "Fee paid", item_type: "payment" },
+      { label: "Approval and citizenship certificate received", item_type: "document" },
+      { label: "Austrian passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaMeldung: ProcessTemplate = {
+  id: "at_meldezettel",
+  keywords: ["meldezettel austria", "meldeamt austria", "address registration austria", "anmeldung austria", "register address austria"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Meldeamt (Registration Office)",
+  title: "Address Registration (Meldezettel) — Austria",
+  summary: "Everyone living in Austria must register their address at the local Meldeamt within 3 days of moving in. The Meldezettel confirmation is needed for almost all services in Austria.",
+  timeline_summary: "Takes about 30 minutes. Done at the local Meldeamt (often inside the Magistrat or Gemeindeamt).",
+  next_action: "Bring the completed registration form (Meldezettel) signed by your landlord to your local Meldeamt within 3 days of arrival.",
+  official_sources: [{ title: "HELP.gv.at — Meldezettel", url: "https://www.help.gv.at/Portal.Node/hlpd/public/content/45/Seite.450402.html" }],
+  steps: [
+    { title: "Obtain and complete the Meldezettel form", description: "Download the form from the Meldeamt website (or get it at the office). Your landlord must sign it.", estimated_duration: "1 day", checklist_items: [
+      { label: "Meldezettel form obtained and completed", item_type: "document" },
+      { label: "Landlord signature obtained on form", item_type: "document" },
+    ]},
+    { title: "Submit at Meldeamt", description: "Visit the Meldeamt with the form and your passport. No appointment usually needed.", estimated_duration: "30 minutes", checklist_items: [
+      { label: "Meldeamt visited within 3 days of moving in", item_type: "action" },
+      { label: "Valid passport or ID card", item_type: "document" },
+      { label: "Signed Meldezettel submitted", item_type: "document" },
+      { label: "Meldezettel confirmation (Meldebestätigung) received", item_type: "document" },
+    ]},
+    { title: "Use Meldezettel for other registrations", description: "Required for bank account, health insurance (ÖGK), tax number, and residence permit applications.", estimated_duration: "Ongoing", checklist_items: [
+      { label: "Bank account opened", item_type: "action" },
+      { label: "Social insurance (ÖGK/GKK) registered", item_type: "action" },
+      { label: "E-Card (health card) applied for", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4136,6 +4259,11 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceCitizenship,
   franceAsylum,
   franceEEARegistration,
+  // Austria
+  austriaRedWhiteRedCard,
+  austriaStudentVisa,
+  austriaCitizenship,
+  austriaMeldung,
   // Switzerland
   switzerlandBPermit,
   switzerlandCPermit,
