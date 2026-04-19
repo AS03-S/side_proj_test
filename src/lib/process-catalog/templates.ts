@@ -4558,6 +4558,91 @@ const belgiumCitizenship: ProcessTemplate = {
   ],
 };
 
+const franceAutoEntrepreneur: ProcessTemplate = {
+  id: "fr_auto_entrepreneur",
+  keywords: ["auto entrepreneur france", "freelance france", "micro enterprise france", "self employed france", "autoentrepreneur visa", "independant france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "URSSAF / Préfecture",
+  title: "Auto-Entrepreneur / Freelance Registration — France",
+  summary: "The auto-entrepreneur (micro-entreprise) regime is France's simplified self-employment status. EU citizens can register freely; non-EU nationals need a work permit covering self-employment first.",
+  timeline_summary: "Registration itself takes minutes online. Getting the right visa/permit first may take months.",
+  next_action: "If non-EU: ensure your titre de séjour (e.g. Passeport Talent or VLS-TS with self-employment rights) authorises independent activity before registering.",
+  official_sources: [{ title: "AutoEntrepreneur.urssaf.fr", url: "https://www.autoentrepreneur.urssaf.fr/portail/accueil.html" }],
+  steps: [
+    { title: "Confirm right to self-employment in France", description: "Check your visa/permit allows independent professional activity. EU citizens are free to register. Non-EU nationals need a permit covering self-employment (e.g. Passeport Talent, VLS-TS entrepreneur).", estimated_duration: "1 day", checklist_items: [
+      { label: "Visa/permit confirmed as authorising self-employment", item_type: "action" },
+      { label: "Business activity classified (liberal profession, commercial, artisanal)", item_type: "action" },
+    ]},
+    { title: "Register on autoentrepreneur.urssaf.fr", description: "Create your micro-entreprise online — takes about 15 minutes. You receive a SIRET number (business ID) within a few days.", estimated_duration: "15 minutes online", checklist_items: [
+      { label: "Account created at autoentrepreneur.urssaf.fr", item_type: "action" },
+      { label: "Business activity code (NAF/APE) selected", item_type: "action" },
+      { label: "SIRET number received by post", item_type: "document" },
+    ]},
+    { title: "Set up tax and social contributions", description: "Declare turnover monthly or quarterly on the URSSAF portal and pay contributions as a percentage of revenue.", estimated_duration: "Ongoing", checklist_items: [
+      { label: "Bank account for business opened", item_type: "action" },
+      { label: "French tax account (impots.gouv.fr) set up", item_type: "action" },
+      { label: "First turnover declaration submitted on schedule", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceLongTermResidence: ProcessTemplate = {
+  id: "fr_long_term_residence",
+  keywords: ["france long term resident", "carte résident longue durée ue", "eu long term france", "permanent france non eu", "10 year eu permit france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture",
+  title: "EU Long-Term Resident Permit (Résident de Longue Durée-UE) — France",
+  summary: "After 5 years of legal residence in France, non-EU nationals can apply for the EU long-term resident status (carte de résident mention 'résident de longue durée-UE'), valid 10 years and renewable.",
+  timeline_summary: "Processing at the préfecture typically takes 2–4 months.",
+  next_action: "Confirm 5 years of continuous legal residence and book a préfecture appointment via the ANEF portal.",
+  official_sources: [{ title: "Service-public.fr — Résident longue durée UE", url: "https://www.service-public.fr/particuliers/vosdroits/F11580" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of continuous legal residence on a valid titre de séjour, sufficient and stable income, no serious criminal record.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "Stable income above poverty threshold confirmed", item_type: "action" },
+      { label: "French language A2 or higher", item_type: "action" },
+    ]},
+    { title: "Apply at préfecture via ANEF portal", description: "Book appointment and submit documents at the préfecture.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "ANEF portal appointment booked", item_type: "appointment" },
+      { label: "Current titre de séjour", item_type: "document" },
+      { label: "All prior permits showing 5 years", item_type: "document" },
+      { label: "Income proof", item_type: "document" },
+      { label: "Tax stamp paid", item_type: "payment" },
+      { label: "Carte de résident (10-year) collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const ukHealthCareWorker: ProcessTemplate = {
+  id: "uk_health_care_worker",
+  keywords: ["uk health care worker visa", "health and care visa", "nhs visa", "nurse uk visa", "doctor uk visa", "healthcare worker uk"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office / UKVI",
+  title: "Health and Care Worker Visa — UK",
+  summary: "A fast-track, reduced-fee route under the Skilled Worker visa for qualified healthcare professionals taking up eligible roles with the NHS, social care sector, or with employers registered with CQC.",
+  timeline_summary: "Processing: 3 weeks standard, 5 days priority. Certificate of Sponsorship required from employer.",
+  next_action: "Confirm your role is on the eligible occupations list and that your employer is a licensed Home Office sponsor.",
+  official_sources: [{ title: "GOV.UK — Health and Care Worker visa", url: "https://www.gov.uk/health-care-worker-visa" }],
+  steps: [
+    { title: "Confirm eligibility and get Certificate of Sponsorship", description: "Your role must be in an eligible healthcare occupation (nurse, doctor, social worker, etc.) and your employer must be a licensed sponsor. They issue a Certificate of Sponsorship (CoS).", estimated_duration: "1–4 weeks", checklist_items: [
+      { label: "Role confirmed on Health and Care Worker eligible occupations list", item_type: "action" },
+      { label: "Employer confirmed as licensed Home Office sponsor", item_type: "action" },
+      { label: "Certificate of Sponsorship (CoS) issued by employer", item_type: "document" },
+      { label: "Salary meets minimum threshold (£23,200 or going rate for role)", item_type: "action" },
+    ]},
+    { title: "Apply online", description: "Apply online on GOV.UK. The Health and Care Worker visa has reduced fees and IHS is waived.", estimated_duration: "3 weeks", checklist_items: [
+      { label: "Online application submitted at gov.uk", item_type: "action" },
+      { label: "Visa fee paid (reduced: approx. £284 for up to 3 years)", item_type: "payment" },
+      { label: "English language requirement met (B1 — IELTS or degree in English)", item_type: "document" },
+      { label: "Biometrics submitted at visa application centre", item_type: "appointment" },
+      { label: "Visa/BRP issued and role started", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4570,6 +4655,8 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceCitizenship,
   franceAsylum,
   franceEEARegistration,
+  franceAutoEntrepreneur,
+  franceLongTermResidence,
   // Portugal
   portugalD2Visa,
   portugalD7Visa,
@@ -4613,6 +4700,7 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   ukCitizenship,
   ukAsylum,
   ukEUSS,
+  ukHealthCareWorker,
   // Germany
   germanyEUBlueCard,
   germanyJobSeekerVisa,
