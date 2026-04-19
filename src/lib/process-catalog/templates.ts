@@ -5376,6 +5376,121 @@ const austriaJobSeekerVisa: ProcessTemplate = {
   ],
 };
 
+const portugalStudentVisa: ProcessTemplate = {
+  id: "pt_student_visa",
+  keywords: ["student visa", "study", "university", "portugal", "SEF", "AIMA", "Visto de Estudo"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal student visa (Visto de Estudo)",
+  summary: "Non-EU students accepted at a Portuguese higher education institution can apply for a student visa and subsequent residence permit.",
+  timeline_summary: "Apply at least 2–3 months before the course starts. Visa typically processed in 4–8 weeks.",
+  next_action: "Apply for a Type D student visa at the Portuguese embassy in your home country after receiving your acceptance letter.",
+  steps: [
+    { title: "Receive acceptance from a Portuguese institution", description: "You must have a formal acceptance letter from a Portuguese university, polytechnic, or language school before applying for the visa.", checklist_items: [
+      { label: "Acceptance letter from Portuguese institution received", item_type: "document" },
+      { label: "Course start date and duration confirmed", item_type: "action" },
+    ]},
+    { title: "Apply for Type D student visa at Portuguese embassy", description: "Apply in person at the Portuguese embassy or consulate in your home country. Book the appointment in advance — demand can be high.", checklist_items: [
+      { label: "Embassy appointment booked", item_type: "appointment" },
+      { label: "Valid passport (valid at least 3 months beyond course end)", item_type: "document" },
+      { label: "Acceptance letter from institution", item_type: "document" },
+      { label: "Proof of accommodation in Portugal", item_type: "document" },
+      { label: "Proof of financial means (bank statements, scholarship letter)", item_type: "document" },
+      { label: "Health insurance covering Portugal", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Travel to Portugal on student visa", description: "Enter Portugal on the Type D visa. You must then apply for a residence permit (Autorização de Residência) within the validity period of the visa.", checklist_items: [
+      { label: "Arrived in Portugal", item_type: "action" },
+      { label: "Portuguese address registered (if required by institution)", item_type: "action" },
+    ]},
+    { title: "Apply for student residence permit at AIMA", description: "Book an appointment with AIMA and apply for a student residence permit. Bring all original documents.", checklist_items: [
+      { label: "AIMA appointment booked online (aima.gov.pt)", item_type: "appointment" },
+      { label: "Application submitted with original documents", item_type: "action" },
+      { label: "Biometrics provided at AIMA", item_type: "appointment" },
+      { label: "Residence permit fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive student residence permit card", description: "AIMA issues the residence permit card. It is valid for 1–2 years and renewable as long as you remain enrolled.", checklist_items: [
+      { label: "Residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalFamilyReunification: ProcessTemplate = {
+  id: "pt_family_reunification",
+  keywords: ["family reunification", "spouse visa", "family member", "portugal", "AIMA", "reagrupamento familiar"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal family reunification",
+  summary: "Bring a spouse, minor children, or dependent relatives to Portugal to join a non-EU resident holding a valid residence permit.",
+  timeline_summary: "3–6 months. Apply early — AIMA appointments can have long waiting times.",
+  next_action: "Submit a family reunification application to AIMA and arrange a visa for the family member at the Portuguese embassy.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must hold a valid Portuguese residence permit for at least 1 year (or a long-term/permanent permit) and have sufficient income and adequate housing.", checklist_items: [
+      { label: "Confirmed residence permit valid for ≥ 1 year", item_type: "action" },
+      { label: "Confirmed income exceeds minimum wage threshold", item_type: "action" },
+      { label: "Confirmed accommodation is adequate", item_type: "action" },
+    ]},
+    { title: "Gather and apostille documents", description: "All foreign documents must be apostilled and officially translated into Portuguese.", checklist_items: [
+      { label: "Family member's valid passport", item_type: "document" },
+      { label: "Marriage certificate (apostilled and Portuguese translation)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and Portuguese translation)", item_type: "document" },
+      { label: "Sponsor's residence permit and proof of income", item_type: "document" },
+      { label: "Proof of accommodation in Portugal", item_type: "document" },
+    ]},
+    { title: "Submit family reunification request to AIMA", description: "The sponsor submits the family reunification application to AIMA in Portugal. Once pre-approved, AIMA notifies the Portuguese embassy in the family member's country.", checklist_items: [
+      { label: "Family reunification application submitted at AIMA", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "AIMA pre-approval received", item_type: "document" },
+    ]},
+    { title: "Family member applies for visa at Portuguese embassy", description: "After AIMA pre-approves the application, the family member applies for a Type D visa at the Portuguese embassy in their country.", checklist_items: [
+      { label: "Visa application submitted at Portuguese embassy", item_type: "action" },
+      { label: "Visa issued", item_type: "document" },
+    ]},
+    { title: "Register in Portugal and obtain residence permit", description: "On arrival, the family member applies for a residence permit at AIMA.", checklist_items: [
+      { label: "AIMA appointment booked on arrival", item_type: "appointment" },
+      { label: "Residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalAsylum: ProcessTemplate = {
+  id: "pt_asylum",
+  keywords: ["asylum", "refugee", "international protection", "portugal", "SEF", "AIMA", "proteção internacional"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal asylum and international protection",
+  summary: "Apply for asylum or subsidiary protection in Portugal if you face persecution or serious harm in your home country.",
+  timeline_summary: "Initial decision in 6–12 months; appeals can extend this. You can remain in Portugal during the process.",
+  next_action: "Present yourself to AIMA or a border post immediately upon arriving in Portugal to register your asylum application.",
+  steps: [
+    { title: "Express intention to seek asylum", description: "Immediately on arrival in Portugal, present yourself to AIMA, a Garda Nacional Republicana (GNR) post, or a border control officer and state your intention to seek international protection.", checklist_items: [
+      { label: "Intention to seek protection expressed to AIMA or border officer", item_type: "action" },
+      { label: "Any available identity documents provided", item_type: "document" },
+    ]},
+    { title: "Registration and first interview", description: "AIMA registers your application and conducts a first interview to collect personal information and the broad reasons for your application. You receive a registration certificate.", checklist_items: [
+      { label: "Application registered and registration certificate received", item_type: "document" },
+      { label: "Accommodation arranged (reception centre if needed)", item_type: "action" },
+    ]},
+    { title: "Detailed asylum interview", description: "AIMA schedules a full interview where you explain in detail why you cannot return to your country. An interpreter is provided. You may have a lawyer present.", checklist_items: [
+      { label: "Detailed interview attended", item_type: "appointment" },
+      { label: "Supporting documents submitted (evidence of persecution)", item_type: "document" },
+      { label: "Legal representation arranged (free legal aid available)", item_type: "action" },
+    ]},
+    { title: "Receive AIMA decision", description: "AIMA issues a written decision. If granted, you receive refugee status or subsidiary protection. If refused, you may appeal to the Administrative Court within 15 days.", checklist_items: [
+      { label: "AIMA decision received", item_type: "document" },
+      { label: "Appeal filed within 15 days if refused", item_type: "action" },
+    ]},
+    { title: "Receive residence permit if granted", description: "On grant of protection, AIMA issues a residence permit valid for 5 years (refugee) or 1 year renewable (subsidiary protection).", checklist_items: [
+      { label: "Residence permit card received", item_type: "document" },
+      { label: "NIF (tax number) obtained", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5395,6 +5510,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   portugalD7Visa,
   portugalWorkVisa,
   portugalCitizenship,
+  portugalStudentVisa,
+  portugalFamilyReunification,
+  portugalAsylum,
   // Austria
   austriaRedWhiteRedCard,
   austriaStudentVisa,
