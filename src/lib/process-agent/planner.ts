@@ -1,19 +1,48 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { FullPlanSchema, type FullPlan, type CandidateProcess } from "./schemas";
 import { matchTemplate } from "@/lib/process-catalog/matcher";
+import type { ProcessTemplate } from "@/lib/process-catalog/templates";
 
 const client = new Anthropic();
 
 const PLAN_SYSTEM = `Immigration process planner. Output ONLY valid JSON. Be concise — use short bullet-style text (max 1–2 lines per field). No prose paragraphs. Never claim legal certainty. Express uncertainty in uncertainty_notes.`;
 
+function planFromTemplate(template: ProcessTemplate, score: number): FullPlan {
+  return {
+    title: template.title,
+    jurisdiction: template.jurisdiction,
+    destination_country: template.destination_country,
+    authority_name: template.authority_name,
+    summary: template.summary,
+    rationale: template.summary,
+    confidence_score: Math.min(0.7 + score * 0.25, 0.95),
+    uncertainty_notes: "Verify current requirements and fees with the official authority before proceeding.",
+    timeline_summary: template.timeline_summary,
+    next_action: template.next_action,
+    next_deadline: null,
+    steps: template.steps.map((s) => ({
+      title: s.title,
+      description: s.description,
+      estimated_duration: s.estimated_duration ?? null,
+      target_date: null,
+      checklist_items: s.checklist_items.map((c) => ({
+        label: c.label,
+        item_type: c.item_type,
+        due_date: null,
+        notes: c.notes ?? null,
+      })),
+    })),
+    source_notes: "Based on pre-loaded process template.",
+    official_sources: template.official_sources ?? null,
+  };
+}
+
 /**
  * Generate a full process plan.
  *
  * Strategy:
- * 1. Template match ≥ 0.3 → use template steps as backbone, Claude personalises metadata only.
- * 2. No match → Claude generates full plan from training knowledge.
- *
- * extraContext is reserved for web search results (v2 — no-op today).
+ * 1. Template match ≥ 0.3 → return template data directly, no Claude call.
+ * 2. No match → Claude generates full plan (optionally enriched with web search results via extraContext).
  */
 export async function generatePlan(
   candidate: CandidateProcess,
@@ -22,6 +51,12 @@ export async function generatePlan(
   extraContext?: string
 ): Promise<FullPlan> {
   const templateMatch = matchTemplate(candidate.id, userDescription, extraContext);
+
+  if (templateMatch && templateMatch.score >= 0.3) {
+    return planFromTemplate(templateMatch.template, templateMatch.score);
+  }
+
+  // ── No template match — ask Claude ────────────────────────────────────────
 
   const answersBlock =
     answers.length > 0
@@ -35,57 +70,7 @@ export async function generatePlan(
     ? `\nOfficial source context:\n${extraContext}`
     : "";
 
-  let prompt: string;
-
-  if (templateMatch && templateMatch.score >= 0.3) {
-    const t = templateMatch.template;
-    const stepsJson = JSON.stringify(
-      t.steps.map((s) => ({
-        title: s.title,
-        description: s.description,
-        estimated_duration: s.estimated_duration ?? null,
-        target_date: null,
-        checklist_items: s.checklist_items.map((c) => ({
-          label: c.label,
-          item_type: c.item_type,
-          due_date: null,
-          notes: c.notes ?? null,
-        })),
-      })),
-      null,
-      2
-    );
-
-    prompt = `Process: "${t.title}"
-Jurisdiction: ${t.jurisdiction} | Authority: ${t.authority_name}
-User: "${userDescription}"
-Details: ${answersBlock}${webContextBlock}
-
-Use the steps below exactly. Generate ONLY these fields personalised to the user's situation:
-- summary: 2–3 short bullets (what this process is for them)
-- rationale: 1 sentence (why it applies)
-- confidence_score: 0.0–1.0
-- uncertainty_notes: 1 sentence of what you are unsure about, or "None"
-- timeline_summary: 1 line (e.g. "4–8 months; apply 3 months before permit expires")
-- next_action: 1 sentence — the single most important next step
-- next_deadline: ISO date or null
-- source_notes: 1 line
-- official_sources: ${JSON.stringify(t.official_sources ?? [])}
-- title: use template title unless situation warrants a more specific name
-
-Steps (do not modify):
-${stepsJson}
-
-Return ONLY valid JSON:
-{
-  "title": "...", "jurisdiction": "${t.jurisdiction}", "destination_country": "${t.destination_country}",
-  "authority_name": "${t.authority_name}", "summary": "...", "rationale": "...",
-  "confidence_score": 0.0, "uncertainty_notes": "...", "timeline_summary": "...",
-  "next_action": "...", "next_deadline": null, "steps": [...],
-  "source_notes": "...", "official_sources": [...]
-}`;
-  } else {
-    prompt = `Generate a process plan.
+  const prompt = `Generate a process plan.
 Process: "${candidate.name}"
 Destination: ${candidate.destination_country ?? candidate.country ?? "Unknown"}
 Authority: ${candidate.authority_name ?? "Unknown"}
@@ -121,7 +106,6 @@ Return ONLY valid JSON:
   "source_notes": "...",
   "official_sources": [{ "title": "...", "url": "..." }]
 }`;
-  }
 
   const message = await client.messages.create({
     model: "claude-sonnet-4-6",
@@ -140,7 +124,6 @@ Return ONLY valid JSON:
 
   const parsed = JSON.parse(cleaned);
 
-  // Claude sometimes returns string fields as arrays of bullets — coerce to string
   const STRING_FIELDS = ["summary", "rationale", "uncertainty_notes", "timeline_summary", "next_action", "source_notes"] as const;
   for (const field of STRING_FIELDS) {
     if (Array.isArray(parsed[field])) {
