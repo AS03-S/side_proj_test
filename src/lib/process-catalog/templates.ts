@@ -4989,6 +4989,111 @@ const finlandYKILanguageTest: ProcessTemplate = {
   ],
 };
 
+const irelandAsylum: ProcessTemplate = {
+  id: "ie_asylum",
+  keywords: ["asylum", "refugee", "international protection", "ireland", "IPO"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "International Protection Office (IPO)",
+  title: "Ireland international protection (asylum)",
+  summary: "Apply for refugee status or subsidiary protection in Ireland if you face persecution or serious harm in your home country.",
+  timeline_summary: "Initial decision typically 12–24 months; appeals can extend this further.",
+  next_action: "Present yourself to the International Protection Office in Dublin to make an application for international protection.",
+  steps: [
+    { title: "Make an application at the IPO", description: "You must apply in person at the International Protection Office, 79–83 Lower Mount Street, Dublin 2. You cannot apply by post. Bring any identity documents you have.", checklist_items: [
+      { label: "Attended IPO in person to make application", item_type: "action" },
+      { label: "Passport or national ID (if available)", item_type: "document" },
+      { label: "Preliminary interview completed", item_type: "appointment" },
+    ]},
+    { title: "Receive accommodation and services", description: "While your application is processed you may be accommodated in a reception/accommodation centre and receive a weekly allowance from the International Protection Accommodation Service (IPAS).", checklist_items: [
+      { label: "Accommodation arranged via IPAS if required", item_type: "action" },
+      { label: "Emergency Needs Payment / weekly allowance set up", item_type: "action" },
+    ]},
+    { title: "Substantive interview", description: "IPO will schedule a detailed interview about your claim. You can bring a legal representative. An interpreter is provided. Prepare to explain why you cannot return to your country.", checklist_items: [
+      { label: "Substantive interview attended", item_type: "appointment" },
+      { label: "Legal aid solicitor arranged (LSRA Legal Aid Board)", item_type: "action" },
+      { label: "Supporting evidence / country-of-origin documents submitted", item_type: "document" },
+    ]},
+    { title: "Receive IPO decision", description: "IPO issues a written decision granting refugee status, subsidiary protection, or a recommendation to refuse. If refused, you have 15 working days to appeal.", checklist_items: [
+      { label: "IPO decision letter received", item_type: "document" },
+      { label: "Appeal filed with International Protection Appeals Tribunal if refused", item_type: "action" },
+    ]},
+    { title: "Receive permission to remain and registration", description: "If granted protection, you receive a travel document and a Stamp 4 permission. Register with the Garda National Immigration Bureau (GNIB) to get an Irish Residence Permit (IRP) card.", checklist_items: [
+      { label: "Protection status granted", item_type: "document" },
+      { label: "Registered with GNIB and IRP card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandEEARegistration: ProcessTemplate = {
+  id: "ie_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "EU Treaty Rights", "ireland", "GNIB", "IRP"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Department of Justice / GNIB",
+  title: "Ireland EU Treaty Rights registration",
+  summary: "EU/EEA/Swiss citizens exercising free movement rights in Ireland must register with the Department of Justice after 3 months.",
+  timeline_summary: "Register within 3 months of arrival. IRP card issued at registration appointment.",
+  next_action: "Book a registration appointment online via the Department of Justice INIS online registration portal.",
+  steps: [
+    { title: "Confirm your right to reside", description: "EU/EEA/Swiss nationals have an automatic right to enter and reside in Ireland for up to 3 months. After 3 months you must be exercising a Treaty Right: working, self-employed, studying, or self-sufficient.", checklist_items: [
+      { label: "Confirmed Treaty Right category (worker/student/self-sufficient)", item_type: "action" },
+    ]},
+    { title: "Book a registration appointment", description: "Book online at the Garda National Immigration Bureau or at a local Garda station (outside Dublin). Bring original documents — no copies.", checklist_items: [
+      { label: "Registration appointment booked", item_type: "appointment" },
+    ]},
+    { title: "Attend appointment with required documents", description: "Workers bring: EU passport/ID + employment contract or payslips. Students: EU passport/ID + enrollment letter + proof of health insurance. Self-sufficient: EU passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Employment contract or payslips (if worker)", item_type: "document" },
+      { label: "College enrollment letter (if student)", item_type: "document" },
+      { label: "Comprehensive health insurance (if not worker)", item_type: "document" },
+      { label: "Bank statements showing sufficient funds (if self-sufficient)", item_type: "document" },
+      { label: "Registration fee paid (€55 for adults)", item_type: "payment" },
+    ]},
+    { title: "Receive Irish Residence Permit (IRP) card", description: "The IRP card (Stamp 4 EU/EEA or Stamp 4EUFAM for family members) is issued at the appointment or posted to your address. It confirms your legal residence.", checklist_items: [
+      { label: "IRP card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandFamilyReunification: ProcessTemplate = {
+  id: "ie_family_reunification",
+  keywords: ["family reunification", "spouse visa", "join family", "ireland", "INIS", "de facto partner"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Irish Naturalisation and Immigration Service (INIS)",
+  title: "Ireland family reunification",
+  summary: "Non-EEA family members of an Irish citizen or non-EEA resident can apply to join them in Ireland.",
+  timeline_summary: "6–12 months. Apply well in advance and ensure all documents are apostilled.",
+  next_action: "Submit a family reunification application to INIS online via the Immigration Service Delivery portal.",
+  steps: [
+    { title: "Determine the correct application route", description: "Irish citizen sponsors use the Non-EEA Family Member application. Non-EEA permit holders (Critical Skills, Stamp 1, etc.) have different eligibility rules. Check inis.gov.ie for the correct form.", checklist_items: [
+      { label: "Confirmed sponsor's status (Irish citizen or non-EEA resident)", item_type: "action" },
+      { label: "Identified correct application form/route", item_type: "action" },
+    ]},
+    { title: "Gather documents for sponsor and family member", description: "Both sponsor and applicant need to submit documentation. All foreign documents must be apostilled and translated into English.", checklist_items: [
+      { label: "Sponsor's Irish passport or IRP card", item_type: "document" },
+      { label: "Marriage certificate (apostilled and translated)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and translated)", item_type: "document" },
+      { label: "Family member's current passport", item_type: "document" },
+      { label: "Proof of sponsor's income and accommodation", item_type: "document" },
+    ]},
+    { title: "Submit application online", description: "Apply via the ISD online portal. Pay the application fee. You will receive a reference number — keep this for tracking.", checklist_items: [
+      { label: "Application submitted via ISD portal", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Reference number saved", item_type: "action" },
+    ]},
+    { title: "Family member applies for visa (if required)", description: "If the family member requires a visa to enter Ireland (non-visa-exempt country), they must apply for a Join Family (D) visa at the Irish embassy/consulate in their country.", checklist_items: [
+      { label: "Visa application submitted at Irish embassy (if required)", item_type: "action" },
+      { label: "Visa issued", item_type: "document" },
+    ]},
+    { title: "Register on arrival and receive IRP", description: "Once in Ireland, the family member must register with GNIB and obtain an Irish Residence Permit (IRP) card within 90 days of arrival.", checklist_items: [
+      { label: "GNIB registration appointment booked on arrival", item_type: "appointment" },
+      { label: "IRP card received (Stamp 3 or Stamp 4)", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5126,6 +5231,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   irelandStudentVisa,
   irelandStamp4,
   irelandCitizenship,
+  irelandAsylum,
+  irelandEEARegistration,
+  irelandFamilyReunification,
   // Australia
   australiaSkilledIndependent,
   // Canada
