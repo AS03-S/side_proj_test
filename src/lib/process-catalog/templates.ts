@@ -5930,6 +5930,113 @@ const belgiumLongTermResidence: ProcessTemplate = {
   ],
 };
 
+const belgiumSelfEmployed: ProcessTemplate = {
+  id: "be_self_employed",
+  keywords: ["self-employed", "freelance", "indépendant", "zelfstandige", "belgium", "professional card", "carte professionnelle"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "FPS Economy / Vlaio / Service public économie",
+  title: "Belgium self-employed professional card",
+  summary: "Non-EU nationals who wish to work as a self-employed person or run a business in Belgium must obtain a professional card (beroepskaart / carte professionnelle).",
+  timeline_summary: "2–4 months. Apply at the Belgian embassy in your home country before travelling.",
+  next_action: "Apply for a professional card at the Belgian embassy in your country of residence, combined with a Type D visa for self-employment.",
+  steps: [
+    { title: "Check eligibility and plan your business", description: "Your self-employed activity must not harm Belgian economic interests and must demonstrate added value. Prepare a detailed business plan with financial projections.", checklist_items: [
+      { label: "Business plan drafted (activity, market, clients, financials)", item_type: "document" },
+      { label: "Confirmed activity is permitted for self-employment in Belgium", item_type: "action" },
+    ]},
+    { title: "Apply for professional card at Belgian embassy", description: "Apply for the professional card (beroepskaart) at the Belgian embassy or consulate in your country of residence. The application is assessed by FPS Economy.", checklist_items: [
+      { label: "Application form completed", item_type: "action" },
+      { label: "Business plan and financial projections submitted", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Proof of professional qualifications", item_type: "document" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive professional card and combine with Type D visa", description: "If approved, the professional card is issued and a Type D visa is attached for entry into Belgium. The card is valid for 1–5 years.", checklist_items: [
+      { label: "Professional card received", item_type: "document" },
+      { label: "Type D visa issued for travel to Belgium", item_type: "document" },
+    ]},
+    { title: "Register business and residence in Belgium", description: "Within 8 days of arrival, register at your commune. Register your business with the Crossroads Bank for Enterprises (KBO/BCE) to obtain an enterprise number.", checklist_items: [
+      { label: "Registered at commune within 8 days", item_type: "action" },
+      { label: "Business registered with KBO/BCE", item_type: "action" },
+      { label: "Enterprise number received", item_type: "document" },
+      { label: "Joined a social insurance fund (sociaal verzekeringsfonds)", item_type: "action" },
+    ]},
+  ],
+};
+
+const belgiumPermanentResidence: ProcessTemplate = {
+  id: "be_permanent_residence",
+  keywords: ["permanent residence", "unlimited stay", "onbeperkt verblijf", "belgium", "DVZ", "A card"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ — Dienst Vreemdelingenzaken / Office des Étrangers",
+  title: "Belgium permanent residence (unlimited stay — A card)",
+  summary: "After 5 years of legal residence in Belgium, non-EU nationals can apply for an unlimited residence card (A card), granting the right to stay indefinitely.",
+  timeline_summary: "Apply before current permit expires. Processing 3–6 months.",
+  next_action: "Apply at your commune for an A card, with proof of 5 years of continuous legal residence in Belgium.",
+  steps: [
+    { title: "Confirm 5-year residence and eligibility", description: "You must have held consecutive valid residence permits totalling at least 5 years. No single gap in residence, no absence over 6 consecutive months, and a clean criminal record.", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "No serious criminal convictions confirmed", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Collect all previous residence cards, proof of income, and accommodation. Foreign documents must be apostilled and translated.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "All previous Belgian residence cards", item_type: "document" },
+      { label: "Proof of income (payslips, tax assessments)", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Belgian criminal record certificate", item_type: "document" },
+    ]},
+    { title: "Apply at commune", description: "Submit the A card application at your local commune. The commune forwards the file to DVZ for a decision.", checklist_items: [
+      { label: "Application submitted at commune", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Provisional attestation received (Annex 15)", item_type: "document" },
+    ]},
+    { title: "Receive A card", description: "DVZ approves and the commune issues the A card (permanent residence). The card is valid for 5 years and indefinitely renewable with no conditions attached.", checklist_items: [
+      { label: "A card (permanent residence) received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumNaturalisation: ProcessTemplate = {
+  id: "be_naturalisation",
+  keywords: ["naturalisation", "citizenship", "Belgian nationality", "nationalité belge", "Belgische nationaliteit", "belgium"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "SPF Justice / FOD Justitie",
+  title: "Belgium naturalisation (Belgian citizenship)",
+  summary: "Apply for Belgian citizenship through naturalisation after meeting the residence, integration, and language requirements.",
+  timeline_summary: "Standard route: 5 years legal residence + integration. Fast-track: 10 years. Processing 4–24 months after submission.",
+  next_action: "Check your eligibility on the SPF Justice website and submit a naturalisation declaration at your commune.",
+  steps: [
+    { title: "Check eligibility and route", description: "The standard route requires 5 years of legal residence, a language certificate (Dutch, French, or German at A2+), and proof of social and economic integration. Special routes exist for people with 10+ years of residence.", checklist_items: [
+      { label: "Confirmed residence duration meets the required threshold", item_type: "action" },
+      { label: "Identified correct naturalisation route (standard/extended)", item_type: "action" },
+    ]},
+    { title: "Obtain required certificates", description: "Get a language certificate (OKAN, CentreExamens, Goethe) and a civic integration certificate (inburgeringsattest from Agentschap Integratie en Inburgering or equivalent).", checklist_items: [
+      { label: "Language certificate at A2+ level obtained", item_type: "document" },
+      { label: "Civic integration certificate obtained", item_type: "document" },
+    ]},
+    { title: "Prepare the naturalisation declaration file", description: "Collect all required documents: passport, residence cards, criminal record, language and integration certificates, proof of Belgian ties (work, family, civic participation).", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "All Belgian residence cards", item_type: "document" },
+      { label: "Belgian criminal record certificate", item_type: "document" },
+      { label: "Foreign criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Language and integration certificates", item_type: "document" },
+      { label: "Proof of economic participation (payslips, tax returns)", item_type: "document" },
+    ]},
+    { title: "Submit declaration at commune", description: "File the naturalisation declaration at your commune. The commune forwards the file to the Chamber of Representatives (for standard route) or to SPF Justice.", checklist_items: [
+      { label: "Declaration submitted at commune", item_type: "action" },
+      { label: "Acknowledgment of receipt obtained", item_type: "document" },
+    ]},
+    { title: "Await decision and receive Belgian nationality", description: "The Chamber or SPF Justice reviews the file. If approved, you are notified and can apply for a Belgian passport and national register number.", checklist_items: [
+      { label: "Approval decision received", item_type: "document" },
+      { label: "Belgian passport applied for", item_type: "action" },
+      { label: "National register number updated at commune", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -6083,6 +6190,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   belgiumAsylum,
   belgiumEEARegistration,
   belgiumLongTermResidence,
+  belgiumSelfEmployed,
+  belgiumPermanentResidence,
+  belgiumNaturalisation,
   // Ireland
   irelandCriticalSkills,
   irelandWorkPermit,
