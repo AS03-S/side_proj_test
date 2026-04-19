@@ -5688,6 +5688,107 @@ const netherlandsEEARegistration: ProcessTemplate = {
   ],
 };
 
+const netherlandsLongTermResidence: ProcessTemplate = {
+  id: "nl_long_term_residence",
+  keywords: ["long-term residence", "permanent residence", "5 years", "netherlands", "IND", "duurzame verblijfsvergunning"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands long-term / permanent residence permit",
+  summary: "Apply for a long-term or EU long-term residence permit after 5 years of continuous legal residence in the Netherlands.",
+  timeline_summary: "Apply up to 3 months before current permit expires. Processing 3–6 months.",
+  next_action: "Submit your long-term residence application to the IND via ind.nl with proof of 5 years of continuous legal residence.",
+  steps: [
+    { title: "Check eligibility", description: "Must have held a valid residence permit for 5 consecutive years. Must show sufficient income, civic integration (Dutch language certificate), and no serious criminal record.", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence", item_type: "action" },
+      { label: "Dutch civic integration certificate (inburgeringsexamen) obtained", item_type: "document" },
+      { label: "Confirmed sufficient and stable income", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Collect all supporting documents. Foreign documents must be apostilled and translated into Dutch.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current and previous residence permits (5-year history)", item_type: "document" },
+      { label: "Proof of income (payslips, employer statement)", item_type: "document" },
+      { label: "Civic integration certificate", item_type: "document" },
+      { label: "Dutch criminal record extract (VOG)", item_type: "document" },
+    ]},
+    { title: "Submit application to IND", description: "Apply online via ind.nl or visit an IND desk. Pay the application fee.", checklist_items: [
+      { label: "Application submitted to IND", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive long-term residence permit", description: "IND issues the EU long-term residence permit (valid 5 years, renewable indefinitely) or permanent residence permit, giving expanded rights including freedom to work in any job.", checklist_items: [
+      { label: "Long-term residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsSelfEmployed: ProcessTemplate = {
+  id: "nl_self_employed",
+  keywords: ["self-employed", "freelance", "ZZP", "entrepreneur", "netherlands", "IND", "zelfstandige"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND / KVK (Kamer van Koophandel)",
+  title: "Netherlands self-employed / freelance residence permit (ZZP)",
+  summary: "Non-EU/EEA entrepreneurs and freelancers can apply for a Dutch residence permit as a self-employed person (zelfstandige) by demonstrating business viability.",
+  timeline_summary: "3–6 months. IND uses a points-based assessment of business viability and essential interest to the Netherlands.",
+  next_action: "Submit a self-employed residence permit application to the IND with a detailed business plan and financial projections.",
+  steps: [
+    { title: "Assess the IND points system", description: "IND evaluates self-employed applications using a points system based on: personal experience (max 30 pts), business plan (max 30 pts), and added value to the Netherlands (max 40 pts). You need at least 90 points.", checklist_items: [
+      { label: "Self-assessed points using IND criteria (must score ≥ 90)", item_type: "action" },
+      { label: "Identified essential interest of business to the Netherlands", item_type: "action" },
+    ]},
+    { title: "Prepare a business plan", description: "Write a detailed business plan including market analysis, target clients, financial projections for 3 years, and your unique value proposition. The business plan is the core of the assessment.", checklist_items: [
+      { label: "Business plan drafted (market, clients, financials, USP)", item_type: "document" },
+      { label: "3-year financial projections prepared", item_type: "document" },
+      { label: "CV and professional qualifications prepared", item_type: "document" },
+    ]},
+    { title: "Apply for MVV and residence permit at Dutch embassy", description: "If applying from abroad, you need an MVV (entry visa) as well as the residence permit. Apply at the Dutch embassy in your country of residence.", checklist_items: [
+      { label: "Application submitted at Dutch embassy (MVV + residence permit)", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Biometrics provided", item_type: "appointment" },
+    ]},
+    { title: "Register business with KVK on arrival", description: "Within 5 days of arrival, register your address at the Gemeente. Then register your business with the Kamer van Koophandel (KVK) to get a KVK number.", checklist_items: [
+      { label: "Address registered at Gemeente (BRP)", item_type: "action" },
+      { label: "Business registered with KVK", item_type: "action" },
+      { label: "KVK number received", item_type: "document" },
+      { label: "Residence permit card collected from IND", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsOrientationYear: ProcessTemplate = {
+  id: "nl_orientation_year",
+  keywords: ["orientation year", "zoekjaar", "highly educated", "graduate", "netherlands", "IND", "orientation visa"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands orientation year permit (zoekjaar)",
+  summary: "Highly educated graduates from non-EU countries can apply for a 1-year residence permit to search for work or start a business in the Netherlands.",
+  timeline_summary: "Apply within 3 years of graduation. Processing 2–4 weeks for most applications.",
+  next_action: "Submit a zoekjaar (orientation year) application to the IND within 3 years of completing your degree.",
+  steps: [
+    { title: "Check eligibility", description: "You must have graduated from a Dutch university/HBO in the past 3 years, OR from a top-200 global university (QS/THE/ARWU ranking) within the past 3 years. The degree must be at least a Master's level (or Dutch Bachelor's).", checklist_items: [
+      { label: "Confirmed graduation date is within the past 3 years", item_type: "action" },
+      { label: "Confirmed institution is eligible (Dutch HEI or top-200 global ranking)", item_type: "action" },
+      { label: "Degree is at Master's level or above (or Dutch Bachelor's)", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Prepare your diploma, transcripts, and proof of Dutch address or travel intent.", checklist_items: [
+      { label: "Degree certificate (apostilled if issued outside the Netherlands)", item_type: "document" },
+      { label: "Academic transcripts", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Proof of financial means (approx. €900/month)", item_type: "document" },
+    ]},
+    { title: "Apply to IND online", description: "Apply via ind.nl. No job offer is required — the permit allows you to work freely during the orientation year to find employment or test a business idea.", checklist_items: [
+      { label: "Application submitted online at ind.nl", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Orientation year permit issued", item_type: "document" },
+    ]},
+    { title: "Convert to work permit or self-employed permit", description: "If you find employment, convert to a Highly Skilled Migrant (kennismigrant) permit. If starting a business, apply for the self-employed (zelfstandige) permit before the orientation year expires.", checklist_items: [
+      { label: "Employment contract signed with a recognised IND sponsor", item_type: "document" },
+      { label: "Kennismigrant or zelfstandige permit applied for before zoekjaar expires", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5830,6 +5931,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   netherlandsFamilyReunification,
   netherlandsAsylum,
   netherlandsEEARegistration,
+  netherlandsLongTermResidence,
+  netherlandsSelfEmployed,
+  netherlandsOrientationYear,
   // Belgium
   belgiumWorkPermit,
   belgiumStudentVisa,
