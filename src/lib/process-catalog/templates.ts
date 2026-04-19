@@ -3326,9 +3326,1272 @@ const italyEEARegistration: ProcessTemplate = {
   ],
 };
 
+// ── France — OFII / Préfecture ─────────────────────────────────────────────
+
+const franceTalentPassport: ProcessTemplate = {
+  id: "fr_talent_passport",
+  keywords: ["france talent passport", "passeport talent", "highly skilled france", "exceptional talent france", "french work visa skilled"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture / French Consulate",
+  title: "Passeport Talent — France",
+  summary: "A 4-year renewable residence permit for highly qualified workers, researchers, investors, artists, and entrepreneurs. Covers the holder and family under a single permit.",
+  timeline_summary: "Consulate processing takes 4–8 weeks. In-country prefectural processing takes 1–3 months.",
+  next_action: "Identify which Passeport Talent category applies to you (salaried employee, researcher, investor, etc.) and gather your documents.",
+  official_sources: [{ title: "Service-public.fr — Passeport Talent", url: "https://www.service-public.fr/particuliers/vosdroits/F16922" }],
+  steps: [
+    { title: "Identify your category and gather documents", description: "There are several Passeport Talent categories: highly qualified employee (salary ≥ 1.5× SMIC), researcher, EU Blue Card, company creator, investor, artist/cultural professional. Each has specific document requirements.", estimated_duration: "1–2 weeks", checklist_items: [
+      { label: "Category identified", item_type: "action" },
+      { label: "Employment contract or proof of activity", item_type: "document" },
+      { label: "Degree/qualification proof (level equivalent to Master's for most categories)", item_type: "document" },
+      { label: "Valid passport", item_type: "document" },
+    ]},
+    { title: "Apply at French consulate (from abroad) or préfecture (in France)", description: "If outside France, apply for a long-stay visa (visa de long séjour valant titre de séjour — VLS-TS) at the French consulate. If already in France, apply at the préfecture.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate or préfecture appointment booked", item_type: "appointment" },
+      { label: "Application form and documents submitted", item_type: "action" },
+      { label: "Fee paid", item_type: "payment" },
+      { label: "Passeport Talent permit received (4 years, renewable)", item_type: "document" },
+    ]},
+    { title: "Validate visa and register with OFII", description: "Within 3 months of arrival, validate your VLS-TS online via the ANEF portal (administration-etrangers-en-france.interieur.gouv.fr).", estimated_duration: "First 3 months", checklist_items: [
+      { label: "VLS-TS validated online via ANEF portal", item_type: "action" },
+      { label: "OFII medical visit completed if required", item_type: "appointment" },
+    ]},
+  ],
+};
+
+const franceWorkAuthorisation: ProcessTemplate = {
+  id: "fr_work_authorisation",
+  keywords: ["france work permit", "autorisation travail", "work visa france", "salaried employee france", "titre sejour salarie", "work france non eu"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "DREETS / French Consulate",
+  title: "Work Authorisation (Autorisation de Travail) — France",
+  summary: "Non-EU/EEA nationals who do not qualify for the Passeport Talent need a work authorisation issued by the regional labour authority (DREETS) before the employer can hire them.",
+  timeline_summary: "DREETS processing takes 2–4 months. Apply well in advance.",
+  next_action: "Your employer applies for the work authorisation — you cannot apply directly.",
+  official_sources: [{ title: "Service-public.fr — Autorisation de travail", url: "https://www.service-public.fr/professionnels-entreprises/vosdroits/F23107" }],
+  steps: [
+    { title: "Employer applies for work authorisation at DREETS", description: "The employer submits an online application via the ANEF portal proving the job could not be filled by an EU/EEA candidate (opposabilité de l'emploi check).", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Job offer confirmed and signed", item_type: "document" },
+      { label: "Employer submits application on ANEF portal", item_type: "action" },
+      { label: "DREETS authorisation issued", item_type: "document" },
+    ]},
+    { title: "Apply for long-stay visa at French consulate", description: "With the authorisation, apply for a VLS-TS 'salarié' at the French consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Passport, work authorisation, employment contract submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and validate visa", description: "Validate your VLS-TS online within 3 months of arrival. The visa acts as your residence permit for the first year.", estimated_duration: "First 3 months", checklist_items: [
+      { label: "VLS-TS validated via ANEF portal", item_type: "action" },
+      { label: "OFII medical visit attended if required", item_type: "appointment" },
+      { label: "Titre de séjour 'salarié' applied for before VLS expires", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceStudentVisa: ProcessTemplate = {
+  id: "fr_student_visa",
+  keywords: ["france student visa", "visa etudiant", "study france", "french university", "campus france", "etudes france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "French Consulate / Campus France",
+  title: "Student Visa (Visa Étudiant Long Séjour) — France",
+  summary: "Non-EU students accepted at a French institution apply for a long-stay student visa (VLS-TS étudiant) via Campus France (mandatory for most countries).",
+  timeline_summary: "Start the Campus France process 3–4 months before your course. Visa processing takes 3–8 weeks.",
+  next_action: "Check if your country requires Campus France pre-registration (most do) and start there first.",
+  official_sources: [{ title: "Campus France — Apply", url: "https://www.campusfrance.org/en" }],
+  steps: [
+    { title: "Register with Campus France (if required)", description: "Most non-EU students must first register on the Campus France portal for their country, submit their academic profile, and attend an interview.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Campus France portal account created", item_type: "action" },
+      { label: "Academic records and transcripts uploaded", item_type: "document" },
+      { label: "Campus France interview attended (if required)", item_type: "appointment" },
+      { label: "Campus France reference number obtained", item_type: "document" },
+    ]},
+    { title: "Apply for student visa at French consulate", description: "With your university acceptance and Campus France number, apply for the VLS-TS étudiant.", estimated_duration: "3–8 weeks", checklist_items: [
+      { label: "University acceptance letter", item_type: "document" },
+      { label: "Proof of financial resources (approx. €615/month)", item_type: "document" },
+      { label: "Accommodation proof in France", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+      { label: "Visa fee paid (approx. €99)", item_type: "payment" },
+    ]},
+    { title: "Validate visa on arrival", description: "Within 3 months of arrival validate your VLS-TS on the ANEF portal — this activates your residence permit status.", estimated_duration: "First month", checklist_items: [
+      { label: "VLS-TS validated on ANEF portal (anef.interieur.gouv.fr)", item_type: "action" },
+      { label: "Enrolled at university and student card obtained", item_type: "action" },
+      { label: "French social security (CPAM) registration completed", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceFamilyReunification: ProcessTemplate = {
+  id: "fr_family_reunification",
+  keywords: ["france family reunification", "regroupement familial", "family visa france", "spouse france", "join family france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "OFII / Préfecture",
+  title: "Family Reunification (Regroupement Familial) — France",
+  summary: "Legal residents in France for at least 18 months can bring their spouse and minor children. The request is filed with OFII, which checks housing and income conditions.",
+  timeline_summary: "OFII processing takes 3–6 months. Apply well in advance.",
+  next_action: "The sponsor in France submits the application to OFII — family members cannot apply directly.",
+  official_sources: [{ title: "OFII — Regroupement familial", url: "https://www.ofii.fr/regroupement-familial/" }],
+  steps: [
+    { title: "Sponsor applies to OFII", description: "The sponsor must have lived in France for at least 18 months, have stable income (about 1× SMIC net for a spouse), and adequate housing.", estimated_duration: "3–6 months", checklist_items: [
+      { label: "18 months of legal residence in France confirmed", item_type: "action" },
+      { label: "Income at or above SMIC threshold confirmed", item_type: "action" },
+      { label: "Housing meets required surface area (at least 22m² for a couple + 10m² per additional person)", item_type: "action" },
+      { label: "Application submitted to OFII online or by post", item_type: "action" },
+      { label: "OFII authorisation received", item_type: "document" },
+    ]},
+    { title: "Family member applies for visa", description: "With the OFII authorisation, the family member applies for a long-stay visa at the French consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "OFII authorisation + relationship documents submitted", item_type: "document" },
+      { label: "Medical examination abroad passed", item_type: "appointment" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and validate", description: "Validate VLS-TS on the ANEF portal within 3 months. OFII will also conduct a medical visit and welcome meeting in France.", estimated_duration: "First 3 months", checklist_items: [
+      { label: "VLS-TS validated on ANEF portal", item_type: "action" },
+      { label: "OFII medical visit in France attended", item_type: "appointment" },
+    ]},
+  ],
+};
+
+const franceCarteDeResident: ProcessTemplate = {
+  id: "fr_carte_de_resident",
+  keywords: ["carte de resident france", "10 year card france", "permanent france", "long term residence france", "carte resident"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture",
+  title: "Carte de Résident (10-Year Permit) — France",
+  summary: "After 5 years of regular residence in France, non-EU nationals can apply for a 10-year carte de résident, giving the right to live and work indefinitely.",
+  timeline_summary: "Processing at the préfecture takes 2–4 months.",
+  next_action: "Confirm 5 years of continuous legal residence and book a préfecture appointment.",
+  official_sources: [{ title: "Service-public.fr — Carte de résident", url: "https://www.service-public.fr/particuliers/vosdroits/F11580" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of regular residence, stable and sufficient income, basic French (A2+), no threat to public order.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "Stable income above poverty threshold confirmed", item_type: "action" },
+      { label: "French language level A2 or higher", item_type: "action" },
+    ]},
+    { title: "Apply at préfecture", description: "Book an appointment online via the ANEF portal and submit documents.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Appointment booked via ANEF portal", item_type: "appointment" },
+      { label: "Current titre de séjour", item_type: "document" },
+      { label: "Proof of 5 years' residence (all prior permits)", item_type: "document" },
+      { label: "Proof of income (last 3 payslips or tax return)", item_type: "document" },
+      { label: "Tax stamp (timbre fiscal) paid", item_type: "payment" },
+      { label: "Carte de résident collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const franceCitizenship: ProcessTemplate = {
+  id: "fr_citizenship",
+  keywords: ["french citizenship", "naturalisation france", "become french", "french passport", "nationalite francaise", "naturalisation française"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Ministère de l'Intérieur / Préfecture",
+  title: "French Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in France (2 years for graduates of French higher education), you can apply for naturalisation. France allows dual citizenship.",
+  timeline_summary: "Processing takes 12–18 months.",
+  next_action: "Confirm your residence years and gather the extensive document list — preparation takes several weeks.",
+  official_sources: [{ title: "Service-public.fr — Naturalisation", url: "https://www.service-public.fr/particuliers/vosdroits/F2213" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years legal residence (2 for French-degree graduates, immediate for spouses of French citizens married 4 years), French level B1, stable income, no serious criminal record, assimilation into French society.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years (or reduced period) of legal residence confirmed", item_type: "action" },
+      { label: "French language B1 certificate obtained", item_type: "document" },
+      { label: "No disqualifying criminal convictions", item_type: "action" },
+    ]},
+    { title: "Submit dossier at préfecture", description: "Submit the naturalisation dossier in person at the préfecture. The document list is long — get the full checklist from the préfecture website.", estimated_duration: "12–18 months processing", checklist_items: [
+      { label: "Préfecture appointment booked", item_type: "appointment" },
+      { label: "Birth certificate (apostilled + translated)", item_type: "document" },
+      { label: "Full residence history with all prior permits", item_type: "document" },
+      { label: "Income proof (last 3 tax returns)", item_type: "document" },
+      { label: "French language certificate (B1)", item_type: "document" },
+      { label: "Criminal record from France and country of origin", item_type: "document" },
+      { label: "Naturalisation decree received from Ministère", item_type: "document" },
+      { label: "French passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceAsylum: ProcessTemplate = {
+  id: "fr_asylum",
+  keywords: ["asylum france", "asile france", "refugee france", "ofpra", "demande asile", "protection internationale france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "OFPRA (Office français de protection des réfugiés et apatrides)",
+  title: "Asylum Application — France",
+  summary: "Anyone in France needing international protection applies to OFPRA. The first step is registering with the préfecture to obtain an asylum seeker's attestation.",
+  timeline_summary: "OFPRA targets a 6-month decision. Complex cases take longer. You may stay in France while pending.",
+  next_action: "Go to the SPADA (structure de premier accueil des demandeurs d'asile) or préfecture in your department to start the process.",
+  official_sources: [{ title: "OFPRA — Demander l'asile", url: "https://www.ofpra.gouv.fr/fr/asile/les-procedures-de-l-asile/la-demande-d-asile" }],
+  steps: [
+    { title: "Register with SPADA / préfecture", description: "Go to the SPADA (first reception structure) or préfecture immigration office and declare your intention to seek asylum. You'll receive an appointment at the préfecture.", estimated_duration: "1 day", checklist_items: [
+      { label: "SPADA or préfecture visited", item_type: "action" },
+      { label: "Asylum intention declared", item_type: "action" },
+      { label: "Attestation de demande d'asile received (allows staying in France)", item_type: "document" },
+    ]},
+    { title: "Submit OFPRA application", description: "You have 21 days from the attestation to submit your asylum application to OFPRA with a written account of your situation.", estimated_duration: "Within 21 days", checklist_items: [
+      { label: "OFPRA application form completed (in French)", item_type: "document" },
+      { label: "Written account of protection needs submitted", item_type: "document" },
+      { label: "Identity documents submitted (or declaration if none)", item_type: "document" },
+    ]},
+    { title: "OFPRA interview and decision", description: "OFPRA invites you for an interview and then issues a decision. If rejected, you can appeal to the CNDA (National Court of Asylum).", estimated_duration: "6–12 months", checklist_items: [
+      { label: "OFPRA interview attended (with interpreter)", item_type: "appointment" },
+      { label: "Decision received", item_type: "document" },
+      { label: "If approved: refugee status card issued", item_type: "action" },
+      { label: "If rejected: CNDA appeal filed within 1 month", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceEEARegistration: ProcessTemplate = {
+  id: "fr_eea_registration",
+  keywords: ["eu citizen france", "eu registration france", "attestation sejour france", "droit sejour france", "eu free movement france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture / Mairie",
+  title: "EU/EEA Right of Residence — France",
+  summary: "EU/EEA citizens can live and work in France freely. After 3 months they have a right of residence; after 5 years they acquire permanent right of residence. No formal registration card is mandatory, but a certificate (attestation) can be requested.",
+  timeline_summary: "France does not require EU citizens to carry a residence card, but an attestation can be issued on request at the préfecture.",
+  next_action: "If you want an official attestation, contact your local préfecture. More practically, register at the mairie (city hall) for social services access.",
+  official_sources: [{ title: "Service-public.fr — Citoyen UE en France", url: "https://www.service-public.fr/particuliers/vosdroits/F13512" }],
+  steps: [
+    { title: "Confirm qualifying basis", description: "Worker, self-employed, student, or self-sufficient person with health insurance. After 3 months you have a right of residence automatically by law.", estimated_duration: "1 day", checklist_items: [
+      { label: "EU/EEA passport or national ID", item_type: "document" },
+      { label: "Qualifying basis confirmed (employment, study, or sufficient resources)", item_type: "action" },
+    ]},
+    { title: "Register at mairie and obtain social security number", description: "Register at the local mairie for practical access to services. Register with CPAM for health insurance (carte vitale).", estimated_duration: "1–4 weeks", checklist_items: [
+      { label: "Address registered at mairie", item_type: "action" },
+      { label: "CPAM health insurance registration completed", item_type: "action" },
+      { label: "French social security number received", item_type: "document" },
+      { label: "Carte vitale applied for", item_type: "action" },
+    ]},
+    { title: "Request attestation at préfecture (optional)", description: "If proof of residence status is needed, request an attestation de droit au séjour at the préfecture.", estimated_duration: "Weeks", checklist_items: [
+      { label: "Préfecture appointment booked (if attestation desired)", item_type: "appointment" },
+      { label: "ID and proof of qualifying basis submitted", item_type: "document" },
+      { label: "Attestation received", item_type: "document" },
+    ]},
+  ],
+};
+
+const ukFamilyVisa: ProcessTemplate = {
+  id: "uk_family_visa",
+  keywords: ["uk family visa", "spouse visa uk", "partner visa uk", "family route uk", "join family uk", "uk marriage visa"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office / UKVI",
+  title: "UK Family Visa (Spouse / Partner Route)",
+  summary: "Allows spouses, civil partners, and unmarried partners of British citizens or settled persons to join them in the UK. Leads to settlement after 5 years.",
+  timeline_summary: "Processing takes 12–24 weeks from outside the UK. Priority and super-priority services are available for a fee.",
+  next_action: "Confirm your sponsor meets the financial requirement (£29,000/year gross income as of 2024) before applying.",
+  official_sources: [{ title: "GOV.UK — Family visa", url: "https://www.gov.uk/uk-family-visa" }],
+  steps: [
+    { title: "Check eligibility and financial requirement", description: "The UK sponsor must earn at least £29,000/year (threshold subject to change). The relationship must be genuine and subsisting.", estimated_duration: "1 week", checklist_items: [
+      { label: "Sponsor income confirmed at or above £29,000/year", item_type: "action" },
+      { label: "Genuine relationship evidence gathered (photos, messages, travel history)", item_type: "document" },
+      { label: "English language requirement checked (A2 level — SELT test or passport from majority English-speaking country)", item_type: "action" },
+    ]},
+    { title: "Apply online and pay", description: "Apply on GOV.UK. Pay the visa fee and Immigration Health Surcharge (IHS).", estimated_duration: "1 day", checklist_items: [
+      { label: "Online application completed at gov.uk", item_type: "action" },
+      { label: "Visa fee paid (approx. £1,846 from outside UK)", item_type: "payment" },
+      { label: "Immigration Health Surcharge paid (£1,035/year)", item_type: "payment" },
+    ]},
+    { title: "Biometrics and document upload", description: "Attend a visa application centre for biometrics and upload supporting documents.", estimated_duration: "Appointment dependent", checklist_items: [
+      { label: "Visa Application Centre appointment attended", item_type: "appointment" },
+      { label: "Passport submitted or scanned", item_type: "document" },
+      { label: "Sponsor's financial evidence uploaded", item_type: "document" },
+      { label: "Relationship evidence uploaded", item_type: "document" },
+      { label: "Decision received and BRP collected on arrival", item_type: "action" },
+    ]},
+  ],
+};
+
+const ukILR: ProcessTemplate = {
+  id: "uk_ilr",
+  keywords: ["uk ilr", "indefinite leave to remain", "uk settlement", "permanent uk", "uk settled status", "uk permanent residence"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office / UKVI",
+  title: "Indefinite Leave to Remain (ILR) — UK",
+  summary: "ILR grants the right to live and work in the UK permanently with no time restrictions. Eligibility depends on your visa route — most routes require 5 years of continuous residence.",
+  timeline_summary: "Standard processing: 6 months. Priority: 5 working days. Super-priority: next working day.",
+  next_action: "Check which ILR route applies to your current visa and confirm you have met the continuous residence requirement.",
+  official_sources: [{ title: "GOV.UK — Indefinite leave to remain", url: "https://www.gov.uk/indefinite-leave-to-remain" }],
+  steps: [
+    { title: "Check eligibility", description: "Most routes require 5 continuous years in the UK, passing the Life in the UK test, English level B1+, and not exceeding 180 days' absence in any 12-month period.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous residence in UK confirmed", item_type: "action" },
+      { label: "Absences checked (max 180 days per year)", item_type: "action" },
+      { label: "Life in the UK test passed", item_type: "document" },
+      { label: "English B1 SELT certificate obtained (if required for your route)", item_type: "document" },
+    ]},
+    { title: "Apply online and pay", description: "Apply on GOV.UK. Choose standard, priority, or super-priority service.", estimated_duration: "1 day", checklist_items: [
+      { label: "Online ILR application submitted", item_type: "action" },
+      { label: "Application fee paid (approx. £2,885)", item_type: "payment" },
+      { label: "Biometric Residence Permit (BRP) or eVisa issued", item_type: "document" },
+    ]},
+  ],
+};
+
+const ukCitizenship: ProcessTemplate = {
+  id: "uk_citizenship",
+  keywords: ["british citizenship", "uk naturalisation", "become british", "british passport", "uk citizenship application"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office",
+  title: "British Citizenship by Naturalisation",
+  summary: "After holding ILR (or settled status) for 12 months (or immediately if married to a British citizen), you can apply for British citizenship by naturalisation.",
+  timeline_summary: "Processing takes 6–9 months. UK generally does not allow dual citizenship with all countries but does not require renunciation on naturalisation.",
+  next_action: "Confirm you have held ILR/settled status for 12 months and meet the residence and language requirements.",
+  official_sources: [{ title: "GOV.UK — British citizenship", url: "https://www.gov.uk/british-citizenship" }],
+  steps: [
+    { title: "Check eligibility", description: "Must have ILR/settled status for 12 months, 5 years of UK residence (3 if spouse of British citizen), no more than 450 days' absence in 5 years (90 in final year), Life in the UK test passed, English B1+.", estimated_duration: "1 week", checklist_items: [
+      { label: "ILR/settled status held for 12 months confirmed", item_type: "action" },
+      { label: "Absence record checked (max 450 days in 5 years, 90 in final year)", item_type: "action" },
+      { label: "Life in the UK test certificate", item_type: "document" },
+      { label: "English B1+ certificate (if required)", item_type: "document" },
+    ]},
+    { title: "Apply online and attend ceremony", description: "Apply via GOV.UK, pay the fee, and if approved attend a citizenship ceremony.", estimated_duration: "6–9 months", checklist_items: [
+      { label: "Online application submitted", item_type: "action" },
+      { label: "Application fee paid (£1,500)", item_type: "payment" },
+      { label: "Biometrics submitted", item_type: "action" },
+      { label: "Approval letter received", item_type: "document" },
+      { label: "Citizenship ceremony attended", item_type: "appointment" },
+      { label: "Certificate of naturalisation received", item_type: "document" },
+      { label: "British passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const ukAsylum: ProcessTemplate = {
+  id: "uk_asylum",
+  keywords: ["uk asylum", "asylum uk", "refugee uk", "protection uk", "asylum seeker uk", "home office asylum"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office",
+  title: "Asylum Application — United Kingdom",
+  summary: "Anyone in the UK who fears persecution in their home country can claim asylum. Claims must be made as soon as possible after arrival.",
+  timeline_summary: "The Home Office aims to decide within 6 months but many cases take longer.",
+  next_action: "Claim asylum as soon as possible — delays can negatively affect your case. Go to the Asylum Intake Unit or call the Home Office.",
+  official_sources: [{ title: "GOV.UK — Claim asylum", url: "https://www.gov.uk/claim-asylum" }],
+  steps: [
+    { title: "Make your asylum claim", description: "Call the Home Office Asylum Intake Unit or attend in person. You will be screened and given an asylum registration card (ARC).", estimated_duration: "1 day", checklist_items: [
+      { label: "Asylum Intake Unit contacted or attended in person", item_type: "action" },
+      { label: "Screening interview completed", item_type: "appointment" },
+      { label: "Asylum Registration Card (ARC) received", item_type: "document" },
+    ]},
+    { title: "Substantive interview", description: "The Home Office conducts a detailed interview about your asylum claim. You have the right to legal representation.", estimated_duration: "Scheduled by Home Office", checklist_items: [
+      { label: "Legal representative arranged (Legal Aid available)", item_type: "action" },
+      { label: "Substantive asylum interview attended", item_type: "appointment" },
+      { label: "Any additional evidence submitted", item_type: "document" },
+    ]},
+    { title: "Await decision", description: "The Home Office issues a decision. If refused, you can appeal to the First-tier Tribunal (Immigration and Asylum Chamber).", estimated_duration: "6–24 months", checklist_items: [
+      { label: "Decision letter received", item_type: "document" },
+      { label: "If approved: refugee status and permission to stay granted", item_type: "action" },
+      { label: "If refused: appeal to First-tier Tribunal within 14 days", item_type: "action" },
+    ]},
+  ],
+};
+
+const ukEUSS: ProcessTemplate = {
+  id: "uk_euss",
+  keywords: ["eu settlement scheme", "euss uk", "settled status uk", "pre-settled status", "eu citizen uk", "brexit uk residence"],
+  destination_country: "United Kingdom",
+  jurisdiction: "United Kingdom",
+  authority_name: "UK Home Office",
+  title: "EU Settlement Scheme (EUSS) — UK",
+  summary: "EU, EEA and Swiss citizens who were living in the UK before 31 December 2020 can apply for settled or pre-settled status under the EUSS. The scheme remains open for late applications.",
+  timeline_summary: "Most applications decided within 5 working days. Some take longer if evidence is needed.",
+  next_action: "Apply via the EU Exit: ID Document Check app or online if you have a valid EU identity document or BRP.",
+  official_sources: [{ title: "GOV.UK — EU Settlement Scheme", url: "https://www.gov.uk/settled-status-eu-citizens-families" }],
+  steps: [
+    { title: "Check eligibility", description: "You must be an EU/EEA/Swiss citizen (or their family member) who was living in the UK before 31 December 2020. Settled status requires 5 years' continuous residence; pre-settled status for less than 5 years.", estimated_duration: "1 day", checklist_items: [
+      { label: "EU/EEA/Swiss nationality or qualifying family member confirmed", item_type: "action" },
+      { label: "UK residence before 31 Dec 2020 confirmed", item_type: "action" },
+      { label: "Years of UK residence calculated (settled = 5 years, pre-settled = less)", item_type: "action" },
+    ]},
+    { title: "Apply online or via app", description: "Apply for free using the UKVI online service. Use the EU Exit: ID Document Check app to scan your identity document.", estimated_duration: "30 minutes", checklist_items: [
+      { label: "Application started at gov.uk/settled-status-eu-citizens-families", item_type: "action" },
+      { label: "Identity verified via app or online", item_type: "action" },
+      { label: "Proof of UK residence uploaded (if needed)", item_type: "document" },
+      { label: "Settled or pre-settled status granted (digital status — no physical card)", item_type: "document" },
+    ]},
+  ],
+};
+
+// ── Finland — Migri ────────────────────────────────────────────────────────
+
+const finlandWorkPermit: ProcessTemplate = {
+  id: "fi_work_permit",
+  keywords: ["finland work permit", "work finland", "residence permit employee finland", "työlupa", "migri work", "oleskelulupa työ"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri (Finnish Immigration Service)",
+  title: "Residence Permit for Employee — Finland",
+  summary: "Non-EU/EEA nationals with a job offer in Finland apply for a residence permit for an employed person (työntekijän oleskelulupa) via Migri. The employer must first confirm the job meets Finnish labour conditions.",
+  timeline_summary: "Processing takes 1–3 months. Apply online via Enter Finland before arriving.",
+  next_action: "Your employer submits their part of the application first via Enter Finland, then you complete the rest.",
+  official_sources: [{ title: "Migri — Residence permit for employees", url: "https://migri.fi/en/residence-permit-for-an-employed-person" }],
+  steps: [
+    { title: "Employer submits their part", description: "The employer fills in the employer section in Enter Finland (enterfinland.fi), confirming the job terms meet Finnish standards.", estimated_duration: "1 week", checklist_items: [
+      { label: "Employer registered and section completed in Enter Finland", item_type: "action" },
+      { label: "Employment contract signed", item_type: "document" },
+    ]},
+    { title: "Applicant submits online application", description: "Complete your part of the application in Enter Finland, attach required documents, and pay the fee.", estimated_duration: "1 day", checklist_items: [
+      { label: "Account created at enterfinland.fi", item_type: "action" },
+      { label: "Application form completed", item_type: "action" },
+      { label: "Valid passport scanned and uploaded", item_type: "document" },
+      { label: "Processing fee paid (€490 approx.)", item_type: "payment" },
+    ]},
+    { title: "Visit Finnish mission for biometrics", description: "Attend the Finnish embassy or consulate in your home country to give biometrics.", estimated_duration: "Appointment dependent", checklist_items: [
+      { label: "Embassy appointment booked", item_type: "appointment" },
+      { label: "Biometrics submitted at embassy", item_type: "action" },
+      { label: "Permit decision received", item_type: "document" },
+      { label: "Residence permit card collected at police station in Finland", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandStudentPermit: ProcessTemplate = {
+  id: "fi_student_permit",
+  keywords: ["finland student permit", "study finland", "student visa finland", "university finland", "opiskelijan oleskelulupa", "migri student"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri",
+  title: "Student Residence Permit — Finland",
+  summary: "Non-EU/EEA students accepted at a Finnish university or institution of higher education must apply for a student residence permit via Enter Finland before arriving.",
+  timeline_summary: "Apply 2–3 months before studies begin. Processing takes 1–2 months.",
+  next_action: "Get your acceptance letter from a Finnish institution, then apply via enterfinland.fi.",
+  official_sources: [{ title: "Migri — Student residence permit", url: "https://migri.fi/en/student-s-residence-permit" }],
+  steps: [
+    { title: "Obtain acceptance letter", description: "Apply to a Finnish university or higher education institution and receive an official acceptance.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Finnish institution identified and applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply via Enter Finland", description: "Complete the student residence permit application online.", estimated_duration: "1–2 months processing", checklist_items: [
+      { label: "Application submitted at enterfinland.fi", item_type: "action" },
+      { label: "Acceptance letter uploaded", item_type: "document" },
+      { label: "Proof of funds (approx. €560/month) uploaded", item_type: "document" },
+      { label: "Fee paid (€350 approx.)", item_type: "payment" },
+      { label: "Biometrics at Finnish embassy submitted", item_type: "appointment" },
+      { label: "Permit card collected at police station in Finland", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandPermanentResidence: ProcessTemplate = {
+  id: "fi_permanent_residence",
+  keywords: ["finland permanent residence", "pysyvä oleskelulupa", "settle finland", "4 years finland", "permanent permit finland"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri",
+  title: "Permanent Residence Permit — Finland",
+  summary: "After 4 years of continuous residence in Finland on a continuous permit (type A), non-EU nationals can apply for a permanent residence permit (pysyvä oleskelulupa, type P).",
+  timeline_summary: "Processing takes 1–3 months via Enter Finland.",
+  next_action: "Confirm you have held a continuous permit (A) for 4 years without long breaks from Finland.",
+  official_sources: [{ title: "Migri — Permanent residence permit", url: "https://migri.fi/en/permanent-residence-permit" }],
+  steps: [
+    { title: "Check eligibility", description: "4 continuous years on a continuous permit (A), no serious criminal convictions, and not lived mainly outside Finland.", estimated_duration: "1 week", checklist_items: [
+      { label: "4 years on continuous permit (A) confirmed", item_type: "action" },
+      { label: "No long absences from Finland (generally max 2 years total)", item_type: "action" },
+    ]},
+    { title: "Apply via Enter Finland", description: "Submit the application online and pay the fee.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Application submitted at enterfinland.fi", item_type: "action" },
+      { label: "Current permit and passport uploaded", item_type: "document" },
+      { label: "Fee paid (€160 approx.)", item_type: "payment" },
+      { label: "Permit decision received", item_type: "document" },
+      { label: "Permanent permit card collected at police station", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandCitizenship: ProcessTemplate = {
+  id: "fi_citizenship",
+  keywords: ["finnish citizenship", "suomen kansalaisuus", "naturalisation finland", "become finnish", "finnish passport"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri",
+  title: "Finnish Citizenship by Naturalisation",
+  summary: "After 5 years of continuous residence in Finland (4 if a Nordic citizen), applicants can apply for Finnish citizenship. Finland requires renouncing prior citizenship in most cases, but dual citizenship is allowed with many countries.",
+  timeline_summary: "Processing takes 6–12 months.",
+  next_action: "Check the residency and language requirements, then apply via Enter Finland.",
+  official_sources: [{ title: "Migri — Finnish citizenship", url: "https://migri.fi/en/citizenship" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of continuous residence on a permanent permit (P) or long-term EU permit, Finnish or Swedish language proficiency (A2 level minimum, B1 preferred), no serious criminal convictions.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous residence confirmed", item_type: "action" },
+      { label: "Permanent permit (P) held", item_type: "document" },
+      { label: "Finnish or Swedish language proficiency confirmed", item_type: "action" },
+    ]},
+    { title: "Apply via Enter Finland", description: "Submit the citizenship application online and pay the fee.", estimated_duration: "6–12 months", checklist_items: [
+      { label: "Application submitted at enterfinland.fi", item_type: "action" },
+      { label: "Fee paid (€540 approx.)", item_type: "payment" },
+      { label: "Citizenship granted by Migri decision", item_type: "document" },
+      { label: "Finnish passport applied for at police station", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandHenkilotunnus: ProcessTemplate = {
+  id: "fi_henkilotunnus",
+  keywords: ["henkilötunnus", "finnish personal id", "finnish social security number", "dvv finland", "population register finland", "hetu"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "DVV (Digital and Population Data Services Agency)",
+  title: "Finnish Personal Identity Code (Henkilötunnus) — Finland",
+  summary: "The henkilötunnus (hetu) is Finland's personal identity code, required for banking, healthcare, employment, and most public services. It is issued by DVV when you register as a Finnish resident.",
+  timeline_summary: "Registration can be done at a DVV service point. The code is issued on the spot or within a few days.",
+  next_action: "Visit a DVV service point with your residence permit and passport to register.",
+  official_sources: [{ title: "DVV — Registration for persons moving to Finland", url: "https://dvv.fi/en/registration-of-persons-moving-to-finland" }],
+  steps: [
+    { title: "Visit DVV service point", description: "Attend a DVV service point in person with your valid residence permit and passport.", estimated_duration: "1 day", checklist_items: [
+      { label: "DVV service point located (dvv.fi)", item_type: "action" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Residence permit card", item_type: "document" },
+      { label: "Henkilötunnus issued at appointment", item_type: "document" },
+    ]},
+    { title: "Use henkilötunnus for services", description: "With your code, register with the tax authority (Vero), open a bank account, register with a health centre, and sign up for Kela (Social Insurance Institution).", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Tax card (verokortti) applied for at Vero (vero.fi)", item_type: "action" },
+      { label: "Kela registration completed for health insurance", item_type: "action" },
+      { label: "Bank account opened", item_type: "action" },
+      { label: "Local health centre (terveyskeskus) registered with", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Switzerland — SEM / Cantonal Migration Offices ─────────────────────────
+
+const switzerlandBPermit: ProcessTemplate = {
+  id: "ch_b_permit",
+  keywords: ["switzerland b permit", "b aufenthaltsbewilligung", "residence permit switzerland", "work switzerland", "swiss b permit", "aufenthalt schweiz"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal Migration Office (Migrationsamt)",
+  title: "B Permit (Residence Permit) — Switzerland",
+  summary: "The B permit (Aufenthaltsbewilligung) is the standard Swiss residence permit for non-EU/EEA nationals working or living in Switzerland. It is initially issued for 1 year and renewable.",
+  timeline_summary: "Processing takes 2–4 months. Applications go through both cantonal and federal (SEM) authorities.",
+  next_action: "Your Swiss employer applies for a work permit (Arbeitsbewilligung) to the cantonal migration office — you cannot apply directly from abroad.",
+  official_sources: [{ title: "SEM — Residence permits", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt.html" }],
+  steps: [
+    { title: "Employer applies for work permit to cantonal office", description: "The Swiss employer submits a request to the cantonal migration office, which forwards it to SEM. Switzerland has annual quotas for non-EU/EEA workers.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Employer confirms job offer and Swiss salary standard met", item_type: "action" },
+      { label: "Employer submits request to cantonal Migrationsamt", item_type: "action" },
+      { label: "Cantonal + SEM approval received", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa at Swiss representation", description: "With approval, apply for a national visa (D visa) at the Swiss embassy or consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Swiss embassy appointment booked", item_type: "appointment" },
+      { label: "Approval document and passport submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Register in Switzerland and collect B permit", description: "Register at the local Einwohnerkontrolle/contrôle des habitants within 14 days of arrival.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Registered at local commune/Einwohnerkontrolle within 14 days", item_type: "action" },
+      { label: "B permit card collected from cantonal migration office", item_type: "document" },
+      { label: "AHV/IV social insurance number registered", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandCPermit: ProcessTemplate = {
+  id: "ch_c_permit",
+  keywords: ["switzerland c permit", "settlement permit switzerland", "niederlassungsbewilligung", "permanent swiss", "c aufenthalt"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal Migration Office",
+  title: "C Permit (Settlement Permit) — Switzerland",
+  summary: "The C permit (Niederlassungsbewilligung) grants permanent residence in Switzerland with no time limit. Non-EU/EEA nationals can apply after 10 years of residence (5 years for nationals of certain countries).",
+  timeline_summary: "Processing takes 2–4 months at the cantonal migration office.",
+  next_action: "Confirm your years of residence and that you meet the integration criteria.",
+  official_sources: [{ title: "SEM — Settlement permit", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/drittstaaten/niederlassungsbewilligung.html" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years of legal residence in Switzerland on a B permit (5 years for US, Canadian, Australian, New Zealand citizens and some others), good integration (language, no welfare reliance, no criminal record).", estimated_duration: "1 week", checklist_items: [
+      { label: "10 years (or 5 years for eligible nationalities) of legal residence confirmed", item_type: "action" },
+      { label: "Language proficiency confirmed (level A2+ in a national language)", item_type: "action" },
+      { label: "No welfare benefit reliance confirmed", item_type: "action" },
+      { label: "No serious criminal convictions", item_type: "action" },
+    ]},
+    { title: "Apply at cantonal migration office", description: "Submit the C permit application to the cantonal migration office (Migrationsamt).", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Application submitted at cantonal Migrationsamt", item_type: "action" },
+      { label: "Current B permit and passport submitted", item_type: "document" },
+      { label: "Language certificate uploaded", item_type: "document" },
+      { label: "Residence history documentation", item_type: "document" },
+      { label: "C permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const switzerlandStudentPermit: ProcessTemplate = {
+  id: "ch_student_permit",
+  keywords: ["switzerland student permit", "study switzerland", "student visa switzerland", "swiss university", "studienbewilligung"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal Migration Office / Swiss Representation",
+  title: "Student Residence Permit — Switzerland",
+  summary: "Non-EU/EEA students accepted at a Swiss university or higher education institution must apply for a student residence permit (Aufenthaltsbewilligung für Studierende).",
+  timeline_summary: "Apply 2–3 months before studies start. Processing takes 4–8 weeks.",
+  next_action: "Obtain your university acceptance letter, then apply for an entry visa at the Swiss consulate.",
+  official_sources: [{ title: "SEM — Students", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/drittstaaten/studium.html" }],
+  steps: [
+    { title: "Get university acceptance", description: "Apply to a Swiss university (ETH, EPFL, or cantonal universities) and receive an official acceptance letter.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Swiss institution identified and applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa at Swiss consulate", description: "Apply for a D visa for study purposes at the Swiss consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Swiss consulate appointment booked", item_type: "appointment" },
+      { label: "Acceptance letter submitted", item_type: "document" },
+      { label: "Proof of financial means (CHF ~1,500/month)", item_type: "document" },
+      { label: "Health insurance covering Switzerland", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Register in Switzerland", description: "Register at the local commune (Einwohnerkontrolle) within 14 days and collect your residence permit.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Registered at commune within 14 days", item_type: "action" },
+      { label: "Student residence permit card collected", item_type: "document" },
+      { label: "Enrolled at university and student card received", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandCitizenship: ProcessTemplate = {
+  id: "ch_citizenship",
+  keywords: ["swiss citizenship", "schweizer bürgerrecht", "naturalisation switzerland", "become swiss", "swiss passport"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal / Federal Chancellery (SEM)",
+  title: "Swiss Citizenship by Naturalisation",
+  summary: "Swiss naturalisation requires 10 years of residence in Switzerland (years aged 8–17 count double), permanent residence (C permit), integration, and approval at commune, cantonal, and federal levels. Switzerland does not generally allow dual citizenship.",
+  timeline_summary: "The process typically takes 1–3 years and involves multiple levels of approval.",
+  next_action: "Confirm you have a C permit and 10 qualifying years of residence, then contact your commune to start the process.",
+  official_sources: [{ title: "SEM — Naturalisation", url: "https://www.sem.admin.ch/sem/en/home/themen/buergerrecht.html" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years of residence in Switzerland (years age 8–17 count double), C permit held, good integration (language, knowledge of Switzerland, no criminal record, financially independent).", estimated_duration: "1 week", checklist_items: [
+      { label: "10 qualifying years of residence confirmed", item_type: "action" },
+      { label: "C permit held", item_type: "document" },
+      { label: "Language proficiency (B1 in a national language)", item_type: "action" },
+      { label: "Swiss citizenship renunciation of prior nationality considered", item_type: "action" },
+    ]},
+    { title: "Apply at commune level", description: "Contact your commune (Gemeinde/commune) to begin the naturalisation application. Each commune has its own requirements and integration test.", estimated_duration: "6–12 months", checklist_items: [
+      { label: "Commune naturalisation application submitted", item_type: "action" },
+      { label: "Integration test / interview at commune level passed", item_type: "appointment" },
+      { label: "Commune approval received", item_type: "document" },
+    ]},
+    { title: "Cantonal and federal approval", description: "After commune approval, the application goes to the canton and then to SEM for federal approval.", estimated_duration: "6–18 months", checklist_items: [
+      { label: "Cantonal naturalisation application processed", item_type: "action" },
+      { label: "Federal SEM approval received", item_type: "document" },
+      { label: "Swiss passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandAsylum: ProcessTemplate = {
+  id: "ch_asylum",
+  keywords: ["asylum switzerland", "asyl schweiz", "refugee switzerland", "sem asylum", "schutzstatus schweiz", "asylum seeker switzerland"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "SEM (State Secretariat for Migration)",
+  title: "Asylum Application — Switzerland",
+  summary: "Anyone who needs protection in Switzerland can apply for asylum. Applications are submitted at a federal asylum centre (Bundesasylzentrum). Switzerland has an accelerated procedure for most cases.",
+  timeline_summary: "Accelerated procedure: decision within 140 days. Extended procedure: up to several years. You may stay in Switzerland while your case is pending.",
+  next_action: "Go to a federal asylum centre (Bundesasylzentrum / Centre fédéral pour requérants d'asile) and declare your intention to seek asylum.",
+  official_sources: [{ title: "SEM — Asylum procedure", url: "https://www.sem.admin.ch/sem/en/home/asyl/asylverfahren.html" }],
+  steps: [
+    { title: "Register at federal asylum centre", description: "Go to any federal asylum centre and declare you want to apply for asylum. You will be assigned to a centre for processing.", estimated_duration: "1 day", checklist_items: [
+      { label: "Federal asylum centre visited and asylum declared", item_type: "action" },
+      { label: "Biometrics taken", item_type: "action" },
+      { label: "Any identity documents submitted", item_type: "document" },
+      { label: "Asylum application (N-registration) confirmed", item_type: "document" },
+    ]},
+    { title: "Asylum hearing", description: "SEM conducts a detailed hearing on your reasons for fleeing. You have the right to legal representation and an interpreter.", estimated_duration: "Weeks to months", checklist_items: [
+      { label: "Legal representative arranged (free representation available)", item_type: "action" },
+      { label: "Hearing attended with interpreter", item_type: "appointment" },
+    ]},
+    { title: "Await decision", description: "SEM issues a decision. If rejected, you can appeal to the Federal Administrative Court (TAF) within 30 days.", estimated_duration: "Months to years", checklist_items: [
+      { label: "Decision received", item_type: "document" },
+      { label: "If approved: refugee status and residence permit (B) issued", item_type: "action" },
+      { label: "If rejected: appeal to Federal Administrative Court within 30 days", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Ireland — INIS / ISD ───────────────────────────────────────────────────
+
+const irelandWorkPermit: ProcessTemplate = {
+  id: "ie_work_permit",
+  keywords: ["ireland work permit", "employment permit ireland", "work ireland", "ireland job", "critical skills ireland", "general employment permit"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "Department of Enterprise, Trade and Employment (DETE)",
+  title: "General Employment Permit — Ireland",
+  summary: "Non-EU/EEA nationals with a job offer earning at least €34,000/year can apply for a General Employment Permit. The employer must demonstrate the position was advertised to Irish/EU candidates first (Labour Market Needs Test).",
+  timeline_summary: "Processing takes 2–4 months. Apply before travelling to Ireland.",
+  next_action: "Confirm your salary meets the €34,000 threshold and that your employer has completed the Labour Market Needs Test.",
+  official_sources: [{ title: "DETE — Employment permits", url: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/" }],
+  steps: [
+    { title: "Employer completes Labour Market Needs Test", description: "The employer must advertise the role to Irish/EU candidates first and show no suitable candidate was found, unless the role is on the Highly Skilled Eligible Occupations List.", estimated_duration: "4–6 weeks", checklist_items: [
+      { label: "Role advertised on national jobs site (jobs.ie or similar) for min. 28 days", item_type: "action" },
+      { label: "EURES advertisement placed", item_type: "action" },
+      { label: "No suitable Irish/EU candidate confirmed", item_type: "action" },
+    ]},
+    { title: "Apply online via EPOS", description: "Submit the employment permit application via the EPOS (Employment Permits Online System). Either the employer or employee can apply.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Application submitted on epos.enterprise.gov.ie", item_type: "action" },
+      { label: "Signed employment contract uploaded", item_type: "document" },
+      { label: "Passport copy uploaded", item_type: "document" },
+      { label: "Fee paid (€500–€1,000 depending on permit duration)", item_type: "payment" },
+      { label: "Employment permit received", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa and register in Ireland", description: "If visa required, apply at Irish embassy. After arrival, register with GNIB/IRP within 90 days.", estimated_duration: "First month in Ireland", checklist_items: [
+      { label: "Irish visa applied for at embassy (if required)", item_type: "action" },
+      { label: "GNIB/IRP registration appointment booked at aislingregistrations.inis.gov.ie", item_type: "appointment" },
+      { label: "IRP (Irish Residence Permit) card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandStudentVisa: ProcessTemplate = {
+  id: "ie_student_visa",
+  keywords: ["ireland student visa", "study ireland", "irish university", "student permit ireland", "stamp 2 ireland"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "INIS (Irish Naturalisation and Immigration Service)",
+  title: "Student Visa (Stamp 2) — Ireland",
+  summary: "Non-EU/EEA students enrolled in a full-time course on Ireland's Interim List of Eligible Programmes (ILEP) must apply for a student visa and register for Stamp 2 permission.",
+  timeline_summary: "Visa processing takes 4–8 weeks. Apply at least 3 months before your course starts.",
+  next_action: "Confirm your course is on the ILEP list, then apply for a D student visa at the Irish Naturalisation and Immigration Service.",
+  official_sources: [{ title: "INIS — Student visa", url: "https://www.irishimmigration.ie/coming-to-study-in-ireland/" }],
+  steps: [
+    { title: "Enrol in an ILEP course", description: "Your course must be on Ireland's Interim List of Eligible Programmes and full-time (at least 15 hours/week).", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Course confirmed on ILEP list", item_type: "action" },
+      { label: "Enrolment letter received", item_type: "document" },
+    ]},
+    { title: "Apply for student visa online", description: "Apply via the Online Visa Application System (AVATS).", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Application submitted at visas.inis.gov.ie", item_type: "action" },
+      { label: "Enrolment letter and proof of tuition fees paid uploaded", item_type: "document" },
+      { label: "Proof of funds (€7,000+ for 1 year)", item_type: "document" },
+      { label: "Visa fee paid (€60 single entry)", item_type: "payment" },
+    ]},
+    { title: "Arrive and register for Stamp 2", description: "Register at the GNIB/IRP within 90 days of arrival to receive Stamp 2 permission.", estimated_duration: "First month", checklist_items: [
+      { label: "IRP registration appointment booked", item_type: "appointment" },
+      { label: "IRP card (Stamp 2) collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandStamp4: ProcessTemplate = {
+  id: "ie_stamp4",
+  keywords: ["stamp 4 ireland", "ireland permanent", "long term ireland", "inis stamp 4", "ireland settlement", "indefinite stay ireland"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "INIS",
+  title: "Stamp 4 (Long-Term Residence) — Ireland",
+  summary: "Stamp 4 gives the right to work and live in Ireland without a separate work permit. It is granted after 5 years of legal residence, to refugees, and to others who qualify. It leads to citizenship eligibility.",
+  timeline_summary: "Applications are assessed by INIS; processing times vary (months to over a year currently).",
+  next_action: "Check your eligibility: 5 years of legal residence on certain stamps, or qualifying status (refugee, family member of Irish citizen, etc.).",
+  official_sources: [{ title: "INIS — Long term residence", url: "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/long-term-residence/" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of legal residence on Stamp 1, 1G, 2, 2A or 3 (excluding time on Stamp 2 for English language courses). Or qualifying as a refugee, family member of Irish citizen, etc.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of eligible legal residence confirmed", item_type: "action" },
+      { label: "No serious criminal convictions", item_type: "action" },
+    ]},
+    { title: "Apply to INIS", description: "Submit a long-term residence application by post or online to INIS.", estimated_duration: "Months to 1 year+", checklist_items: [
+      { label: "Application submitted to INIS", item_type: "action" },
+      { label: "All previous IRP cards / immigration stamps included", item_type: "document" },
+      { label: "Passport copies included", item_type: "document" },
+      { label: "Stamp 4 permission granted and IRP renewed", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandCitizenship: ProcessTemplate = {
+  id: "ie_citizenship",
+  keywords: ["irish citizenship", "ireland naturalisation", "become irish", "irish passport", "citizenship ireland"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "INIS / Department of Justice",
+  title: "Irish Citizenship by Naturalisation",
+  summary: "After 5 years of continuous legal residence in Ireland (1 year immediately before the application + 4 of the previous 8 years), you can apply for Irish citizenship. Ireland allows dual citizenship.",
+  timeline_summary: "Processing currently takes 20–24 months.",
+  next_action: "Confirm your reckonable residence adds up to 5 years and check for the next INIS naturalisation application window.",
+  official_sources: [{ title: "INIS — Naturalisation", url: "https://www.irishimmigration.ie/citizenship/naturalisation/" }],
+  steps: [
+    { title: "Calculate reckonable residence", description: "The year immediately before your application must be on Stamp 4/5/6 or equivalent. The previous 8 years must include at least 4 reckonable years. Time on Stamp 1 for studies does not fully count.", estimated_duration: "1 week", checklist_items: [
+      { label: "Reckonable residence years calculated", item_type: "action" },
+      { label: "1 year immediately before application on qualifying stamp confirmed", item_type: "action" },
+      { label: "Good character requirement considered (no serious convictions)", item_type: "action" },
+    ]},
+    { title: "Apply online via INIS", description: "Submit naturalisation application via the INIS online portal when the application window opens.", estimated_duration: "20–24 months processing", checklist_items: [
+      { label: "Application submitted online", item_type: "action" },
+      { label: "Application fee paid (€175, waived for refugees)", item_type: "payment" },
+      { label: "All passport copies and immigration history submitted", item_type: "document" },
+      { label: "Certificate of naturalisation received", item_type: "document" },
+      { label: "Declaration of fidelity made at ceremony", item_type: "appointment" },
+      { label: "Irish passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Austria — AMS / MA35 ───────────────────────────────────────────────────
+
+const austriaRedWhiteRedCard: ProcessTemplate = {
+  id: "at_red_white_red_card",
+  keywords: ["austria red white red card", "rot weiss rot karte", "work austria", "skilled worker austria", "austria employment", "rwr karte"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Austrian Public Employment Service (AMS) / MA35",
+  title: "Red-White-Red Card — Austria",
+  summary: "The Red-White-Red (RWR) Card grants non-EU/EEA skilled workers the right to live and work in Austria. It is points-based and covers several categories: Very Highly Qualified Workers, Skilled Workers in Shortage Occupations, and others.",
+  timeline_summary: "Processing takes 4–8 weeks. Applications are submitted to the Austrian embassy or MA35 (in Vienna).",
+  next_action: "Check the online points calculator to see if you qualify, and identify the correct RWR Card category.",
+  official_sources: [{ title: "Migration.gv.at — Red-White-Red Card", url: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/red-white-red-card/" }],
+  steps: [
+    { title: "Check points eligibility", description: "Use the online points calculator at migration.gv.at. Skilled workers in shortage occupations need a job offer and 55 points; very highly qualified workers need 70 points without a job offer.", estimated_duration: "1 week", checklist_items: [
+      { label: "Points calculated using migration.gv.at calculator", item_type: "action" },
+      { label: "RWR Card category identified", item_type: "action" },
+      { label: "Job offer obtained (for most categories)", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy or AMS/MA35", description: "Apply at the Austrian embassy abroad (if outside Austria) or at AMS/MA35 (if already in Austria on another status).", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Application submitted with all required documents", item_type: "action" },
+      { label: "University degree or professional qualification certificates", item_type: "document" },
+      { label: "Language certificate (German B1 or English B2 for some categories)", item_type: "document" },
+      { label: "Salary confirmation meeting Austrian collective agreement level", item_type: "document" },
+      { label: "Fee paid (approx. €160)", item_type: "payment" },
+    ]},
+    { title: "Receive RWR Card and register in Austria", description: "On approval, collect your RWR Card and register at the local Meldeamt within 3 days of moving in.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "RWR Card collected", item_type: "document" },
+      { label: "Meldezettel (address registration) completed at Meldeamt within 3 days", item_type: "action" },
+      { label: "Social insurance (ÖGK) registered with employer", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaStudentVisa: ProcessTemplate = {
+  id: "at_student_visa",
+  keywords: ["austria student visa", "study austria", "student permit austria", "vienna university", "studentenvisum österreich"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Austrian Embassy / MA35",
+  title: "Student Residence Permit — Austria",
+  summary: "Non-EU/EEA students accepted at an Austrian university must apply for a student residence permit (Aufenthaltsbewilligung Student).",
+  timeline_summary: "Processing takes 4–8 weeks at the Austrian embassy or MA35.",
+  next_action: "Get an acceptance letter from an Austrian university and apply at the Austrian embassy in your home country.",
+  official_sources: [{ title: "Migration.gv.at — Students", url: "https://www.migration.gv.at/en/types-of-immigration/temporary-immigration/students/" }],
+  steps: [
+    { title: "Get university acceptance", description: "Apply to an Austrian university (e.g. University of Vienna, TU Vienna, WU Vienna) and receive an acceptance letter.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Austrian university applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy", description: "Submit the student residence permit application at the Austrian embassy in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Austrian embassy appointment booked", item_type: "appointment" },
+      { label: "Acceptance letter submitted", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €1,000/month)", item_type: "document" },
+      { label: "Health insurance covering Austria", item_type: "document" },
+      { label: "Accommodation proof", item_type: "document" },
+      { label: "Fee paid (approx. €160)", item_type: "payment" },
+    ]},
+    { title: "Register in Austria", description: "Register at the Meldeamt within 3 days of moving in and collect your residence permit card from MA35.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Meldezettel completed at Meldeamt within 3 days", item_type: "action" },
+      { label: "Residence permit card collected from MA35", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaCitizenship: ProcessTemplate = {
+  id: "at_citizenship",
+  keywords: ["austrian citizenship", "österreichische staatsbürgerschaft", "naturalisation austria", "become austrian", "austrian passport"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Provincial Government (Landesregierung)",
+  title: "Austrian Citizenship by Naturalisation",
+  summary: "After 10 years of legal residence in Austria (6 years for those with sustained integration), applicants can apply for Austrian citizenship. Austria strictly prohibits dual citizenship in most cases.",
+  timeline_summary: "Processing takes 12–24 months.",
+  next_action: "Confirm your years of legal residence and whether you must renounce your current citizenship before applying.",
+  official_sources: [{ title: "HELP.gv.at — Staatsbürgerschaft", url: "https://www.help.gv.at/Portal.Node/hlpd/public/content/16/Seite.160400.html" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years of legal residence (6 with sustained integration), no welfare dependency, stable income, German language B1 minimum, no serious criminal record, renunciation of prior citizenship required.", estimated_duration: "1 week", checklist_items: [
+      { label: "10 years (or 6 years with sustained integration) legal residence confirmed", item_type: "action" },
+      { label: "German language B1 certificate obtained", item_type: "document" },
+      { label: "Austrian civics knowledge (Staatsbürgerkunde) confirmed", item_type: "action" },
+      { label: "Prior citizenship renunciation plan reviewed — Austria generally requires it", item_type: "action" },
+    ]},
+    { title: "Apply at provincial government office", description: "Submit the naturalisation application to the relevant provincial government (Landesregierung) in your federal state.", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Application submitted at Landesregierung", item_type: "action" },
+      { label: "All identity and residence documents submitted", item_type: "document" },
+      { label: "Fee paid", item_type: "payment" },
+      { label: "Approval and citizenship certificate received", item_type: "document" },
+      { label: "Austrian passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaMeldung: ProcessTemplate = {
+  id: "at_meldezettel",
+  keywords: ["meldezettel austria", "meldeamt austria", "address registration austria", "anmeldung austria", "register address austria"],
+  destination_country: "Austria",
+  jurisdiction: "Austria",
+  authority_name: "Meldeamt (Registration Office)",
+  title: "Address Registration (Meldezettel) — Austria",
+  summary: "Everyone living in Austria must register their address at the local Meldeamt within 3 days of moving in. The Meldezettel confirmation is needed for almost all services in Austria.",
+  timeline_summary: "Takes about 30 minutes. Done at the local Meldeamt (often inside the Magistrat or Gemeindeamt).",
+  next_action: "Bring the completed registration form (Meldezettel) signed by your landlord to your local Meldeamt within 3 days of arrival.",
+  official_sources: [{ title: "HELP.gv.at — Meldezettel", url: "https://www.help.gv.at/Portal.Node/hlpd/public/content/45/Seite.450402.html" }],
+  steps: [
+    { title: "Obtain and complete the Meldezettel form", description: "Download the form from the Meldeamt website (or get it at the office). Your landlord must sign it.", estimated_duration: "1 day", checklist_items: [
+      { label: "Meldezettel form obtained and completed", item_type: "document" },
+      { label: "Landlord signature obtained on form", item_type: "document" },
+    ]},
+    { title: "Submit at Meldeamt", description: "Visit the Meldeamt with the form and your passport. No appointment usually needed.", estimated_duration: "30 minutes", checklist_items: [
+      { label: "Meldeamt visited within 3 days of moving in", item_type: "action" },
+      { label: "Valid passport or ID card", item_type: "document" },
+      { label: "Signed Meldezettel submitted", item_type: "document" },
+      { label: "Meldezettel confirmation (Meldebestätigung) received", item_type: "document" },
+    ]},
+    { title: "Use Meldezettel for other registrations", description: "Required for bank account, health insurance (ÖGK), tax number, and residence permit applications.", estimated_duration: "Ongoing", checklist_items: [
+      { label: "Bank account opened", item_type: "action" },
+      { label: "Social insurance (ÖGK/GKK) registered", item_type: "action" },
+      { label: "E-Card (health card) applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Portugal — AIMA / SEF ──────────────────────────────────────────────────
+
+const portugalD2Visa: ProcessTemplate = {
+  id: "pt_d2_visa",
+  keywords: ["portugal d2 visa", "entrepreneur visa portugal", "freelance visa portugal", "self employed portugal", "portugal nomad visa", "startup portugal"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo) / Portuguese Consulate",
+  title: "D2 Visa (Entrepreneur / Freelance) — Portugal",
+  summary: "The D2 visa allows entrepreneurs, freelancers, and self-employed individuals to live and work in Portugal. It is also used for independent service providers (prestadores de serviços).",
+  timeline_summary: "Consulate processing takes 4–8 weeks. After arrival, apply for a residence permit at AIMA within 4 months.",
+  next_action: "Prepare your business/freelance plan and proof of clients or contracts, then apply at the Portuguese consulate.",
+  official_sources: [{ title: "Vistos.mne.gov.pt — D2", url: "https://vistos.mne.gov.pt/en/national-visas/general-information/required-documentation" }],
+  steps: [
+    { title: "Prepare documents", description: "Show viable business activity in Portugal — registered company, clients, or freelance contracts. Proof of accommodation and financial means required.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "Business plan or client contracts prepared", item_type: "document" },
+      { label: "Proof of accommodation in Portugal", item_type: "document" },
+      { label: "Proof of sufficient funds (min. €760/month roughly)", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Health insurance covering Portugal", item_type: "document" },
+    ]},
+    { title: "Apply at Portuguese consulate", description: "Submit D2 visa application at the Portuguese consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "All documents and passport submitted", item_type: "document" },
+      { label: "Visa fee paid (approx. €90)", item_type: "payment" },
+      { label: "D2 visa received (valid 4 months)", item_type: "document" },
+    ]},
+    { title: "Arrive and apply for residence permit at AIMA", description: "Within 4 months of arrival, apply for a residence permit at AIMA (formerly SEF).", estimated_duration: "Within 4 months", checklist_items: [
+      { label: "AIMA appointment booked", item_type: "appointment" },
+      { label: "Portuguese NIF (tax number) obtained at Finanças", item_type: "action" },
+      { label: "Social Security registration completed", item_type: "action" },
+      { label: "Residence permit (Autorização de Residência) applied for at AIMA", item_type: "action" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalD7Visa: ProcessTemplate = {
+  id: "pt_d7_visa",
+  keywords: ["portugal d7 visa", "passive income portugal", "retire portugal", "portugal residency passive income", "portugal digital nomad", "portugal retiree"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA / Portuguese Consulate",
+  title: "D7 Passive Income Visa — Portugal",
+  summary: "The D7 visa allows non-EU nationals with stable passive income (pension, rental income, dividends, remote work) to live in Portugal. It is popular with retirees and remote workers.",
+  timeline_summary: "Consulate processing takes 4–8 weeks. Apply for residence permit at AIMA within 4 months of arrival.",
+  next_action: "Confirm you have regular monthly income above the minimum threshold (~€760/month) and gather documents.",
+  official_sources: [{ title: "Vistos.mne.gov.pt — D7", url: "https://vistos.mne.gov.pt/en/national-visas/general-information/required-documentation" }],
+  steps: [
+    { title: "Confirm income and gather documents", description: "Monthly income must be at least 100% of Portugal's minimum wage (approx. €760) from passive sources. More is recommended for dependants.", estimated_duration: "1–2 weeks", checklist_items: [
+      { label: "Proof of regular passive income (pension statement, bank statements, investment income)", item_type: "document" },
+      { label: "Proof of accommodation in Portugal (rental or property)", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+    ]},
+    { title: "Apply at Portuguese consulate", description: "Apply at the Portuguese consulate in your country of residence.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Application form and documents submitted", item_type: "document" },
+      { label: "Visa fee paid (approx. €90)", item_type: "payment" },
+      { label: "D7 visa received", item_type: "document" },
+    ]},
+    { title: "Arrive and get residence permit", description: "Within 4 months, apply for a residence permit at AIMA.", estimated_duration: "Within 4 months", checklist_items: [
+      { label: "NIF (Portuguese tax number) obtained at Finanças", item_type: "action" },
+      { label: "AIMA appointment booked and attended", item_type: "appointment" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalWorkVisa: ProcessTemplate = {
+  id: "pt_work_visa",
+  keywords: ["portugal work visa", "work permit portugal", "visto trabalho", "authorização trabalho", "employment portugal"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA / Portuguese Consulate",
+  title: "Work Visa (D1 / Employment) — Portugal",
+  summary: "Non-EU/EEA nationals with a job offer in Portugal apply for a work visa (D1 — subordinate work). The employer must have a signed contract and proof the position could not be filled by an EU candidate.",
+  timeline_summary: "Consulate processing takes 4–8 weeks.",
+  next_action: "Your employer must sign a work contract with you before you can apply for the visa.",
+  official_sources: [{ title: "Vistos.mne.gov.pt — D1", url: "https://vistos.mne.gov.pt/en" }],
+  steps: [
+    { title: "Employer confirms job offer and signs contract", description: "A signed employment contract is required before applying. The contract must be registered with Social Security.", estimated_duration: "1–2 weeks", checklist_items: [
+      { label: "Employment contract signed", item_type: "document" },
+      { label: "Employer confirms Social Security registration", item_type: "action" },
+    ]},
+    { title: "Apply at Portuguese consulate", description: "Apply for the D1 visa at the Portuguese consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "Employment contract submitted", item_type: "document" },
+      { label: "Criminal record certificate (apostilled)", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and register", description: "Get your NIF, register with Social Security, and apply for residence permit at AIMA within 4 months.", estimated_duration: "Within 4 months", checklist_items: [
+      { label: "NIF obtained at Finanças or online", item_type: "action" },
+      { label: "Social Security number obtained", item_type: "action" },
+      { label: "Residence permit applied for at AIMA", item_type: "action" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalCitizenship: ProcessTemplate = {
+  id: "pt_citizenship",
+  keywords: ["portuguese citizenship", "cidadania portuguesa", "naturalisation portugal", "become portuguese", "portuguese passport"],
+  destination_country: "Portugal",
+  jurisdiction: "Portugal",
+  authority_name: "IRN (Instituto dos Registos e do Notariado)",
+  title: "Portuguese Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in Portugal, applicants can apply for Portuguese citizenship. Portugal allows dual citizenship and has one of the more accessible naturalisation processes in Europe.",
+  timeline_summary: "Processing takes 12–24 months currently.",
+  next_action: "Confirm 5 years of legal residence and sufficient Portuguese language skills (A2 level).",
+  official_sources: [{ title: "IRN — Nationality", url: "https://www.irn.mj.pt/IRN/sections/irn/a_registral/registo-civil/docs-e-formularios/nacionalidade/" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of legal residence, Portuguese A2 language level, no serious criminal convictions, no threat to national security.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of legal residence confirmed", item_type: "action" },
+      { label: "Portuguese A2 language certificate obtained (CIPLE exam)", item_type: "document" },
+      { label: "No disqualifying criminal history", item_type: "action" },
+    ]},
+    { title: "Apply at the registry office or online", description: "Submit naturalisation application at a Conservatória do Registo Civil or online via the IRN portal.", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Application submitted online or at registry", item_type: "action" },
+      { label: "Fee paid (approx. €250)", item_type: "payment" },
+      { label: "Birth certificate (apostilled + translated) submitted", item_type: "document" },
+      { label: "Proof of 5 years' residence submitted", item_type: "document" },
+      { label: "Language certificate submitted", item_type: "document" },
+      { label: "Naturalisation certificate received", item_type: "document" },
+      { label: "Portuguese passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Netherlands (expanded) ─────────────────────────────────────────────────
+
+const netherlandsStudentVisa: ProcessTemplate = {
+  id: "nl_student_visa",
+  keywords: ["netherlands student visa", "study netherlands", "dutch university", "student permit netherlands", "mvv student", "holland study"],
+  destination_country: "Netherlands",
+  jurisdiction: "Netherlands",
+  authority_name: "IND (Immigration and Naturalisation Service)",
+  title: "Student Residence Permit — Netherlands",
+  summary: "Non-EU/EEA students accepted at a Dutch university apply through their institution — the university sponsors the student and submits to IND on their behalf.",
+  timeline_summary: "Apply at least 3 months before your start date. IND decides within 4–8 weeks once the institution submits.",
+  next_action: "Contact your Dutch university's international office — they handle the IND application on your behalf.",
+  official_sources: [{ title: "IND — Student residence permit", url: "https://ind.nl/en/study" }],
+  steps: [
+    { title: "Get university acceptance", description: "Apply to a Dutch university and receive an official acceptance. The institution must be IND-recognised.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Dutch university accepted", item_type: "document" },
+      { label: "International office contacted about residence permit process", item_type: "action" },
+    ]},
+    { title: "University submits to IND", description: "The university submits your residence permit application to IND on your behalf. You provide them with your documents.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Passport copy provided to university", item_type: "document" },
+      { label: "Proof of sufficient funds provided (approx. €900/month)", item_type: "document" },
+      { label: "IND approval received and notified by university", item_type: "document" },
+    ]},
+    { title: "Apply for MVV entry visa (if required) and collect permit", description: "Some nationalities need an MVV (authorisation for temporary stay) entry visa before travelling. After arrival collect your residence card from IND.", estimated_duration: "2–4 weeks", checklist_items: [
+      { label: "MVV applied for at Dutch embassy if required", item_type: "action" },
+      { label: "Arrived in Netherlands", item_type: "action" },
+      { label: "Residence permit (verblijfsvergunning) collected from IND desk or sent by post", item_type: "document" },
+      { label: "BSN (citizen service number) obtained at gemeente", item_type: "action" },
+    ]},
+  ],
+};
+
+const netherlandsCitizenship: ProcessTemplate = {
+  id: "nl_citizenship",
+  keywords: ["dutch citizenship", "netherlands naturalisation", "become dutch", "dutch passport", "naturalisation nederland"],
+  destination_country: "Netherlands",
+  jurisdiction: "Netherlands",
+  authority_name: "IND / Municipality",
+  title: "Dutch Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in the Netherlands on a valid permit, applicants can apply for Dutch citizenship. The Netherlands generally requires renouncing prior citizenship.",
+  timeline_summary: "Processing takes 12–24 months.",
+  next_action: "Confirm 5 years of residence, Dutch language B1, and civic integration exam passed.",
+  official_sources: [{ title: "IND — Naturalisation", url: "https://ind.nl/en/dutch-citizenship/naturalisation" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of uninterrupted legal residence, valid residence permit, Dutch language B1 (inburgering passed or exempted), no serious criminal convictions.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of legal residence confirmed", item_type: "action" },
+      { label: "Civic integration exam (inburgering) passed or exemption confirmed", item_type: "action" },
+      { label: "No disqualifying criminal convictions", item_type: "action" },
+    ]},
+    { title: "Apply at municipality", description: "Submit naturalisation application at your local municipality (gemeente).", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Appointment booked at gemeente", item_type: "appointment" },
+      { label: "Passport, current residence permit, birth certificate submitted", item_type: "document" },
+      { label: "Fee paid (approx. €1,038)", item_type: "payment" },
+      { label: "Royal Decree of naturalisation issued", item_type: "document" },
+      { label: "Naturalisation ceremony attended", item_type: "appointment" },
+      { label: "Dutch passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const netherlandsBSN: ProcessTemplate = {
+  id: "nl_bsn",
+  keywords: ["bsn netherlands", "burgerservicenummer", "dutch citizen number", "register netherlands", "gemeente netherlands", "bsn registration"],
+  destination_country: "Netherlands",
+  jurisdiction: "Netherlands",
+  authority_name: "Municipality (Gemeente)",
+  title: "BSN Registration (Burgerservicenummer) — Netherlands",
+  summary: "The BSN (Burger Service Number) is the Dutch personal identification number required for employment, healthcare, tax, and banking. It is issued when you register at your local municipality.",
+  timeline_summary: "Registration can be done within days of arrival. BSN is issued at the appointment.",
+  next_action: "Register at your local gemeente (municipality) as soon as you have a fixed address in the Netherlands.",
+  official_sources: [{ title: "Government.nl — BSN", url: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn" }],
+  steps: [
+    { title: "Book gemeente appointment", description: "Book an appointment at your local gemeente for address registration and BSN issuance.", estimated_duration: "Days to 1 week", checklist_items: [
+      { label: "Local gemeente identified", item_type: "action" },
+      { label: "Appointment booked online or by phone", item_type: "appointment" },
+    ]},
+    { title: "Attend appointment", description: "Bring your passport, residence permit, and rental contract. BSN is issued at the appointment.", estimated_duration: "30 minutes", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Residence permit (or EU/EEA identity document)", item_type: "document" },
+      { label: "Rental contract or proof of address", item_type: "document" },
+      { label: "BSN issued", item_type: "document" },
+    ]},
+    { title: "Use BSN for services", description: "Register with health insurance (zorgverzekering), employer, and DigiD (digital government ID).", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Dutch health insurance enrolled in (mandatory within 4 months)", item_type: "action" },
+      { label: "DigiD digital ID applied for at digid.nl", item_type: "action" },
+      { label: "Employer notified of BSN for tax purposes", item_type: "action" },
+    ]},
+  ],
+};
+
+// ── Belgium — DVZ / Commune ────────────────────────────────────────────────
+
+const belgiumWorkPermit: ProcessTemplate = {
+  id: "be_work_permit",
+  keywords: ["belgium work permit", "work belgium", "single permit belgium", "permis unique belgique", "gecombineerde vergunning belgie"],
+  destination_country: "Belgium",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ (Office of Foreigners) / Regional Employment Authority",
+  title: "Single Permit (Permis Unique / Gecombineerde Vergunning) — Belgium",
+  summary: "Non-EU/EEA nationals working in Belgium need a single permit (permis unique) combining residence and work authorisation. Applications are filed jointly by employer and employee with the regional employment authority.",
+  timeline_summary: "Processing takes 4–6 months. The employer submits the application.",
+  next_action: "Your employer initiates the application to the regional employment authority (VDAB, Forem, or Actiris depending on the region).",
+  official_sources: [{ title: "DVZ — Single permit", url: "https://dofi.ibz.be/en/themes/work/single-permit" }],
+  steps: [
+    { title: "Employer applies to regional employment authority", description: "The employer submits to the regional authority: VDAB (Flanders), Forem (Wallonia), or Actiris (Brussels). A Labour Market Test applies in most cases.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Employer confirms job offer and signed contract", item_type: "document" },
+      { label: "Employer submits to regional employment authority", item_type: "action" },
+      { label: "Work permit part approved", item_type: "document" },
+    ]},
+    { title: "DVZ issues residence authorisation", description: "After regional approval, DVZ issues the residence part of the single permit.", estimated_duration: "1–2 months", checklist_items: [
+      { label: "DVZ residence authorisation received", item_type: "document" },
+      { label: "Single permit document issued", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa and register in Belgium", description: "Apply for a D visa at the Belgian embassy if outside Belgium. After arrival, register at the commune.", estimated_duration: "First month", checklist_items: [
+      { label: "Belgian embassy D visa obtained if required", item_type: "action" },
+      { label: "Registered at local commune (town hall) within 8 days", item_type: "action" },
+      { label: "Belgian eID card collected from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumStudentVisa: ProcessTemplate = {
+  id: "be_student_visa",
+  keywords: ["belgium student visa", "study belgium", "belgian university", "student permit belgium", "visa etudiant belgique"],
+  destination_country: "Belgium",
+  jurisdiction: "Belgium",
+  authority_name: "Belgian Embassy / DVZ",
+  title: "Student Visa — Belgium",
+  summary: "Non-EU/EEA students enrolled in a full-time programme at a Belgian university or recognised institution apply for a student long-stay visa (D visa for studies).",
+  timeline_summary: "Apply at least 2 months before studies start. Processing takes 4–8 weeks.",
+  next_action: "Get your Belgian university enrolment proof and apply at the Belgian embassy or consulate.",
+  official_sources: [{ title: "Belgium.be — Student visa", url: "https://dofi.ibz.be/en/themes/studies" }],
+  steps: [
+    { title: "Obtain enrolment proof", description: "Apply to a Belgian university and receive official enrolment or acceptance.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Belgian institution applied to and accepted", item_type: "action" },
+      { label: "Proof of enrolment / acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply at Belgian embassy", description: "Submit D visa application for studies at the Belgian embassy.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Embassy appointment booked", item_type: "appointment" },
+      { label: "Enrolment proof submitted", item_type: "document" },
+      { label: "Proof of sufficient funds (approx. €620/month)", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+      { label: "Visa fee paid (approx. €180)", item_type: "payment" },
+    ]},
+    { title: "Register at commune after arrival", description: "Within 8 days of arriving, register at the local commune.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Registered at commune within 8 days", item_type: "action" },
+      { label: "eID or A card (student) issued", item_type: "document" },
+      { label: "Enrolled at university and student card received", item_type: "action" },
+    ]},
+  ],
+};
+
+const belgiumCitizenship: ProcessTemplate = {
+  id: "be_citizenship",
+  keywords: ["belgian citizenship", "naturalisation belgium", "become belgian", "belgian passport", "nationalite belge", "belgisch staatsburgerschap"],
+  destination_country: "Belgium",
+  jurisdiction: "Belgium",
+  authority_name: "Municipality / Federal Justice Ministry",
+  title: "Belgian Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in Belgium with economic and social integration, applicants can apply for Belgian citizenship. Belgium allows dual citizenship.",
+  timeline_summary: "Processing takes 12–24 months.",
+  next_action: "Confirm 5 years of legal residence and that you meet the integration and income conditions.",
+  official_sources: [{ title: "Belgium.be — Naturalisation", url: "https://www.belgium.be/en/family/residence/becoming_belgian" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of legal residence, demonstrate integration (language, civic participation, employment/study), sufficient income, no serious criminal convictions.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of legal residence confirmed", item_type: "action" },
+      { label: "Language proof (Dutch, French or German — level A2 minimum)", item_type: "document" },
+      { label: "Integration evidence: employment, study, volunteer work", item_type: "document" },
+      { label: "Income above integration threshold confirmed", item_type: "action" },
+    ]},
+    { title: "Apply at commune", description: "Submit the declaration of acquisition of Belgian nationality at your local commune.", estimated_duration: "12–24 months", checklist_items: [
+      { label: "Application submitted at commune", item_type: "action" },
+      { label: "Birth certificate (apostilled + translated) submitted", item_type: "document" },
+      { label: "Residence history documentation submitted", item_type: "document" },
+      { label: "Integration evidence submitted", item_type: "document" },
+      { label: "Federal prosecution and municipal council review passed", item_type: "action" },
+      { label: "Belgian eID issued after citizenship confirmed", item_type: "document" },
+      { label: "Belgian passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
+  // France
+  franceTalentPassport,
+  franceWorkAuthorisation,
+  franceStudentVisa,
+  franceFamilyReunification,
+  franceCarteDeResident,
+  franceCitizenship,
+  franceAsylum,
+  franceEEARegistration,
+  // Portugal
+  portugalD2Visa,
+  portugalD7Visa,
+  portugalWorkVisa,
+  portugalCitizenship,
+  // Austria
+  austriaRedWhiteRedCard,
+  austriaStudentVisa,
+  austriaCitizenship,
+  austriaMeldung,
+  // Switzerland
+  switzerlandBPermit,
+  switzerlandCPermit,
+  switzerlandStudentPermit,
+  switzerlandCitizenship,
+  switzerlandAsylum,
+  // Finland
+  finlandWorkPermit,
+  finlandStudentPermit,
+  finlandPermanentResidence,
+  finlandCitizenship,
+  finlandHenkilotunnus,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
@@ -3345,6 +4608,11 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   ukSkilledWorkerVisa,
   ukGraduateVisa,
   ukYouthMobility,
+  ukFamilyVisa,
+  ukILR,
+  ukCitizenship,
+  ukAsylum,
+  ukEUSS,
   // Germany
   germanyEUBlueCard,
   germanyJobSeekerVisa,
@@ -3401,8 +4669,19 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   spainAsylum,
   // Netherlands
   netherlandsHighlySkilledMigrant,
+  netherlandsStudentVisa,
+  netherlandsCitizenship,
+  netherlandsBSN,
+  // Belgium
+  belgiumWorkPermit,
+  belgiumStudentVisa,
+  belgiumCitizenship,
   // Ireland
   irelandCriticalSkills,
+  irelandWorkPermit,
+  irelandStudentVisa,
+  irelandStamp4,
+  irelandCitizenship,
   // Australia
   australiaSkilledIndependent,
   // Canada
