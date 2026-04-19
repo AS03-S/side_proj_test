@@ -5094,6 +5094,73 @@ const irelandFamilyReunification: ProcessTemplate = {
   ],
 };
 
+const irelandPPSNumber: ProcessTemplate = {
+  id: "ie_pps_number",
+  keywords: ["PPS number", "PPSN", "personal public service number", "ireland", "DSP", "tax number"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Department of Social Protection (DSP)",
+  title: "Ireland PPS Number application",
+  summary: "Apply for a Personal Public Service (PPS) number — the Irish tax and social services identifier required for work, benefits, and public services.",
+  timeline_summary: "Appointment available within 1–4 weeks; PPS number issued immediately or within a few days by post.",
+  next_action: "Book an appointment at your local Intreo Centre or DSP office via MyWelfare.ie.",
+  steps: [
+    { title: "Book an appointment at a DSP/Intreo office", description: "You must apply in person. Book via MyWelfare.ie or by phoning your local Intreo Centre. Bring original documents — no copies accepted.", checklist_items: [
+      { label: "Appointment booked at local Intreo Centre", item_type: "appointment" },
+    ]},
+    { title: "Bring required identity documents", description: "You need photo ID and proof of address. Non-EEA nationals also need proof of right to remain in Ireland.", checklist_items: [
+      { label: "Valid passport or national identity card", item_type: "document" },
+      { label: "Proof of address in Ireland (utility bill, bank letter — dated within 3 months)", item_type: "document" },
+      { label: "IRP card or visa (non-EEA nationals)", item_type: "document" },
+      { label: "Evidence of reason for needing PPS number (employment contract, letter from employer)", item_type: "document" },
+    ]},
+    { title: "Attend appointment and receive PPS number", description: "The DSP officer verifies your documents and assigns your PPS number. It may be given on the spot or mailed to your address within a few days.", checklist_items: [
+      { label: "Appointment attended and documents verified", item_type: "appointment" },
+      { label: "PPS number received (in person or by post)", item_type: "document" },
+    ]},
+    { title: "Register PPS number with Revenue (for employment)", description: "Tell your employer your PPS number. Register for tax on Revenue's myAccount portal so your tax credits are correctly allocated.", checklist_items: [
+      { label: "PPS number provided to employer", item_type: "action" },
+      { label: "Registered on Revenue myAccount (www.revenue.ie)", item_type: "action" },
+      { label: "Tax credits confirmed on Revenue record", item_type: "action" },
+    ]},
+  ],
+};
+
+const irelandWorkingHoliday: ProcessTemplate = {
+  id: "ie_working_holiday",
+  keywords: ["working holiday", "working holiday visa", "youth mobility", "ireland", "work and travel"],
+  destination_country: "IE",
+  jurisdiction: "Ireland",
+  authority_name: "Irish Naturalisation and Immigration Service (INIS)",
+  title: "Ireland Working Holiday Authorisation",
+  summary: "Citizens of certain countries (Australia, Canada, Japan, South Korea, etc.) can apply for a working holiday authorisation to live and work in Ireland for up to 12–24 months.",
+  timeline_summary: "Apply online before travel. Processing typically 4–8 weeks. Must be under 35 (varies by country).",
+  next_action: "Check if your country has a working holiday agreement with Ireland on inis.gov.ie, then apply online before you travel.",
+  steps: [
+    { title: "Check eligibility and bilateral agreement", description: "Ireland has working holiday agreements with Australia, Canada, Japan, South Korea, Argentina, Hong Kong, New Zealand, and others. Check the current list and your country's specific age and duration limits.", checklist_items: [
+      { label: "Confirmed your country has a working holiday agreement with Ireland", item_type: "action" },
+      { label: "Confirmed you meet the age requirement (typically 18–35)", item_type: "action" },
+      { label: "Confirmed you have not previously held an Irish Working Holiday Authorisation", item_type: "action" },
+    ]},
+    { title: "Apply online before travelling", description: "Apply via the INIS online portal. You will need a valid passport, proof of funds (typically €3,000), return/onward ticket, and health insurance.", checklist_items: [
+      { label: "Valid passport (must be valid for the duration of stay)", item_type: "document" },
+      { label: "Proof of funds (bank statement showing approx. €3,000)", item_type: "document" },
+      { label: "Health insurance for the duration of stay", item_type: "document" },
+      { label: "Return or onward ticket (or proof of funds to purchase)", item_type: "document" },
+      { label: "Application submitted online and fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive Working Holiday Authorisation letter", description: "INIS emails the authorisation letter. Print it and bring it when you travel to Ireland — immigration officers at the port of entry will stamp your passport.", checklist_items: [
+      { label: "Authorisation letter received by email", item_type: "document" },
+      { label: "Authorisation letter printed and in hand for travel", item_type: "document" },
+    ]},
+    { title: "Register with GNIB on arrival", description: "Within 90 days of arrival, register at the Garda National Immigration Bureau and receive an Irish Residence Permit (IRP) card stamped with your working holiday permission.", checklist_items: [
+      { label: "GNIB/IRP registration appointment booked", item_type: "appointment" },
+      { label: "IRP card received", item_type: "document" },
+      { label: "PPS number obtained for employment", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5234,6 +5301,8 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   irelandAsylum,
   irelandEEARegistration,
   irelandFamilyReunification,
+  irelandPPSNumber,
+  irelandWorkingHoliday,
   // Australia
   australiaSkilledIndependent,
   // Canada
