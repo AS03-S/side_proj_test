@@ -128,6 +128,10 @@ export function DirectionA({ lang, onLang }: Props) {
         <div className="container-narrow" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, fontSize: 12, color: "var(--mute-2)" }}>
           <Logo size={14} />
           <span>{t.footer_copy} · {t.footer_disclaimer}</span>
+          <span style={{ display: "flex", gap: 16 }}>
+            <a href="/privacy" style={{ color: "var(--mute-2)", textDecoration: "none" }}>Privacy Policy</a>
+            <a href="/terms" style={{ color: "var(--mute-2)", textDecoration: "none" }}>Terms of Service</a>
+          </span>
         </div>
       </footer>
     </div>
