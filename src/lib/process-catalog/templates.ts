@@ -5586,6 +5586,108 @@ const portugalNIF: ProcessTemplate = {
   ],
 };
 
+const netherlandsFamilyReunification: ProcessTemplate = {
+  id: "nl_family_reunification",
+  keywords: ["family reunification", "spouse visa", "partner permit", "netherlands", "IND", "MVV", "nareis"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands family reunification (gezinshereniging)",
+  summary: "Bring a spouse, registered partner, or minor children to the Netherlands to join a non-EU resident holding a valid residence permit.",
+  timeline_summary: "3–6 months. The family member usually needs an MVV (entry visa) before travelling.",
+  next_action: "Submit a family reunification application to the IND via IND.nl and arrange an MVV at the Dutch embassy for the family member.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must have a valid residence permit for at least 1 year, sufficient income (generally above the social assistance norm), and adequate housing.", checklist_items: [
+      { label: "Confirmed residence permit valid and of sufficient duration", item_type: "action" },
+      { label: "Checked income requirement (approx. €1,800/month net)", item_type: "action" },
+      { label: "Confirmed adequate housing", item_type: "action" },
+    ]},
+    { title: "Submit application to IND", description: "Apply online or by post to the IND. Pay the application fee. IND assesses the application and sends a decision.", checklist_items: [
+      { label: "Application submitted to IND (ind.nl)", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Proof of relationship (marriage certificate, apostilled and translated)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and translated)", item_type: "document" },
+      { label: "Sponsor's residence permit and payslips", item_type: "document" },
+    ]},
+    { title: "Family member applies for MVV at Dutch embassy", description: "Once IND approves the application, the family member applies for an MVV (Machtiging tot Voorlopig Verblijf — entry visa) at the Dutch embassy in their country.", checklist_items: [
+      { label: "IND approval received", item_type: "document" },
+      { label: "MVV application submitted at Dutch embassy", item_type: "action" },
+      { label: "MVV visa issued", item_type: "document" },
+    ]},
+    { title: "Collect residence permit on arrival", description: "Within 3 days of arriving in the Netherlands, the family member must collect the residence permit sticker (verblijfssticker) from the IND desk, and register at the municipality (BRP).", checklist_items: [
+      { label: "BRP registration at local municipality within 5 days of arrival", item_type: "action" },
+      { label: "Residence permit sticker collected from IND desk", item_type: "document" },
+      { label: "Residence document (biometric card) received", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsAsylum: ProcessTemplate = {
+  id: "nl_asylum",
+  keywords: ["asylum", "refugee", "international protection", "netherlands", "IND", "COA", "asielzoeker"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "IND — Immigratie- en Naturalisatiedienst",
+  title: "Netherlands asylum procedure",
+  summary: "Apply for asylum (refugee status or subsidiary protection) in the Netherlands if you face persecution or serious harm in your home country.",
+  timeline_summary: "General asylum procedure: 6 months, but can extend to several years. Extended procedure applies in complex cases.",
+  next_action: "Register your asylum application at the COA registration centre in Ter Apel immediately upon arriving in the Netherlands.",
+  steps: [
+    { title: "Register at Ter Apel", description: "All asylum seekers must first present themselves at the COA registration location in Ter Apel (Groningen). From there you are transferred to a processing centre.", checklist_items: [
+      { label: "Registered at Ter Apel COA registration centre", item_type: "action" },
+      { label: "Any available identity documents provided", item_type: "document" },
+    ]},
+    { title: "Rest and Preparation period (Rust en Voorbereidingstijd)", description: "You receive a 6-day rest and preparation period before the formal procedure. Use this time to find legal aid (a lawyer is provided free of charge).", checklist_items: [
+      { label: "Free lawyer arranged via the Dutch Council for Refugees or IND", item_type: "action" },
+      { label: "All evidence and supporting documents gathered", item_type: "document" },
+    ]},
+    { title: "General asylum procedure interviews", description: "IND conducts up to 3 interviews: identity/nationality, travel route, and asylum grounds. Your lawyer is present. An interpreter is provided.", checklist_items: [
+      { label: "Identity and travel route interview attended", item_type: "appointment" },
+      { label: "Asylum grounds interview attended", item_type: "appointment" },
+    ]},
+    { title: "Receive IND decision", description: "IND issues a decision within 6 days (general procedure) or longer (extended procedure). If granted, you receive a residence permit. If refused, appeal within 4 weeks.", checklist_items: [
+      { label: "IND decision received", item_type: "document" },
+      { label: "Appeal filed at District Court within 4 weeks (if refused)", item_type: "action" },
+    ]},
+    { title: "Receive asylum residence permit and register with municipality", description: "On grant of asylum, you receive a 5-year residence permit and are housed by the COA until you find independent accommodation.", checklist_items: [
+      { label: "Asylum residence permit received", item_type: "document" },
+      { label: "Registered with municipality (BRP)", item_type: "action" },
+      { label: "BSN number obtained", item_type: "document" },
+    ]},
+  ],
+};
+
+const netherlandsEEARegistration: ProcessTemplate = {
+  id: "nl_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "free movement", "netherlands", "BRP", "registration"],
+  destination_country: "NL",
+  jurisdiction: "Netherlands",
+  authority_name: "Municipality (Gemeente) / IND",
+  title: "Netherlands EU/EEA residence registration",
+  summary: "EU/EEA citizens staying in the Netherlands for more than 4 months must register in the BRP (Basisregistratie Personen) at their local municipality.",
+  timeline_summary: "Register within 5 days of moving in. BSN issued the same day in most municipalities.",
+  next_action: "Book an appointment at your local Gemeente (town hall) to register your address in the BRP.",
+  steps: [
+    { title: "Find accommodation and book a municipality appointment", description: "You need a registered Dutch address before you can register in the BRP. Book an appointment at your local Gemeente. In Amsterdam, use the online appointment system.", checklist_items: [
+      { label: "Dutch rental contract or address confirmation obtained", item_type: "document" },
+      { label: "Gemeente appointment booked", item_type: "appointment" },
+    ]},
+    { title: "Register at the Gemeente and receive BSN", description: "Bring your EU passport/ID and proof of address. The Gemeente officer registers you in the BRP and issues a BSN (Burgerservicenummer — Dutch citizen service number). Workers must also show an employment contract.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Rental contract or tenancy agreement", item_type: "document" },
+      { label: "Employment contract (if applicable)", item_type: "document" },
+      { label: "BSN number issued at appointment", item_type: "document" },
+    ]},
+    { title: "Obtain a DigiD (digital identity)", description: "Register for DigiD at digid.nl to access Dutch government digital services. You need your BSN and a Dutch address.", checklist_items: [
+      { label: "DigiD registration completed at digid.nl", item_type: "action" },
+      { label: "DigiD activation letter received by post", item_type: "document" },
+    ]},
+    { title: "Register with IND after 4 months (if staying longer)", description: "If you plan to stay more than 4 months, you must notify the IND as an EU citizen exercising free movement rights. This is done automatically in some cases via the municipality.", checklist_items: [
+      { label: "IND notification completed (if staying > 4 months)", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5725,6 +5827,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   netherlandsStudentVisa,
   netherlandsCitizenship,
   netherlandsBSN,
+  netherlandsFamilyReunification,
+  netherlandsAsylum,
+  netherlandsEEARegistration,
   // Belgium
   belgiumWorkPermit,
   belgiumStudentVisa,
