@@ -5161,6 +5161,113 @@ const irelandWorkingHoliday: ProcessTemplate = {
   ],
 };
 
+const austriaFamilyReunification: ProcessTemplate = {
+  id: "at_family_reunification",
+  keywords: ["family reunification", "spouse visa", "children", "austria", "AMS", "Niederlassungsbewilligung"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Magistratisches Bezirksamt / Bezirkshauptmannschaft",
+  title: "Austria family reunification residence permit",
+  summary: "Bring a spouse or dependent children to Austria to join a third-country national holding a residence permit.",
+  timeline_summary: "3–6 months. Apply from the family member's home country before they travel.",
+  next_action: "Submit the family reunification application at the Austrian embassy in the family member's country of residence.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must hold a valid Austrian residence permit (Red-White-Red Card, Settlement Permit, or similar) and have sufficient income (approx. the Austrian Ausgleichszulagenrichtsatz threshold) and adequate housing.", checklist_items: [
+      { label: "Confirmed sponsor's permit type and validity", item_type: "action" },
+      { label: "Checked income threshold (approx. €1,200–1,500/month net)", item_type: "action" },
+      { label: "Confirmed accommodation meets minimum space requirements", item_type: "action" },
+    ]},
+    { title: "Gather family member documents", description: "All foreign documents must be apostilled and officially translated into German.", checklist_items: [
+      { label: "Valid passport for family member", item_type: "document" },
+      { label: "Marriage certificate (apostilled and German translation)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and German translation)", item_type: "document" },
+      { label: "Passport photos", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy in home country", description: "The family member submits the application at the Austrian embassy or consulate in their country of residence. Pay the application fee.", checklist_items: [
+      { label: "Application submitted at Austrian embassy", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Biometrics provided at embassy", item_type: "appointment" },
+    ]},
+    { title: "Quota check and Austrian authority decision", description: "Austria applies an annual quota to family reunification for third-country nationals. The Magistrat or Bezirkshauptmannschaft issues the final decision.", checklist_items: [
+      { label: "Decision received from Austrian authority", item_type: "document" },
+      { label: "Visa D issued at embassy for travel to Austria", item_type: "document" },
+    ]},
+    { title: "Register in Austria and collect residence permit card", description: "Within 3 days of arrival, register at the Meldeamt (residence registration). Collect the residence permit card from the Magistratisches Bezirksamt.", checklist_items: [
+      { label: "Meldezettel (registration) completed within 3 days", item_type: "action" },
+      { label: "Residence permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaAsylum: ProcessTemplate = {
+  id: "at_asylum",
+  keywords: ["asylum", "refugee", "international protection", "austria", "BFA", "Bundesamt für Fremdenwesen"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Bundesamt für Fremdenwesen und Asyl (BFA)",
+  title: "Austria asylum and international protection",
+  summary: "Apply for asylum or subsidiary protection in Austria if you face persecution or serious harm in your home country.",
+  timeline_summary: "First instance decision: 3–15 months. Appeals can extend the timeline significantly.",
+  next_action: "Register your asylum application at a police station or initial reception centre (Erstaufnahmestelle) immediately after arriving in Austria.",
+  steps: [
+    { title: "Register the asylum application", description: "Go to the nearest police station or the initial reception centre (Erstaufnahmestelle) in Traiskirchen, Schwechat, or Fieberbrunn. You must apply as soon as possible after arrival.", checklist_items: [
+      { label: "Application registered at police station or Erstaufnahmestelle", item_type: "action" },
+      { label: "Any identity documents provided (passport, ID)", item_type: "document" },
+    ]},
+    { title: "Initial registration and fingerprinting", description: "BFA records your data, takes fingerprints, and checks the Eurodac database. You are assigned to an initial reception centre.", checklist_items: [
+      { label: "Fingerprints and photograph taken by BFA", item_type: "action" },
+      { label: "Assigned to initial reception centre", item_type: "action" },
+    ]},
+    { title: "Admissibility check", description: "BFA first checks whether Austria is responsible under the Dublin Regulation. If yes, the substantive asylum procedure begins.", checklist_items: [
+      { label: "Admissibility interview conducted", item_type: "appointment" },
+      { label: "Dublin Regulation responsibility confirmed (if applicable)", item_type: "action" },
+    ]},
+    { title: "Substantive asylum interview", description: "BFA schedules a detailed personal interview about your asylum grounds. You can request an interpreter. You may be represented by a legal counsellor (Rechtsberater).", checklist_items: [
+      { label: "Substantive interview attended at BFA", item_type: "appointment" },
+      { label: "Supporting evidence of persecution submitted", item_type: "document" },
+      { label: "Legal counsellor arranged (free via Rechtsberatung)", item_type: "action" },
+    ]},
+    { title: "Receive BFA decision and appeal if needed", description: "BFA issues a written decision granting or refusing protection. If refused, you may appeal to the Federal Administrative Court (Bundesverwaltungsgericht) within 4 weeks.", checklist_items: [
+      { label: "BFA decision received", item_type: "document" },
+      { label: "Appeal filed with Bundesverwaltungsgericht within 4 weeks (if refused)", item_type: "action" },
+    ]},
+  ],
+};
+
+const austriaEEARegistration: ProcessTemplate = {
+  id: "at_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "Anmeldebescheinigung", "austria", "MA35", "EU free movement"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "MA 35 (Vienna) / Bezirkshauptmannschaft",
+  title: "Austria EU/EEA residence registration (Anmeldebescheinigung)",
+  summary: "EU/EEA citizens staying in Austria for more than 3 months must apply for an Anmeldebescheinigung (registration certificate) from the local authority.",
+  timeline_summary: "Apply within 3 months of arrival. Certificate typically issued on the same day or within a few weeks.",
+  next_action: "Book an appointment at MA 35 (in Vienna) or your district Bezirkshauptmannschaft and bring proof of employment, study, or sufficient means.",
+  steps: [
+    { title: "Register your address (Meldezettel)", description: "Before applying for the Anmeldebescheinigung, register your Austrian address at the Meldeamt within 3 days of moving in. You need your landlord's signature on the Meldezettel form.", checklist_items: [
+      { label: "Meldezettel form signed by landlord", item_type: "document" },
+      { label: "Address registered at Meldeamt within 3 days", item_type: "action" },
+      { label: "Meldezettel confirmation received", item_type: "document" },
+    ]},
+    { title: "Book appointment at MA 35 / Bezirkshauptmannschaft", description: "In Vienna, apply to MA 35 (Magistratsabteilung 35). Outside Vienna, apply to your district Bezirkshauptmannschaft.", checklist_items: [
+      { label: "Appointment booked at MA 35 or Bezirkshauptmannschaft", item_type: "appointment" },
+    ]},
+    { title: "Bring required documents", description: "Workers: EU passport/ID + employment contract or employer letter. Students: EU passport/ID + enrollment certificate + health insurance. Self-sufficient: EU passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Meldezettel (registered address confirmation)", item_type: "document" },
+      { label: "Employment contract / employer letter (if worker)", item_type: "document" },
+      { label: "Enrollment certificate (if student)", item_type: "document" },
+      { label: "Comprehensive health insurance (if not worker)", item_type: "document" },
+      { label: "Bank statements (if self-sufficient)", item_type: "document" },
+      { label: "Application fee paid (approx. €15)", item_type: "payment" },
+    ]},
+    { title: "Receive Anmeldebescheinigung", description: "The registration certificate (Anmeldebescheinigung) is issued. It has no expiry date but reflects the reason for residence (worker, student, etc.).", checklist_items: [
+      { label: "Anmeldebescheinigung received", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5185,6 +5292,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   austriaStudentVisa,
   austriaCitizenship,
   austriaMeldung,
+  austriaFamilyReunification,
+  austriaAsylum,
+  austriaEEARegistration,
   // Switzerland
   switzerlandBPermit,
   switzerlandCPermit,
