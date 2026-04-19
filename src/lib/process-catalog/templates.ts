@@ -5268,6 +5268,114 @@ const austriaEEARegistration: ProcessTemplate = {
   ],
 };
 
+const austriaSettlementPermit: ProcessTemplate = {
+  id: "at_settlement_permit",
+  keywords: ["settlement permit", "Niederlassungsbewilligung", "permanent residence", "austria", "long-term"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Magistratisches Bezirksamt / Bezirkshauptmannschaft",
+  title: "Austria settlement permit (Niederlassungsbewilligung)",
+  summary: "Apply for an Austrian settlement permit after 5 years of continuous legal residence, granting long-term or permanent settlement rights.",
+  timeline_summary: "Apply 3 months before current permit expires. Processing 2–4 months.",
+  next_action: "Apply at your local Magistratisches Bezirksamt or Bezirkshauptmannschaft with proof of 5 years of legal residence and German language certificate.",
+  steps: [
+    { title: "Check eligibility", description: "You must have held a legal residence permit in Austria continuously for at least 5 years, have sufficient income, accommodation, and German language skills (A2 level minimum for standard permit, B1 for plus variant).", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence in Austria", item_type: "action" },
+      { label: "German language certificate at A2 or B1 level", item_type: "document" },
+      { label: "Proof of income above the social assistance threshold", item_type: "document" },
+    ]},
+    { title: "Gather documents", description: "Collect all required documents. All foreign documents must be apostilled and translated into German.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current Austrian residence permit", item_type: "document" },
+      { label: "Proof of continuous residence (previous permit cards, registration confirmations)", item_type: "document" },
+      { label: "Proof of income (payslips, tax assessments)", item_type: "document" },
+      { label: "Proof of accommodation (rental contract or ownership)", item_type: "document" },
+      { label: "Health insurance certificate", item_type: "document" },
+      { label: "German language certificate (ÖIF or equivalent)", item_type: "document" },
+      { label: "Criminal record certificate", item_type: "document" },
+      { label: "Passport photos", item_type: "document" },
+    ]},
+    { title: "Submit application before current permit expires", description: "Apply at the local settlement authority (Magistrat in cities, Bezirkshauptmannschaft in districts). Apply at least 3 months before your current permit expires.", checklist_items: [
+      { label: "Application submitted at settlement authority", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive settlement permit card", description: "The settlement permit card is issued with an indefinite or long-term validity. It allows work without a separate work permit and travel within the EU/Schengen area.", checklist_items: [
+      { label: "Settlement permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaLongTermResidence: ProcessTemplate = {
+  id: "at_long_term_residence",
+  keywords: ["long-term residence", "Daueraufenthalt EU", "permanent residence EU", "austria", "5 years"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Magistratisches Bezirksamt / Bezirkshauptmannschaft",
+  title: "Austria EU long-term residence permit (Daueraufenthalt-EU)",
+  summary: "Apply for the EU long-term residence permit after 5 years of legal residence in Austria, which grants enhanced rights and EU-wide mobility.",
+  timeline_summary: "Apply 3 months before current permit expires. Processing 2–4 months.",
+  next_action: "Gather proof of 5 years' legal residence and German language B1 certificate, then apply at your settlement authority.",
+  steps: [
+    { title: "Confirm eligibility", description: "Must have held legal residence in Austria for at least 5 continuous years. Requires German language skills at B1 level (spoken and written), stable income, health insurance, and no serious criminal record.", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "German B1 language certificate obtained (ÖIF or equivalent)", item_type: "document" },
+    ]},
+    { title: "Gather documents", description: "Assemble all required documents. Foreign documents must be apostilled and translated into German.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Proof of continuous residence (previous permits)", item_type: "document" },
+      { label: "Proof of income exceeding social assistance threshold", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Health insurance certificate", item_type: "document" },
+      { label: "Criminal record certificate", item_type: "document" },
+      { label: "German B1 language certificate", item_type: "document" },
+    ]},
+    { title: "Submit application", description: "Apply at the Magistrat or Bezirkshauptmannschaft. The Daueraufenthalt-EU permit has no expiry date and allows work in any field without a separate work permit.", checklist_items: [
+      { label: "Application submitted at settlement authority", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+      { label: "Daueraufenthalt-EU card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const austriaJobSeekerVisa: ProcessTemplate = {
+  id: "at_job_seeker_visa",
+  keywords: ["job seeker", "job search", "Jobsuchvisum", "austria", "highly qualified"],
+  destination_country: "AT",
+  jurisdiction: "Austria",
+  authority_name: "Austrian Embassy / WKO Austria",
+  title: "Austria job seeker visa for highly qualified professionals",
+  summary: "Highly qualified third-country nationals can apply for a 6-month job seeker visa to look for skilled employment in Austria.",
+  timeline_summary: "Apply at Austrian embassy before travel. Processing 4–8 weeks. Valid 6 months; cannot be extended.",
+  next_action: "Check the AMS point system (minimum 70 points required) and apply at the Austrian embassy in your country.",
+  steps: [
+    { title: "Check AMS point system score", description: "Austria uses a points-based system for the job seeker visa. You need at least 70 points from: age, education, work experience, language skills, and Austria-specific factors. Use the online calculator at migration.gv.at.", checklist_items: [
+      { label: "Points calculated on migration.gv.at (must score ≥ 70)", item_type: "action" },
+      { label: "Confirmed eligibility for highly qualified category", item_type: "action" },
+    ]},
+    { title: "Gather application documents", description: "Collect university diploma, CV, language certificates (German and/or English), and any professional certifications. All documents must be translated into German.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "University degree / diploma (apostilled and German translation)", item_type: "document" },
+      { label: "Professional CV in German", item_type: "document" },
+      { label: "German language certificate (if applicable)", item_type: "document" },
+      { label: "Proof of funds for 6-month stay", item_type: "document" },
+      { label: "Health insurance for duration of stay", item_type: "document" },
+    ]},
+    { title: "Apply at Austrian embassy", description: "Submit the application at the Austrian embassy or consulate in your country of residence. Pay the visa fee.", checklist_items: [
+      { label: "Application submitted at Austrian embassy", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+      { label: "Biometrics provided (if required)", item_type: "appointment" },
+    ]},
+    { title: "Travel and job search in Austria", description: "Use the 6-month period to attend interviews, network, and find employment. Register your address (Meldezettel) within 3 days of arrival.", checklist_items: [
+      { label: "Arrived in Austria and registered Meldezettel within 3 days", item_type: "action" },
+      { label: "Actively applying for jobs matching qualifications", item_type: "action" },
+    ]},
+    { title: "Convert to Red-White-Red Card if job is found", description: "If you receive a job offer, apply for a Red-White-Red Card before the job seeker visa expires. Your employer can also sponsor the application.", checklist_items: [
+      { label: "Job offer received and employment contract signed", item_type: "document" },
+      { label: "Red-White-Red Card application submitted", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5295,6 +5403,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   austriaFamilyReunification,
   austriaAsylum,
   austriaEEARegistration,
+  austriaSettlementPermit,
+  austriaLongTermResidence,
+  austriaJobSeekerVisa,
   // Switzerland
   switzerlandBPermit,
   switzerlandCPermit,
