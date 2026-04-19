@@ -3856,6 +3856,158 @@ const finlandHenkilotunnus: ProcessTemplate = {
   ],
 };
 
+// ── Switzerland — SEM / Cantonal Migration Offices ─────────────────────────
+
+const switzerlandBPermit: ProcessTemplate = {
+  id: "ch_b_permit",
+  keywords: ["switzerland b permit", "b aufenthaltsbewilligung", "residence permit switzerland", "work switzerland", "swiss b permit", "aufenthalt schweiz"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal Migration Office (Migrationsamt)",
+  title: "B Permit (Residence Permit) — Switzerland",
+  summary: "The B permit (Aufenthaltsbewilligung) is the standard Swiss residence permit for non-EU/EEA nationals working or living in Switzerland. It is initially issued for 1 year and renewable.",
+  timeline_summary: "Processing takes 2–4 months. Applications go through both cantonal and federal (SEM) authorities.",
+  next_action: "Your Swiss employer applies for a work permit (Arbeitsbewilligung) to the cantonal migration office — you cannot apply directly from abroad.",
+  official_sources: [{ title: "SEM — Residence permits", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt.html" }],
+  steps: [
+    { title: "Employer applies for work permit to cantonal office", description: "The Swiss employer submits a request to the cantonal migration office, which forwards it to SEM. Switzerland has annual quotas for non-EU/EEA workers.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Employer confirms job offer and Swiss salary standard met", item_type: "action" },
+      { label: "Employer submits request to cantonal Migrationsamt", item_type: "action" },
+      { label: "Cantonal + SEM approval received", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa at Swiss representation", description: "With approval, apply for a national visa (D visa) at the Swiss embassy or consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Swiss embassy appointment booked", item_type: "appointment" },
+      { label: "Approval document and passport submitted", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Register in Switzerland and collect B permit", description: "Register at the local Einwohnerkontrolle/contrôle des habitants within 14 days of arrival.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Registered at local commune/Einwohnerkontrolle within 14 days", item_type: "action" },
+      { label: "B permit card collected from cantonal migration office", item_type: "document" },
+      { label: "AHV/IV social insurance number registered", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandCPermit: ProcessTemplate = {
+  id: "ch_c_permit",
+  keywords: ["switzerland c permit", "settlement permit switzerland", "niederlassungsbewilligung", "permanent swiss", "c aufenthalt"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal Migration Office",
+  title: "C Permit (Settlement Permit) — Switzerland",
+  summary: "The C permit (Niederlassungsbewilligung) grants permanent residence in Switzerland with no time limit. Non-EU/EEA nationals can apply after 10 years of residence (5 years for nationals of certain countries).",
+  timeline_summary: "Processing takes 2–4 months at the cantonal migration office.",
+  next_action: "Confirm your years of residence and that you meet the integration criteria.",
+  official_sources: [{ title: "SEM — Settlement permit", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/drittstaaten/niederlassungsbewilligung.html" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years of legal residence in Switzerland on a B permit (5 years for US, Canadian, Australian, New Zealand citizens and some others), good integration (language, no welfare reliance, no criminal record).", estimated_duration: "1 week", checklist_items: [
+      { label: "10 years (or 5 years for eligible nationalities) of legal residence confirmed", item_type: "action" },
+      { label: "Language proficiency confirmed (level A2+ in a national language)", item_type: "action" },
+      { label: "No welfare benefit reliance confirmed", item_type: "action" },
+      { label: "No serious criminal convictions", item_type: "action" },
+    ]},
+    { title: "Apply at cantonal migration office", description: "Submit the C permit application to the cantonal migration office (Migrationsamt).", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Application submitted at cantonal Migrationsamt", item_type: "action" },
+      { label: "Current B permit and passport submitted", item_type: "document" },
+      { label: "Language certificate uploaded", item_type: "document" },
+      { label: "Residence history documentation", item_type: "document" },
+      { label: "C permit card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const switzerlandStudentPermit: ProcessTemplate = {
+  id: "ch_student_permit",
+  keywords: ["switzerland student permit", "study switzerland", "student visa switzerland", "swiss university", "studienbewilligung"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal Migration Office / Swiss Representation",
+  title: "Student Residence Permit — Switzerland",
+  summary: "Non-EU/EEA students accepted at a Swiss university or higher education institution must apply for a student residence permit (Aufenthaltsbewilligung für Studierende).",
+  timeline_summary: "Apply 2–3 months before studies start. Processing takes 4–8 weeks.",
+  next_action: "Obtain your university acceptance letter, then apply for an entry visa at the Swiss consulate.",
+  official_sources: [{ title: "SEM — Students", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/drittstaaten/studium.html" }],
+  steps: [
+    { title: "Get university acceptance", description: "Apply to a Swiss university (ETH, EPFL, or cantonal universities) and receive an official acceptance letter.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Swiss institution identified and applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa at Swiss consulate", description: "Apply for a D visa for study purposes at the Swiss consulate in your home country.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Swiss consulate appointment booked", item_type: "appointment" },
+      { label: "Acceptance letter submitted", item_type: "document" },
+      { label: "Proof of financial means (CHF ~1,500/month)", item_type: "document" },
+      { label: "Health insurance covering Switzerland", item_type: "document" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Register in Switzerland", description: "Register at the local commune (Einwohnerkontrolle) within 14 days and collect your residence permit.", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Registered at commune within 14 days", item_type: "action" },
+      { label: "Student residence permit card collected", item_type: "document" },
+      { label: "Enrolled at university and student card received", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandCitizenship: ProcessTemplate = {
+  id: "ch_citizenship",
+  keywords: ["swiss citizenship", "schweizer bürgerrecht", "naturalisation switzerland", "become swiss", "swiss passport"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal / Federal Chancellery (SEM)",
+  title: "Swiss Citizenship by Naturalisation",
+  summary: "Swiss naturalisation requires 10 years of residence in Switzerland (years aged 8–17 count double), permanent residence (C permit), integration, and approval at commune, cantonal, and federal levels. Switzerland does not generally allow dual citizenship.",
+  timeline_summary: "The process typically takes 1–3 years and involves multiple levels of approval.",
+  next_action: "Confirm you have a C permit and 10 qualifying years of residence, then contact your commune to start the process.",
+  official_sources: [{ title: "SEM — Naturalisation", url: "https://www.sem.admin.ch/sem/en/home/themen/buergerrecht.html" }],
+  steps: [
+    { title: "Check eligibility", description: "10 years of residence in Switzerland (years age 8–17 count double), C permit held, good integration (language, knowledge of Switzerland, no criminal record, financially independent).", estimated_duration: "1 week", checklist_items: [
+      { label: "10 qualifying years of residence confirmed", item_type: "action" },
+      { label: "C permit held", item_type: "document" },
+      { label: "Language proficiency (B1 in a national language)", item_type: "action" },
+      { label: "Swiss citizenship renunciation of prior nationality considered", item_type: "action" },
+    ]},
+    { title: "Apply at commune level", description: "Contact your commune (Gemeinde/commune) to begin the naturalisation application. Each commune has its own requirements and integration test.", estimated_duration: "6–12 months", checklist_items: [
+      { label: "Commune naturalisation application submitted", item_type: "action" },
+      { label: "Integration test / interview at commune level passed", item_type: "appointment" },
+      { label: "Commune approval received", item_type: "document" },
+    ]},
+    { title: "Cantonal and federal approval", description: "After commune approval, the application goes to the canton and then to SEM for federal approval.", estimated_duration: "6–18 months", checklist_items: [
+      { label: "Cantonal naturalisation application processed", item_type: "action" },
+      { label: "Federal SEM approval received", item_type: "document" },
+      { label: "Swiss passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandAsylum: ProcessTemplate = {
+  id: "ch_asylum",
+  keywords: ["asylum switzerland", "asyl schweiz", "refugee switzerland", "sem asylum", "schutzstatus schweiz", "asylum seeker switzerland"],
+  destination_country: "Switzerland",
+  jurisdiction: "Switzerland",
+  authority_name: "SEM (State Secretariat for Migration)",
+  title: "Asylum Application — Switzerland",
+  summary: "Anyone who needs protection in Switzerland can apply for asylum. Applications are submitted at a federal asylum centre (Bundesasylzentrum). Switzerland has an accelerated procedure for most cases.",
+  timeline_summary: "Accelerated procedure: decision within 140 days. Extended procedure: up to several years. You may stay in Switzerland while your case is pending.",
+  next_action: "Go to a federal asylum centre (Bundesasylzentrum / Centre fédéral pour requérants d'asile) and declare your intention to seek asylum.",
+  official_sources: [{ title: "SEM — Asylum procedure", url: "https://www.sem.admin.ch/sem/en/home/asyl/asylverfahren.html" }],
+  steps: [
+    { title: "Register at federal asylum centre", description: "Go to any federal asylum centre and declare you want to apply for asylum. You will be assigned to a centre for processing.", estimated_duration: "1 day", checklist_items: [
+      { label: "Federal asylum centre visited and asylum declared", item_type: "action" },
+      { label: "Biometrics taken", item_type: "action" },
+      { label: "Any identity documents submitted", item_type: "document" },
+      { label: "Asylum application (N-registration) confirmed", item_type: "document" },
+    ]},
+    { title: "Asylum hearing", description: "SEM conducts a detailed hearing on your reasons for fleeing. You have the right to legal representation and an interpreter.", estimated_duration: "Weeks to months", checklist_items: [
+      { label: "Legal representative arranged (free representation available)", item_type: "action" },
+      { label: "Hearing attended with interpreter", item_type: "appointment" },
+    ]},
+    { title: "Await decision", description: "SEM issues a decision. If rejected, you can appeal to the Federal Administrative Court (TAF) within 30 days.", estimated_duration: "Months to years", checklist_items: [
+      { label: "Decision received", item_type: "document" },
+      { label: "If approved: refugee status and residence permit (B) issued", item_type: "action" },
+      { label: "If rejected: appeal to Federal Administrative Court within 30 days", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -3868,6 +4020,12 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceCitizenship,
   franceAsylum,
   franceEEARegistration,
+  // Switzerland
+  switzerlandBPermit,
+  switzerlandCPermit,
+  switzerlandStudentPermit,
+  switzerlandCitizenship,
+  switzerlandAsylum,
   // Finland
   finlandWorkPermit,
   finlandStudentPermit,
