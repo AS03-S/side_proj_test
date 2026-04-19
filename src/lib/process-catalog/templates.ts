@@ -4820,6 +4820,111 @@ const switzerlandQualificationRecognition: ProcessTemplate = {
   ],
 };
 
+const finlandFamilyReunification: ProcessTemplate = {
+  id: "fi_family_reunification",
+  keywords: ["family reunification", "spouse visa", "children", "finland", "Migri", "family member"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Migri — Finnish Immigration Service",
+  title: "Finland family reunification residence permit",
+  summary: "Apply for a residence permit for a spouse, partner, or children to join you in Finland.",
+  timeline_summary: "3–9 months. Processing times vary; apply online via Enter Finland as early as possible.",
+  next_action: "Create an Enter Finland account and submit the family reunification application online.",
+  steps: [
+    { title: "Check sponsor requirements", description: "The sponsor (person already in Finland) must generally hold a valid residence permit or be a Finnish/EU citizen. Income requirements apply for non-EU family members.", checklist_items: [
+      { label: "Confirmed sponsor's permit type and validity", item_type: "action" },
+      { label: "Checked income requirement (approx. €1,400/month net)", item_type: "action" },
+    ]},
+    { title: "Apply online via Enter Finland", description: "Family members must submit an application via Enter Finland. If family members are outside Finland, Migri may require a visit to a Finnish embassy to provide biometrics.", checklist_items: [
+      { label: "Enter Finland account created by family member", item_type: "action" },
+      { label: "Application submitted with all required documents", item_type: "action" },
+    ]},
+    { title: "Gather required documents", description: "Documents needed include passports, proof of relationship (marriage certificate, birth certificates), sponsor's permit and payslips, and proof of housing.", checklist_items: [
+      { label: "Valid passports for all applicants", item_type: "document" },
+      { label: "Marriage certificate / cohabitation agreement", item_type: "document" },
+      { label: "Birth certificates for children", item_type: "document" },
+      { label: "Sponsor's residence permit and latest payslips", item_type: "document" },
+      { label: "Rental or ownership proof for Finnish accommodation", item_type: "document" },
+    ]},
+    { title: "Provide biometrics", description: "Adult applicants must provide fingerprints and a photo. If applying from abroad, this is done at the Finnish embassy.", checklist_items: [
+      { label: "Biometrics appointment booked (Finnish embassy if abroad)", item_type: "appointment" },
+      { label: "Biometrics submitted", item_type: "action" },
+    ]},
+    { title: "Receive residence permit card", description: "Once approved, Migri sends the residence permit card to a Finnish Police station. Collect it in person.", checklist_items: [
+      { label: "Approval notice received from Migri", item_type: "document" },
+      { label: "Residence permit card collected from Police station", item_type: "document" },
+    ]},
+  ],
+};
+
+const finlandAsylum: ProcessTemplate = {
+  id: "fi_asylum",
+  keywords: ["asylum", "refugee", "international protection", "finland", "Migri"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Migri — Finnish Immigration Service",
+  title: "Finland asylum and international protection",
+  summary: "Apply for asylum or subsidiary/humanitarian protection if you face persecution or serious harm in your home country.",
+  timeline_summary: "Varies widely — from a few months to over a year depending on case complexity and country of origin.",
+  next_action: "Register your asylum application at a Police station or border crossing immediately upon arriving in Finland.",
+  steps: [
+    { title: "Register the application", description: "You must register your asylum application in person, either at a border crossing point, a police station, or the Migri reception centre in Helsinki.", checklist_items: [
+      { label: "Application registered at police station / border / Migri", item_type: "action" },
+      { label: "Placed in a reception centre", item_type: "action" },
+    ]},
+    { title: "Personal interview", description: "Migri will schedule a personal interview where you explain your reasons for seeking protection. You may request an interpreter.", checklist_items: [
+      { label: "Personal interview scheduled and attended", item_type: "appointment" },
+      { label: "Interpreter requested if needed", item_type: "action" },
+    ]},
+    { title: "Provide supporting documents", description: "Submit any documents that support your claim — identity documents, evidence of threats, news articles, or country-of-origin information.", checklist_items: [
+      { label: "Passport or national ID (if available)", item_type: "document" },
+      { label: "Evidence supporting protection claim", item_type: "document" },
+    ]},
+    { title: "Await Migri decision", description: "Migri issues a written decision granting refugee status, subsidiary protection, humanitarian protection, or rejection.", checklist_items: [
+      { label: "Decision received from Migri", item_type: "document" },
+      { label: "Consulted legal aid if decision is negative", item_type: "action" },
+    ]},
+    { title: "Appeal if rejected", description: "If your application is rejected you may appeal to the Administrative Court within 21 days. You may remain in Finland during the appeal.", checklist_items: [
+      { label: "Appeal filed within 21 days (if applicable)", item_type: "action" },
+      { label: "Administrative Court decision received", item_type: "document" },
+    ]},
+  ],
+};
+
+const finlandEEARegistration: ProcessTemplate = {
+  id: "fi_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "EU/EEA right of residence", "finland", "police"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Finnish Police / Migri",
+  title: "Finland EU/EEA right of residence registration",
+  summary: "EU/EEA citizens staying in Finland for more than 3 months must register their right of residence with the Finnish Police.",
+  timeline_summary: "Register within 3 months of arrival. The certificate is issued on the spot or within a few days.",
+  next_action: "Book an appointment at a Finnish Police station and bring proof of employment, study, or sufficient means.",
+  steps: [
+    { title: "Check registration deadline", description: "EU/EEA citizens and their family members may live in Finland for up to 3 months without registration. After that, registration is required.", checklist_items: [
+      { label: "Noted 3-month registration deadline from arrival date", item_type: "action" },
+    ]},
+    { title: "Book an appointment at a Police station", description: "Book via the Finnish Police online booking system (ajanvaraus.poliisi.fi). Bring original documents — copies are not accepted.", checklist_items: [
+      { label: "Police appointment booked online", item_type: "appointment" },
+    ]},
+    { title: "Bring required documents", description: "Workers need: passport/ID + employment contract or employer's letter. Students: passport/ID + enrollment certificate + proof of health insurance. Financially independent: passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Employment contract or employer letter (if worker)", item_type: "document" },
+      { label: "Enrollment certificate (if student)", item_type: "document" },
+      { label: "Proof of comprehensive health insurance (if not worker/student)", item_type: "document" },
+      { label: "Bank statements showing sufficient means (if financially independent)", item_type: "document" },
+    ]},
+    { title: "Receive right of residence registration certificate", description: "The Police officer registers you and issues a certificate (EU/EEA oleskeluoikeuden rekisteröinti). This document confirms your legal residence in Finland.", checklist_items: [
+      { label: "Registration certificate received at Police station", item_type: "document" },
+    ]},
+    { title: "Register with DVV (Population Register)", description: "After getting the Police certificate, register your address with the Digital and Population Data Services Agency (DVV) to get a Finnish personal identity code (henkilötunnus).", checklist_items: [
+      { label: "DVV registration completed", item_type: "action" },
+      { label: "Finnish personal identity code (henkilötunnus) obtained", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4861,6 +4966,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   finlandPermanentResidence,
   finlandCitizenship,
   finlandHenkilotunnus,
+  finlandFamilyReunification,
+  finlandAsylum,
+  finlandEEARegistration,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
