@@ -5491,6 +5491,101 @@ const portugalAsylum: ProcessTemplate = {
   ],
 };
 
+const portugalEEARegistration: ProcessTemplate = {
+  id: "pt_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "Certificado de Registo", "portugal", "AIMA", "free movement"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo) / Câmara Municipal",
+  title: "Portugal EU/EEA residence registration (Certificado de Registo)",
+  summary: "EU/EEA citizens staying in Portugal for more than 3 months must register with AIMA or the local council and obtain a Certificado de Registo.",
+  timeline_summary: "Register within 3 months of arrival. Certificate issued on the same day at most AIMA offices.",
+  next_action: "Book an appointment at your local AIMA office or Câmara Municipal to register and obtain the Certificado de Registo.",
+  steps: [
+    { title: "Check registration deadline", description: "EU/EEA/Swiss citizens can stay in Portugal without registration for up to 3 months. After that, registration is required for workers, students, and self-sufficient residents.", checklist_items: [
+      { label: "Noted 3-month registration deadline from arrival", item_type: "action" },
+    ]},
+    { title: "Book appointment at AIMA or Câmara Municipal", description: "In Lisbon and Porto, appointments are at AIMA. In smaller municipalities, some Câmaras Municipais handle EU registrations. Book online at aima.gov.pt.", checklist_items: [
+      { label: "Appointment booked at AIMA or Câmara Municipal", item_type: "appointment" },
+    ]},
+    { title: "Bring required documents", description: "Workers: EU passport/ID + employment contract or employer declaration. Students: EU passport/ID + enrollment certificate + health insurance. Self-sufficient: EU passport/ID + bank statements + health insurance.", checklist_items: [
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Employment contract or employer declaration (if worker)", item_type: "document" },
+      { label: "University enrollment certificate (if student)", item_type: "document" },
+      { label: "Health insurance (if not worker/student)", item_type: "document" },
+      { label: "Bank statements (if self-sufficient)", item_type: "document" },
+      { label: "Registration fee paid (approx. €15)", item_type: "payment" },
+    ]},
+    { title: "Receive Certificado de Registo", description: "The registration certificate is issued on the spot. It has no expiry date. Keep it — you will need it for NIF registration, bank accounts, and other administrative tasks.", checklist_items: [
+      { label: "Certificado de Registo received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalLongTermResidence: ProcessTemplate = {
+  id: "pt_long_term_residence",
+  keywords: ["long-term residence", "permanent residence", "5 years", "portugal", "AIMA", "autorização de residência permanente"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "AIMA (Agência para a Integração, Migrações e Asilo)",
+  title: "Portugal permanent / long-term residence permit",
+  summary: "Apply for a permanent residence permit or EU long-term residence status after 5 years of legal residence in Portugal.",
+  timeline_summary: "Apply up to 90 days before current permit expires. Processing 3–6 months.",
+  next_action: "Book an AIMA appointment and gather proof of 5 years of continuous legal residence in Portugal.",
+  steps: [
+    { title: "Check eligibility", description: "You must have held a valid residence permit for at least 5 continuous years in Portugal. No absence of more than 6 consecutive months or 10 months total in the 5-year period.", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence", item_type: "action" },
+      { label: "Checked absence record (not more than 6 consecutive months abroad)", item_type: "action" },
+    ]},
+    { title: "Gather required documents", description: "Collect proof of continuous residence, income, accommodation, and criminal record. Foreign documents must be apostilled and translated.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current residence permit", item_type: "document" },
+      { label: "Previous residence permit cards (proof of 5 years)", item_type: "document" },
+      { label: "Proof of income (payslips, tax returns)", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Portuguese criminal record certificate", item_type: "document" },
+      { label: "Foreign criminal record certificate (apostilled)", item_type: "document" },
+    ]},
+    { title: "Submit application at AIMA", description: "Apply in person at an AIMA office. Pay the application fee. You may apply up to 90 days before your current permit expires.", checklist_items: [
+      { label: "AIMA appointment booked", item_type: "appointment" },
+      { label: "Application submitted with all documents", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive permanent residence permit", description: "AIMA issues a permanent or EU long-term residence permit. It is valid for 5 years and renewable, or indefinite depending on the category.", checklist_items: [
+      { label: "Permanent residence permit card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const portugalNIF: ProcessTemplate = {
+  id: "pt_nif_registration",
+  keywords: ["NIF", "tax number", "Número de Identificação Fiscal", "portugal", "AT", "Finanças"],
+  destination_country: "PT",
+  jurisdiction: "Portugal",
+  authority_name: "Autoridade Tributária e Aduaneira (AT) / Finanças",
+  title: "Portugal NIF (tax identification number) registration",
+  summary: "Obtain a Portuguese NIF (Número de Identificação Fiscal) — required for opening a bank account, signing contracts, working, or buying property in Portugal.",
+  timeline_summary: "NIF issued on the same day at a Finanças office or via an appointed fiscal representative.",
+  next_action: "Visit your local Serviço de Finanças office in person with your passport and Portuguese address proof.",
+  steps: [
+    { title: "Decide how to apply", description: "EU/EEA citizens and non-EU residents in Portugal can apply in person at any Finanças office. Non-EU citizens not yet resident in Portugal must appoint a Portuguese fiscal representative first.", checklist_items: [
+      { label: "Determined application route (in person or via fiscal representative)", item_type: "action" },
+    ]},
+    { title: "Apply at a Finanças office (for residents)", description: "Go to any Serviço de Finanças office with your passport/ID and proof of Portuguese address. No appointment needed in most offices.", checklist_items: [
+      { label: "Valid passport or national ID card", item_type: "document" },
+      { label: "Proof of Portuguese address (rental contract, utility bill, or AIMA registration)", item_type: "document" },
+      { label: "NIF application form completed at Finanças counter", item_type: "action" },
+    ]},
+    { title: "Receive NIF card", description: "The NIF is issued immediately. You receive a paper card with your number. Keep it — you will need it for virtually every administrative task in Portugal.", checklist_items: [
+      { label: "NIF card received at Finanças office", item_type: "document" },
+    ]},
+    { title: "Activate NIF for online services (optional)", description: "Register on the AT portal (portaldasfinancas.gov.pt) to manage your tax situation, file returns, and receive electronic correspondence.", checklist_items: [
+      { label: "Registered on portaldasfinancas.gov.pt", item_type: "action" },
+      { label: "NIF provided to employer and bank", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5513,6 +5608,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   portugalStudentVisa,
   portugalFamilyReunification,
   portugalAsylum,
+  portugalEEARegistration,
+  portugalLongTermResidence,
+  portugalNIF,
   // Austria
   austriaRedWhiteRedCard,
   austriaStudentVisa,
