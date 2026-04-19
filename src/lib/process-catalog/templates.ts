@@ -4643,6 +4643,115 @@ const ukHealthCareWorker: ProcessTemplate = {
   ],
 };
 
+const switzerlandKVGInsurance: ProcessTemplate = {
+  id: "ch_kvg_insurance",
+  keywords: ["KVG", "health insurance", "Grundversicherung", "LAMal", "krankenversicherung", "switzerland"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal health authority / Kantonsarzt",
+  title: "Switzerland KVG mandatory health insurance",
+  summary: "Register for compulsory health insurance (Grundversicherung) within 3 months of arriving in Switzerland.",
+  timeline_summary: "Enroll within 3 months of arrival — coverage is backdated to your arrival date.",
+  next_action: "Compare insurers at priminfo.admin.ch and submit an enrollment application.",
+  steps: [
+    { title: "Understand the obligation", description: "All residents in Switzerland must have KVG/LAMal basic health insurance. You have 3 months from arrival or permit issue to enroll — coverage is backdated to arrival date.", checklist_items: [
+      { label: "Confirm you are subject to KVG (most permit holders are)", item_type: "action" },
+      { label: "Check if your canton grants an extension (rarely granted)", item_type: "action" },
+    ]},
+    { title: "Compare insurers and choose a plan", description: "All insurers offer the same basic coverage — compare premiums on the official comparator at bag.admin.ch/priminfo. Choose standard, telmed, or HMO model to lower costs.", checklist_items: [
+      { label: "Used priminfo.admin.ch to compare premiums for your canton", item_type: "action" },
+      { label: "Chosen an insurer and model (standard/telmed/HMO)", item_type: "action" },
+      { label: "Selected optional deductible (Franchise) — CHF 300–2500", item_type: "action" },
+    ]},
+    { title: "Submit application to insurer", description: "Apply online or by post. You will need your Swiss address, permit type, and date of arrival.", checklist_items: [
+      { label: "Application submitted with Swiss address and arrival date", item_type: "action" },
+      { label: "Confirmation of enrollment received", item_type: "document" },
+    ]},
+    { title: "Receive insurance card", description: "The insurer will send your Versicherungsausweis (insurance card). Carry it at all times. Show it at any medical appointment.", checklist_items: [
+      { label: "Insurance card received", item_type: "document" },
+      { label: "Inform your employer of insurer (if they contribute to premium)", item_type: "action" },
+    ]},
+    { title: "Check canton premium subsidy (IPV)", description: "If your income is below a cantonal threshold you may receive a premium reduction (Individuelle Prämienverbilligung / IPV). Apply to your cantonal social welfare office.", checklist_items: [
+      { label: "Checked cantonal IPV eligibility", item_type: "action" },
+      { label: "IPV application submitted if eligible", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandEHICExemption: ProcessTemplate = {
+  id: "ch_ehic_exemption",
+  keywords: ["EHIC", "KVG exemption", "health insurance exemption", "student", "EU student", "exchange"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Cantonal health authority / Kantonsarzt",
+  title: "Switzerland KVG exemption for students with EHIC",
+  summary: "EU/EEA students on a short exchange programme can apply for an exemption from Swiss KVG if they hold a valid EHIC and equivalent home-country health coverage.",
+  timeline_summary: "Apply within 3 months of arrival. Exemption valid for up to 12 months of studies.",
+  next_action: "Obtain the exemption form from your cantonal health authority or university and submit with your EHIC and enrollment certificate.",
+  steps: [
+    { title: "Check eligibility", description: "The exemption applies to EU/EEA students enrolled at a Swiss institution for ≤ 12 months who hold a valid European Health Insurance Card (EHIC) and have health coverage in their home country.", checklist_items: [
+      { label: "Enrolled at Swiss university/HEI for ≤ 12 months", item_type: "action" },
+      { label: "Current EHIC card (or PRC from home country) valid for entire stay", item_type: "document" },
+      { label: "Home-country health insurance certificate", item_type: "document" },
+    ]},
+    { title: "Obtain exemption request form", description: "Download the official exemption form from the cantonal health authority (Kantonsarzt / médecin cantonal) or from your university's student services.", checklist_items: [
+      { label: "Exemption request form obtained", item_type: "document" },
+      { label: "Student enrollment certificate obtained from university", item_type: "document" },
+    ]},
+    { title: "Submit application within 3 months of arrival", description: "Send the completed form, EHIC copy, home insurance certificate, and enrollment proof to the cantonal authority. If approved, you are exempt for the duration of your studies (up to 12 months).", checklist_items: [
+      { label: "Completed form + EHIC copy + enrollment certificate sent", item_type: "action" },
+      { label: "Application submitted within 3-month KVG deadline", item_type: "action" },
+    ]},
+    { title: "Receive exemption confirmation", description: "The cantonal authority sends a written confirmation. Keep this document — insurers and universities may ask for it.", checklist_items: [
+      { label: "Written exemption confirmation received", item_type: "document" },
+      { label: "Copy filed with university student services if required", item_type: "action" },
+    ]},
+    { title: "Renew or transition to KVG if stay extends", description: "If your studies extend beyond 12 months or your EHIC expires, you must enroll in Swiss KVG immediately. Notify the cantonal authority and apply for coverage.", checklist_items: [
+      { label: "Monitored EHIC expiry and enrollment end date", item_type: "action" },
+      { label: "Applied for KVG if stay extended beyond exemption period", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandFamilyReunification: ProcessTemplate = {
+  id: "ch_family_reunification",
+  keywords: ["family reunification", "spouse visa", "partner permit", "children", "switzerland", "B permit", "C permit"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Kantonale Migrationsbehörde",
+  title: "Switzerland family reunification permit",
+  summary: "Bring a spouse, registered partner, or dependent children to join you in Switzerland under your B or C permit.",
+  timeline_summary: "3–6 months from application. B-permit holders must apply within 5 years of receiving their own permit.",
+  next_action: "Submit the family reunification application at your cantonal migration authority with proof of accommodation and income.",
+  steps: [
+    { title: "Check sponsor eligibility and deadlines", description: "B-permit holders must apply within 5 years of receiving the permit. C-permit holders have no time limit. Children must be applied for before they turn 18.", checklist_items: [
+      { label: "Confirmed permit type (B or C) and application deadline", item_type: "action" },
+      { label: "Checked children's ages — all under 18 at application", item_type: "action" },
+    ]},
+    { title: "Gather family member documents", description: "Each family member needs passport, civil status documents, and proof of relationship. All documents must be apostilled and translated if not in DE/FR/IT.", checklist_items: [
+      { label: "Valid passport for each family member", item_type: "document" },
+      { label: "Marriage certificate / registered partnership certificate", item_type: "document" },
+      { label: "Birth certificates for children", item_type: "document" },
+      { label: "Documents apostilled and translated into DE/FR/IT", item_type: "document" },
+    ]},
+    { title: "Apply at cantonal migration authority", description: "Submit the application at the Kantonale Migrationsbehörde. You must show your own permit, proof of adequate accommodation, and proof of sufficient income.", checklist_items: [
+      { label: "Your valid Swiss residence permit (B or C)", item_type: "document" },
+      { label: "Proof of accommodation (rental contract or ownership documents)", item_type: "document" },
+      { label: "Proof of income (payslips, employment contract)", item_type: "document" },
+      { label: "Application form submitted at cantonal migration authority", item_type: "action" },
+    ]},
+    { title: "Family member applies for visa at Swiss embassy", description: "After the canton pre-approves the application, the family member applies for a Type D national visa at the Swiss embassy/consulate in their country of residence.", checklist_items: [
+      { label: "Canton pre-approval letter received", item_type: "document" },
+      { label: "Family member visa appointment booked at Swiss embassy", item_type: "appointment" },
+      { label: "Visa issued and family member traveled to Switzerland", item_type: "action" },
+    ]},
+    { title: "Register in Switzerland and receive permit", description: "Within 14 days of arrival, the family member must register at the local Einwohnerkontrolle/contrôle des habitants and collect their permit (B for family member).", checklist_items: [
+      { label: "Registration at Einwohnerkontrolle within 14 days of arrival", item_type: "appointment" },
+      { label: "Permit B (family reunification) received", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4673,6 +4782,9 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   switzerlandStudentPermit,
   switzerlandCitizenship,
   switzerlandAsylum,
+  switzerlandKVGInsurance,
+  switzerlandEHICExemption,
+  switzerlandFamilyReunification,
   // Finland
   finlandWorkPermit,
   finlandStudentPermit,
