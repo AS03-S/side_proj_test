@@ -3717,6 +3717,145 @@ const ukEUSS: ProcessTemplate = {
   ],
 };
 
+// ── Finland — Migri ────────────────────────────────────────────────────────
+
+const finlandWorkPermit: ProcessTemplate = {
+  id: "fi_work_permit",
+  keywords: ["finland work permit", "work finland", "residence permit employee finland", "työlupa", "migri work", "oleskelulupa työ"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri (Finnish Immigration Service)",
+  title: "Residence Permit for Employee — Finland",
+  summary: "Non-EU/EEA nationals with a job offer in Finland apply for a residence permit for an employed person (työntekijän oleskelulupa) via Migri. The employer must first confirm the job meets Finnish labour conditions.",
+  timeline_summary: "Processing takes 1–3 months. Apply online via Enter Finland before arriving.",
+  next_action: "Your employer submits their part of the application first via Enter Finland, then you complete the rest.",
+  official_sources: [{ title: "Migri — Residence permit for employees", url: "https://migri.fi/en/residence-permit-for-an-employed-person" }],
+  steps: [
+    { title: "Employer submits their part", description: "The employer fills in the employer section in Enter Finland (enterfinland.fi), confirming the job terms meet Finnish standards.", estimated_duration: "1 week", checklist_items: [
+      { label: "Employer registered and section completed in Enter Finland", item_type: "action" },
+      { label: "Employment contract signed", item_type: "document" },
+    ]},
+    { title: "Applicant submits online application", description: "Complete your part of the application in Enter Finland, attach required documents, and pay the fee.", estimated_duration: "1 day", checklist_items: [
+      { label: "Account created at enterfinland.fi", item_type: "action" },
+      { label: "Application form completed", item_type: "action" },
+      { label: "Valid passport scanned and uploaded", item_type: "document" },
+      { label: "Processing fee paid (€490 approx.)", item_type: "payment" },
+    ]},
+    { title: "Visit Finnish mission for biometrics", description: "Attend the Finnish embassy or consulate in your home country to give biometrics.", estimated_duration: "Appointment dependent", checklist_items: [
+      { label: "Embassy appointment booked", item_type: "appointment" },
+      { label: "Biometrics submitted at embassy", item_type: "action" },
+      { label: "Permit decision received", item_type: "document" },
+      { label: "Residence permit card collected at police station in Finland", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandStudentPermit: ProcessTemplate = {
+  id: "fi_student_permit",
+  keywords: ["finland student permit", "study finland", "student visa finland", "university finland", "opiskelijan oleskelulupa", "migri student"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri",
+  title: "Student Residence Permit — Finland",
+  summary: "Non-EU/EEA students accepted at a Finnish university or institution of higher education must apply for a student residence permit via Enter Finland before arriving.",
+  timeline_summary: "Apply 2–3 months before studies begin. Processing takes 1–2 months.",
+  next_action: "Get your acceptance letter from a Finnish institution, then apply via enterfinland.fi.",
+  official_sources: [{ title: "Migri — Student residence permit", url: "https://migri.fi/en/student-s-residence-permit" }],
+  steps: [
+    { title: "Obtain acceptance letter", description: "Apply to a Finnish university or higher education institution and receive an official acceptance.", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Finnish institution identified and applied to", item_type: "action" },
+      { label: "Acceptance letter received", item_type: "document" },
+    ]},
+    { title: "Apply via Enter Finland", description: "Complete the student residence permit application online.", estimated_duration: "1–2 months processing", checklist_items: [
+      { label: "Application submitted at enterfinland.fi", item_type: "action" },
+      { label: "Acceptance letter uploaded", item_type: "document" },
+      { label: "Proof of funds (approx. €560/month) uploaded", item_type: "document" },
+      { label: "Fee paid (€350 approx.)", item_type: "payment" },
+      { label: "Biometrics at Finnish embassy submitted", item_type: "appointment" },
+      { label: "Permit card collected at police station in Finland", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandPermanentResidence: ProcessTemplate = {
+  id: "fi_permanent_residence",
+  keywords: ["finland permanent residence", "pysyvä oleskelulupa", "settle finland", "4 years finland", "permanent permit finland"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri",
+  title: "Permanent Residence Permit — Finland",
+  summary: "After 4 years of continuous residence in Finland on a continuous permit (type A), non-EU nationals can apply for a permanent residence permit (pysyvä oleskelulupa, type P).",
+  timeline_summary: "Processing takes 1–3 months via Enter Finland.",
+  next_action: "Confirm you have held a continuous permit (A) for 4 years without long breaks from Finland.",
+  official_sources: [{ title: "Migri — Permanent residence permit", url: "https://migri.fi/en/permanent-residence-permit" }],
+  steps: [
+    { title: "Check eligibility", description: "4 continuous years on a continuous permit (A), no serious criminal convictions, and not lived mainly outside Finland.", estimated_duration: "1 week", checklist_items: [
+      { label: "4 years on continuous permit (A) confirmed", item_type: "action" },
+      { label: "No long absences from Finland (generally max 2 years total)", item_type: "action" },
+    ]},
+    { title: "Apply via Enter Finland", description: "Submit the application online and pay the fee.", estimated_duration: "1–3 months", checklist_items: [
+      { label: "Application submitted at enterfinland.fi", item_type: "action" },
+      { label: "Current permit and passport uploaded", item_type: "document" },
+      { label: "Fee paid (€160 approx.)", item_type: "payment" },
+      { label: "Permit decision received", item_type: "document" },
+      { label: "Permanent permit card collected at police station", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandCitizenship: ProcessTemplate = {
+  id: "fi_citizenship",
+  keywords: ["finnish citizenship", "suomen kansalaisuus", "naturalisation finland", "become finnish", "finnish passport"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "Migri",
+  title: "Finnish Citizenship by Naturalisation",
+  summary: "After 5 years of continuous residence in Finland (4 if a Nordic citizen), applicants can apply for Finnish citizenship. Finland requires renouncing prior citizenship in most cases, but dual citizenship is allowed with many countries.",
+  timeline_summary: "Processing takes 6–12 months.",
+  next_action: "Check the residency and language requirements, then apply via Enter Finland.",
+  official_sources: [{ title: "Migri — Finnish citizenship", url: "https://migri.fi/en/citizenship" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of continuous residence on a permanent permit (P) or long-term EU permit, Finnish or Swedish language proficiency (A2 level minimum, B1 preferred), no serious criminal convictions.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous residence confirmed", item_type: "action" },
+      { label: "Permanent permit (P) held", item_type: "document" },
+      { label: "Finnish or Swedish language proficiency confirmed", item_type: "action" },
+    ]},
+    { title: "Apply via Enter Finland", description: "Submit the citizenship application online and pay the fee.", estimated_duration: "6–12 months", checklist_items: [
+      { label: "Application submitted at enterfinland.fi", item_type: "action" },
+      { label: "Fee paid (€540 approx.)", item_type: "payment" },
+      { label: "Citizenship granted by Migri decision", item_type: "document" },
+      { label: "Finnish passport applied for at police station", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandHenkilotunnus: ProcessTemplate = {
+  id: "fi_henkilotunnus",
+  keywords: ["henkilötunnus", "finnish personal id", "finnish social security number", "dvv finland", "population register finland", "hetu"],
+  destination_country: "Finland",
+  jurisdiction: "Finland",
+  authority_name: "DVV (Digital and Population Data Services Agency)",
+  title: "Finnish Personal Identity Code (Henkilötunnus) — Finland",
+  summary: "The henkilötunnus (hetu) is Finland's personal identity code, required for banking, healthcare, employment, and most public services. It is issued by DVV when you register as a Finnish resident.",
+  timeline_summary: "Registration can be done at a DVV service point. The code is issued on the spot or within a few days.",
+  next_action: "Visit a DVV service point with your residence permit and passport to register.",
+  official_sources: [{ title: "DVV — Registration for persons moving to Finland", url: "https://dvv.fi/en/registration-of-persons-moving-to-finland" }],
+  steps: [
+    { title: "Visit DVV service point", description: "Attend a DVV service point in person with your valid residence permit and passport.", estimated_duration: "1 day", checklist_items: [
+      { label: "DVV service point located (dvv.fi)", item_type: "action" },
+      { label: "Valid passport", item_type: "document" },
+      { label: "Residence permit card", item_type: "document" },
+      { label: "Henkilötunnus issued at appointment", item_type: "document" },
+    ]},
+    { title: "Use henkilötunnus for services", description: "With your code, register with the tax authority (Vero), open a bank account, register with a health centre, and sign up for Kela (Social Insurance Institution).", estimated_duration: "First 2 weeks", checklist_items: [
+      { label: "Tax card (verokortti) applied for at Vero (vero.fi)", item_type: "action" },
+      { label: "Kela registration completed for health insurance", item_type: "action" },
+      { label: "Bank account opened", item_type: "action" },
+      { label: "Local health centre (terveyskeskus) registered with", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -3729,6 +3868,12 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceCitizenship,
   franceAsylum,
   franceEEARegistration,
+  // Finland
+  finlandWorkPermit,
+  finlandStudentPermit,
+  finlandPermanentResidence,
+  finlandCitizenship,
+  finlandHenkilotunnus,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
