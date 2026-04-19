@@ -4752,6 +4752,74 @@ const switzerlandFamilyReunification: ProcessTemplate = {
   ],
 };
 
+const switzerlandSelfEmployed: ProcessTemplate = {
+  id: "ch_self_employed",
+  keywords: ["self-employed", "freelance", "sole trader", "Einzelunternehmen", "switzerland", "B permit"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "Kantonale Migrationsbehörde / Handelsregisteramt",
+  title: "Switzerland self-employed / freelance residence",
+  summary: "Third-country nationals can apply for a B permit to work as a self-employed person or freelancer in Switzerland, subject to a labour market and viability test.",
+  timeline_summary: "3–6 months. Authorities assess business viability and economic interest before approving.",
+  next_action: "Prepare a detailed business plan and apply at your cantonal migration authority before starting any self-employed activity.",
+  steps: [
+    { title: "Assess eligibility", description: "Non-EU/EEA nationals must show their self-employment is in Switzerland's economic interest and that no suitable local candidate is available. EU/EEA nationals can self-employ with less scrutiny under AFMP.", checklist_items: [
+      { label: "Determined nationality category (EU/EEA or third-country)", item_type: "action" },
+      { label: "Confirmed intended activity qualifies as self-employment", item_type: "action" },
+    ]},
+    { title: "Prepare a business plan", description: "Write a detailed business plan including market analysis, projected income, client contracts or letters of intent, and professional qualifications.", checklist_items: [
+      { label: "Business plan drafted with projected revenue and clients", item_type: "document" },
+      { label: "Professional qualifications / portfolio prepared", item_type: "document" },
+      { label: "Client contracts or letters of intent (if available)", item_type: "document" },
+    ]},
+    { title: "Apply at cantonal migration authority", description: "Submit the self-employment permit application along with your business plan, passport, and proof of address. The canton consults the State Secretariat for Economic Affairs (SECO) if required.", checklist_items: [
+      { label: "Application submitted at Kantonale Migrationsbehörde", item_type: "action" },
+      { label: "Biometric residence card (B permit) received", item_type: "document" },
+    ]},
+    { title: "Register with AHV/IV and pension authorities", description: "Self-employed people must register with the Ausgleichskasse (AHV/IV/EO compensation fund) and pay social contributions themselves.", checklist_items: [
+      { label: "Registered with cantonal Ausgleichskasse", item_type: "action" },
+      { label: "Social contribution class determined", item_type: "action" },
+    ]},
+    { title: "Register in the commercial register (if required)", description: "If your sole proprietorship turnover exceeds CHF 100,000 per year, registration in the Handelsregister is mandatory. Below that threshold it is optional.", checklist_items: [
+      { label: "Checked turnover threshold and registration obligation", item_type: "action" },
+      { label: "Registered in Handelsregister if required", item_type: "action" },
+    ]},
+  ],
+};
+
+const switzerlandQualificationRecognition: ProcessTemplate = {
+  id: "ch_qualification_recognition",
+  keywords: ["qualification recognition", "diploma recognition", "SERI", "regulated profession", "switzerland"],
+  destination_country: "CH",
+  jurisdiction: "Switzerland",
+  authority_name: "SERI — State Secretariat for Education, Research and Innovation",
+  title: "Switzerland foreign qualification recognition",
+  summary: "Have a foreign diploma, degree, or vocational qualification formally recognised in Switzerland so it is accepted by employers and for regulated professions.",
+  timeline_summary: "2–6 months depending on profession and completeness of documents.",
+  next_action: "Identify whether your profession is regulated in Switzerland, then submit an application to SERI or the competent authority.",
+  steps: [
+    { title: "Determine if the profession is regulated", description: "Regulated professions (doctor, nurse, lawyer, pharmacist, architect, etc.) require formal recognition by the relevant authority. Unregulated professions can be recognised voluntarily via SERI's equivalence assessment.", checklist_items: [
+      { label: "Checked the list of regulated professions at ch.ch", item_type: "action" },
+      { label: "Identified competent recognition authority", item_type: "action" },
+    ]},
+    { title: "Gather qualification documents", description: "Collect original diplomas, transcripts, and certificates. All documents must be officially translated into German, French, or Italian and apostilled.", checklist_items: [
+      { label: "Original diploma / degree certificate", item_type: "document" },
+      { label: "Academic transcripts", item_type: "document" },
+      { label: "Certified translations into DE/FR/IT", item_type: "document" },
+      { label: "Apostille affixed by issuing country", item_type: "document" },
+      { label: "Work experience certificates (if applicable)", item_type: "document" },
+    ]},
+    { title: "Submit recognition application to SERI or sectoral authority", description: "For academic qualifications: apply to SERI. For health professions: apply to MedReg. For lawyers and architects: apply to cantonal authority. Fees apply.", checklist_items: [
+      { label: "Application submitted to correct authority with all documents", item_type: "action" },
+      { label: "Application fee paid", item_type: "action" },
+    ]},
+    { title: "Receive decision and any compensation measures", description: "If there are significant differences between your qualification and the Swiss equivalent, you may need to complete an aptitude test or adaptation period.", checklist_items: [
+      { label: "Recognition decision received", item_type: "document" },
+      { label: "Completed aptitude test / adaptation period if required", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4785,6 +4853,8 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   switzerlandKVGInsurance,
   switzerlandEHICExemption,
   switzerlandFamilyReunification,
+  switzerlandSelfEmployed,
+  switzerlandQualificationRecognition,
   // Finland
   finlandWorkPermit,
   finlandStudentPermit,
