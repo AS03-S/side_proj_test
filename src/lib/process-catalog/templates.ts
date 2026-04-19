@@ -4925,6 +4925,70 @@ const finlandEEARegistration: ProcessTemplate = {
   ],
 };
 
+const finlandStartupPermit: ProcessTemplate = {
+  id: "fi_startup_permit",
+  keywords: ["startup", "startup permit", "entrepreneur", "business founder", "finland", "Business Finland"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Business Finland / Migri",
+  title: "Finland startup permit",
+  summary: "Non-EU entrepreneurs can apply for a Finnish startup permit to found and develop a scalable startup company in Finland.",
+  timeline_summary: "3–4 months. Business Finland evaluates the startup application first, then Migri processes the residence permit.",
+  next_action: "Apply to Business Finland for a startup evaluation statement, then submit a residence permit application to Migri.",
+  steps: [
+    { title: "Get a startup evaluation statement from Business Finland", description: "Before applying to Migri, you must receive a positive startup evaluation statement from Business Finland. Submit your business plan, team information, and growth strategy.", checklist_items: [
+      { label: "Business plan prepared (product, market, team, financials)", item_type: "document" },
+      { label: "Startup evaluation application submitted to Business Finland", item_type: "action" },
+      { label: "Positive startup evaluation statement received", item_type: "document" },
+    ]},
+    { title: "Apply to Migri for residence permit", description: "Once you have the Business Finland statement, apply for a startup entrepreneur's residence permit (Type P) on the Enter Finland portal.", checklist_items: [
+      { label: "Enter Finland account created and startup permit application submitted", item_type: "action" },
+      { label: "Business Finland statement uploaded", item_type: "document" },
+      { label: "Passport and photo uploaded", item_type: "document" },
+      { label: "Application fee paid", item_type: "action" },
+    ]},
+    { title: "Provide biometrics at Finnish embassy", description: "If applying from abroad, attend your Finnish embassy appointment to provide fingerprints and photo.", checklist_items: [
+      { label: "Finnish embassy appointment attended", item_type: "appointment" },
+      { label: "Biometrics submitted", item_type: "action" },
+    ]},
+    { title: "Receive residence permit and arrive in Finland", description: "Migri issues a startup entrepreneur's residence permit for up to 2 years, renewable if the startup is progressing.", checklist_items: [
+      { label: "Residence permit issued", item_type: "document" },
+      { label: "Arrived in Finland and collected permit card from Police", item_type: "action" },
+    ]},
+  ],
+};
+
+const finlandYKILanguageTest: ProcessTemplate = {
+  id: "fi_yki_language_test",
+  keywords: ["YKI", "language test", "Finnish language", "certificate of language proficiency", "finland", "kielitutkinto"],
+  destination_country: "FI",
+  jurisdiction: "Finland",
+  authority_name: "Finnish National Agency for Education (Opetushallitus)",
+  title: "Finland YKI national certificate of language proficiency",
+  summary: "Sit the YKI (Yleinen kielitutkinto) language test to prove Finnish or Swedish language skills for permanent residence, citizenship, or employment purposes.",
+  timeline_summary: "Tests are held several times a year. Book at least 6–8 weeks in advance. Results in 6–8 weeks after the test.",
+  next_action: "Register for the next YKI exam session at the Finnish National Agency for Education website.",
+  steps: [
+    { title: "Choose the right level and language", description: "YKI tests Finnish and Swedish at three levels: Basic (1–2), Intermediate (3–4), and Advanced (5–6). For permanent residence you need level 3–4; for citizenship, level 3–4 is standard.", checklist_items: [
+      { label: "Determined required YKI level (e.g. intermediate 3–4)", item_type: "action" },
+      { label: "Chosen language to be tested (Finnish or Swedish)", item_type: "action" },
+    ]},
+    { title: "Register for the exam", description: "Registration opens approximately 6–8 weeks before the exam date. Register via the Opetushallitus website. Places are limited.", checklist_items: [
+      { label: "Exam registration completed on Opetushallitus website", item_type: "action" },
+      { label: "Exam fee paid", item_type: "action" },
+      { label: "Exam confirmation email received", item_type: "document" },
+    ]},
+    { title: "Sit the exam", description: "The YKI tests all four skills: reading, writing, listening, and speaking. Bring a valid photo ID. Arrive at least 15 minutes before start time.", checklist_items: [
+      { label: "Exam attended with valid photo ID", item_type: "appointment" },
+    ]},
+    { title: "Receive results and certificate", description: "Results are published approximately 6–8 weeks after the exam. The certificate of language proficiency is mailed to your address.", checklist_items: [
+      { label: "Results checked on Opetushallitus website", item_type: "action" },
+      { label: "YKI certificate received by post", item_type: "document" },
+      { label: "Certificate submitted to Migri / employer as required", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4969,6 +5033,8 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   finlandFamilyReunification,
   finlandAsylum,
   finlandEEARegistration,
+  finlandStartupPermit,
+  finlandYKILanguageTest,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
