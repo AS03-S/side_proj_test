@@ -3454,6 +3454,125 @@ const franceFamilyReunification: ProcessTemplate = {
   ],
 };
 
+const franceCarteDeResident: ProcessTemplate = {
+  id: "fr_carte_de_resident",
+  keywords: ["carte de resident france", "10 year card france", "permanent france", "long term residence france", "carte resident"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture",
+  title: "Carte de Résident (10-Year Permit) — France",
+  summary: "After 5 years of regular residence in France, non-EU nationals can apply for a 10-year carte de résident, giving the right to live and work indefinitely.",
+  timeline_summary: "Processing at the préfecture takes 2–4 months.",
+  next_action: "Confirm 5 years of continuous legal residence and book a préfecture appointment.",
+  official_sources: [{ title: "Service-public.fr — Carte de résident", url: "https://www.service-public.fr/particuliers/vosdroits/F11580" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of regular residence, stable and sufficient income, basic French (A2+), no threat to public order.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of continuous legal residence confirmed", item_type: "action" },
+      { label: "Stable income above poverty threshold confirmed", item_type: "action" },
+      { label: "French language level A2 or higher", item_type: "action" },
+    ]},
+    { title: "Apply at préfecture", description: "Book an appointment online via the ANEF portal and submit documents.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Appointment booked via ANEF portal", item_type: "appointment" },
+      { label: "Current titre de séjour", item_type: "document" },
+      { label: "Proof of 5 years' residence (all prior permits)", item_type: "document" },
+      { label: "Proof of income (last 3 payslips or tax return)", item_type: "document" },
+      { label: "Tax stamp (timbre fiscal) paid", item_type: "payment" },
+      { label: "Carte de résident collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const franceCitizenship: ProcessTemplate = {
+  id: "fr_citizenship",
+  keywords: ["french citizenship", "naturalisation france", "become french", "french passport", "nationalite francaise", "naturalisation française"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Ministère de l'Intérieur / Préfecture",
+  title: "French Citizenship by Naturalisation",
+  summary: "After 5 years of legal residence in France (2 years for graduates of French higher education), you can apply for naturalisation. France allows dual citizenship.",
+  timeline_summary: "Processing takes 12–18 months.",
+  next_action: "Confirm your residence years and gather the extensive document list — preparation takes several weeks.",
+  official_sources: [{ title: "Service-public.fr — Naturalisation", url: "https://www.service-public.fr/particuliers/vosdroits/F2213" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years legal residence (2 for French-degree graduates, immediate for spouses of French citizens married 4 years), French level B1, stable income, no serious criminal record, assimilation into French society.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years (or reduced period) of legal residence confirmed", item_type: "action" },
+      { label: "French language B1 certificate obtained", item_type: "document" },
+      { label: "No disqualifying criminal convictions", item_type: "action" },
+    ]},
+    { title: "Submit dossier at préfecture", description: "Submit the naturalisation dossier in person at the préfecture. The document list is long — get the full checklist from the préfecture website.", estimated_duration: "12–18 months processing", checklist_items: [
+      { label: "Préfecture appointment booked", item_type: "appointment" },
+      { label: "Birth certificate (apostilled + translated)", item_type: "document" },
+      { label: "Full residence history with all prior permits", item_type: "document" },
+      { label: "Income proof (last 3 tax returns)", item_type: "document" },
+      { label: "French language certificate (B1)", item_type: "document" },
+      { label: "Criminal record from France and country of origin", item_type: "document" },
+      { label: "Naturalisation decree received from Ministère", item_type: "document" },
+      { label: "French passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceAsylum: ProcessTemplate = {
+  id: "fr_asylum",
+  keywords: ["asylum france", "asile france", "refugee france", "ofpra", "demande asile", "protection internationale france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "OFPRA (Office français de protection des réfugiés et apatrides)",
+  title: "Asylum Application — France",
+  summary: "Anyone in France needing international protection applies to OFPRA. The first step is registering with the préfecture to obtain an asylum seeker's attestation.",
+  timeline_summary: "OFPRA targets a 6-month decision. Complex cases take longer. You may stay in France while pending.",
+  next_action: "Go to the SPADA (structure de premier accueil des demandeurs d'asile) or préfecture in your department to start the process.",
+  official_sources: [{ title: "OFPRA — Demander l'asile", url: "https://www.ofpra.gouv.fr/fr/asile/les-procedures-de-l-asile/la-demande-d-asile" }],
+  steps: [
+    { title: "Register with SPADA / préfecture", description: "Go to the SPADA (first reception structure) or préfecture immigration office and declare your intention to seek asylum. You'll receive an appointment at the préfecture.", estimated_duration: "1 day", checklist_items: [
+      { label: "SPADA or préfecture visited", item_type: "action" },
+      { label: "Asylum intention declared", item_type: "action" },
+      { label: "Attestation de demande d'asile received (allows staying in France)", item_type: "document" },
+    ]},
+    { title: "Submit OFPRA application", description: "You have 21 days from the attestation to submit your asylum application to OFPRA with a written account of your situation.", estimated_duration: "Within 21 days", checklist_items: [
+      { label: "OFPRA application form completed (in French)", item_type: "document" },
+      { label: "Written account of protection needs submitted", item_type: "document" },
+      { label: "Identity documents submitted (or declaration if none)", item_type: "document" },
+    ]},
+    { title: "OFPRA interview and decision", description: "OFPRA invites you for an interview and then issues a decision. If rejected, you can appeal to the CNDA (National Court of Asylum).", estimated_duration: "6–12 months", checklist_items: [
+      { label: "OFPRA interview attended (with interpreter)", item_type: "appointment" },
+      { label: "Decision received", item_type: "document" },
+      { label: "If approved: refugee status card issued", item_type: "action" },
+      { label: "If rejected: CNDA appeal filed within 1 month", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceEEARegistration: ProcessTemplate = {
+  id: "fr_eea_registration",
+  keywords: ["eu citizen france", "eu registration france", "attestation sejour france", "droit sejour france", "eu free movement france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "Préfecture / Mairie",
+  title: "EU/EEA Right of Residence — France",
+  summary: "EU/EEA citizens can live and work in France freely. After 3 months they have a right of residence; after 5 years they acquire permanent right of residence. No formal registration card is mandatory, but a certificate (attestation) can be requested.",
+  timeline_summary: "France does not require EU citizens to carry a residence card, but an attestation can be issued on request at the préfecture.",
+  next_action: "If you want an official attestation, contact your local préfecture. More practically, register at the mairie (city hall) for social services access.",
+  official_sources: [{ title: "Service-public.fr — Citoyen UE en France", url: "https://www.service-public.fr/particuliers/vosdroits/F13512" }],
+  steps: [
+    { title: "Confirm qualifying basis", description: "Worker, self-employed, student, or self-sufficient person with health insurance. After 3 months you have a right of residence automatically by law.", estimated_duration: "1 day", checklist_items: [
+      { label: "EU/EEA passport or national ID", item_type: "document" },
+      { label: "Qualifying basis confirmed (employment, study, or sufficient resources)", item_type: "action" },
+    ]},
+    { title: "Register at mairie and obtain social security number", description: "Register at the local mairie for practical access to services. Register with CPAM for health insurance (carte vitale).", estimated_duration: "1–4 weeks", checklist_items: [
+      { label: "Address registered at mairie", item_type: "action" },
+      { label: "CPAM health insurance registration completed", item_type: "action" },
+      { label: "French social security number received", item_type: "document" },
+      { label: "Carte vitale applied for", item_type: "action" },
+    ]},
+    { title: "Request attestation at préfecture (optional)", description: "If proof of residence status is needed, request an attestation de droit au séjour at the préfecture.", estimated_duration: "Weeks", checklist_items: [
+      { label: "Préfecture appointment booked (if attestation desired)", item_type: "appointment" },
+      { label: "ID and proof of qualifying basis submitted", item_type: "document" },
+      { label: "Attestation received", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -3462,6 +3581,10 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   franceWorkAuthorisation,
   franceStudentVisa,
   franceFamilyReunification,
+  franceCarteDeResident,
+  franceCitizenship,
+  franceAsylum,
+  franceEEARegistration,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
