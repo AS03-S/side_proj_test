@@ -3389,12 +3389,79 @@ const franceWorkAuthorisation: ProcessTemplate = {
   ],
 };
 
+const franceStudentVisa: ProcessTemplate = {
+  id: "fr_student_visa",
+  keywords: ["france student visa", "visa etudiant", "study france", "french university", "campus france", "etudes france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "French Consulate / Campus France",
+  title: "Student Visa (Visa Étudiant Long Séjour) — France",
+  summary: "Non-EU students accepted at a French institution apply for a long-stay student visa (VLS-TS étudiant) via Campus France (mandatory for most countries).",
+  timeline_summary: "Start the Campus France process 3–4 months before your course. Visa processing takes 3–8 weeks.",
+  next_action: "Check if your country requires Campus France pre-registration (most do) and start there first.",
+  official_sources: [{ title: "Campus France — Apply", url: "https://www.campusfrance.org/en" }],
+  steps: [
+    { title: "Register with Campus France (if required)", description: "Most non-EU students must first register on the Campus France portal for their country, submit their academic profile, and attend an interview.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Campus France portal account created", item_type: "action" },
+      { label: "Academic records and transcripts uploaded", item_type: "document" },
+      { label: "Campus France interview attended (if required)", item_type: "appointment" },
+      { label: "Campus France reference number obtained", item_type: "document" },
+    ]},
+    { title: "Apply for student visa at French consulate", description: "With your university acceptance and Campus France number, apply for the VLS-TS étudiant.", estimated_duration: "3–8 weeks", checklist_items: [
+      { label: "University acceptance letter", item_type: "document" },
+      { label: "Proof of financial resources (approx. €615/month)", item_type: "document" },
+      { label: "Accommodation proof in France", item_type: "document" },
+      { label: "Health insurance", item_type: "document" },
+      { label: "Visa fee paid (approx. €99)", item_type: "payment" },
+    ]},
+    { title: "Validate visa on arrival", description: "Within 3 months of arrival validate your VLS-TS on the ANEF portal — this activates your residence permit status.", estimated_duration: "First month", checklist_items: [
+      { label: "VLS-TS validated on ANEF portal (anef.interieur.gouv.fr)", item_type: "action" },
+      { label: "Enrolled at university and student card obtained", item_type: "action" },
+      { label: "French social security (CPAM) registration completed", item_type: "action" },
+    ]},
+  ],
+};
+
+const franceFamilyReunification: ProcessTemplate = {
+  id: "fr_family_reunification",
+  keywords: ["france family reunification", "regroupement familial", "family visa france", "spouse france", "join family france"],
+  destination_country: "France",
+  jurisdiction: "France",
+  authority_name: "OFII / Préfecture",
+  title: "Family Reunification (Regroupement Familial) — France",
+  summary: "Legal residents in France for at least 18 months can bring their spouse and minor children. The request is filed with OFII, which checks housing and income conditions.",
+  timeline_summary: "OFII processing takes 3–6 months. Apply well in advance.",
+  next_action: "The sponsor in France submits the application to OFII — family members cannot apply directly.",
+  official_sources: [{ title: "OFII — Regroupement familial", url: "https://www.ofii.fr/regroupement-familial/" }],
+  steps: [
+    { title: "Sponsor applies to OFII", description: "The sponsor must have lived in France for at least 18 months, have stable income (about 1× SMIC net for a spouse), and adequate housing.", estimated_duration: "3–6 months", checklist_items: [
+      { label: "18 months of legal residence in France confirmed", item_type: "action" },
+      { label: "Income at or above SMIC threshold confirmed", item_type: "action" },
+      { label: "Housing meets required surface area (at least 22m² for a couple + 10m² per additional person)", item_type: "action" },
+      { label: "Application submitted to OFII online or by post", item_type: "action" },
+      { label: "OFII authorisation received", item_type: "document" },
+    ]},
+    { title: "Family member applies for visa", description: "With the OFII authorisation, the family member applies for a long-stay visa at the French consulate.", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Consulate appointment booked", item_type: "appointment" },
+      { label: "OFII authorisation + relationship documents submitted", item_type: "document" },
+      { label: "Medical examination abroad passed", item_type: "appointment" },
+      { label: "Visa fee paid", item_type: "payment" },
+    ]},
+    { title: "Arrive and validate", description: "Validate VLS-TS on the ANEF portal within 3 months. OFII will also conduct a medical visit and welcome meeting in France.", estimated_duration: "First 3 months", checklist_items: [
+      { label: "VLS-TS validated on ANEF portal", item_type: "action" },
+      { label: "OFII medical visit in France attended", item_type: "appointment" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   // France
   franceTalentPassport,
   franceWorkAuthorisation,
+  franceStudentVisa,
+  franceFamilyReunification,
   // Sweden
   swedenWorkPermit,
   swedenStudentPermit,
