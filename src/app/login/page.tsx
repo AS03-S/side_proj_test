@@ -24,11 +24,11 @@ function LoginCard() {
   const errorParam = searchParams.get("error");
   const [loading, setLoading] = useState(false);
   const [demoLoading, setDemoLoading] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const handleSignIn = async () => {
     setLoading(true);
     await signIn("google", { callbackUrl });
-    // signIn redirects, so setLoading(false) won't run on success
     setLoading(false);
   };
 
@@ -53,10 +53,26 @@ function LoginCard() {
         </div>
       )}
 
+      {/* Age + ToS confirmation */}
+      <label className="mb-5 flex cursor-pointer items-start gap-2.5">
+        <input
+          type="checkbox"
+          checked={agreed}
+          onChange={(e) => setAgreed(e.target.checked)}
+          className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-navy"
+        />
+        <span className="text-[11px] leading-relaxed text-neutral-600">
+          I confirm I am <strong>18 years of age or older</strong> and I agree to the{" "}
+          <Link href="/terms" target="_blank" className="underline text-navy hover:text-navy-mid">Terms of Service</Link>
+          {" "}and{" "}
+          <Link href="/privacy" target="_blank" className="underline text-navy hover:text-navy-mid">Privacy Policy</Link>.
+        </span>
+      </label>
+
       <Button
         onClick={handleSignIn}
-        disabled={loading}
-        className="flex w-full items-center justify-center gap-2.5 bg-white text-neutral-700 border border-neutral-200 hover:bg-neutral-50 hover:border-neutral-300 shadow-sm"
+        disabled={loading || !agreed}
+        className="flex w-full items-center justify-center gap-2.5 bg-white text-neutral-700 border border-neutral-200 hover:bg-neutral-50 hover:border-neutral-300 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
         size="lg"
       >
         {loading ? (
@@ -75,9 +91,9 @@ function LoginCard() {
 
       <Button
         onClick={handleDemoSignIn}
-        disabled={demoLoading || loading}
+        disabled={demoLoading || loading || !agreed}
         variant="outline"
-        className="w-full border-neutral-200 text-neutral-600 hover:bg-neutral-50"
+        className="w-full border-neutral-200 text-neutral-600 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
         size="lg"
       >
         {demoLoading ? (
