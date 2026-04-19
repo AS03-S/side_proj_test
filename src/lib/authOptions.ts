@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { supabase } from "./db";
 
 // ── Silent token refresh ───────────────────────────────────────────────────
@@ -55,9 +56,31 @@ export const authOptions: NextAuthOptions = {
         },
       },
     }),
+    CredentialsProvider({
+      id: "demo",
+      name: "Demo",
+      credentials: {},
+      async authorize() {
+        return { id: "demo", name: "Demo User", email: "demo@migradocs.app" };
+      },
+    }),
   ],
 
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
+
+  // Explicitly set cookie maxAge so the browser keeps it across restarts
+  cookies: {
+    sessionToken: {
+      name: "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "lax" as const,
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 30 * 24 * 60 * 60,
+      },
+    },
+  },
 
   pages: { signIn: "/login" },
 
@@ -66,6 +89,16 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, account, user }) {
       // ① Initial sign-in: account + user are present
       if (account && user) {
+        // Demo credentials — no Supabase upsert, no Drive tokens
+        if (account.provider === "credentials") {
+          return {
+            ...token,
+            userId: "demo",
+            // Far-future expiry so the refresh branch is never reached
+            expiresAt: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+          };
+        }
+
         // Upsert user record (ignore if already exists to preserve drive_folder_id)
         await supabase.from("users").upsert(
           {
@@ -90,7 +123,8 @@ export const authOptions: NextAuthOptions = {
         return token;
       }
 
-      // ③ Token expired — attempt silent refresh
+      // ③ Token expired — attempt silent refresh (skip if no refresh token)
+      if (!token.refreshToken) return token;
       return refreshAccessToken(token);
     },
 

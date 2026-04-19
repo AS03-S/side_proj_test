@@ -16,16 +16,17 @@ import {
   History,
   Info,
   Link2,
+  Loader2,
   ShieldAlert,
   Trash2,
   X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DEMO_DOCUMENTS } from "@/lib/data/documents";
-import { DEMO_PROCESSES } from "@/lib/data/processes";
+import { Card, CardContent } from "@/components/ui/card";
+import { useDocuments } from "@/hooks/useDocuments";
+import { useProcessesContext } from "@/contexts/ProcessesContext";
 import { categoryLabel, formatDateShort, statusLabel } from "@/lib/utils";
-import type { Document, DocumentCategory, DocumentStatus } from "@/types";
+import type { Document, DocumentCategory, DocumentStatus, Process } from "@/types";
 
 // Demo today
 const TODAY = new Date("2026-04-12");
@@ -96,7 +97,7 @@ function DeleteConfirm({
 
 // ── Structured summary panel ───────────────────────────────────────────────
 
-function StructuredSummary({ doc }: { doc: Document }) {
+function StructuredSummary({ doc, processes }: { doc: Document; processes: Process[] }) {
   const [checklist, setChecklist] = useState(doc.preparationChecklist);
 
   const toggleCheck = (id: string) =>
@@ -104,7 +105,7 @@ function StructuredSummary({ doc }: { doc: Document }) {
       prev.map((item) => (item.id === id ? { ...item, completed: !item.completed } : item))
     );
 
-  const linkedProcesses = DEMO_PROCESSES.filter(
+  const linkedProcesses = processes.filter(
     (p) => doc.processIds?.includes(p.id) || p.documentIds.includes(doc.id)
   );
 
@@ -342,11 +343,13 @@ function DocumentRow({
   expanded,
   onToggle,
   onDelete,
+  processes,
 }: {
   doc: Document;
   expanded: boolean;
   onToggle: () => void;
   onDelete: () => void;
+  processes: Process[];
 }) {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showVersionHistory, setShowVersionHistory] = useState(false);
@@ -355,7 +358,7 @@ function DocumentRow({
   const expired = doc.expiryDate && isExpired(doc.expiryDate);
   const expiryDays = doc.expiryDate ? daysFromNow(doc.expiryDate) : null;
 
-  const linkedProcesses = DEMO_PROCESSES.filter(
+  const linkedProcesses = processes.filter(
     (p) => doc.processIds?.includes(p.id) || p.documentIds.includes(doc.id)
   );
 
@@ -503,7 +506,7 @@ function DocumentRow({
       {/* Expanded summary */}
       {expanded && (
         <div className="border-t border-neutral-100 px-4 pb-5 pt-4">
-          <StructuredSummary doc={doc} />
+          <StructuredSummary doc={doc} processes={processes} />
         </div>
       )}
     </div>
@@ -527,10 +530,12 @@ function GroupHeader({ label, count }: { label: string; count: number }) {
 // ── Main Component ─────────────────────────────────────────────────────────
 
 export function DocumentsTab() {
+  const { documents, loading: docsLoading, error: docsError } = useDocuments();
+  const { processes } = useProcessesContext();
   const [deletedIds, setDeletedIds] = useState<Set<string>>(new Set());
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const visibleDocs = DEMO_DOCUMENTS.filter((d) => !deletedIds.has(d.id));
+  const visibleDocs = documents.filter((d) => !deletedIds.has(d.id));
 
   const handleDelete = (id: string) => {
     setDeletedIds((prev) => new Set([...prev, id]));
@@ -559,8 +564,24 @@ export function DocumentsTab() {
     (d) => d.expiryDate && isExpiringSoon(d.expiryDate)
   );
 
+  if (docsLoading) {
+    return (
+      <div className="flex items-center justify-center py-24">
+        <Loader2 className="h-8 w-8 animate-spin text-neutral-300" strokeWidth={1.5} />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-5">
+      {/* Error banner */}
+      {docsError && (
+        <div className="flex items-start gap-3 rounded-lg border border-warning/30 bg-warning/5 px-4 py-3">
+          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-warning" strokeWidth={1.75} />
+          <p className="text-xs text-neutral-700">{docsError}</p>
+        </div>
+      )}
+
       {/* Summary stats */}
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
         <div className="rounded-lg border border-neutral-100 bg-white p-3 text-center">
@@ -604,8 +625,10 @@ export function DocumentsTab() {
       {visibleDocs.length === 0 ? (
         <div className="rounded-lg border border-dashed border-neutral-200 py-16 text-center">
           <FileText className="mx-auto mb-3 h-8 w-8 text-neutral-200" strokeWidth={1.5} />
-          <p className="text-sm font-medium text-neutral-600">No documents in your library</p>
-          <p className="mt-1 text-xs text-neutral-400">Upload a document to get started.</p>
+          <p className="text-sm font-medium text-neutral-600">No documents yet</p>
+          <p className="mt-1 text-xs text-neutral-400">
+            Go to <strong>Analyse Document</strong> to upload and analyse a document — it will appear here once saved.
+          </p>
         </div>
       ) : (
         <div className="space-y-6">
@@ -623,6 +646,7 @@ export function DocumentsTab() {
                     expanded={expandedId === doc.id}
                     onToggle={() => toggleExpand(doc.id)}
                     onDelete={() => handleDelete(doc.id)}
+                    processes={processes}
                   />
                 ))}
               </div>

@@ -13,9 +13,7 @@ const NAV_ITEMS = [
 
 function MigraDOCSLogo() {
   return (
-    <span className="logo-wordmark select-none text-[1.25rem] text-navy leading-none tracking-[-0.04em]">
-      migraDOCS
-    </span>
+    <img src="/logo.svg" alt="migraDOCS" height={34} width={Math.round(34 * 5.25)} style={{ display: "block" }} />
   );
 }
 
