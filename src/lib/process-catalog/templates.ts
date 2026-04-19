@@ -5789,6 +5789,147 @@ const netherlandsOrientationYear: ProcessTemplate = {
   ],
 };
 
+const belgiumFamilyReunification: ProcessTemplate = {
+  id: "be_family_reunification",
+  keywords: ["family reunification", "spouse visa", "family member", "belgium", "DVZ", "CGVS", "regroupement familial"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ — Dienst Vreemdelingenzaken / Office des Étrangers",
+  title: "Belgium family reunification",
+  summary: "Bring a spouse, registered partner, or dependent children to Belgium to join a non-EU national holding a valid residence permit.",
+  timeline_summary: "3–9 months. Apply via the Belgian embassy in the family member's country. Ensure all documents are apostilled.",
+  next_action: "The family member should apply for a Type D visa for family reunification at the Belgian embassy in their country of residence.",
+  steps: [
+    { title: "Check sponsor eligibility", description: "The sponsor must have held a valid residence permit for at least 12 months (or be a Belgian citizen), have a stable and adequate income (above the OMNIO threshold), and appropriate housing.", checklist_items: [
+      { label: "Confirmed sponsor's permit type and minimum 12 months of residence", item_type: "action" },
+      { label: "Confirmed income exceeds OMNIO threshold", item_type: "action" },
+      { label: "Confirmed adequate housing (minimum surface area)", item_type: "action" },
+    ]},
+    { title: "Gather and apostille documents", description: "All foreign documents must be apostilled and officially translated into French, Dutch, or German.", checklist_items: [
+      { label: "Valid passport for family member", item_type: "document" },
+      { label: "Marriage certificate (apostilled and translated)", item_type: "document" },
+      { label: "Birth certificates for children (apostilled and translated)", item_type: "document" },
+      { label: "Sponsor's residence card and proof of income", item_type: "document" },
+      { label: "Proof of Belgian accommodation", item_type: "document" },
+    ]},
+    { title: "Family member applies for Type D visa at Belgian embassy", description: "Submit the family reunification application at the Belgian embassy or consulate in the family member's country of residence.", checklist_items: [
+      { label: "Type D visa application submitted at Belgian embassy", item_type: "action" },
+      { label: "Visa fee paid", item_type: "payment" },
+      { label: "Biometrics provided at embassy", item_type: "appointment" },
+      { label: "Type D visa issued", item_type: "document" },
+    ]},
+    { title: "Register at the commune on arrival", description: "Within 8 days of arriving in Belgium, the family member must register at the local commune (gemeentehuis/maison communale) to start the residence permit procedure.", checklist_items: [
+      { label: "Registered at commune within 8 days of arrival", item_type: "action" },
+      { label: "Annex 19 issued by commune (provisional residence document)", item_type: "document" },
+    ]},
+    { title: "DVZ decision and receive residence card", description: "DVZ reviews the file and issues a decision. If approved, the commune issues an electronic residence card (E+ or F+ card for family members).", checklist_items: [
+      { label: "DVZ approval received", item_type: "document" },
+      { label: "Electronic residence card received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumAsylum: ProcessTemplate = {
+  id: "be_asylum",
+  keywords: ["asylum", "refugee", "international protection", "belgium", "CGRS", "Fedasil", "asielzoeker"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "CGRS — Commissariaat-generaal voor de Vluchtelingen en de Staatlozen",
+  title: "Belgium asylum and international protection",
+  summary: "Apply for refugee status or subsidiary protection in Belgium if you face persecution or serious harm in your home country.",
+  timeline_summary: "First instance decision: 6–18 months. You may remain in Belgium during the procedure and any appeal.",
+  next_action: "Register your asylum application at the Immigration Office (DVZ) in Brussels or at a Fedasil reception centre.",
+  steps: [
+    { title: "Register the application at DVZ", description: "Present yourself to the Immigration Office (Klein Kasteeltje / Petit Château) in Brussels or at a border point. You must register your intention to seek asylum as soon as possible.", checklist_items: [
+      { label: "Application registered at DVZ in Brussels or border post", item_type: "action" },
+      { label: "Any available identity documents provided", item_type: "document" },
+      { label: "Placed in a Fedasil reception centre", item_type: "action" },
+    ]},
+    { title: "Dublin check and registration", description: "DVZ checks whether Belgium is responsible under the Dublin Regulation. Fingerprints are taken and checked against the Eurodac database.", checklist_items: [
+      { label: "Fingerprints and photo taken", item_type: "action" },
+      { label: "Annex 26 (attestation of registration) received", item_type: "document" },
+    ]},
+    { title: "CGRS personal interview", description: "The Commissioner-General for Refugees and Stateless Persons (CGRS) schedules a personal interview. An interpreter is provided. You may have a lawyer or NGO representative present.", checklist_items: [
+      { label: "Personal interview at CGRS attended", item_type: "appointment" },
+      { label: "Supporting evidence of persecution submitted", item_type: "document" },
+      { label: "Legal aid arranged (free via Juridische Tweedelijnsbijstand)", item_type: "action" },
+    ]},
+    { title: "Receive CGRS decision", description: "CGRS issues refugee status, subsidiary protection, or a rejection. If rejected, appeal to the Council for Alien Law Litigation (RvV/CCE) within 30 days.", checklist_items: [
+      { label: "CGRS decision received", item_type: "document" },
+      { label: "Appeal filed with RvV/CCE within 30 days (if refused)", item_type: "action" },
+    ]},
+    { title: "Receive residence card if granted", description: "On grant of protection, register at your commune. DVZ issues a residence card valid for 5 years (refugee) or 1 year renewable (subsidiary protection).", checklist_items: [
+      { label: "Registered at commune", item_type: "action" },
+      { label: "Residence card received", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumEEARegistration: ProcessTemplate = {
+  id: "be_eea_registration",
+  keywords: ["EEA registration", "EU citizen", "E card", "belgium", "commune", "bijlage 19", "free movement"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "Local commune (gemeentehuis / maison communale)",
+  title: "Belgium EU/EEA residence registration (E card)",
+  summary: "EU/EEA citizens staying in Belgium for more than 3 months must register at their local commune and obtain an E card (electronic residence card).",
+  timeline_summary: "Register within 3 months of arrival. E card issued within 3–6 months after commune investigation.",
+  next_action: "Register at your local commune within 3 months of arriving in Belgium and request the EU residence attestation.",
+  steps: [
+    { title: "Register at the commune within 3 months", description: "Go to the commune (gemeentehuis/maison communale) where you live. Bring your EU passport/ID and proof of address. You will receive a provisional Annex 19 document while your file is processed.", checklist_items: [
+      { label: "Registered at commune within 3 months of arrival", item_type: "action" },
+      { label: "Valid EU/EEA passport or national identity card", item_type: "document" },
+      { label: "Proof of Belgian address (rental contract or letter from landlord)", item_type: "document" },
+      { label: "Annex 19 provisional document received", item_type: "document" },
+    ]},
+    { title: "Commune investigation visit", description: "A commune officer visits your address to verify you actually live there. Be present at home or arrange for the letter to be signed.", checklist_items: [
+      { label: "Commune address verification visit completed", item_type: "action" },
+    ]},
+    { title: "Provide proof of Treaty Right", description: "Submit proof that you are exercising a free movement right: employment contract (worker), enrollment certificate (student), or bank statements and health insurance (self-sufficient).", checklist_items: [
+      { label: "Employment contract or payslips (if worker)", item_type: "document" },
+      { label: "Enrollment certificate (if student)", item_type: "document" },
+      { label: "Health insurance certificate (if not worker)", item_type: "document" },
+      { label: "Bank statements (if self-sufficient)", item_type: "document" },
+    ]},
+    { title: "Receive E card", description: "Once DVZ confirms your right of residence, the commune issues an electronic E card (resident card for EU/EEA citizens). Valid for 5 years and renewable.", checklist_items: [
+      { label: "E card received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
+const belgiumLongTermResidence: ProcessTemplate = {
+  id: "be_long_term_residence",
+  keywords: ["long-term residence", "permanent residence", "5 years", "belgium", "DVZ", "unbegrenzte Niederlassung"],
+  destination_country: "BE",
+  jurisdiction: "Belgium",
+  authority_name: "DVZ — Dienst Vreemdelingenzaken / Office des Étrangers",
+  title: "Belgium EU long-term residence permit (permanent settlement)",
+  summary: "Apply for EU long-term residence status in Belgium after 5 years of continuous legal residence, granting enhanced rights and settlement security.",
+  timeline_summary: "Apply before current permit expires. Processing 4–6 months.",
+  next_action: "Submit a long-term residence application to DVZ via your local commune, with proof of 5 years of legal residence and language/integration evidence.",
+  steps: [
+    { title: "Check eligibility", description: "You must have resided legally and continuously in Belgium for at least 5 years. No period of absence exceeding 6 consecutive months or 10 months total within the 5-year period.", checklist_items: [
+      { label: "Confirmed 5 years of continuous legal residence", item_type: "action" },
+      { label: "Checked absence record", item_type: "action" },
+    ]},
+    { title: "Gather documents", description: "Collect proof of residence, income, accommodation, and any integration/language certificates. All foreign documents must be apostilled and translated.", checklist_items: [
+      { label: "Valid passport", item_type: "document" },
+      { label: "Current and previous residence cards (5-year history)", item_type: "document" },
+      { label: "Proof of stable income (payslips, tax assessments)", item_type: "document" },
+      { label: "Proof of accommodation", item_type: "document" },
+      { label: "Belgian criminal record certificate (via commune)", item_type: "document" },
+      { label: "Language/integration certificate (recommended)", item_type: "document" },
+    ]},
+    { title: "Submit application via commune to DVZ", description: "Apply at your commune. The commune forwards the file to DVZ. DVZ processes and issues the decision.", checklist_items: [
+      { label: "Application submitted at commune and forwarded to DVZ", item_type: "action" },
+      { label: "Application fee paid", item_type: "payment" },
+    ]},
+    { title: "Receive EU long-term residence card", description: "DVZ issues the EU long-term residence permit. The card is valid for 5 years and indefinitely renewable. It grants the right to work in any sector and improved family reunification rights.", checklist_items: [
+      { label: "EU long-term residence card received from commune", item_type: "document" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -5938,6 +6079,10 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   belgiumWorkPermit,
   belgiumStudentVisa,
   belgiumCitizenship,
+  belgiumFamilyReunification,
+  belgiumAsylum,
+  belgiumEEARegistration,
+  belgiumLongTermResidence,
   // Ireland
   irelandCriticalSkills,
   irelandWorkPermit,
