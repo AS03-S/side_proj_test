@@ -4008,6 +4008,122 @@ const switzerlandAsylum: ProcessTemplate = {
   ],
 };
 
+// ── Ireland — INIS / ISD ───────────────────────────────────────────────────
+
+const irelandWorkPermit: ProcessTemplate = {
+  id: "ie_work_permit",
+  keywords: ["ireland work permit", "employment permit ireland", "work ireland", "ireland job", "critical skills ireland", "general employment permit"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "Department of Enterprise, Trade and Employment (DETE)",
+  title: "General Employment Permit — Ireland",
+  summary: "Non-EU/EEA nationals with a job offer earning at least €34,000/year can apply for a General Employment Permit. The employer must demonstrate the position was advertised to Irish/EU candidates first (Labour Market Needs Test).",
+  timeline_summary: "Processing takes 2–4 months. Apply before travelling to Ireland.",
+  next_action: "Confirm your salary meets the €34,000 threshold and that your employer has completed the Labour Market Needs Test.",
+  official_sources: [{ title: "DETE — Employment permits", url: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/" }],
+  steps: [
+    { title: "Employer completes Labour Market Needs Test", description: "The employer must advertise the role to Irish/EU candidates first and show no suitable candidate was found, unless the role is on the Highly Skilled Eligible Occupations List.", estimated_duration: "4–6 weeks", checklist_items: [
+      { label: "Role advertised on national jobs site (jobs.ie or similar) for min. 28 days", item_type: "action" },
+      { label: "EURES advertisement placed", item_type: "action" },
+      { label: "No suitable Irish/EU candidate confirmed", item_type: "action" },
+    ]},
+    { title: "Apply online via EPOS", description: "Submit the employment permit application via the EPOS (Employment Permits Online System). Either the employer or employee can apply.", estimated_duration: "2–4 months", checklist_items: [
+      { label: "Application submitted on epos.enterprise.gov.ie", item_type: "action" },
+      { label: "Signed employment contract uploaded", item_type: "document" },
+      { label: "Passport copy uploaded", item_type: "document" },
+      { label: "Fee paid (€500–€1,000 depending on permit duration)", item_type: "payment" },
+      { label: "Employment permit received", item_type: "document" },
+    ]},
+    { title: "Apply for entry visa and register in Ireland", description: "If visa required, apply at Irish embassy. After arrival, register with GNIB/IRP within 90 days.", estimated_duration: "First month in Ireland", checklist_items: [
+      { label: "Irish visa applied for at embassy (if required)", item_type: "action" },
+      { label: "GNIB/IRP registration appointment booked at aislingregistrations.inis.gov.ie", item_type: "appointment" },
+      { label: "IRP (Irish Residence Permit) card collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandStudentVisa: ProcessTemplate = {
+  id: "ie_student_visa",
+  keywords: ["ireland student visa", "study ireland", "irish university", "student permit ireland", "stamp 2 ireland"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "INIS (Irish Naturalisation and Immigration Service)",
+  title: "Student Visa (Stamp 2) — Ireland",
+  summary: "Non-EU/EEA students enrolled in a full-time course on Ireland's Interim List of Eligible Programmes (ILEP) must apply for a student visa and register for Stamp 2 permission.",
+  timeline_summary: "Visa processing takes 4–8 weeks. Apply at least 3 months before your course starts.",
+  next_action: "Confirm your course is on the ILEP list, then apply for a D student visa at the Irish Naturalisation and Immigration Service.",
+  official_sources: [{ title: "INIS — Student visa", url: "https://www.irishimmigration.ie/coming-to-study-in-ireland/" }],
+  steps: [
+    { title: "Enrol in an ILEP course", description: "Your course must be on Ireland's Interim List of Eligible Programmes and full-time (at least 15 hours/week).", estimated_duration: "1–4 months", checklist_items: [
+      { label: "Course confirmed on ILEP list", item_type: "action" },
+      { label: "Enrolment letter received", item_type: "document" },
+    ]},
+    { title: "Apply for student visa online", description: "Apply via the Online Visa Application System (AVATS).", estimated_duration: "4–8 weeks", checklist_items: [
+      { label: "Application submitted at visas.inis.gov.ie", item_type: "action" },
+      { label: "Enrolment letter and proof of tuition fees paid uploaded", item_type: "document" },
+      { label: "Proof of funds (€7,000+ for 1 year)", item_type: "document" },
+      { label: "Visa fee paid (€60 single entry)", item_type: "payment" },
+    ]},
+    { title: "Arrive and register for Stamp 2", description: "Register at the GNIB/IRP within 90 days of arrival to receive Stamp 2 permission.", estimated_duration: "First month", checklist_items: [
+      { label: "IRP registration appointment booked", item_type: "appointment" },
+      { label: "IRP card (Stamp 2) collected", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandStamp4: ProcessTemplate = {
+  id: "ie_stamp4",
+  keywords: ["stamp 4 ireland", "ireland permanent", "long term ireland", "inis stamp 4", "ireland settlement", "indefinite stay ireland"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "INIS",
+  title: "Stamp 4 (Long-Term Residence) — Ireland",
+  summary: "Stamp 4 gives the right to work and live in Ireland without a separate work permit. It is granted after 5 years of legal residence, to refugees, and to others who qualify. It leads to citizenship eligibility.",
+  timeline_summary: "Applications are assessed by INIS; processing times vary (months to over a year currently).",
+  next_action: "Check your eligibility: 5 years of legal residence on certain stamps, or qualifying status (refugee, family member of Irish citizen, etc.).",
+  official_sources: [{ title: "INIS — Long term residence", url: "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/long-term-residence/" }],
+  steps: [
+    { title: "Check eligibility", description: "5 years of legal residence on Stamp 1, 1G, 2, 2A or 3 (excluding time on Stamp 2 for English language courses). Or qualifying as a refugee, family member of Irish citizen, etc.", estimated_duration: "1 week", checklist_items: [
+      { label: "5 years of eligible legal residence confirmed", item_type: "action" },
+      { label: "No serious criminal convictions", item_type: "action" },
+    ]},
+    { title: "Apply to INIS", description: "Submit a long-term residence application by post or online to INIS.", estimated_duration: "Months to 1 year+", checklist_items: [
+      { label: "Application submitted to INIS", item_type: "action" },
+      { label: "All previous IRP cards / immigration stamps included", item_type: "document" },
+      { label: "Passport copies included", item_type: "document" },
+      { label: "Stamp 4 permission granted and IRP renewed", item_type: "document" },
+    ]},
+  ],
+};
+
+const irelandCitizenship: ProcessTemplate = {
+  id: "ie_citizenship",
+  keywords: ["irish citizenship", "ireland naturalisation", "become irish", "irish passport", "citizenship ireland"],
+  destination_country: "Ireland",
+  jurisdiction: "Ireland",
+  authority_name: "INIS / Department of Justice",
+  title: "Irish Citizenship by Naturalisation",
+  summary: "After 5 years of continuous legal residence in Ireland (1 year immediately before the application + 4 of the previous 8 years), you can apply for Irish citizenship. Ireland allows dual citizenship.",
+  timeline_summary: "Processing currently takes 20–24 months.",
+  next_action: "Confirm your reckonable residence adds up to 5 years and check for the next INIS naturalisation application window.",
+  official_sources: [{ title: "INIS — Naturalisation", url: "https://www.irishimmigration.ie/citizenship/naturalisation/" }],
+  steps: [
+    { title: "Calculate reckonable residence", description: "The year immediately before your application must be on Stamp 4/5/6 or equivalent. The previous 8 years must include at least 4 reckonable years. Time on Stamp 1 for studies does not fully count.", estimated_duration: "1 week", checklist_items: [
+      { label: "Reckonable residence years calculated", item_type: "action" },
+      { label: "1 year immediately before application on qualifying stamp confirmed", item_type: "action" },
+      { label: "Good character requirement considered (no serious convictions)", item_type: "action" },
+    ]},
+    { title: "Apply online via INIS", description: "Submit naturalisation application via the INIS online portal when the application window opens.", estimated_duration: "20–24 months processing", checklist_items: [
+      { label: "Application submitted online", item_type: "action" },
+      { label: "Application fee paid (€175, waived for refugees)", item_type: "payment" },
+      { label: "All passport copies and immigration history submitted", item_type: "document" },
+      { label: "Certificate of naturalisation received", item_type: "document" },
+      { label: "Declaration of fidelity made at ceremony", item_type: "appointment" },
+      { label: "Irish passport applied for", item_type: "action" },
+    ]},
+  ],
+};
+
 // ── Catalog export ─────────────────────────────────────────────────────────
 
 export const PROCESS_TEMPLATES: ProcessTemplate[] = [
@@ -4111,6 +4227,10 @@ export const PROCESS_TEMPLATES: ProcessTemplate[] = [
   netherlandsHighlySkilledMigrant,
   // Ireland
   irelandCriticalSkills,
+  irelandWorkPermit,
+  irelandStudentVisa,
+  irelandStamp4,
+  irelandCitizenship,
   // Australia
   australiaSkilledIndependent,
   // Canada
